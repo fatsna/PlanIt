@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ByeCompany/1.0.0": {
+        "runtime": {
+          "ByeCompany.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ByeCompany/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
