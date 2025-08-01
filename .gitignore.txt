@@ -1,43 +1,20 @@
-# ========== Visual Studio 관련 ==========
-.vs/
-*.user
-*.suo
-*.rsuser
-*.sln.docstates
+# Visual Studio
+RunNow/.vs/
+RunNow/*.user
+RunNow/*.suo
 
-# ========== 빌드 결과 ==========
+# Build directories
 RunNow/bin/
 RunNow/obj/
 RunNow/Debug/
 RunNow/Release/
-RunNow/x64/
-RunNow/x86/
-build/
-[Bb]uild[Ll]og.*
 
-# ========== NuGet 관련 ==========
-packages/
+# NuGet
+RunNow/packages/
 *.nupkg
-*.snupkg
-project.lock.json
-project.fragment.lock.json
 
-# ========== 기타 ==========
+# Others
 *.log
-*.tmp
-*.bak
 *.cache
-*.dbmdl
-
-# ========== Rider / JetBrains ==========
-.idea/
-*.iml
-
-# ========== OS 생성 파일 ==========
-.DS_Store
-Thumbs.db
-
-# ========== 민감 데이터 (API 키 등) ==========
-appsettings.json
-appsettings.*.json
-secrets.json
+*.dll
+*.exe
