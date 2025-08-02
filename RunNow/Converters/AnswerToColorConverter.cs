@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Media;
+using RunNow.Models;
+
+namespace RunNow.Converters
+{
+    public class AnswerToColorConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Length < 2)
+                return Brushes.Transparent;
+            Console.WriteLine($"[DEBUG] values[0] type = {values[0].GetType()}");
+
+            // 0: SelectedAnswerIndex, 1: answerText
+            if (values[0] is int selectedIndex && values[1] is string answerText)
+            {
+                Console.WriteLine($"[컨버터] selected={selectedIndex}, answer={answerText}");
+                var allAnswers = new List<string> { "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다" };
+                int index = allAnswers.IndexOf(answerText);
+                return index == selectedIndex ? Brushes.LightBlue : Brushes.Transparent;
+            }
+            return Brushes.Transparent;
+        }
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class QuestionAnswerParameterConverter : IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values.Length == 2 && values[0] is RunNow.Models.QuestionModel question && values[1] is string answer)
+            {
+                return Tuple.Create(question, answer);
+            }
+            return null;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

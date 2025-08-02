@@ -1,0 +1,16 @@
+# Visual Studio 관련 임시 파일
+.vs/
+*.user
+*.suo
+
+# 빌드 결과물
+bin/
+obj/
+
+# 기타 임시 캐시 파일들
+*.cache
+*.db
+*.db-shm
+*.db-wal
+*.dtbcache.v2
+*.vsidx
