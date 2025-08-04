@@ -24,4 +24,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Resource Include="user.png" />
+    <Resource Include="LOGO2.png" />
+  </ItemGroup>
 </Project>

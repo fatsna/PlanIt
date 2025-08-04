@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ByeCompany.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,16 +10,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RunNow
+namespace ByeCompany
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = new MainPage(); // 페이지가 정상적으로 로드됨
         }
     }
 }
