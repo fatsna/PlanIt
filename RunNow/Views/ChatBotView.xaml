@@ -10,6 +10,7 @@
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <converters:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter"/>
+        <converters:BoolToTextAlignmentConverter x:Key="BoolToTextAlignmentConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -33,15 +34,15 @@
         <ItemsControl ItemsSource="{Binding Options}" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center" />
+                    <WrapPanel HorizontalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Content="{Binding}"
-                        Command="{Binding DataContext.SelectOptionCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                        CommandParameter="{Binding}"
-                        Margin="5" Padding="10,5" FontSize="12" Width="120">    
+                            Command="{Binding DataContext.SelectOptionCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                            CommandParameter="{Binding}"
+                            Margin="5" Padding="10,5" FontSize="12" MinWidth="80" MaxWidth="200">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border BorderBrush="#004AAD" BorderThickness="1" CornerRadius="20" Background="{TemplateBinding Background}">
@@ -62,101 +63,46 @@
                             </Style>
                         </Button.Style>
                     </Button>
-
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
         <!-- Chat -->
         <ListBox x:Name="ChatListBox"
-            ItemsSource="{Binding Messages}"
-            Grid.Row="2"
-            BorderThickness="0"
-            Background="Transparent"
-            ScrollViewer.VerticalScrollBarVisibility="Auto"
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            HorizontalContentAlignment="Stretch">
-
-            <ListBox.Resources>
-                <Style TargetType="ScrollBar">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ScrollBar">
-                                <Grid Width="8" Background="Transparent">
-                                    <Track x:Name="PART_Track" IsDirectionReversed="true">
-                                        <Track.DecreaseRepeatButton>
-                                            <RepeatButton Visibility="Collapsed"/>
-                                        </Track.DecreaseRepeatButton>
-                                        <Track.Thumb>
-                                            <Thumb Background="#F5F5F5" Width="8"/>
-                                        </Track.Thumb>
-                                        <Track.IncreaseRepeatButton>
-                                            <RepeatButton Visibility="Collapsed"/>
-                                        </Track.IncreaseRepeatButton>
-                                    </Track>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.Resources>
-
+                 ItemsSource="{Binding Messages}"
+                 Grid.Row="2"
+                 BorderThickness="0"
+                 Background="Transparent"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="{Binding IsUserMessage, Converter={StaticResource BoolToAlignmentConverter}}"
+                                Margin="10">
 
-                        <!-- ✅ 봇 메시지일 때만 프로필 -->
-                        <Image Source="{Binding ProfileImage}" Width="40" Height="40"
-                       Margin="5" Stretch="UniformToFill" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality">
+                        <!-- ✅ 봇 프로필 (Converter로 Visibility 제어) -->
+                        <Image Source="{Binding ProfileImage}"
+                               Width="40" Height="40" Margin="5" Stretch="UniformToFill"
+                               VerticalAlignment="Top"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               Visibility="{Binding IsUserMessage, Converter={StaticResource BoolToVisibilityInverseConverter}}">
                             <Image.Clip>
                                 <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
                             </Image.Clip>
-                            <Image.Style>
-                                <Style TargetType="Image">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                    <Setter Property="Grid.Column" Value="0"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsUserMessage}" Value="True">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Image.Style>
                         </Image>
 
                         <!-- ✅ 말풍선 -->
-                        <Border CornerRadius="15" Padding="10" Margin="10"
-                            Background="{Binding IsUserMessage, Converter={StaticResource BoolToColorConverter}}"
-                            MaxWidth="250">
-
-                            <!-- ✅ Style은 Border의 멤버 -->
-                            <Border.Style>
-                                <Style TargetType="Border">
-                                    <Setter Property="Grid.Column" Value="1"/>
-                                    <Setter Property="HorizontalAlignment" Value="Left"/>
-                                    <Style.Triggers>
-                                        <!-- 유저면 오른쪽 끝 -->
-                                        <DataTrigger Binding="{Binding IsUserMessage}" Value="True">
-                                            <Setter Property="HorizontalAlignment" Value="Right"/>
-                                            <Setter Property="Grid.Column" Value="1"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Border.Style>
-
-                            <!-- ✅ Border 안의 컨텐츠 -->
-                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" FontSize="14"/>
+                        <Border CornerRadius="15" Padding="10" Margin="5"
+                                Background="{Binding IsUserMessage, Converter={StaticResource BoolToColorConverter}}"
+                                MinWidth="120" MaxWidth="300">
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" FontSize="15" TextAlignment="{Binding IsUserMessage, Converter={StaticResource BoolToTextAlignmentConverter}}"/>
                         </Border>
-
-                    </Grid>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <!-- Input -->
         <Grid Grid.Row="3" Margin="10">
             <Grid.ColumnDefinitions>
@@ -173,17 +119,16 @@
                          VerticalContentAlignment="Center"
                          HorizontalAlignment="Stretch"
                          Height="30"
-                         Margin="5,0">  
+                         Margin="5,0">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding SendCommand}" />
                     </TextBox.InputBindings>
                 </TextBox>
-
             </Border>
 
-            <Button Grid.Column="1" Width="35" Height="35" Margin="10,0,0,0"
+            <Button Grid.Column="1" Width="50" Height="50" Margin="10,0,0,0"
                     Background="#004AAD" BorderBrush="Transparent"
-                    Command="{Binding SendCommand}" VerticalAlignment="Center" Click="Button_Click">
+                    Command="{Binding SendCommand}" VerticalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -192,7 +137,7 @@
                         </Grid>
                     </ControlTemplate>
                 </Button.Template>
-                <Image Source="/Assets/sendb.png" Width="25" Height="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+                <Image Source="/Assets/sendb.png" Width="40" Height="40" RenderOptions.BitmapScalingMode="HighQuality"/>
             </Button>
         </Grid>
 
