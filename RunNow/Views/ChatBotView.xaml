@@ -1,0 +1,201 @@
+﻿<Page x:Class="RunNow.Views.ChatBotView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:RunNow.Views"
+      xmlns:converters="clr-namespace:RunNow.Converters"
+      Background="White">
+
+    <Page.Resources>
+        <converters:BoolToAlignmentConverter x:Key="BoolToAlignmentConverter"/>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#004AAD">
+            <Grid>
+                <Image Source="/Assets/LOGO2.png" Height="90"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- Options -->
+        <ItemsControl ItemsSource="{Binding Options}" Grid.Row="1">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}"
+                        Command="{Binding DataContext.SelectOptionCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                        CommandParameter="{Binding}"
+                        Margin="5" Padding="10,5" FontSize="12" Width="120">    
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border BorderBrush="#004AAD" BorderThickness="1" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#E3F2FD"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Chat -->
+        <ListBox x:Name="ChatListBox"
+            ItemsSource="{Binding Messages}"
+            Grid.Row="2"
+            BorderThickness="0"
+            Background="Transparent"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            HorizontalContentAlignment="Stretch">
+
+            <ListBox.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid Width="8" Background="Transparent">
+                                    <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Visibility="Collapsed"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Background="#F5F5F5" Width="8"/>
+                                        </Track.Thumb>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Visibility="Collapsed"/>
+                                        </Track.IncreaseRepeatButton>
+                                    </Track>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.Resources>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- ✅ 봇 메시지일 때만 프로필 -->
+                        <Image Source="{Binding ProfileImage}" Width="40" Height="40"
+                       Margin="5" Stretch="UniformToFill" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.Clip>
+                                <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                            </Image.Clip>
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="Grid.Column" Value="0"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsUserMessage}" Value="True">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                        <!-- ✅ 말풍선 -->
+                        <Border CornerRadius="15" Padding="10" Margin="10"
+                            Background="{Binding IsUserMessage, Converter={StaticResource BoolToColorConverter}}"
+                            MaxWidth="250">
+
+                            <!-- ✅ Style은 Border의 멤버 -->
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Grid.Column" Value="1"/>
+                                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                                    <Style.Triggers>
+                                        <!-- 유저면 오른쪽 끝 -->
+                                        <DataTrigger Binding="{Binding IsUserMessage}" Value="True">
+                                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                                            <Setter Property="Grid.Column" Value="1"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <!-- ✅ Border 안의 컨텐츠 -->
+                            <TextBlock Text="{Binding Message}" TextWrapping="Wrap" FontSize="14"/>
+                        </Border>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!-- Input -->
+        <Grid Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" CornerRadius="20" BorderBrush="Gray"
+                    BorderThickness="1" Background="#F5F5F5" Padding="5">
+                <TextBox Text="{Binding UserInput, UpdateSourceTrigger=PropertyChanged}"
+                         Background="#F5F5F5"
+                         BorderThickness="0"
+                         FontSize="14"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Stretch"
+                         Height="30"
+                         Margin="5,0">  
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SendCommand}" />
+                    </TextBox.InputBindings>
+                </TextBox>
+
+            </Border>
+
+            <Button Grid.Column="1" Width="35" Height="35" Margin="10,0,0,0"
+                    Background="#004AAD" BorderBrush="Transparent"
+                    Command="{Binding SendCommand}" VerticalAlignment="Center" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse Fill="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <Image Source="/Assets/sendb.png" Width="25" Height="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+            </Button>
+        </Grid>
+
+        <local:BottomNav Grid.Row="4"/>
+    </Grid>
+</Page>

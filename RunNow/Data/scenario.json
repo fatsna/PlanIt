@@ -1,0 +1,232 @@
+{
+  "start": {
+    "Id": "start",
+    "Question": "안녕하세요! 무엇을 도와드릴까요?",
+    "Options": [ "프로그램 설명", "나이별 평균 연봉", "감정 분석", "재정 분석", "면접 준비", "기타 질문" ],
+    "NextStep": {
+      "프로그램 설명": "program_info",
+      "나이별 평균 연봉": "salary_info",
+      "감정 분석": "emotion_main",
+      "재정 분석": "finance_main",
+      "면접 준비": "interview_main",
+      "기타 질문": "etc_main"
+    }
+  },
+
+  "program_info": {
+    "Id": "program_info",
+    "Question": "이 프로그램은 사용자 맞춤형 분석 챗봇입니다. 어떤 부분이 궁금하신가요?",
+    "Options": [ "기능 소개", "데이터 처리 방식", "AI 사용 여부", "뒤로 가기" ],
+    "NextStep": {
+      "기능 소개": "program_features",
+      "데이터 처리 방식": "program_data",
+      "AI 사용 여부": "program_ai",
+      "뒤로 가기": "start"
+    }
+  },
+  "program_features": {
+    "Id": "program_features",
+    "Question": "기능 소개: 감정 분석, 재정 분석, 커리어 상담, 면접 준비 등이 가능합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "program_data": {
+    "Id": "program_data",
+    "Question": "데이터는 로컬에서 처리되며, 개인정보는 저장되지 않습니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "program_ai": {
+    "Id": "program_ai",
+    "Question": "AI는 분석과 추천에 활용됩니다. 모든 결과는 참고용입니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+
+  "salary_info": {
+    "Id": "salary_info",
+    "Question": "나이별 평균 연봉을 확인하고 싶은 연령대를 선택해주세요.",
+    "Options": [ "20대", "30대", "40대", "50대 이상", "뒤로 가기" ],
+    "NextStep": {
+      "20대": "salary_20s",
+      "30대": "salary_30s",
+      "40대": "salary_40s",
+      "50대 이상": "salary_50s",
+      "뒤로 가기": "start"
+    }
+  },
+  "salary_20s": {
+    "Id": "salary_20s",
+    "Question": "20대 평균 연봉은 약 3000만원~3500만원입니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "salary_30s": {
+    "Id": "salary_30s",
+    "Question": "30대 평균 연봉은 약 4000만원~5000만원입니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "salary_40s": {
+    "Id": "salary_40s",
+    "Question": "40대 평균 연봉은 약 5000만원~6000만원입니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "salary_50s": {
+    "Id": "salary_50s",
+    "Question": "50대 이상 평균 연봉은 약 5500만원 이상입니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+
+  "emotion_main": {
+    "Id": "emotion_main",
+    "Question": "감정 분석입니다. 어떤 방법을 사용하시겠습니까?",
+    "Options": [ "오늘 기분 입력", "감정 분석 설명 보기", "뒤로 가기" ],
+    "NextStep": {
+      "오늘 기분 입력": "emotion_input",
+      "감정 분석 설명 보기": "emotion_info",
+      "뒤로 가기": "start"
+    }
+  },
+  "emotion_info": {
+    "Id": "emotion_info",
+    "Question": "감정 분석은 사용자의 텍스트 입력을 기반으로 기분을 파악하고 해결책을 제안합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "emotion_input": {
+    "Id": "emotion_input",
+    "Question": "오늘 기분을 간단히 입력해주세요. (예: 우울, 행복, 불안)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "emotion_result",
+      "뒤로 가기": "emotion_main"
+    }
+  },
+  "emotion_result": {
+    "Id": "emotion_result",
+    "Question": "분석 결과 예시: 기분이 우울하다면 산책, 취미 활동을 추천합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+
+  "finance_main": {
+    "Id": "finance_main",
+    "Question": "재정 분석입니다. 무엇을 확인하시겠습니까?",
+    "Options": [ "월급 입력", "지출 현황 입력", "재정 상태 설명", "뒤로 가기" ],
+    "NextStep": {
+      "월급 입력": "finance_income",
+      "지출 현황 입력": "finance_expense",
+      "재정 상태 설명": "finance_info",
+      "뒤로 가기": "start"
+    }
+  },
+  "finance_info": {
+    "Id": "finance_info",
+    "Question": "재정 분석은 소득 대비 지출 상태를 평가하고, 저축 가능성을 안내합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "finance_income": {
+    "Id": "finance_income",
+    "Question": "월급을 입력해주세요. (예: 300만원)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "finance_result",
+      "뒤로 가기": "finance_main"
+    }
+  },
+  "finance_expense": {
+    "Id": "finance_expense",
+    "Question": "월 지출을 입력해주세요. (예: 200만원)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "finance_result",
+      "뒤로 가기": "finance_main"
+    }
+  },
+  "finance_result": {
+    "Id": "finance_result",
+    "Question": "예시 결과: 월급 300만원, 지출 200만원 → 저축 가능 금액 100만원 (양호)",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+
+  "interview_main": {
+    "Id": "interview_main",
+    "Question": "면접 준비입니다. 어떤 정보를 원하시나요?",
+    "Options": [ "면접 TIP", "예상 질문", "뒤로 가기" ],
+    "NextStep": {
+      "면접 TIP": "interview_tip",
+      "예상 질문": "interview_questions",
+      "뒤로 가기": "start"
+    }
+  },
+  "interview_tip": {
+    "Id": "interview_tip",
+    "Question": "면접 TIP: 복장은 단정하게, 답변은 명확하게, 질문은 적극적으로.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "interview_questions": {
+    "Id": "interview_questions",
+    "Question": "예상 질문: 자기소개, 장단점, 지원 동기, 미래 목표.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+
+  "etc_main": {
+    "Id": "etc_main",
+    "Question": "기타 질문입니다. 어떤 내용이 궁금하신가요?",
+    "Options": [ "서비스 이용 시간", "개인정보 정책", "뒤로 가기" ],
+    "NextStep": {
+      "서비스 이용 시간": "etc_time",
+      "개인정보 정책": "etc_privacy",
+      "뒤로 가기": "start"
+    }
+  },
+  "etc_time": {
+    "Id": "etc_time",
+    "Question": "서비스는 24시간 이용 가능합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  },
+  "etc_privacy": {
+    "Id": "etc_privacy",
+    "Question": "개인정보는 분석 후 즉시 삭제됩니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": {
+      "처음으로": "start"
+    }
+  }
+}

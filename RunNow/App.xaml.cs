@@ -1,14 +1,16 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
+using RunNow.Core;
 
 namespace RunNow
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-    }
+        public static ServiceProvider Services { get; private set; }
 
+        public App()
+        {
+            Services = DependencyInjection.ConfigureServices();
+        }
+    }
 }
