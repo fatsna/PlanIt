@@ -9,7 +9,7 @@ namespace RunNow.Services
         private readonly Dictionary<string, ScenarioStep> _steps;
 
         public ScenarioService()
-        {
+        { 
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data","scenario.json");
             if (!File.Exists(path))
             {
