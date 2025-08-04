@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="certificates.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="certificates.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Converters\" />
     <Folder Include="Core\" />

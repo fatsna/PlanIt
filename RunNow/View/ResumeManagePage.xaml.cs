@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace RunNow.View
 {
@@ -104,11 +105,42 @@ namespace RunNow.View
             //여기 값 들고가서 서버에 전송하기 월욜에 여기 아래에 붙이면 됨.
         }
 
+        //숫자만 입력하게 막는 함수
         private void NumberOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             // 숫자만 입력되도록 제한
             e.Handled = !e.Text.All(char.IsDigit);
         }
+        //자격사항 팝업 창
+        private ObservableCollection<string> selectedCertificates = new();
+
+        private void OpenCertificatePopup_Click(object sender, RoutedEventArgs e)
+        {
+            var popup = new CertificatePopup();
+            if (popup.ShowDialog() == true)
+            {
+                string selected = popup.SelectedCertificate;
+
+                if (!string.IsNullOrEmpty(selected) && !selectedCertificates.Contains(selected))
+                {
+                    CertificateBox.Text = selected;
+                    selectedCertificates.Add(selected);
+                    SelectedCertificatesListBox.ItemsSource = selectedCertificates;
+                }
+            }
+        }
+        //자격증 지우기버튼
+        private void RemoveCertificate_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is string cert)
+            {
+                selectedCertificates.Remove(cert);
+                SelectedCertificatesListBox.ItemsSource = selectedCertificates;
+            }
+        }
+
+
+
 
     }
 
