@@ -1,5 +1,6 @@
 # Visual Studio 관련 임시 파일
 .vs/
+.vs
 *.user
 *.suo
 

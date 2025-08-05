@@ -19,12 +19,12 @@ namespace RunNow.Models
         private int _selectedAnswerIndex = -1;
         public int SelectedAnswerIndex
         {
-            get => _selectedAnswerIndex;
+            get => this._selectedAnswerIndex;
             set
             {
-                if (_selectedAnswerIndex != value)
+                if (this._selectedAnswerIndex != value)
                 {
-                    _selectedAnswerIndex = value;
+                    this._selectedAnswerIndex = value;
                     OnPropertyChanged(nameof(SelectedAnswerIndex));
                     Answered?.Invoke();
                 }
@@ -35,7 +35,7 @@ namespace RunNow.Models
         protected void OnPropertyChanged(string propName)
         {
             Console.WriteLine($"Property changed: {propName}");
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 

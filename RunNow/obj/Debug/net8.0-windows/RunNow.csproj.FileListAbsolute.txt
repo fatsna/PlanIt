@@ -1,5 +1,4 @@
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\RunNow.csproj.AssemblyReference.cache
-C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionTestView.g.cs
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\MainWindow.g.cs
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
@@ -15,7 +14,6 @@ C:\Users\up\Desktop\temp\RunNow\bin\Debug\net8.0-windows\Microsoft.Extensions.De
 C:\Users\up\Desktop\temp\RunNow\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\up\Desktop\temp\RunNow\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Users\up\Desktop\temp\RunNow\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
-C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionTestView.baml
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\MainWindow.baml
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\RunNow.g.resources
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\RunNow.GeneratedMSBuildEditorConfig.editorconfig
@@ -29,3 +27,7 @@ C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\refint\RunNow.dll
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\RunNow.pdb
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\RunNow.genruntimeconfig.cache
 C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\ref\RunNow.dll
+C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionView.g.cs
+C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionView.baml
+C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionResultView.g.cs
+C:\Users\up\Desktop\temp\RunNow\obj\Debug\net8.0-windows\Views\EmotionResultView.baml

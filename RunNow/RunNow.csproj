@@ -9,11 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Converters\" />
-    <Folder Include="Assets\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
+    <None Remove="Assets\감정분석_설명빠.drawio.png" />
+    <None Remove="Assets\뒤로가기하양.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +18,11 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\감정분석_설명빠.drawio.png" />
+    <Resource Include="Assets\뒤로가기하양.png" />
   </ItemGroup>
 
 </Project>
