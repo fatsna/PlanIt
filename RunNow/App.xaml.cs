@@ -1,10 +1,14 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+<<<<<<< HEAD
 using System.Windows.Navigation;
 using Microsoft.Extensions.DependencyInjection;
 using RunNow.Services;
 using RunNow.ViewModels;
+=======
+
+>>>>>>> develop
 namespace RunNow
 {
     /// <summary>
@@ -12,6 +16,7 @@ namespace RunNow
     /// </summary>
     public partial class App : Application
     {
+<<<<<<< HEAD
         public static IServiceProvider ServiceProvider { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -27,6 +32,8 @@ namespace RunNow
 
             base.OnStartup(e);
         }
+=======
+>>>>>>> develop
     }
 
 }

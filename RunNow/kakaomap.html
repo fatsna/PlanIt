@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>카카오 지도</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <!-- ✅ 카카오맵 SDK 로드 + onload로 map init -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=39a3e2c812a3704cca92838cbfc76646" onload="initMap()"></script>
+
+    <script>
+        function initMap() {
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(37.5665, 126.9780),
+                level: 3
+            };
+            var map = new kakao.maps.Map(container, options);
+        }
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,13 +9,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\감정분석_설명빠.drawio.png" />
-    <None Remove="Assets\뒤로가기하양.png" />
+    <None Remove="certificates.json" />
+    <None Remove="kakaomap.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="certificates.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="kakaomap.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Core\" />
+    <Folder Include="Assets\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1901.177" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
@@ -25,4 +44,9 @@
     <Resource Include="Assets\뒤로가기하양.png" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Resource Include="user.png" />
+    <Resource Include="LOGO2.png" />
+  </ItemGroup>
 </Project>
