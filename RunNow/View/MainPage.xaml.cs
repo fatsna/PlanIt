@@ -30,10 +30,11 @@ namespace ByeCompany.Pages
             NavigationService?.Navigate(new CareerAnalysisPage());
         }
 
-        private void Map_Click(object sender, RoutedEventArgs e) // 지도분석 페이지
+        private void Map_Click(object sender, RoutedEventArgs e)    //지도 페이지
         {
-            MessageBox.Show("지도 페이지로 이동합니다.");
+            NavigationService?.Navigate(new MapPage());
         }
+
 
         private void FinanceAnalysis_Click(object sender, RoutedEventArgs e) // 재정분석 페이지
         {
