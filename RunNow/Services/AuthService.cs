@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using RunNow.Core;
+using System.Threading.Tasks;
 
 namespace RunNow.Services
 {

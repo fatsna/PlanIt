@@ -14,4 +14,10 @@ public class NavigationStore
     }
 
     public event Action CurrentViewModelChanged;
+
+    public class ShareDataServiec() {
+        public string UserId { get; set; }
+        public string UserName { get; set; }
+
+    }
 }
