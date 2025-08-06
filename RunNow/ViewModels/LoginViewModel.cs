@@ -1,5 +1,9 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -10,13 +14,17 @@ namespace PlanIt.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        public event Action FaceDetected;
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        public Action FaceDetected { get; set; }
 
         private string _username;
         private string _password;
         private TcpListener _listener;
+        private float[] _faceEmbedding;
 
-        // ✅ 서버 중복 실행 방지용 플래그
         private static bool serverStarted = false;
 
         public string Username
@@ -31,13 +39,18 @@ namespace PlanIt.ViewModels
             set { _password = value; OnPropertyChanged(nameof(Password)); }
         }
 
+        public float[] FaceEmbedding
+        {
+            get => _faceEmbedding;
+            set { _faceEmbedding = value; OnPropertyChanged(nameof(FaceEmbedding)); }
+        }
+
         public ICommand LoginCommand { get; }
 
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand(ExecuteLogin);
 
-            // ✅ 서버는 한 번만 실행되도록 처리
             if (!serverStarted)
             {
                 StartSocketServer();
@@ -58,25 +71,30 @@ namespace PlanIt.ViewModels
                     {
                         try
                         {
-                            TcpClient client = _listener.AcceptTcpClient();
-                            NetworkStream stream = client.GetStream();
-
-                            byte[] buffer = new byte[1024];
-                            int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                            string message = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
-
-                            if (message.ToUpper() == "FACE_DETECTED")
+                            using (TcpClient client = _listener.AcceptTcpClient())
+                            using (NetworkStream stream = client.GetStream())
+                            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
                             {
-                                FaceDetected?.Invoke();
-                            }
-                            else
-                            {
-                                Username = message;
+                                string message = reader.ReadToEnd().Trim();
+
+                                if (!string.IsNullOrWhiteSpace(message) && message.StartsWith("{"))
+                                {
+                                    var result = JObject.Parse(message);
+                                    var embeddingArray = (JArray)result["embedding"];
+                                    FaceEmbedding = embeddingArray.ToObject<float[]>();
+
+                                    FaceDetected?.Invoke();  // ✅ UI 업데이트 등
+                                }
+                                else
+                                {
+                                    // 필요시 기본 메시지 처리 (예: 디버그 출력)
+                                    Console.WriteLine("받은 메시지: " + message);
+                                }
                             }
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            break;
+                            Console.WriteLine("소켓 처리 중 예외 발생: " + ex.Message);
                         }
                     }
                 });
@@ -86,19 +104,24 @@ namespace PlanIt.ViewModels
             }
             catch (SocketException ex)
             {
-                // 예외 처리 (로그 또는 사용자에게 알림 등)
                 Console.WriteLine($"소켓 오류 발생: {ex.Message}");
             }
         }
 
+
         private void ExecuteLogin(object parameter)
         {
-            // 로그인 처리 로직 구현
+            // 로그인 처리 로직
         }
+    }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    public class FaceRecognitionResult
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("embedding")]
+        public float[] Embedding { get; set; }
     }
 
     public class RelayCommand : ICommand

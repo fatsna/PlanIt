@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using PlanIt.ViewModels;
 using System;
 using System.Diagnostics;
@@ -61,11 +62,8 @@ namespace PlanIt.Views
             {
                 try
                 {
-                    string[] parts = result.Split(':');
-                    string username = parts.Length > 1 ? parts[1] : "Unknown";
-
-                    MessageBox.Show("얼굴 인식 성공: " + username);  // ✅ 디버깅 확인
-                    ShowFacePopup("check.png", $"환영합니다, {username}님!");
+                    MessageBox.Show("얼굴 인식 성공!");
+                    ShowFacePopup("check.png", $"환영합니다");
                 }
                 catch (Exception ex)
                 {
@@ -103,17 +101,8 @@ namespace PlanIt.Views
         {
             try
             {
-                string username = vm.Username?.Trim();
-
-                if (string.IsNullOrEmpty(username))
-                {
-                    MessageBox.Show("아이디를 먼저 입력하세요.");
-                    return "NO_NAME";
-                }
-
-                // ✅ Python 실행 경로 및 스크립트 절대 경로
                 string pythonPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\.venv\Scripts\python.exe";
-                string scriptPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\check_face.py";
+                string scriptPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\real_check_Face.py";
 
                 if (!File.Exists(pythonPath))
                 {
@@ -123,14 +112,14 @@ namespace PlanIt.Views
 
                 if (!File.Exists(scriptPath))
                 {
-                    MessageBox.Show("check_face.py 파일을 찾을 수 없습니다.");
+                    MessageBox.Show("real_check_Face.py 파일을 찾을 수 없습니다.");
                     return "SCRIPT_NOT_FOUND";
                 }
 
                 var psi = new ProcessStartInfo
                 {
                     FileName = pythonPath,
-                    Arguments = $"\"{scriptPath}\" \"{username}\"",
+                    Arguments = $"\"{scriptPath}\"",
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
                     UseShellExecute = false,
@@ -143,48 +132,67 @@ namespace PlanIt.Views
                     string error = await process.StandardError.ReadToEndAsync();
                     process.WaitForExit();
 
-                    Debug.WriteLine("========== Python 실행 결과 ==========");
-                    Debug.WriteLine("Output: " + output);
-                    Debug.WriteLine("Error: " + error);
-                    Debug.WriteLine("======================================");
+                    Debug.WriteLine("🟢 Python Output:");
+                    Debug.WriteLine(output);
+                    Debug.WriteLine("🔴 Python Error:");
+                    Debug.WriteLine(error);
 
-                    // ✅ 여러 줄일 경우 줄 단위로 나누어서 SUCCESS 줄 찾기
-                    string[] lines = output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                    string successLine = lines.FirstOrDefault(line => line.StartsWith("SUCCESS"));
-
-                    if (successLine != null)
+                    // JSON 라인 추출
+                    string jsonLine = null;
+                    foreach (var line in output.Split('\n'))
                     {
-                        try
+                        if (line.TrimStart().StartsWith("{") && line.TrimEnd().EndsWith("}"))
                         {
-                            string[] parts = successLine.Split(':');
-                            string recognizedUser = parts.Length > 1 ? parts[1] : "Unknown";
-
-                            MessageBox.Show("얼굴 인식 성공: " + recognizedUser);
-                            ShowFacePopup("check.png", $"환영합니다, {recognizedUser}님!");
+                            jsonLine = line.Trim();
+                            break;
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("결과 처리 중 오류 발생: " + ex.Message);
-                        }
+                    }
 
-                        return successLine; // ex: SUCCESS:dkdk
+                    if (string.IsNullOrWhiteSpace(jsonLine))
+                    {
+                        MessageBox.Show("JSON 형식의 출력이 없습니다.");
+                        return "INVALID_JSON";
+                    }
+
+                    JObject result = JObject.Parse(jsonLine);
+                    string status = result["status"]?.ToString();
+
+                    if (status == "SUCCESS")
+                    {
+                        JArray embeddingArray = (JArray)result["embedding"];
+                        float[] embedding = embeddingArray.ToObject<float[]>();
+
+                        vm.FaceEmbedding = embedding;
+                        Debug.WriteLine("✅ 임베딩 길이: " + embedding.Length);
+
+                        vm.FaceDetected?.Invoke();
+                        return "SUCCESS";
+                    }
+                    else if (status == "NO_FACE")
+                    {
+                        MessageBox.Show("얼굴이 인식되지 않았습니다.");
+                        return "NO_FACE";
+                    }
+                    else if (status == "FAIL")
+                    {
+                        MessageBox.Show("얼굴 인식 실패");
+                        return "FAIL";
                     }
                     else
                     {
-                        MessageBox.Show("얼굴 인식 실패 또는 형식 불일치\n결과:\n" + output);
-                        return output.Trim(); // 그대로 반환
+                        MessageBox.Show("알 수 없는 상태 반환: " + status);
+                        return "UNKNOWN";
                     }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Python 실행 오류: " + ex.Message);
-                Debug.WriteLine("예외 발생: " + ex);
+                Debug.WriteLine("❌ 예외 발생: " + ex);
                 return "ERROR";
             }
         }
 
-        
 
         // 팝업 표시 메서드
         private void ShowFacePopup(string imagePath, string text)

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Newtonsoft.Json.Linq;
 
 namespace PlanIt.Views
 {
@@ -133,8 +134,8 @@ namespace PlanIt.Views
                 return;
             }
 
-            string pythonPath = @"C:\\Users\\YESOM\\PycharmProjects\\PythonProject1\\.venv\\Scripts\\python.exe";
-            string scriptPath = @"C:\\Users\\YESOM\\PycharmProjects\\PythonProject1\\regi_face.py";
+            string pythonPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\.venv\Scripts\python.exe";
+            string scriptPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\real_regiface.py";
             string idArg = vm.UserId.Trim();
 
             if (!File.Exists(pythonPath))
@@ -145,7 +146,7 @@ namespace PlanIt.Views
 
             if (!File.Exists(scriptPath))
             {
-                MessageBox.Show("regi_face.py 파일을 찾을 수 없습니다.");
+                MessageBox.Show("real.py 파일을 찾을 수 없습니다.");
                 return;
             }
 
@@ -167,23 +168,50 @@ namespace PlanIt.Views
                     string error = process.StandardError.ReadToEnd();
                     process.WaitForExit();
 
-                    output = output.Trim();
+                    // 마지막 줄 추출 (JSON만 남기기)
+                    string[] lines = output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    string jsonLine = lines.LastOrDefault()?.Trim();
 
-                    if (output.Contains("SUCCESS"))
+                    try
                     {
-                        MessageBox.Show("😀 얼굴 등록이 완료되었습니다!");
+                        var result = JObject.Parse(jsonLine);
+                        string status = result["status"]?.ToString();
+
+                        switch (status)
+                        {
+                            case "SUCCESS":
+                                var embedding = result["embedding"]?.ToObject<float[]>();
+                                if (embedding != null)
+                                {
+                                    vm.FaceEmbedding = embedding;
+                                    MessageBox.Show("😀 얼굴 등록이 완료되었습니다!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("⚠️ 임베딩 파싱 실패");
+                                }
+                                break;
+
+                            case "NO_FACE":
+                                MessageBox.Show("😢 얼굴이 감지되지 않았어요. 다시 시도해주세요.");
+                                break;
+
+                            case "CAMERA_ERROR":
+                                MessageBox.Show("📷 카메라 문제 발생. 장치를 확인하세요.");
+                                break;
+
+                            case "ERROR":
+                                MessageBox.Show("❌ 오류: " + result["message"]?.ToString());
+                                break;
+
+                            default:
+                                MessageBox.Show($"⚠️ 알 수 없는 상태: {status}");
+                                break;
+                        }
                     }
-                    else if (output.Contains("NO_FACE"))
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("😢 얼굴이 감지되지 않았어요. 다시 시도해주세요.");
-                    }
-                    else if (output.Contains("CAMERA_ERROR"))
-                    {
-                        MessageBox.Show("📷 카메라 문제 발생. 장치를 확인하세요.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"⚠️ 얼굴 등록 실패: {output}\n{error}");
+                        MessageBox.Show("⚠️ JSON 파싱 실패: " + ex.Message + "\n출력: " + jsonLine);
                     }
                 }
             }
@@ -192,6 +220,9 @@ namespace PlanIt.Views
                 MessageBox.Show("Python 실행 오류: " + ex.Message);
             }
         }
+
+
+
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
@@ -206,6 +237,22 @@ namespace PlanIt.Views
                 vm.BirthDate = new DateTime(year, month, day);
             }
 
+            // 예시: 서버로 보낼 데이터 JSON 구성
+            var payload = new
+            {
+                name = vm.Name,
+                userId = vm.UserId,
+                password = vm.Password,
+                //int year = (int)YearComboBox.SelectedItem;
+                //int month = Convert.ToInt32(MonthComboBox.SelectedItem);
+                //int day = Convert.ToInt32(DayComboBox.SelectedItem);
+                gender = vm.IsMale ? "M" : "F",
+                address = vm.Address,
+                phone = vm.PhoneNumber,
+                faceEmbedding = vm.FaceEmbedding
+            };
+
+            // 이 payload 를 서버에 전송하면 됩니다.
             MessageBox.Show("회원가입 완료 (예시)");
 
             var loginpage = new LoginPage();
@@ -230,7 +277,10 @@ namespace PlanIt.Views
                 !string.IsNullOrWhiteSpace(PhoneBox3.Text) &&
                 UserIdTextBox.IsEnabled == false;
 
+            
+
             SubmitButton.IsEnabled = isValid;
         }
+
     }
 }

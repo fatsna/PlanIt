@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace PlanIt.ViewModels
@@ -15,6 +15,7 @@ namespace PlanIt.ViewModels
         private bool isFemale;
         private string address;
         private string phoneNumber;
+        public float[] FaceEmbedding { get; set; }  // 👈 추가
 
         public string Name
         {
