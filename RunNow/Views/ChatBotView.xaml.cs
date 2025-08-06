@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 
 namespace RunNow.Views
 {
-    public partial class ChatBotView : Page
+    public partial class ChatBotView : UserControl
     {
         public ChatBotView()
         {

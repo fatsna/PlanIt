@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using RunNow.Views;
+
 
 namespace RunNow.Views
 {
@@ -8,7 +8,6 @@ namespace RunNow.Views
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new ChatBotView());
         }
     }
 }

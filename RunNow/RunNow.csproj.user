@@ -5,5 +5,11 @@
     <Compile Update="Views\ChatBotView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\EmotionResultView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EmotionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -1,17 +1,17 @@
-﻿<Page x:Class="RunNow.Views.ChatBotView"
+﻿<UserControl x:Class="RunNow.Views.ChatBotView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="clr-namespace:RunNow.Views"
       xmlns:converters="clr-namespace:RunNow.Converters"
       Background="White">
 
-    <Page.Resources>
+    <UserControl.Resources>
         <converters:BoolToAlignmentConverter x:Key="BoolToAlignmentConverter"/>
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <converters:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter"/>
         <converters:BoolToTextAlignmentConverter x:Key="BoolToTextAlignmentConverter"/>
-    </Page.Resources>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -143,4 +143,4 @@
 
         <local:BottomNav Grid.Row="4"/>
     </Grid>
-</Page>
+</UserControl>
