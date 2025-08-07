@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+=======
+﻿using RunNow.Core;
+using System.Threading.Tasks;
+>>>>>>> 00e8723dd4f6cbad5e5e3b1d2d6e3ef3252b8926
 
 namespace RunNow.Services
 {

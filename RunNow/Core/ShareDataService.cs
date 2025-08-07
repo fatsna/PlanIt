@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RunNow.Core
 {
+<<<<<<< HEAD
     public class ShareDataService
     {
         // 둘다 김대업이 임시로 써놨음
@@ -17,6 +18,10 @@ namespace RunNow.Core
         public List<string> ? Jobs_EXPLAIN { get; set; }
 
         // 성장플래닛 채우기, 마이플래닛 맴버
+=======
+    class ShareDataService 
+    {
+>>>>>>> 00e8723dd4f6cbad5e5e3b1d2d6e3ef3252b8926
 
     }
 }
