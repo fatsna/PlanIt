@@ -1,0 +1,20 @@
+# Visual Studio
+RunNow/.vs/
+RunNow/*.user
+RunNow/*.suo
+
+# Build directories
+RunNow/bin/
+RunNow/obj/
+RunNow/Debug/
+RunNow/Release/
+
+# NuGet
+RunNow/packages/
+*.nupkg
+
+# Others
+*.log
+*.cache
+*.dll
+*.exe
