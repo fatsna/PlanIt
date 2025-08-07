@@ -1,9 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using RunNow.Core;
-using System;
-using System.Diagnostics;
+using RunNow.Views;
 
 namespace RunNow.ViewModels
 {
@@ -26,10 +27,11 @@ namespace RunNow.ViewModels
             };
 
             // 초기 화면: Login
-            //_navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<LoginViewModel>();
+            //_navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<Growth_main_ViewModel>();
             _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             CurrentViewModel = _navigationStore.CurrentViewModel;
         }
+
 
         [RelayCommand]
         private void GoHome()
@@ -84,6 +86,11 @@ namespace RunNow.ViewModels
                 FileName = "https://www.work24.go.kr/cm/main.do",
                 UseShellExecute = true
             });
+        }
+
+        [RelayCommand] private void Planit()
+        {
+            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
         }
     }
 }

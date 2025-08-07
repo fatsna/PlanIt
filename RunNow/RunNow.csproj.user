@@ -11,5 +11,8 @@
     <Compile Update="Views\EmotionView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\messageback.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

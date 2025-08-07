@@ -16,7 +16,7 @@ namespace RunNow.Core
             services.AddSingleton<NavigationStore>();
 
             // ✅ 비즈니스 로직 서비스
-          
+            services.AddSingleton<ShareDataService>();
             services.AddSingleton<IAuthService, AuthService>();
             //services.AddSingleton<IAuthService>();
             services.AddSingleton<ScenarioService>();
@@ -35,8 +35,9 @@ namespace RunNow.Core
             services.AddTransient<DeepTestViewModel>();
             services.AddTransient<EmotionViewModel>();
             services.AddTransient<EmotionResultViewModel>();
-
-
+            services.AddTransient<Growth_main_ViewModel>();
+            services.AddTransient<growth_check_ViewModel>();
+            services.AddTransient<growth_start_ViewModel>();
             // ✅ MainWindow
             services.AddSingleton<MainWindow>(sp =>
             {

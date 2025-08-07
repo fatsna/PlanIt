@@ -28,11 +28,16 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- 메뉴 1 -->
-                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" FontSize="16" HorizontalAlignment="Center"/>
-                    <TextBlock Text="성장플래닛" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                </StackPanel>
-
+                <Button Grid.Column="0"
+                        Background="Transparent"
+                        Command="{Binding DataContext.PlanitCommand , RelativeSource={RelativeSource AncestorType=Window}}"
+                        BorderThickness="0"
+                        Margin="0,0,0,0">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="성장플래닛" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Button>
                 <!-- 메뉴 2 -->
                 <Button Grid.Column="1"
                         Command="{Binding DataContext.ChatBotCommand , RelativeSource={RelativeSource AncestorType=Window}}"

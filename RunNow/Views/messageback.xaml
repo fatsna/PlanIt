@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="RunNow.Views.messageback"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RunNow.Views"
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Noto sans KR"
+             Background="Transparent">
+    <Grid>
+        <Border x:Name="Border_main"
+                    Grid.Row="0"
+                    BorderBrush="#FE885C"
+                    BorderThickness="3"
+                    Margin="20"
+                    Background="White"
+                    CornerRadius="30"
+                    Padding="20">
+            <TextBlock Text="진짜 뒤로 가시나요?"
+                       Margin="40"
+                       FontSize="60"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="#FE885C"
+                       >
+            </TextBlock>
+
+        </Border>
+        <Grid>
+            <Border x:Name="Border_text"
+                    Grid.Row="0"
+                    BorderBrush="#FE885C"
+                    BorderThickness="3"
+                    Background="White"
+                    Margin="50,-30, 500, 400"
+                    CornerRadius="30"
+                    Padding="20">
+                <TextBlock Text="메 시 지"
+                           FontSize="25"
+                           TextAlignment="Center"
+                           FontWeight="Bold"
+                           Foreground="#FE885C"
+                           >
+                </TextBlock>
+            </Border>
+        </Grid>
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="Border_button"
+                Grid.Row="0"
+                BorderBrush="#FE885C"
+                BorderThickness="3"
+                Background="White"
+                Margin="150,270, 100, 100"
+                CornerRadius="30"
+                Padding="0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding BackCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <Image Source="/Assets/체크버튼.drawio.png"
+                        Margin="0,0,0,0"
+                        VerticalAlignment="Top"
+                        Width="80"
+                        Height="80"
+                        Grid.Row="0"
+                        HorizontalAlignment="Center"
+                        Grid.Column="0">
+                </Image>
+            </Border>
+            <Border x:Name="Border_button2"
+                Grid.Column="1"
+                BorderBrush="#FE885C"
+                BorderThickness="3"
+                Background="White"
+                Margin="100,270, 150, 100"
+                CornerRadius="30"
+                Padding="0">
+                <Image Source="/Assets/엑스버튼.drawio.png"
+                       Margin="0,0,0,0"
+                       VerticalAlignment="Top"
+                       Width="80"
+                       Height="80"
+                       Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       Grid.Column="0">
+                </Image>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
