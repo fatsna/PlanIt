@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -9,18 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="check.png" />
-    <None Remove="face_id.png" />
-    <None Remove="logo.png" />
+    <None Remove="Assets\Bot.png" />
+    <None Remove="Assets\check.png" />
+    <None Remove="Assets\face_id.png" />
+    <None Remove="Assets\logo.png" />
+    <None Remove="Assets\LOGO2.png" />
+    <None Remove="Assets\sendb.png" />
+    <None Remove="Assets\user.png" />
+    <None Remove="Data\certificates.json" />
+    <None Remove="Data\scenario.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Converters\" />
-    <Folder Include="Core\" />
-    <Folder Include="Assets\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
+    <Content Include="Data\certificates.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\scenario.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -30,22 +36,28 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-
   <ItemGroup>
-    <Resource Include="user.png">
+    <Resource Include="Assets\Bot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Content Include="check.png">
+    <Resource Include="Assets\check.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="face_id.png">
+    </Resource>
+    <Resource Include="Assets\face_id.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="logo.png">
+    </Resource>
+    <Resource Include="Assets\logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LOGO2.png">
+    </Resource>
+    <Resource Include="Assets\LOGO2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Assets\sendb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
+
 </Project>
