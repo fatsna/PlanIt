@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "D:\\c\uC0F5\\PlanIt\\RunNow\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\registerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\registerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,20 +67,8 @@
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mainviewmodel.map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,20 +83,8 @@
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\careeranalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -89,10 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\recommendedjobitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -183,10 +191,6 @@
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -230,36 +234,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FinanceAnalysisView.xaml.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
-              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T02:42:44.535Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FinanceAnalysisView.xaml",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
-              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
-              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-08T02:42:40.993Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "MapViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MapViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MapViewModel.cs",
@@ -267,35 +246,147 @@
               "RelativeToolTip": "ViewModels\\MapViewModel.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAUwCUAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T00:31:20.134Z",
+              "WhenOpened": "2025-08-08T00:31:20.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FinanceAnalysisView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T02:42:40.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeepResultView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
+              "RelativeDocumentMoniker": "Views\\DeepResultView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
+              "RelativeToolTip": "Views\\DeepResultView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T11:02:38.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
+              "RelativeDocumentMoniker": "Views\\MainView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
+              "RelativeToolTip": "Views\\MainView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T12:24:50.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAxwBUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T00:33:49.301Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "MapView.xaml",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
-              "RelativeDocumentMoniker": "Views\\MapView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
-              "RelativeToolTip": "Views\\MapView.xaml",
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Core\\DependencyInjection.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeToolTip": "Core\\DependencyInjection.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAQwCYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:23:59.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeepResultViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\DeepResultViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
+              "RelativeToolTip": "ViewModels\\DeepResultViewModel.cs",
+              "ViewState": "AgIAAGAAAAAAAAAAAADwv3YAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:09:48.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DeepTestView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeToolTip": "Views\\DeepTestView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-08T00:32:31.275Z"
+              "WhenOpened": "2025-08-06T11:47:14.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeepTestViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\DeepTestViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
+              "RelativeToolTip": "ViewModels\\DeepTestViewModel.cs",
+              "ViewState": "AgIAAAkBAAAAAAAAAAAAACABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:48:12.346Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "MapView.xaml.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\MapView.xaml.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
-              "RelativeToolTip": "Views\\MapView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T00:33:22.185Z"
+              "Title": "RegisterView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\RegisterView.xaml",
+              "RelativeDocumentMoniker": "Views\\RegisterView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\RegisterView.xaml",
+              "RelativeToolTip": "Views\\RegisterView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T07:04:19.38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
+              "Title": "InterestItem.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
+              "RelativeDocumentMoniker": "Models\\InterestItem.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
+              "RelativeToolTip": "Models\\InterestItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T12:17:04.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "index.html",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
+              "RelativeDocumentMoniker": "Assets\\Map\\index.html",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
+              "RelativeToolTip": "Assets\\Map\\index.html",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAqwH8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-08T01:53:02.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "MainView.xaml.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\MainView.xaml.cs",
@@ -307,55 +398,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Core\\DependencyInjection.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
-              "RelativeToolTip": "Core\\DependencyInjection.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAYwCYAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "MapView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MapView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
+              "RelativeToolTip": "Views\\MapView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:23:59.753Z"
+              "WhenOpened": "2025-08-08T00:33:22.185Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAywCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-08T00:33:49.301Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainView.xaml",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
-              "RelativeDocumentMoniker": "Views\\MainView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
-              "RelativeToolTip": "Views\\MainView.xaml",
+              "DocumentIndex": 14,
+              "Title": "MapView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
+              "RelativeDocumentMoniker": "Views\\MapView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
+              "RelativeToolTip": "Views\\MapView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T12:24:50.825Z"
+              "WhenOpened": "2025-08-08T00:32:31.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "index.html",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
-              "RelativeDocumentMoniker": "Assets\\Map\\index.html",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
-              "RelativeToolTip": "Assets\\Map\\index.html",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAqwH8AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-08-08T01:53:02.895Z",
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "FinanceAnalysisView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T02:42:44.535Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -367,7 +445,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 17,
               "Title": "MainViewModel.Map.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.Map.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.Map.cs",
@@ -379,7 +457,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 18,
               "Title": "RunNow.csproj",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\RunNow.csproj",
               "RelativeDocumentMoniker": "RunNow.csproj",
@@ -391,7 +469,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 19,
               "Title": "CareerAnalysisView.xaml",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\CareerAnalysisView.xaml",
               "RelativeDocumentMoniker": "Views\\CareerAnalysisView.xaml",
@@ -402,41 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DeepResultView.xaml",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
-              "RelativeDocumentMoniker": "Views\\DeepResultView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
-              "RelativeToolTip": "Views\\DeepResultView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T11:02:38.174Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DeepTestView.xaml",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
-              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
-              "RelativeToolTip": "Views\\DeepTestView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T11:47:14.126Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "DeepTestViewModel.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DeepTestViewModel.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
-              "RelativeToolTip": "ViewModels\\DeepTestViewModel.cs",
-              "ViewState": "AgIAAAcBAAAAAAAAAAAmwCcBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:48:12.346Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "CareerProfile.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\CareerProfile.cs",
               "RelativeDocumentMoniker": "Models\\CareerProfile.cs",
@@ -448,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "BoolToVisibilityConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BoolToVisibilityConverter.cs",
@@ -460,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "EmotionResultViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionResultViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\EmotionResultViewModel.cs",
@@ -472,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "DeepTestView.xaml.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\DeepTestView.xaml.cs",
@@ -484,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "NumericInputBehavior.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Behaviors\\NumericInputBehavior.cs",
               "RelativeDocumentMoniker": "Behaviors\\NumericInputBehavior.cs",
@@ -496,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "ChatMessage.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ChatMessage.cs",
               "RelativeDocumentMoniker": "Models\\ChatMessage.cs",
@@ -508,19 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "DeepResultViewModel.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DeepResultViewModel.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
-              "RelativeToolTip": "ViewModels\\DeepResultViewModel.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAQwEgAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:09:48.424Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "NumberFormatConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\NumberFormatConverter.cs",
               "RelativeDocumentMoniker": "Converters\\NumberFormatConverter.cs",
@@ -532,7 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "scenario.json",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\scenario.json",
               "RelativeDocumentMoniker": "Data\\scenario.json",
@@ -544,7 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "certificates.json",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\certificates.json",
               "RelativeDocumentMoniker": "Data\\certificates.json",
@@ -556,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "JsonHelper.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\JsonHelper.cs",
               "RelativeDocumentMoniker": "Core\\JsonHelper.cs",
@@ -568,7 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "RecommendedJobItem.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\RecommendedJobItem.cs",
               "RelativeDocumentMoniker": "Models\\RecommendedJobItem.cs",
@@ -580,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "ScenarioStep.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ScenarioStep.cs",
               "RelativeDocumentMoniker": "Models\\ScenarioStep.cs",
@@ -592,7 +624,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "Emotion_result_model.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\Emotion_result_model.cs",
               "RelativeDocumentMoniker": "Models\\Emotion_result_model.cs",
@@ -604,7 +636,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "DeepQuestionItem.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\DeepQuestionItem.cs",
               "RelativeDocumentMoniker": "Models\\DeepQuestionItem.cs",
@@ -616,7 +648,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Constants.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\Constants.cs",
               "RelativeDocumentMoniker": "Core\\Constants.cs",
@@ -628,7 +660,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "AppConfig.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\AppConfig.cs",
               "RelativeDocumentMoniker": "Core\\AppConfig.cs",
@@ -640,7 +672,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "RadioCheckedConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\RadioCheckedConverter.cs",
               "RelativeDocumentMoniker": "Converters\\RadioCheckedConverter.cs",
@@ -652,7 +684,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "PasswordBoxHelper.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\PasswordBoxHelper.cs",
               "RelativeDocumentMoniker": "Core\\PasswordBoxHelper.cs",
@@ -664,7 +696,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "NavigationStore.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\NavigationStore.cs",
               "RelativeDocumentMoniker": "Core\\NavigationStore.cs",
@@ -676,7 +708,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "StringNullOrEmptyToVisibilityConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\StringNullOrEmptyToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\StringNullOrEmptyToVisibilityConverter.cs",
@@ -688,7 +720,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "BoolToAlignmentConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToAlignmentConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BoolToAlignmentConverter.cs",
@@ -700,7 +732,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "BooleanToVisibilityConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
@@ -712,7 +744,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "BarWidthAnimationBehavior.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BarWidthAnimationBehavior.cs",
               "RelativeDocumentMoniker": "Converters\\BarWidthAnimationBehavior.cs",
@@ -724,7 +756,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "AnswerToColorConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\AnswerToColorConverter.cs",
               "RelativeDocumentMoniker": "Converters\\AnswerToColorConverter.cs",
@@ -736,7 +768,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "BoolToVisibilityInverseConverter.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityInverseConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BoolToVisibilityInverseConverter.cs",
@@ -748,7 +780,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
@@ -760,7 +792,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "EmotionResult.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\EmotionResult.cs",
               "RelativeDocumentMoniker": "Models\\EmotionResult.cs",
@@ -772,19 +804,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "InterestItem.cs",
-              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
-              "RelativeDocumentMoniker": "Models\\InterestItem.cs",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
-              "RelativeToolTip": "Models\\InterestItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T12:17:04.336Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "QuestionModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\QuestionModel.cs",
               "RelativeDocumentMoniker": "Models\\QuestionModel.cs",
@@ -796,7 +816,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "DeepResultView.xaml.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\DeepResultView.xaml.cs",
@@ -808,7 +828,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "DeepResultView.g.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
               "RelativeDocumentMoniker": "obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
@@ -820,7 +840,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "TcpClientService.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Services\\TcpClientService.cs",
               "RelativeDocumentMoniker": "Services\\TcpClientService.cs",
@@ -832,7 +852,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
@@ -843,7 +863,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "EmotionViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\EmotionViewModel.cs",
@@ -855,7 +875,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "MainWindowViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainWindowViewModel.cs",
@@ -867,7 +887,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
@@ -879,7 +899,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "FinanceAnalysisViewModel.cs",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\FinanceAnalysisViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\FinanceAnalysisViewModel.cs",
