@@ -30,7 +30,8 @@ namespace RunNow.ViewModels
             };
 
             // 초기 화면: Login
-            _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            //_navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService <LoginViewModel>();
             CurrentViewModel = _navigationStore.CurrentViewModel;
         }
 

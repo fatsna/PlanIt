@@ -13,29 +13,52 @@ namespace RunNow.Services
         {
             _tcpClientService = tcpClientService;
         }
-
-        public async Task<bool> LoginAsync(string username, string password)
+        //로그인
+        public async Task<JObject> LoginAsync(string username, string password)
         {
-            var json = new Newtonsoft.Json.Linq.JObject
+            await _tcpClientService.ConnectAsync();  // 서버 연결 보장
+
+            JObject json = new JObject
             {
-                ["action"] = "login",
-                ["username"] = username,
-                ["password"] = password
+                ["protocol"] = "1_0",
+                ["id"] = username,
+                ["pw"] = password
             };
 
             var response = await _tcpClientService.SendJsonToServer(json);
-            return response["status"]?.ToString() == "success";
+
+            return response;  // 그대로 반환 (ViewModel이 판단할 수 있게)
         }
 
-        public async Task<bool> FaceLoginAsync()
+        //얼굴 인식 로그인
+        public async Task<JObject> FaceLoginAsync(float[] embedding)
         {
-            var json = new Newtonsoft.Json.Linq.JObject
+            if (embedding == null || embedding.Length == 0)
             {
-                ["action"] = "face_login"
+                return JObject.FromObject(new
+                {
+                    status = "error",
+                    message = "임베딩 값이 없습니다."
+                });
+            }
+
+            // 🔥 얼굴인식 로그인 
+            await _tcpClientService.ConnectAsync();
+
+            var json = new JObject
+            {
+                ["protocol"] = "2_0",
+                ["face_id"] = new JObject
+                {
+                    ["embedding"] = new JArray(embedding)
+                }
             };
 
+            Console.WriteLine("📡 FaceLoginAsync → 서버 전송 직전 JSON:");
+            Console.WriteLine(json.ToString());
+
             var response = await _tcpClientService.SendJsonToServer(json);
-            return response["status"]?.ToString() == "success";
+            return response;
         }
 
         public async Task<JObject> PlanIT_start(string User_id) // 플래닛 시작하기 눌렀을때 종합테스트 유무 확인
@@ -80,5 +103,32 @@ namespace RunNow.Services
             JObject response = await this._tcpClientService.SendJsonToServer(json);
             return response;
         }
+
+        //아이디 중복검사
+        public async Task<JObject> CheckDuplicateIdAsync(string userid)
+        {
+            await _tcpClientService.ConnectAsync();
+
+            JObject payload = new JObject
+            {
+                ["protocol"] = "3_0",
+                ["id"] = userid
+            };
+
+            var response = await _tcpClientService.SendJsonToServer(payload);
+            return response;
+        }
+
+
+        //회원가입 
+        public async Task<JObject> RegisterAsync(JObject registerPayload)
+        {
+            await _tcpClientService.ConnectAsync();  // 서버 연결
+
+            var response = await _tcpClientService.SendJsonToServer(registerPayload);
+
+            return response;
+        }
+
     }
 }
