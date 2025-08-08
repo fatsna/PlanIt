@@ -46,6 +46,7 @@ namespace RunNow.Core
             services.AddTransient<DeepResultViewModel>();
             services.AddTransient<MapViewModel>();
 
+            services.AddTransient<Growth_My_ViewModel>();
             // ✅ MainWindow
             services.AddSingleton<MainWindow>(sp =>
             {

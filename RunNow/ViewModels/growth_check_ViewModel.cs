@@ -9,8 +9,10 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Services;
+using static RunNow.Core.ShareDataService;
 
 namespace RunNow.ViewModels
 {
@@ -18,7 +20,7 @@ namespace RunNow.ViewModels
     {
         private readonly NavigationStore _navigationStore; // 메인에게 화면넘겨! 객체
         private readonly IAuthService _authService;         // 서버와 통신 객체
-        private readonly ShareDataService _shareDataService;    // 유저 데이터 객체
+        public ShareDataService shareDataService { get; set; }    // 유저 데이터 객체
         private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
 
         public growth_check_ViewModel(NavigationStore navigationStore, IAuthService authService, IServiceProvider serviceProvider, ShareDataService shareDataService)
@@ -27,7 +29,7 @@ namespace RunNow.ViewModels
             this._serviceProvider = serviceProvider;
             this._authService = authService;
             this._navigationStore = navigationStore;
-            this._shareDataService = shareDataService;
+            this.shareDataService = shareDataService;
 
             // 생성자아아
             this._currentDate = DateTime.Now;
@@ -35,6 +37,7 @@ namespace RunNow.ViewModels
             this.UpdateSummary();
         }
         public ObservableCollection<DayModel> Days { get; set; } = new ObservableCollection<DayModel>();
+
 
         private DateTime _currentDate;
         public string CurrentMonthText => $"{_currentDate:yyyy년 M월}";
@@ -48,26 +51,11 @@ namespace RunNow.ViewModels
         // 팝업 관련 프로퍼티 추가
         //[ObservableProperty] private WorkRequestManager? selectedDayData;
         [ObservableProperty] private bool isDetailVisible;
-
         [ObservableProperty] private int workDay = 10;
         [ObservableProperty] private int nightCnt = 8;
         [ObservableProperty] private int offCnt = 6;
         [ObservableProperty] private string scheduleSummaryText;
         public ICommand RectangleMouseDownCommand { get; }
-
-        [RelayCommand] private void PreviousMonth()
-        {
-            _currentDate = _currentDate.AddMonths(-1);
-            GenerateCalendar(_currentDate);
-            OnPropertyChanged(nameof(CurrentMonthText));
-        }
-
-        [RelayCommand] private void NextMonth()
-        {
-            _currentDate = _currentDate.AddMonths(1);
-            GenerateCalendar(_currentDate);
-            OnPropertyChanged(nameof(CurrentMonthText));
-        }
 
         private void GenerateCalendar(DateTime targetDate)
         {
@@ -89,6 +77,31 @@ namespace RunNow.ViewModels
                     Tmp = "안녕하세요" + day.ToString() + "일!"
                 });
             }
+        }
+        //private void LoadGoals(JObject json)
+        //{
+        //    var goalArray = json["GOALS_JSON"]?.ToObject<List<JObject>>();
+        //    this.shareDataService.Goals = new ObservableCollection<GoalDisplay>(
+        //        goalArray.Select(g => new GoalDisplay
+        //        {
+        //            Category = g["CATEGORY"]?.ToString(),
+        //            Goal = g["GOAL"]?.ToString(),
+        //            Status = string.IsNullOrEmpty(g["GOAL_DATE"]?.ToString()) ? "진행중" : "완료"
+        //        })
+        //    );
+        //} 
+        [RelayCommand] private void PreviousMonth()
+        {
+            _currentDate = _currentDate.AddMonths(-1);
+            GenerateCalendar(_currentDate);
+            OnPropertyChanged(nameof(CurrentMonthText));
+        }
+
+        [RelayCommand] private void NextMonth()
+        {
+            _currentDate = _currentDate.AddMonths(1);
+            GenerateCalendar(_currentDate);
+            OnPropertyChanged(nameof(CurrentMonthText));
         }
         [RelayCommand] private async Task DayClick(DayModel day)
         {
@@ -127,12 +140,14 @@ namespace RunNow.ViewModels
         }
         [RelayCommand] private void Calendar()
         {
-            this.IsDetailVisible = true;
+            this.shareDataService.IsDetailVisible = true;
+            //this.IsDetailVisible = true;
+            
         }
 
         [RelayCommand] private void RectangleClick()
         {
-            this.IsDetailVisible = false;
+            this.shareDataService.IsDetailVisible = false;
             Console.WriteLine("사각형 클릭됨!");
         }
 
@@ -145,5 +160,12 @@ namespace RunNow.ViewModels
             // 이게 MVVM 패턴에 올바르다!
             this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
         }
+
+        [RelayCommand] private void Make_PlanIT() // 마이플래너로
+        {
+            this._navigationStore.CurrentViewModel =
+                this._serviceProvider.GetRequiredService<Growth_My_ViewModel>();
+        }
+
     }
 }

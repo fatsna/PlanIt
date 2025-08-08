@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\iot\\Desktop\\pro\\Planit\\planet\\planet\\RunNow\\RunNow.csproj": {}
+    "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj": {}
   },
   "projects": {
-    "C:\\Users\\iot\\Desktop\\pro\\Planit\\planet\\planet\\RunNow\\RunNow.csproj": {
+    "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\iot\\Desktop\\pro\\Planit\\planet\\planet\\RunNow\\RunNow.csproj",
+        "projectUniqueName": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj",
         "projectName": "RunNow",
-        "projectPath": "C:\\Users\\iot\\Desktop\\pro\\Planit\\planet\\planet\\RunNow\\RunNow.csproj",
-        "packagesPath": "C:\\Users\\iot\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\iot\\Desktop\\pro\\Planit\\planet\\planet\\RunNow\\obj\\",
+        "projectPath": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj",
+        "packagesPath": "C:\\Users\\up\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\iot\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\up\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

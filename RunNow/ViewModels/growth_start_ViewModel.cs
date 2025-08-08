@@ -15,15 +15,34 @@ namespace RunNow.ViewModels
 {
     public partial class growth_start_ViewModel : ObservableObject
     {
+        public growth_start_ViewModel(NavigationStore navigationStore, IAuthService authService, IServiceProvider serviceProvider, ShareDataService shareDataService)
+        {
+            // 매개인자로 받은거 복사하기~
+            this._serviceProvider = serviceProvider;
+            this._authService = authService;
+            this._navigationStore = navigationStore;
+            this.shareDataService = shareDataService;
+            Console.WriteLine($"생성자에서의 값 : {this.shareDataService.IsDetailVisible}");
+
+            // 복사~
+            // 기존 string 리스트 → JobItem으로 변환
+            this.jobs = new ObservableCollection<JobItem>(
+                this.shareDataService.Jobs
+                .Select((job, idx) => new JobItem { Name = job, Index = idx })
+            );
+            this.job_explains = new ObservableCollection<string>(this.shareDataService.Jobs_EXPLAIN);
+        }
+
         private readonly NavigationStore _navigationStore; // 메인에게 화면넘겨! 객체
         private readonly IAuthService _authService;         // 서버와 통신 객체
-        private readonly ShareDataService _shareDataService;    // 유저 데이터 객체
+        public ShareDataService shareDataService { get; set; }    // 유저 데이터 객체
         private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
         private readonly string job_picked; // 고른 직업
 
         [ObservableProperty] private ObservableCollection<JobItem> jobs; // sharedate의 직업들을 복사할 변수
         [ObservableProperty] private ObservableCollection<string> job_explains; // sharedata의 직업설명들을 복사할 변수
         [ObservableProperty] private string selectedJobExplain; // ui와 바인딩될 직업설명 변수
+        [ObservableProperty] private string selectedJobReson; // ui와 바인딩될 직업설명 변수
         [ObservableProperty] private string serchJob; // 유저가 검색한 직업
         public class JobItem
         {
@@ -31,31 +50,18 @@ namespace RunNow.ViewModels
             public int Index { get; set; }
         }
 
-        public growth_start_ViewModel(NavigationStore navigationStore, IAuthService authService, IServiceProvider serviceProvider, ShareDataService shareDataService)
-        {
-            // 매개인자로 받은거 복사하기~
-            this._serviceProvider = serviceProvider;
-            this._authService = authService;
-            this._navigationStore = navigationStore;
-            this._shareDataService = shareDataService;
-
-            // 복사~
-            // 기존 string 리스트 → JobItem으로 변환
-            this.jobs = new ObservableCollection<JobItem>(
-                this._shareDataService.Jobs
-                .Select((job, idx) => new JobItem { Name = job, Index = idx })
-            );
-            this.job_explains = new ObservableCollection<string>(this._shareDataService.Jobs_EXPLAIN);
-        }
-
         [RelayCommand] private void Back()
         {
             // 무슨방법이 올바른가?
 
             //_navigationStore.CurrentViewModel = App.Services.GetRequiredService<MainViewModel>();
+            Console.WriteLine("뒤로가기버튼 누름!");
+            Console.WriteLine($"{this.shareDataService.IsDetailVisible} 값");
+            this.shareDataService.IsDetailVisible = true; // 뒤로가기 메시지 보이기
+            Console.WriteLine($"{this.shareDataService.IsDetailVisible} 값");
 
             // 이게 MVVM 패턴에 올바르다!
-            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
+            //this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
         }
 
         [RelayCommand] private void SelectJob(int index)
@@ -63,9 +69,10 @@ namespace RunNow.ViewModels
             Console.WriteLine($"직업 누름!!! 누른인덱스 : {index}");
             if (index >= 0 && index < this.job_explains.Count)
             {
-                Console.WriteLine("왜안드렁요져ㅛ");
+                Console.WriteLine("왜안드렁요져ㅛ"); 
                 Console.WriteLine($"{this.job_explains[index]}");
                 this.SelectedJobExplain = this.job_explains[index];
+                this.SelectedJobReson = this.shareDataService.jobs_REASONS[index];
             }
         }
 
@@ -129,7 +136,11 @@ namespace RunNow.ViewModels
             {
                 Console.WriteLine("검색할 게없네요");
             }
-
+        }
+        [RelayCommand] private void RectangleClick()
+        {
+            this.shareDataService.IsDetailVisible = false;
+            Console.WriteLine("사각형 클릭됨!");
         }
     }
 }

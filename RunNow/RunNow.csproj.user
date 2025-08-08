@@ -18,8 +18,13 @@
     <Compile Update="Views\DeepResultView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MapView.xaml.cs">
+	  <Compile Update="Views\MapView.xaml.cs">
+		  <SubType>Code</SubType>
+	  </Compile>
+
+	<Compile Update="Views\Growth_My_View.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+
   </ItemGroup>
 </Project>
