@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -23,28 +23,5 @@ namespace RunNow.Models
         {
             Answered?.Invoke();
         }
-
-        // 간단하게 위의 코드로 대체
-        //private int _selectedAnswerIndex = -1;
-        //public int SelectedAnswerIndex
-        //{
-        //    get => this._selectedAnswerIndex;
-        //    set
-        //    {
-        //        if (this._selectedAnswerIndex != value)
-        //        {
-        //            this._selectedAnswerIndex = value;
-        //            OnPropertyChanged(nameof(SelectedAnswerIndex));
-        //            Answered?.Invoke();
-        //        }
-        //    }
-        //}
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected void OnPropertyChanged(string propName)
-        //{
-        //    Console.WriteLine($"Property changed: {propName}");
-        //    this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        //}
     }
 }

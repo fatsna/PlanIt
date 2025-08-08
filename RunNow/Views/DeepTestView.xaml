@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:conv="clr-namespace:RunNow.Converters"
+             xmlns:behaviors="clr-namespace:RunNow.Behaviors"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local1="clr-namespace:RunNow.Views"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -14,11 +16,16 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+
+            <!-- 상단 -->
             <RowDefinition Height="*"/>
+            <!-- 본문 -->
             <RowDefinition Height="Auto"/>
+            <!-- ✅ 하단 네비게이션 -->
         </Grid.RowDefinitions>
 
-        <!-- 상단 -->
+
+        <!-- ✅ 상단 파란 배경 -->
         <Border Grid.Row="0" Background="#00478F" Padding="0,20">
             <StackPanel HorizontalAlignment="Center">
                 <Image Source="pack://application:,,,/Assets/LOGO2.png"
@@ -26,15 +33,20 @@
             </StackPanel>
         </Border>
 
-        <!-- 본문 -->
+
+        <!-- ✅ 본문 카드 -->
+
         <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
             </Border.Effect>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Margin="20,10">
 
+            <!-- Scroll 영역 -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <!-- ⚙️ 기존 StackPanel 구조 전부 유지 -->
+                <StackPanel Margin="20,10">
+                    
                     <!-- STEP 1 : 감정 분석 -->
                     <StackPanel Visibility="{Binding IsEmotionStepVisible, Converter={StaticResource BoolToVisibilityConverter}}">
                         <TextBlock Text="감정 상태 진단 설문" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
@@ -61,49 +73,73 @@
 
                         <Button Content="다음"
                                 Command="{Binding GoToFinanceStepCommand}"
-                                HorizontalAlignment="Right" Margin="0,20,0,0" Width="100"/>
+
+                                Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="300" FontSize="16"/>
+
                     </StackPanel>
 
                     <!-- STEP 2 : 재정 분석 -->
                     <StackPanel Visibility="{Binding IsFinanceStepVisible, Converter={StaticResource BoolToVisibilityConverter}}" Width="500" HorizontalAlignment="Center">
-                        <TextBlock Text="총 자산 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Assets}" Margin="0,0,0,10" Height="30"/>
 
-                        <TextBlock Text="월 수입 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Income}" Margin="0,0,0,10" Height="30"/>
+                        <TextBlock Text="총 자산 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+                        <TextBox Text="{Binding Assets, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="월 수입 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+                        <TextBox Text="{Binding Income, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 고정 지출 -->
-                        <TextBlock Text="고정 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBlock Text="(예: 월세, 통신비, 구독료 등)" FontSize="12" Foreground="Gray"/>
-                        <TextBlock Text="주거비" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Rent}" Margin="0,0,0,5" Height="30"/>
-                        <TextBlock Text="통신비" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Phone}" Margin="0,0,0,5" Height="30"/>
-                        <TextBlock Text="구독 서비스" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Subscription}" Margin="0,0,0,10" Height="30"/>
+                        <TextBlock Text="고정 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+
+                        <TextBlock Text="주거비" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Rent, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="통신비" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="구독 서비스" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Subscription, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 변동 지출 -->
-                        <TextBlock Text="변동 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBlock Text="(예: 식비, 쇼핑, 여가, 교통 등)" FontSize="12" Foreground="Gray"/>
-                        <TextBlock Text="식비" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Food}" Margin="0,0,0,5" Height="30"/>
-                        <TextBlock Text="교통비" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Transport}" Margin="0,0,0,5" Height="30"/>
-                        <TextBlock Text="쇼핑/문화" Margin="0,10,0,2"/>
-                        <TextBox Text="{Binding Leisure}" Margin="0,0,0,10" Height="30"/>
+                        <TextBlock Text="변동 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+
+                        <TextBlock Text="식비" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Food, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="교통비" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Transport, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="쇼핑/문화" Margin="0,10,0,2" FontSize="14"/>
+                        <TextBox Text="{Binding Leisure, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 기타 -->
-                        <TextBlock Text="월 저축 목표 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding SavingTarget}" Margin="0,0,0,10" Height="30"/>
-                        <TextBlock Text="총 부채 (만원)" Margin="0,18,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Debt}" Margin="0,0,0,10" Height="30"/>
+                        <TextBlock Text="월 저축 목표 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+                        <TextBox Text="{Binding SavingTarget, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBlock Text="총 부채 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
+                        <TextBox Text="{Binding Debt, UpdateSourceTrigger=PropertyChanged}" 
+                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <Button Content="다음"
-                                Command="{Binding GoToCareerStepCommand}"
-                                Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="100"/>
+                            Command="{Binding GoToCareerStepCommand}"
+                            Background="#00478F"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            Margin="0,20,0,0"
+                            Width="300"
+                            FontSize="16"/>
                     </StackPanel>
 
-                    <!-- STEP 3 : 경력 분석 -->
+
+
                     <!-- STEP 3 : 경력 분석 -->
                     <StackPanel Visibility="{Binding IsCareerStepVisible, Converter={StaticResource BoolToVisibilityConverter}}" Width="500" HorizontalAlignment="Center">
                         <TextBlock Text="현재 직무" Margin="0,10,0,5" FontWeight="Bold"/>
@@ -230,12 +266,16 @@
                         </StackPanel>
 
                         <Button Content="분석하기" Command="{Binding AnalyzeCommand}"
-            Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="100"/>
-                    </StackPanel>
 
+                            Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="100"/>
+                    </StackPanel>
 
                 </StackPanel>
             </ScrollViewer>
         </Border>
+
+        <!-- ✅ 하단 고정 네비게이션 -->
+        <local1:BottomNav Grid.Row="2"/>
+
     </Grid>
 </UserControl>

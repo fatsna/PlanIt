@@ -50,10 +50,6 @@ namespace RunNow.Services
                 // 1. 길이를 4바이트로 변환 (Little Endian)
                 byte[] lengthPrefix = BitConverter.GetBytes(jsonBytes.Length);
 
-
-
-
-
                 // 2바이트이상인 아이들 컴퓨터저장할때 빅인지 리틀인지 순서정하기 // 매우작은바이트보낼때만해당됨
                 if (BitConverter.IsLittleEndian)
                 {
@@ -62,10 +58,6 @@ namespace RunNow.Services
                 await stream.WriteAsync(lengthPrefix, 0, lengthPrefix.Length);
                 await stream.FlushAsync();
                 Console.WriteLine($"서버에게 보내는 크기 : {lengthPrefix.Length}");
-                // 2. 최종 전송할 바이트 배열 만들기 (길이 + 본문)
-                //byte[] dataToSend = new byte[lengthPrefix.Length + jsonBytes.Length];
-                //Buffer.BlockCopy(lengthPrefix, 0, dataToSend, 0, lengthPrefix.Length);        // Length 붙이기
-                //Buffer.BlockCopy(jsonBytes, 0, dataToSend, lengthPrefix.Length, jsonBytes.Length);  // JSON 붙이기
 
                 Console.WriteLine($"\n[서버 전송] Length: {jsonBytes.Length}, JSON: {jsonBytes}");
 

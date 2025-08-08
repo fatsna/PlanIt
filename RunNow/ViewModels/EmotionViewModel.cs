@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
@@ -76,6 +76,7 @@ namespace RunNow.ViewModels
                 selectedQuestions.Add(q);
             }
 
+//<<<<<<< HEAD
             // 최종 결과를 AllQuestions에 세팅
             this.AllQuestions.Clear();
             foreach (var q in selectedQuestions)
@@ -83,6 +84,9 @@ namespace RunNow.ViewModels
                 this.AllQuestions.Add(q);
             }
             //AllQuestions = new ObservableCollection<QuestionModel>(selectedQuestions);
+//=======
+//            AllQuestions = new ObservableCollection<QuestionModel>(selectedQuestions);
+//>>>>>>> HJY
         }
 
         private void UpdateCurrentQuestions()
@@ -96,7 +100,9 @@ namespace RunNow.ViewModels
 
         private void OnQuestionAnswered()
         {
+
             Console.WriteLine("A question was answered.");
+
             if (CurrentQuestions.All(q => q.SelectedAnswerIndex != -1))
             {
                 if ((CurrentPageIndex + 1) * 5 < AllQuestions.Count)
@@ -126,6 +132,7 @@ namespace RunNow.ViewModels
         }
 
         [RelayCommand]
+//<<<<<<< HEAD
         private void ShowResults()
         {
             JObject result = CalculateCategoryAverages();
@@ -141,6 +148,29 @@ namespace RunNow.ViewModels
             JArray scores = new JArray();
             JArray answer = new JArray();
             JArray scores100 = new JArray();
+//=======
+//        private async void ShowResults()
+//        {
+//            var emotionList = CalculateCategoryAverages();
+
+//            var payload = new JObject
+//            {
+//                ["protocol"] = "100_0",
+//                ["type"] = "deep_analysis",
+//                ["emotion"] = emotionList
+//            };
+
+//            await _tcpService.ConnectAsync();
+//            var response = await _tcpService.SendJsonToServer(payload);
+
+//            MessageBox.Show(response?.ToString() ?? "서버 응답 없음", "서버 응답");
+//        }
+
+//        private JArray CalculateCategoryAverages()
+//        {
+//            var grouped = AllQuestions.GroupBy(q => q.Category);
+//            var resultArray = new JArray();
+//>>>>>>> HJY
 
             foreach (var group in grouped)
             {
@@ -150,6 +180,7 @@ namespace RunNow.ViewModels
                     if (!q.IsPositive) score = 6 - score;
                     return score;
                 });
+//<<<<<<< HEAD
                 result[group.Key] = adjusted.Average();
             }
             double step = 100.0 / 7.0;  // 7구간 점수 폭 (14.2857)
@@ -205,6 +236,33 @@ namespace RunNow.ViewModels
  
             // 선택된 답변의 인덱스를 저장
             question.SelectedAnswerIndex = answers.IndexOf(answerText);
+//=======
+
+//                var categoryObj = new JObject
+//                {
+//                    ["category"] = group.Key,
+//                    ["average"] = adjusted.Average()
+//                };
+
+//                resultArray.Add(categoryObj);
+//            }
+
+//            return resultArray;
+//        }
+
+
+//        [RelayCommand]
+//        private void SelectAnswer(Tuple<QuestionModel, string> param)
+//        {
+//            if (param == null) return;
+
+//            var (question, answer) = param;
+
+//            var answers = new List<string> { "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다" };
+
+//            // 선택된 답변의 인덱스를 저장
+//            question.SelectedAnswerIndex = answers.IndexOf(answer);
+//>>>>>>> HJY
 
             // 이벤트 발생 → 다음 페이지 넘어가기 로직 체크
             //question.Answered?.Invoke();

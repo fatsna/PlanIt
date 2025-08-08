@@ -1,4 +1,5 @@
-﻿using System;
+
+using System;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Views;
+
 
 namespace RunNow.ViewModels
 {
@@ -28,11 +30,9 @@ namespace RunNow.ViewModels
             };
 
             // 초기 화면: Login
-            //_navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<Growth_main_ViewModel>();
             _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             CurrentViewModel = _navigationStore.CurrentViewModel;
         }
-
 
         [RelayCommand]
         private void GoHome()
@@ -93,5 +93,6 @@ namespace RunNow.ViewModels
         {
             this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
         }
+
     }
 }

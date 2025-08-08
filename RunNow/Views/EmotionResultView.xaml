@@ -19,18 +19,22 @@
         </Grid.RowDefinitions>
         <!-- 상단 타이틀 -->
         <TextBlock x:Name="TextBlock_title" Text="감정분석결과"
+
                    FontFamily="Arial Black"
                    FontSize="40"
                    FontWeight="Bold"
                    Foreground="#00478F"
+
                    Background="#F2F2F2"
                    TextAlignment="Center"
+
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
                    Margin="0,27,0,0"
                    Width="400" Height="45"/>
 
         <Grid Margin="0,70,0,0">
+            
             <Border x:Name="Border_main"
                     Grid.Row="0"
                     BorderBrush="Black"
@@ -45,6 +49,7 @@
                                 BorderBrush="Black"
                                 BorderThickness="1"
                                 CornerRadius="5">
+
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -52,6 +57,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
+
 
                                 <!-- 각 색상 사각형 -->
                                 <Rectangle Grid.Column="0" Fill="Red" Width="150" HorizontalAlignment="Left" RadiusX="5" RadiusY="5"/>
@@ -111,6 +117,7 @@
                                                  FontWeight="Bold"
                                                  Language="ko-kr" 
                                                  Text="                                   상태"/></TextBlock>
+
                     <StackPanel Margin="30" HorizontalAlignment="Center" Width="500">
                         <ItemsControl ItemsSource="{Binding EmotionResults}">
                             <ItemsControl.ItemTemplate>
@@ -118,6 +125,7 @@
                                     <Grid Margin="0,10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="300"/>
+                                            
                                             <!-- 카테고리 -->
                                             <ColumnDefinition Width="*" />
                                             <!-- 막대그래프 -->
@@ -143,6 +151,7 @@
                                                                HorizontalAlignment="Left"  
                                                                RadiusX="5" RadiusY="5"/>
                                                 </Grid>
+
                                             </Border>
                                         </Grid>
                                     </Grid>
@@ -169,9 +178,9 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-
         </Grid>
         <!-- 하단 네비게이션 -->
         <local:BottomNav Grid.Row="2"/>
+
     </Grid>
 </UserControl>

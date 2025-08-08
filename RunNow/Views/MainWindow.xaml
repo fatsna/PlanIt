@@ -54,6 +54,11 @@
             <views:growth_start_View/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type vm:DeepResultViewModel}">
+            <views:DeepResultView/>
+        </DataTemplate>
+
+
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>

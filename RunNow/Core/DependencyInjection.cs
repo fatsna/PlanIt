@@ -18,14 +18,13 @@ namespace RunNow.Core
             // ✅ 비즈니스 로직 서비스
             services.AddSingleton<ShareDataService>();
             services.AddSingleton<IAuthService, AuthService>();
-            //services.AddSingleton<IAuthService>();
             services.AddSingleton<ScenarioService>();
             services.AddSingleton<IDialogService, DialogService>();
             services.AddSingleton<TcpClientService>();
 
             // ✅ ViewModel 등록
             services.AddSingleton<MainWindowViewModel>();  // 네비게이션 담당
-            services.AddSingleton<MainViewModel>();        // 홈 화면
+            services.AddSingleton<MainViewModel>();        // 홈 화면 , 지도
             services.AddSingleton<ChatBotViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<CareerAnalysisViewModel>();
@@ -35,9 +34,17 @@ namespace RunNow.Core
             services.AddTransient<DeepTestViewModel>();
             services.AddTransient<EmotionViewModel>();
             services.AddTransient<EmotionResultViewModel>();
+
             services.AddTransient<Growth_main_ViewModel>();
             services.AddTransient<growth_check_ViewModel>();
             services.AddTransient<growth_start_ViewModel>();
+
+            services.AddTransient<DeepResultViewModel>();
+            services.AddTransient<MapViewModel>();
+
+
+
+
             // ✅ MainWindow
             services.AddSingleton<MainWindow>(sp =>
             {

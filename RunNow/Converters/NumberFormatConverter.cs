@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace RunNow.Converters
@@ -9,10 +10,19 @@ namespace RunNow.Converters
         // View → ViewModel (TextBox 입력 → double)
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string str && double.TryParse(str.Replace(",", ""), out double result))
-                return result;
+            if (value is string str)
+            {
+                var raw = str.Replace(",", "");
 
-            return 0d; // 잘못된 입력일 경우 0으로 처리
+                // 숫자 형태일 때만 변환
+                if (double.TryParse(raw, out double result))
+                    return result;
+
+                // ❗ 숫자가 아닌 경우에는 DependencyProperty.UnsetValue 반환
+                return DependencyProperty.UnsetValue;
+            }
+
+            return DependencyProperty.UnsetValue;
         }
 
         // ViewModel → View (double → TextBox 표시)

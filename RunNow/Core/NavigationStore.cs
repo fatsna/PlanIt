@@ -14,6 +14,6 @@ public class NavigationStore
     }
 
     public event Action CurrentViewModelChanged;
-
     private ObservableObject previousViewModel;
+
 }

@@ -28,6 +28,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- 메뉴 1 -->
+
                 <Button Grid.Column="0"
                         Background="Transparent"
                         Command="{Binding DataContext.PlanitCommand , RelativeSource={RelativeSource AncestorType=Window}}"
@@ -38,6 +39,7 @@
                         <TextBlock Text="성장플래닛" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
+
                 <!-- 메뉴 2 -->
                 <Button Grid.Column="1"
                         Command="{Binding DataContext.ChatBotCommand , RelativeSource={RelativeSource AncestorType=Window}}"

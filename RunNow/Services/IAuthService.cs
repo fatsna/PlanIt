@@ -12,5 +12,6 @@ namespace RunNow.Services
         Task<JObject> PlanIT_serch(string job); // 직업검색
         Task<JObject> PlanIT_make(string job); // 성장 플래닛 만들기
 
+
     }
 }

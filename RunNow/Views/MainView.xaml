@@ -17,83 +17,101 @@
 
             <!-- 로고 + 설명 문구 -->
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0">
-                <Image Source="pack://application:,,,/LOGO2.png"
-                       Width="300" Stretch="Uniform" Margin="0,0,0,10"/>
+
+                <Image Source="pack://application:,,,/RunNow;component/Assets/LOGO2.png"
+                       Width="450" Stretch="Uniform" Margin="0,0,0,20"/>
+
                 <TextBlock Text="PLANIT는 이직을 고민하는 사람에게"
-                           FontSize="13" Foreground="White" HorizontalAlignment="Center"/>
+                           FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBlock Text="그 다음 인생을 설계하고 살아가는 힘을 주는 플랫폼입니다."
-                           FontSize="13" Foreground="White" HorizontalAlignment="Center"/>
+                           FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
             </StackPanel>
 
             <!-- 카드 박스 -->
-            <Border Margin="40,200,40,0" Padding="20"
-                    CornerRadius="30" Background="White"
+            <Border Margin="40,280,40,30" Padding="30"
+
+                CornerRadius="30" Background="White"
                     HorizontalAlignment="Center" VerticalAlignment="Top"
                     Panel.ZIndex="1">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="5" Color="Gray"/>
                 </Border.Effect>
 
-                <UniformGrid Columns="3" Rows="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,10">
+
+                <UniformGrid Columns="3" Rows="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,20">
                     <!-- 감정분석 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.EmotionAnalysisCommand , RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="❤️" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120"
+                                Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                            <Button Command="{Binding DataContext.EmotionAnalysisCommand , RelativeSource={RelativeSource AncestorType=Window}}"
+                                     Background="Transparent" BorderThickness="0">
+                                <TextBlock Text="❤️" FontSize="60"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="감정분석" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="감정분석" FontSize="20"
+                            HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <!-- 재정분석 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.FinanceAnalysisCommand,RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="📊" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                            <Button Command="{Binding DataContext.FinanceAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
+                                <TextBlock Text="📊" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="재정분석" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="재정분석" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <!-- 경력분석 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
                             <Button Command="{Binding DataContext.CareerAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="📄" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="📄" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="경력분석" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="경력분석" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <!-- 지도 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding MapCommand}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="🗺️" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120"
+                            Background="White" BorderBrush="#CCCCCC" BorderThickness="1"
+                            SnapsToDevicePixels="True">
+                            <Button
+                                Command="{Binding MapCommand}"
+                                Background="Transparent" BorderThickness="0"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                ToolTip="지도 열기"
+                                AutomationProperties.Name="지도">
+                                <TextBlock Text="🗺️" FontSize="60"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="지도" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="지도" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
+
                     <!-- 정밀테스트 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
                             <Button Command="{Binding DataContext.QuickTestCommand , RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="🧠" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="🧠" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="정밀테스트" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="정밀테스트" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <!-- 고용24 -->
-                    <StackPanel HorizontalAlignment="Center">
-                        <Border CornerRadius="25" Width="50" Height="50" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
                             <Button Command="{Binding DataContext.Work24Command , RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
-                                <TextBlock Text="24" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Text="24" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <TextBlock Text="고용24" FontSize="12" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock Text="고용24" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
+
                 </UniformGrid>
             </Border>
         </Grid>

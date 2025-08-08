@@ -22,7 +22,8 @@ namespace RunNow
 
             // 1) 초기 ViewModel 세팅
             var store = Services.GetRequiredService<NavigationStore>();
-            //store.CurrentViewModel = Services.GetRequiredService<MainViewModel>();
+
+            store.CurrentViewModel = Services.GetRequiredService<MainViewModel>();
             //store.CurrentViewModel = Services.GetRequiredService<LoginViewModel>();
 
             // DI에서 팩토리(위에서 등록한 람다)로 MainWindow 생성

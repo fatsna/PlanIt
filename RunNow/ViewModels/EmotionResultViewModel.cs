@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json.Linq;
 using RunNow.Models;
+using System.Collections.ObjectModel;
+
 
 public partial class EmotionResultViewModel : ObservableObject
 {
