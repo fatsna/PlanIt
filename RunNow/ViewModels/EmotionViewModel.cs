@@ -11,6 +11,7 @@ using RunNow.Models;
 using RunNow.Services;
 using static System.Formats.Asn1.AsnWriter;
 
+
 namespace RunNow.ViewModels
 {
     public partial class EmotionViewModel : ObservableObject
@@ -76,6 +77,7 @@ namespace RunNow.ViewModels
                 selectedQuestions.Add(q);
             }
 
+
 //<<<<<<< HEAD
             // 최종 결과를 AllQuestions에 세팅
             this.AllQuestions.Clear();
@@ -84,9 +86,7 @@ namespace RunNow.ViewModels
                 this.AllQuestions.Add(q);
             }
             //AllQuestions = new ObservableCollection<QuestionModel>(selectedQuestions);
-//=======
-//            AllQuestions = new ObservableCollection<QuestionModel>(selectedQuestions);
-//>>>>>>> HJY
+
         }
 
         private void UpdateCurrentQuestions()
@@ -148,29 +148,6 @@ namespace RunNow.ViewModels
             JArray scores = new JArray();
             JArray answer = new JArray();
             JArray scores100 = new JArray();
-//=======
-//        private async void ShowResults()
-//        {
-//            var emotionList = CalculateCategoryAverages();
-
-//            var payload = new JObject
-//            {
-//                ["protocol"] = "100_0",
-//                ["type"] = "deep_analysis",
-//                ["emotion"] = emotionList
-//            };
-
-//            await _tcpService.ConnectAsync();
-//            var response = await _tcpService.SendJsonToServer(payload);
-
-//            MessageBox.Show(response?.ToString() ?? "서버 응답 없음", "서버 응답");
-//        }
-
-//        private JArray CalculateCategoryAverages()
-//        {
-//            var grouped = AllQuestions.GroupBy(q => q.Category);
-//            var resultArray = new JArray();
-//>>>>>>> HJY
 
             foreach (var group in grouped)
             {
@@ -263,6 +240,7 @@ namespace RunNow.ViewModels
 //            // 선택된 답변의 인덱스를 저장
 //            question.SelectedAnswerIndex = answers.IndexOf(answer);
 //>>>>>>> HJY
+
 
             // 이벤트 발생 → 다음 페이지 넘어가기 로직 체크
             //question.Answered?.Invoke();

@@ -179,6 +179,7 @@ namespace RunNow.Views
                 MessageBox.Show("팝업 표시 오류: " + ex.Message);
                 Debug.WriteLine("ShowFacePopup 오류: " + ex);
             }
+
         }
     }
 }

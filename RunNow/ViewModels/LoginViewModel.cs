@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
+
 namespace RunNow.ViewModels
 {
     public partial class LoginViewModel : ObservableObject
@@ -49,6 +50,7 @@ namespace RunNow.ViewModels
             FacePopupVisibility = "Collapsed";
         }
 
+
         [ObservableProperty]
         private string username;
 
@@ -68,14 +70,17 @@ namespace RunNow.ViewModels
         }
 
 
+
         [ObservableProperty]
         private string facePopupText;
 
         [ObservableProperty]
         private string facePopupImagePath;
 
+
         [ObservableProperty]
         private string facePopupVisibility;
+
 
         [RelayCommand]
         private async Task LoginAsync()
@@ -161,6 +166,7 @@ namespace RunNow.ViewModels
         private void NavigateRegister()
         {
             _navigationStore.CurrentViewModel = App.Services.GetRequiredService<RegisterViewModel>();
+
         }
 
         [RelayCommand]
@@ -304,6 +310,7 @@ namespace RunNow.ViewModels
                 Debug.WriteLine("소켓 오류: " + ex.Message);
             }
         }
+
 
 
 

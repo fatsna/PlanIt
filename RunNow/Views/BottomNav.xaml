@@ -40,6 +40,7 @@
                     </StackPanel>
                 </Button>
 
+
                 <!-- 메뉴 2 -->
                 <Button Grid.Column="1"
                         Command="{Binding DataContext.ChatBotCommand , RelativeSource={RelativeSource AncestorType=Window}}"

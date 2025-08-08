@@ -9,7 +9,6 @@ using Newtonsoft.Json.Linq;
 using RunNow.Models;
 using System.Collections.ObjectModel;
 
-
 public partial class EmotionResultViewModel : ObservableObject
 {
     [ObservableProperty]

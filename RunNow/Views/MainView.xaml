@@ -17,7 +17,6 @@
 
             <!-- 로고 + 설명 문구 -->
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0">
-
                 <Image Source="pack://application:,,,/RunNow;component/Assets/LOGO2.png"
                        Width="450" Stretch="Uniform" Margin="0,0,0,20"/>
 
@@ -29,14 +28,12 @@
 
             <!-- 카드 박스 -->
             <Border Margin="40,280,40,30" Padding="30"
-
                 CornerRadius="30" Background="White"
                     HorizontalAlignment="Center" VerticalAlignment="Top"
                     Panel.ZIndex="1">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="5" Color="Gray"/>
                 </Border.Effect>
-
 
                 <UniformGrid Columns="3" Rows="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,20">
                     <!-- 감정분석 -->

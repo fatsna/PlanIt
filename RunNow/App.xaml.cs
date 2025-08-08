@@ -3,6 +3,10 @@ using RunNow.Core;
 using RunNow.ViewModels;
 using System.Windows;
 using RunNow.Views;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using SkiaSharp;
+
 
 namespace RunNow
 {
@@ -20,9 +24,19 @@ namespace RunNow
         {
             base.OnStartup(e);
 
+//<<<<<<< HEAD
             // 1) 초기 ViewModel 세팅
             var store = Services.GetRequiredService<NavigationStore>();
 
+//=======
+//            // ✅ LiveCharts 전역 한글 폰트 지정 (한 번만 호출)
+//            LiveCharts.Configure(cfg =>
+//                cfg.AddSkiaSharp()
+//                   .HasGlobalSKTypeface(SKTypeface.FromFamilyName("Malgun Gothic")));
+
+//            // 1) 초기 ViewModel 세팅
+//            var store = Services.GetRequiredService<NavigationStore>();
+//>>>>>>> HJY
             store.CurrentViewModel = Services.GetRequiredService<MainViewModel>();
             //store.CurrentViewModel = Services.GetRequiredService<LoginViewModel>();
 
@@ -31,5 +45,6 @@ namespace RunNow
 
             mainWindow.Show();
         }
+
     }
 }

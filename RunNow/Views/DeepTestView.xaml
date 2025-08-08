@@ -8,9 +8,19 @@
              xmlns:local1="clr-namespace:RunNow.Views"
              mc:Ignorable="d">
 
+
+    <!-- 🔹 모든 리소스는 여기(앞/뒤)에만 배치 -->
     <UserControl.Resources>
         <conv:RadioCheckedConverter x:Key="RadioCheckedConverter"/>
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+        <!-- 관심산업 그룹핑 리소스 -->
+        <CollectionViewSource x:Key="InterestGroups"
+                              Source="{Binding InterestCategories}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Group"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
     </UserControl.Resources>
 
     <Grid Background="White">
@@ -21,20 +31,18 @@
             <RowDefinition Height="*"/>
             <!-- 본문 -->
             <RowDefinition Height="Auto"/>
-            <!-- ✅ 하단 네비게이션 -->
+
+            <!-- 하단 네비 -->
         </Grid.RowDefinitions>
 
+        <!-- 상단 파란 배경 -->
 
-        <!-- ✅ 상단 파란 배경 -->
         <Border Grid.Row="0" Background="#00478F" Padding="0,20">
             <StackPanel HorizontalAlignment="Center">
                 <Image Source="pack://application:,,,/Assets/LOGO2.png"
                        Width="150" Height="50" Margin="0,0,0,40"/>
             </StackPanel>
         </Border>
-
-
-        <!-- ✅ 본문 카드 -->
 
         <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20">
             <Border.Effect>
@@ -44,12 +52,11 @@
 
             <!-- Scroll 영역 -->
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <!-- ⚙️ 기존 StackPanel 구조 전부 유지 -->
                 <StackPanel Margin="20,10">
-                    
+
                     <!-- STEP 1 : 감정 분석 -->
                     <StackPanel Visibility="{Binding IsEmotionStepVisible, Converter={StaticResource BoolToVisibilityConverter}}">
-                        <TextBlock Text="감정 상태 진단 설문" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+                        <TextBlock Text="감정 상태 진단 설문" FontSize="25" FontWeight="Bold" Margin="0,0,0,20"/>
                         <ItemsControl ItemsSource="{Binding Questions}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -74,79 +81,79 @@
                         <Button Content="다음"
                                 Command="{Binding GoToFinanceStepCommand}"
 
-                                Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="300" FontSize="16"/>
-
+                                Background="#00478F" Foreground="White" FontWeight="Bold"
+                                Margin="0,20,0,0" Width="400" FontSize="20"/>
                     </StackPanel>
 
                     <!-- STEP 2 : 재정 분석 -->
-                    <StackPanel Visibility="{Binding IsFinanceStepVisible, Converter={StaticResource BoolToVisibilityConverter}}" Width="500" HorizontalAlignment="Center">
+                    <StackPanel Visibility="{Binding IsFinanceStepVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Width="500" HorizontalAlignment="Center">
 
                         <TextBlock Text="총 자산 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
-                        <TextBox Text="{Binding Assets, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Assets, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="월 수입 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
-                        <TextBox Text="{Binding Income, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Income, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 고정 지출 -->
                         <TextBlock Text="고정 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
 
                         <TextBlock Text="주거비" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Rent, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBox Text="{Binding Rent, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="통신비" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="구독 서비스" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Subscription, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Subscription, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 변동 지출 -->
                         <TextBlock Text="변동 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
 
                         <TextBlock Text="식비" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Food, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+
+                        <TextBox Text="{Binding Food, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="교통비" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Transport, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Transport, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="쇼핑/문화" Margin="0,10,0,2" FontSize="14"/>
-                        <TextBox Text="{Binding Leisure, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Leisure, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <!-- 기타 -->
                         <TextBlock Text="월 저축 목표 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
-                        <TextBox Text="{Binding SavingTarget, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding SavingTarget, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <TextBlock Text="총 부채 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="16"/>
-                        <TextBox Text="{Binding Debt, UpdateSourceTrigger=PropertyChanged}" 
-                            behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
+                        <TextBox Text="{Binding Debt, UpdateSourceTrigger=PropertyChanged}"
+                                 behaviors:NumericInputBehavior.IsNumeric="True" Height="30"/>
 
                         <Button Content="다음"
-                            Command="{Binding GoToCareerStepCommand}"
-                            Background="#00478F"
-                            Foreground="White"
-                            FontWeight="Bold"
-                            Margin="0,20,0,0"
-                            Width="300"
-                            FontSize="16"/>
+                                Command="{Binding GoToCareerStepCommand}"
+                                Background="#00478F" Foreground="White" FontWeight="Bold"
+                                Margin="0,20,0,0" Width="400" FontSize="20"/>
                     </StackPanel>
 
-
-
                     <!-- STEP 3 : 경력 분석 -->
-                    <StackPanel Visibility="{Binding IsCareerStepVisible, Converter={StaticResource BoolToVisibilityConverter}}" Width="500" HorizontalAlignment="Center">
-                        <TextBlock Text="현재 직무" Margin="0,10,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding CurrentPosition}" Margin="0,0,0,10"/>
+                    <StackPanel Visibility="{Binding IsCareerStepVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                                Width="500" HorizontalAlignment="Center">
 
-                        <TextBlock Text="경력 연수" Margin="0,10,0,5" FontWeight="Bold"/>
-                        <ComboBox SelectedItem="{Binding SelectedExperience}" Margin="0,0,0,10">
+                        <TextBlock Text="현재 직무" Margin="0,10,0,5" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Text="{Binding CurrentPosition}" Margin="0,0,0,10" FontSize="14"/>
+
+                        <TextBlock Text="경력 연수" Margin="0,10,0,5" FontWeight="Bold" FontSize="14"/>
+                        <ComboBox SelectedValue="{Binding SelectedExperience}" SelectedValuePath="Content" Margin="0,0,0,10">
+
                             <ComboBoxItem Content="1년 미만"/>
                             <ComboBoxItem Content="1~3년"/>
                             <ComboBoxItem Content="3~5년"/>
@@ -154,128 +161,82 @@
                             <ComboBoxItem Content="10년 이상"/>
                         </ComboBox>
 
-                        <TextBlock Text="기술/자격증 (쉼표로 구분)" Margin="0,10,0,5" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Skills}" Margin="0,0,0,10"/>
+                        <TextBlock Text="기술/자격증 (쉼표로 구분)" Margin="0,10,0,5" FontWeight="Bold" FontSize="14"/>
+                        <TextBox Text="{Binding Skills}" Margin="0,0,0,10" FontSize="14"/>
 
-                        <TextBlock Text="관심 산업 분야" Margin="0,10,0,5" FontWeight="Bold"/>
+                        <!-- 관심 산업 분야 (그룹 헤더 유지) -->
+                        <TextBlock Text="관심 산업 분야" Margin="0,10,0,5" FontWeight="Bold" FontSize="14"/>
 
-                        <!-- ✅ 기존 체크박스 섹션 그대로 복구 -->
-                        <StackPanel>
-                            <!-- 공공 & 사회 -->
-                            <TextBlock Text="공공 &amp; 사회" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="공공" Tag="공공" Margin="5,2"/>
-                                <CheckBox Content="교육" Tag="교육" Margin="5,2"/>
-                                <CheckBox Content="에너지" Tag="에너지" Margin="5,2"/>
-                                <CheckBox Content="환경" Tag="환경" Margin="5,2"/>
-                                <CheckBox Content="ESG" Tag="ESG" Margin="5,2"/>
-                                <CheckBox Content="정부정책" Tag="정부정책" Margin="5,2"/>
-                                <CheckBox Content="사회복지" Tag="사회복지" Margin="5,2"/>
-                                <CheckBox Content="국방/안보" Tag="국방" Margin="5,2"/>
-                            </WrapPanel>
+                        <ItemsControl ItemsSource="{Binding Source={StaticResource InterestGroups}}">
+                            <ItemsControl.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,10,0,5" FontSize="14"/>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                    <GroupStyle.Panel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel/>
+                                        </ItemsPanelTemplate>
+                                    </GroupStyle.Panel>
+                                </GroupStyle>
+                            </ItemsControl.GroupStyle>
 
-                            <!-- 헬스케어 -->
-                            <TextBlock Text="헬스케어" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="의료" Tag="의료" Margin="5,2"/>
-                                <CheckBox Content="바이오" Tag="바이오" Margin="5,2"/>
-                                <CheckBox Content="헬스케어" Tag="헬스케어" Margin="5,2"/>
-                                <CheckBox Content="의료기기" Tag="의료기기" Margin="5,2"/>
-                                <CheckBox Content="디지털헬스" Tag="디지털헬스" Margin="5,2"/>
-                                <CheckBox Content="제약" Tag="제약" Margin="5,2"/>
-                                <CheckBox Content="임상시험" Tag="임상시험" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 금융 & 핀테크 -->
-                            <TextBlock Text="금융 &amp; 핀테크" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="금융" Tag="금융" Margin="5,2"/>
-                                <CheckBox Content="핀테크" Tag="핀테크" Margin="5,2"/>
-                                <CheckBox Content="보험" Tag="보험" Margin="5,2"/>
-                                <CheckBox Content="블록체인" Tag="블록체인" Margin="5,2"/>
-                                <CheckBox Content="투자" Tag="투자" Margin="5,2"/>
-                                <CheckBox Content="회계/세무" Tag="회계" Margin="5,2"/>
-                                <CheckBox Content="부동산금융" Tag="부동산금융" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 산업 & 제조 -->
-                            <TextBlock Text="산업 &amp; 제조" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="제조" Tag="제조" Margin="5,2"/>
-                                <CheckBox Content="스마트팩토리" Tag="스마트팩토리" Margin="5,2"/>
-                                <CheckBox Content="건설" Tag="건설" Margin="5,2"/>
-                                <CheckBox Content="모빌리티" Tag="모빌리티" Margin="5,2"/>
-                                <CheckBox Content="반도체" Tag="반도체" Margin="5,2"/>
-                                <CheckBox Content="기계/설비" Tag="기계" Margin="5,2"/>
-                                <CheckBox Content="전기/전자" Tag="전기전자" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 콘텐츠 & IT -->
-                            <TextBlock Text="콘텐츠 &amp; IT" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="게임" Tag="게임" Margin="5,2"/>
-                                <CheckBox Content="IT/SW" Tag="IT/SW" Margin="5,2"/>
-                                <CheckBox Content="보안" Tag="보안" Margin="5,2"/>
-                                <CheckBox Content="클라우드" Tag="클라우드" Margin="5,2"/>
-                                <CheckBox Content="AI" Tag="AI" Margin="5,2"/>
-                                <CheckBox Content="메타버스" Tag="메타버스" Margin="5,2"/>
-                                <CheckBox Content="XR/VR/AR" Tag="XR" Margin="5,2"/>
-                                <CheckBox Content="영상/미디어" Tag="미디어" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 유통 & 이커머스 -->
-                            <TextBlock Text="유통 &amp; 이커머스" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="유통" Tag="유통" Margin="5,2"/>
-                                <CheckBox Content="이커머스" Tag="이커머스" Margin="5,2"/>
-                                <CheckBox Content="브랜드" Tag="브랜드" Margin="5,2"/>
-                                <CheckBox Content="리테일테크" Tag="리테일테크" Margin="5,2"/>
-                                <CheckBox Content="라이브커머스" Tag="라이브커머스" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 물류 & 공급망 -->
-                            <TextBlock Text="물류 &amp; 공급망" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="물류" Tag="물류" Margin="5,2"/>
-                                <CheckBox Content="SCM" Tag="SCM" Margin="5,2"/>
-                                <CheckBox Content="배송" Tag="배송" Margin="5,2"/>
-                                <CheckBox Content="3PL" Tag="3PL" Margin="5,2"/>
-                                <CheckBox Content="창고관리" Tag="창고" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- HR & 조직문화 -->
-                            <TextBlock Text="HR &amp; 조직문화" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="HR" Tag="HR" Margin="5,2"/>
-                                <CheckBox Content="채용" Tag="채용" Margin="5,2"/>
-                                <CheckBox Content="조직문화" Tag="조직문화" Margin="5,2"/>
-                                <CheckBox Content="복지" Tag="복지" Margin="5,2"/>
-                                <CheckBox Content="교육훈련" Tag="교육훈련" Margin="5,2"/>
-                            </WrapPanel>
-
-                            <!-- 스타트업 & 혁신 -->
-                            <TextBlock Text="스타트업 &amp; 혁신" FontWeight="Bold" Margin="0,10,0,5"/>
-                            <WrapPanel>
-                                <CheckBox Content="스타트업" Tag="스타트업" Margin="5,2"/>
-                                <CheckBox Content="Social Impact" Tag="Social Impact" Margin="5,2"/>
-                                <CheckBox Content="GreenTech" Tag="GreenTech" Margin="5,2"/>
-                                <CheckBox Content="Tech for Good" Tag="Tech for Good" Margin="5,2"/>
-                                <CheckBox Content="임팩트 투자" Tag="임팩트투자" Margin="5,2"/>
-                            </WrapPanel>
-
-                        </StackPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}"
+                                              IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                              Margin="5,2" FontSize="13"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
                         <Button Content="분석하기" Command="{Binding AnalyzeCommand}"
-
-                            Background="#00478F" Foreground="White" FontWeight="Bold" Margin="0,20,0,0" Width="100"/>
+                                Background="#00478F" Foreground="White" FontWeight="Bold"
+                                Margin="0,20,0,0" Width="400" FontSize="20"/>
                     </StackPanel>
-
                 </StackPanel>
             </ScrollViewer>
         </Border>
 
-        <!-- ✅ 하단 고정 네비게이션 -->
+
+        <!-- 하단 고정 네비게이션 -->
         <local1:BottomNav Grid.Row="2"/>
 
+        <!-- ✅ 로딩 오버레이: 항상 화면 정중앙 -->
+        <Grid Grid.RowSpan="3"
+              Background="#80000000"
+              Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+              IsHitTestVisible="True"
+              Panel.ZIndex="999">
+
+            <!-- 가운데 셀에 박스를 고정 -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="1" Grid.Column="1"
+                Background="White" CornerRadius="12" Padding="24"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center" Width="260">
+                        <ProgressBar IsIndeterminate="True" Height="8" Margin="0,0,0,12"/>
+
+                        <TextBlock Text="분석 중입니다..." 
+                           HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="0,4,0,5"/>
+                        <TextBlock Text="잠시만 기다려주세요" 
+                           HorizontalAlignment="Center" Opacity="0.8"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
