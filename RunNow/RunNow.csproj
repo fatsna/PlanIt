@@ -82,7 +82,6 @@
     <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Views\뒤로가기파랑.drawio.png" />
   </ItemGroup>
 
 </Project>
