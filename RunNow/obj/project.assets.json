@@ -1007,23 +1007,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\up\\.nuget\\packages\\": {},
+    "C:\\Users\\주녕\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj",
+      "projectUniqueName": "C:\\Users\\주녕\\Desktop\\winpro\\C#\\planit\\RunNow\\RunNow.csproj",
       "projectName": "RunNow",
-      "projectPath": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj",
-      "packagesPath": "C:\\Users\\up\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\obj\\",
+      "projectPath": "C:\\Users\\주녕\\Desktop\\winpro\\C#\\planit\\RunNow\\RunNow.csproj",
+      "packagesPath": "C:\\Users\\주녕\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\주녕\\Desktop\\winpro\\C#\\planit\\RunNow\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\up\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\주녕\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

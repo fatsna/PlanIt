@@ -39,18 +39,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
 	</ItemGroup>
-
-
-	<ItemGroup>
-		<Resource Include="Assets\Bot.png" />
-		<Resource Include="Assets\check.png" />
-		<Resource Include="Assets\face_id.png" />
-		<Resource Include="Assets\logo.png" />
-		<Resource Include="Assets\LOGO2.png" />
-		<Resource Include="Assets\sendb.png" />
-		<Resource Include="Assets\user.png" />
-	</ItemGroup>
-
 	<!-- 실행 폴더로 복사되어야 하는 데이터/정적 파일들 -->
 	<ItemGroup>
 		<Content Include="Data\certificates.json">
@@ -63,8 +51,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
-
-
 
   <ItemGroup>
     <Resource Include="Assets\Bot.png">
