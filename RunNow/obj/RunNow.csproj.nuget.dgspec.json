@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\RunNow.csproj": {}
+    "D:\\c샵\\PlanIt\\RunNow\\RunNow.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\RunNow.csproj": {
+    "D:\\c샵\\PlanIt\\RunNow\\RunNow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\RunNow.csproj",
+        "projectUniqueName": "D:\\c샵\\PlanIt\\RunNow\\RunNow.csproj",
         "projectName": "RunNow",
-        "projectPath": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\RunNow.csproj",
+        "projectPath": "D:\\c샵\\PlanIt\\RunNow\\RunNow.csproj",
         "packagesPath": "C:\\Users\\HJY\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\obj\\",
+        "outputPath": "D:\\c샵\\PlanIt\\RunNow\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -61,6 +61,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[9.0.7, )"
+            },
+            "Microsoft.Web.WebView2": {
+              "target": "Package",
+              "version": "[1.0.2592.51, )"
             },
             "Microsoft.Xaml.Behaviors.Wpf": {
               "target": "Package",

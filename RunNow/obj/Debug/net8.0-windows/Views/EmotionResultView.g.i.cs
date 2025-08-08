@@ -52,7 +52,7 @@ namespace RunNow.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/RunNow;component/views/emotionresultview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/RunNow;V1.0.0.0;component/views/emotionresultview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\EmotionResultView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

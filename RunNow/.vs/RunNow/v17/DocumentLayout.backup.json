@@ -1,181 +1,225 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\",
+  "WorkspaceRootPath": "D:\\c\uC0F5\\PlanIt\\RunNow\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mapviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\assets\\map\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:assets\\map\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\financeanalysisview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\financeanalysisview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\financeanalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\financeanalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mapview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mapview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mapview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mapview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\emotionresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\emotionresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\recommendedjobitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\recommendedjobitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\data\\scenario.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:data\\scenario.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\data\\certificates.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:data\\certificates.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\radiocheckedconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\radiocheckedconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\stringnulloremptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\stringnulloremptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\booltoalignmentconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltoalignmentconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\barwidthanimationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\barwidthanimationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\converters\\booltovisibilityinverseconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltovisibilityinverseconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\deepresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\emotionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\emotionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mainviewmodel.map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mainviewmodel.map.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\runnow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:runnow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\careeranalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\careeranalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:behaviors\\numericinputbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deeptestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\emotionresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\emotionresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\numberformatconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\deepresultviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\recommendedjobitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\recommendedjobitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\data\\scenario.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:data\\scenario.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\data\\certificates.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:data\\certificates.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\radiocheckedconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\radiocheckedconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\stringnulloremptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\stringnulloremptytovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\booltoalignmentconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltoalignmentconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\barwidthanimationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\barwidthanimationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\converters\\booltovisibilityinverseconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\booltovisibilityinverseconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotionresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\deepresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deepresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\c\uC0F5\\PlanIt\\RunNow\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\emotionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\emotionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\hjy\\desktop\\runnow_0806_1\\viewmodels\\financeanalysisviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|d:\\c\uC0F5\\planit\\runnow\\viewmodels\\financeanalysisviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\financeanalysisviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -186,27 +230,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DeepResultView.xaml",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepResultView.xaml",
-              "RelativeDocumentMoniker": "Views\\DeepResultView.xaml",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepResultView.xaml",
-              "RelativeToolTip": "Views\\DeepResultView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T11:02:38.174Z",
+              "DocumentIndex": 2,
+              "Title": "FinanceAnalysisView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T02:42:44.535Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "FinanceAnalysisView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T02:42:40.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MapViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MapViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MapViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MapViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MapViewModel.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwCUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T00:31:20.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MapView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
+              "RelativeDocumentMoniker": "Views\\MapView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml",
+              "RelativeToolTip": "Views\\MapView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T00:32:31.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MapView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MapView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MapView.xaml.cs",
+              "RelativeToolTip": "Views\\MapView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T00:33:22.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml.cs",
+              "RelativeToolTip": "Views\\MainView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T02:20:59.922Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Core\\DependencyInjection.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeToolTip": "Core\\DependencyInjection.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAYwCYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:23:59.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAywCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T00:33:49.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
+              "RelativeDocumentMoniker": "Views\\MainView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainView.xaml",
+              "RelativeToolTip": "Views\\MainView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T12:24:50.825Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.html",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
+              "RelativeDocumentMoniker": "Assets\\Map\\index.html",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Assets\\Map\\index.html",
+              "RelativeToolTip": "Assets\\Map\\index.html",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAqwH8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-08-08T01:53:02.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\App.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\App.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-08-07T12:08:26.437Z",
@@ -214,387 +367,392 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DeepTestView.xaml",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepTestView.xaml",
-              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepTestView.xaml",
-              "RelativeToolTip": "Views\\DeepTestView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T11:47:14.126Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DeepTestViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\DeepTestViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DeepTestViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\DeepTestViewModel.cs",
-              "RelativeToolTip": "ViewModels\\DeepTestViewModel.cs",
-              "ViewState": "AgIAAAcBAAAAAAAAAAAmwCcBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:48:12.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CareerProfile.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\CareerProfile.cs",
-              "RelativeDocumentMoniker": "Models\\CareerProfile.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\CareerProfile.cs",
-              "RelativeToolTip": "Models\\CareerProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T12:17:00.232Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BoolToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\BoolToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\BoolToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:19.404Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmotionResultViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\EmotionResultViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\EmotionResultViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\EmotionResultViewModel.cs",
-              "RelativeToolTip": "ViewModels\\EmotionResultViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T06:12:31.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DeepTestView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepTestView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepTestView.xaml.cs",
-              "RelativeToolTip": "Views\\DeepTestView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:58:17.499Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "NumericInputBehavior.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Behaviors\\NumericInputBehavior.cs",
-              "RelativeDocumentMoniker": "Behaviors\\NumericInputBehavior.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Behaviors\\NumericInputBehavior.cs",
-              "RelativeToolTip": "Behaviors\\NumericInputBehavior.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAmwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T11:46:37.257Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ChatMessage.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\ChatMessage.cs",
-              "RelativeDocumentMoniker": "Models\\ChatMessage.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\ChatMessage.cs",
-              "RelativeToolTip": "Models\\ChatMessage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T12:16:59.368Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DeepResultViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\DeepResultViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DeepResultViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\DeepResultViewModel.cs",
-              "RelativeToolTip": "ViewModels\\DeepResultViewModel.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAQwEgAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:09:48.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "NumberFormatConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\NumberFormatConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\NumberFormatConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\NumberFormatConverter.cs",
-              "RelativeToolTip": "Converters\\NumberFormatConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:17.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "scenario.json",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Data\\scenario.json",
-              "RelativeDocumentMoniker": "Data\\scenario.json",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Data\\scenario.json",
-              "RelativeToolTip": "Data\\scenario.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-07T10:41:20.656Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "certificates.json",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Data\\certificates.json",
-              "RelativeDocumentMoniker": "Data\\certificates.json",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Data\\certificates.json",
-              "RelativeToolTip": "Data\\certificates.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-07T10:41:19.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "JsonHelper.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\JsonHelper.cs",
-              "RelativeDocumentMoniker": "Core\\JsonHelper.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\JsonHelper.cs",
-              "RelativeToolTip": "Core\\JsonHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:27.901Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "RecommendedJobItem.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\RecommendedJobItem.cs",
-              "RelativeDocumentMoniker": "Models\\RecommendedJobItem.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\RecommendedJobItem.cs",
-              "RelativeToolTip": "Models\\RecommendedJobItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T07:51:45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "ScenarioStep.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\ScenarioStep.cs",
-              "RelativeDocumentMoniker": "Models\\ScenarioStep.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\ScenarioStep.cs",
-              "RelativeToolTip": "Models\\ScenarioStep.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "MainViewModel.Map.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.Map.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.Map.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.Map.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.Map.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAYwBUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T12:17:07.025Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-08T00:43:18.351Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Emotion_result_model.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\Emotion_result_model.cs",
-              "RelativeDocumentMoniker": "Models\\Emotion_result_model.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\Emotion_result_model.cs",
-              "RelativeToolTip": "Models\\Emotion_result_model.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:31:03.914Z",
-              "EditorCaption": ""
+              "Title": "RunNow.csproj",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\RunNow.csproj",
+              "RelativeDocumentMoniker": "RunNow.csproj",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\RunNow.csproj",
+              "RelativeToolTip": "RunNow.csproj",
+              "ViewState": "AgIAABsAAAAAAAAAAAArwCgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-08T01:12:45.702Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "DeepQuestionItem.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\DeepQuestionItem.cs",
-              "RelativeDocumentMoniker": "Models\\DeepQuestionItem.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\DeepQuestionItem.cs",
-              "RelativeToolTip": "Models\\DeepQuestionItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T12:15:57.448Z",
-              "EditorCaption": ""
+              "Title": "CareerAnalysisView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\CareerAnalysisView.xaml",
+              "RelativeDocumentMoniker": "Views\\CareerAnalysisView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\CareerAnalysisView.xaml",
+              "RelativeToolTip": "Views\\CareerAnalysisView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T00:32:18.315Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "DependencyInjection.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\DependencyInjection.cs",
-              "RelativeDocumentMoniker": "Core\\DependencyInjection.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\DependencyInjection.cs",
-              "RelativeToolTip": "Core\\DependencyInjection.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADwvyUAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-06T11:23:59.753Z",
-              "EditorCaption": ""
+              "DocumentIndex": 14,
+              "Title": "DeepResultView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
+              "RelativeDocumentMoniker": "Views\\DeepResultView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml",
+              "RelativeToolTip": "Views\\DeepResultView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T11:02:38.174Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Constants.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\Constants.cs",
-              "RelativeDocumentMoniker": "Core\\Constants.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\Constants.cs",
-              "RelativeToolTip": "Core\\Constants.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:31.79Z",
-              "EditorCaption": ""
+              "DocumentIndex": 15,
+              "Title": "DeepTestView.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeToolTip": "Views\\DeepTestView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T11:47:14.126Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "AppConfig.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\AppConfig.cs",
-              "RelativeDocumentMoniker": "Core\\AppConfig.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\AppConfig.cs",
-              "RelativeToolTip": "Core\\AppConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "DeepTestViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\DeepTestViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepTestViewModel.cs",
+              "RelativeToolTip": "ViewModels\\DeepTestViewModel.cs",
+              "ViewState": "AgIAAAcBAAAAAAAAAAAmwCcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:32.582Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "RadioCheckedConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\RadioCheckedConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\RadioCheckedConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\RadioCheckedConverter.cs",
-              "RelativeToolTip": "Converters\\RadioCheckedConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:16.452Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "PasswordBoxHelper.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\PasswordBoxHelper.cs",
-              "RelativeDocumentMoniker": "Core\\PasswordBoxHelper.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\PasswordBoxHelper.cs",
-              "RelativeToolTip": "Core\\PasswordBoxHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:24.253Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "NavigationStore.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\NavigationStore.cs",
-              "RelativeDocumentMoniker": "Core\\NavigationStore.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Core\\NavigationStore.cs",
-              "RelativeToolTip": "Core\\NavigationStore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:25.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "StringNullOrEmptyToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\StringNullOrEmptyToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\StringNullOrEmptyToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\StringNullOrEmptyToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\StringNullOrEmptyToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:15.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "BoolToAlignmentConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToAlignmentConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\BoolToAlignmentConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToAlignmentConverter.cs",
-              "RelativeToolTip": "Converters\\BoolToAlignmentConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:55.313Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "BooleanToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BooleanToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BooleanToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\BooleanToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:54.441Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-06T11:48:12.346Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "BarWidthAnimationBehavior.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BarWidthAnimationBehavior.cs",
-              "RelativeDocumentMoniker": "Converters\\BarWidthAnimationBehavior.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BarWidthAnimationBehavior.cs",
-              "RelativeToolTip": "Converters\\BarWidthAnimationBehavior.cs",
+              "Title": "CareerProfile.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\CareerProfile.cs",
+              "RelativeDocumentMoniker": "Models\\CareerProfile.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\CareerProfile.cs",
+              "RelativeToolTip": "Models\\CareerProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:52.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-06T12:17:00.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BoolToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\BoolToVisibilityConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\BoolToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:19.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmotionResultViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionResultViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\EmotionResultViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionResultViewModel.cs",
+              "RelativeToolTip": "ViewModels\\EmotionResultViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T06:12:31.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DeepTestView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepTestView.xaml.cs",
+              "RelativeToolTip": "Views\\DeepTestView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:58:17.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NumericInputBehavior.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Behaviors\\NumericInputBehavior.cs",
+              "RelativeDocumentMoniker": "Behaviors\\NumericInputBehavior.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Behaviors\\NumericInputBehavior.cs",
+              "RelativeToolTip": "Behaviors\\NumericInputBehavior.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T11:46:37.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "Models\\ChatMessage.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ChatMessage.cs",
+              "RelativeToolTip": "Models\\ChatMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T12:16:59.368Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DeepResultViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\DeepResultViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\DeepResultViewModel.cs",
+              "RelativeToolTip": "ViewModels\\DeepResultViewModel.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAQwEgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:09:48.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "NumberFormatConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\NumberFormatConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\NumberFormatConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\NumberFormatConverter.cs",
+              "RelativeToolTip": "Converters\\NumberFormatConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:17.428Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 29,
-              "Title": "AnswerToColorConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\AnswerToColorConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\AnswerToColorConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\AnswerToColorConverter.cs",
-              "RelativeToolTip": "Converters\\AnswerToColorConverter.cs",
+              "Title": "scenario.json",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\scenario.json",
+              "RelativeDocumentMoniker": "Data\\scenario.json",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\scenario.json",
+              "RelativeToolTip": "Data\\scenario.json",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:51.049Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T10:41:20.656Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 30,
-              "Title": "BoolToVisibilityInverseConverter.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToVisibilityInverseConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\BoolToVisibilityInverseConverter.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Converters\\BoolToVisibilityInverseConverter.cs",
-              "RelativeToolTip": "Converters\\BoolToVisibilityInverseConverter.cs",
+              "Title": "certificates.json",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\certificates.json",
+              "RelativeDocumentMoniker": "Data\\certificates.json",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Data\\certificates.json",
+              "RelativeToolTip": "Data\\certificates.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T10:41:19.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "JsonHelper.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\JsonHelper.cs",
+              "RelativeDocumentMoniker": "Core\\JsonHelper.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\JsonHelper.cs",
+              "RelativeToolTip": "Core\\JsonHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T10:40:18.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-07T10:40:27.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RecommendedJobItem.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\RecommendedJobItem.cs",
+              "RelativeDocumentMoniker": "Models\\RecommendedJobItem.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\RecommendedJobItem.cs",
+              "RelativeToolTip": "Models\\RecommendedJobItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T07:51:45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ScenarioStep.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ScenarioStep.cs",
+              "RelativeDocumentMoniker": "Models\\ScenarioStep.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\ScenarioStep.cs",
+              "RelativeToolTip": "Models\\ScenarioStep.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T12:17:07.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Emotion_result_model.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\Emotion_result_model.cs",
+              "RelativeDocumentMoniker": "Models\\Emotion_result_model.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\Emotion_result_model.cs",
+              "RelativeToolTip": "Models\\Emotion_result_model.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T11:31:03.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DeepQuestionItem.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\DeepQuestionItem.cs",
+              "RelativeDocumentMoniker": "Models\\DeepQuestionItem.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\DeepQuestionItem.cs",
+              "RelativeToolTip": "Models\\DeepQuestionItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T12:15:57.448Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\Constants.cs",
+              "RelativeDocumentMoniker": "Core\\Constants.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\Constants.cs",
+              "RelativeToolTip": "Core\\Constants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:31.79Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "AppConfig.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\AppConfig.cs",
+              "RelativeDocumentMoniker": "Core\\AppConfig.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\AppConfig.cs",
+              "RelativeToolTip": "Core\\AppConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:32.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RadioCheckedConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\RadioCheckedConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\RadioCheckedConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\RadioCheckedConverter.cs",
+              "RelativeToolTip": "Converters\\RadioCheckedConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:16.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "PasswordBoxHelper.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\PasswordBoxHelper.cs",
+              "RelativeDocumentMoniker": "Core\\PasswordBoxHelper.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\PasswordBoxHelper.cs",
+              "RelativeToolTip": "Core\\PasswordBoxHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:24.253Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 31,
+              "Title": "NavigationStore.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\NavigationStore.cs",
+              "RelativeDocumentMoniker": "Core\\NavigationStore.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Core\\NavigationStore.cs",
+              "RelativeToolTip": "Core\\NavigationStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:25.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "StringNullOrEmptyToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\StringNullOrEmptyToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\StringNullOrEmptyToVisibilityConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\StringNullOrEmptyToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\StringNullOrEmptyToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:15.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "BoolToAlignmentConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToAlignmentConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\BoolToAlignmentConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToAlignmentConverter.cs",
+              "RelativeToolTip": "Converters\\BoolToAlignmentConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:55.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "BooleanToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BooleanToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BooleanToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\BooleanToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:54.441Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "BarWidthAnimationBehavior.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BarWidthAnimationBehavior.cs",
+              "RelativeDocumentMoniker": "Converters\\BarWidthAnimationBehavior.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BarWidthAnimationBehavior.cs",
+              "RelativeToolTip": "Converters\\BarWidthAnimationBehavior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:52.872Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "AnswerToColorConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\AnswerToColorConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\AnswerToColorConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\AnswerToColorConverter.cs",
+              "RelativeToolTip": "Converters\\AnswerToColorConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:51.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "BoolToVisibilityInverseConverter.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityInverseConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\BoolToVisibilityInverseConverter.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Converters\\BoolToVisibilityInverseConverter.cs",
+              "RelativeToolTip": "Converters\\BoolToVisibilityInverseConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T10:40:18.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
               "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\RegisterViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\RegisterViewModel.cs",
               "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -602,11 +760,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 46,
               "Title": "EmotionResult.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\EmotionResult.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\EmotionResult.cs",
               "RelativeDocumentMoniker": "Models\\EmotionResult.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\EmotionResult.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\EmotionResult.cs",
               "RelativeToolTip": "Models\\EmotionResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvw4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -614,11 +772,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 45,
               "Title": "InterestItem.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\InterestItem.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
               "RelativeDocumentMoniker": "Models\\InterestItem.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\InterestItem.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\InterestItem.cs",
               "RelativeToolTip": "Models\\InterestItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -626,11 +784,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 44,
               "Title": "QuestionModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\QuestionModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\QuestionModel.cs",
               "RelativeDocumentMoniker": "Models\\QuestionModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Models\\QuestionModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Models\\QuestionModel.cs",
               "RelativeToolTip": "Models\\QuestionModel.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAADwvxAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -638,11 +796,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 47,
               "Title": "DeepResultView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepResultView.xaml.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\DeepResultView.xaml.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\DeepResultView.xaml.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\DeepResultView.xaml.cs",
               "RelativeToolTip": "Views\\DeepResultView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -650,11 +808,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 48,
               "Title": "DeepResultView.g.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
               "RelativeDocumentMoniker": "obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
               "RelativeToolTip": "obj\\Debug\\net8.0-windows\\Views\\DeepResultView.g.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -662,11 +820,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 49,
               "Title": "TcpClientService.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Services\\TcpClientService.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Services\\TcpClientService.cs",
               "RelativeDocumentMoniker": "Services\\TcpClientService.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Services\\TcpClientService.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Services\\TcpClientService.cs",
               "RelativeToolTip": "Services\\TcpClientService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -674,22 +832,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 51,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\MainWindow.xaml",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\MainWindow.xaml",
               "RelativeToolTip": "Views\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-08-06T12:24:52.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 50,
               "Title": "EmotionViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\EmotionViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\EmotionViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\EmotionViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\EmotionViewModel.cs",
               "RelativeToolTip": "ViewModels\\EmotionViewModel.cs",
               "ViewState": "AgIAADwAAAAAAAAAAAAIwKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -697,22 +855,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "MainView.xaml",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\MainView.xaml",
-              "RelativeDocumentMoniker": "Views\\MainView.xaml",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\Views\\MainView.xaml",
-              "RelativeToolTip": "Views\\MainView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-06T12:24:50.825Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 52,
               "Title": "MainWindowViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\MainWindowViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainWindowViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainWindowViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainWindowViewModel.cs",
               "RelativeToolTip": "ViewModels\\MainWindowViewModel.cs",
               "ViewState": "AgIAADsAAAAAAAAAAAAAwFAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -720,11 +867,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 53,
               "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\MainViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "ViewModels\\MainViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -732,11 +879,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 54,
               "Title": "FinanceAnalysisViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\FinanceAnalysisViewModel.cs",
+              "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\FinanceAnalysisViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\FinanceAnalysisViewModel.cs",
-              "ToolTip": "C:\\Users\\HJY\\Desktop\\RunNow_0806_1\\ViewModels\\FinanceAnalysisViewModel.cs",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\ViewModels\\FinanceAnalysisViewModel.cs",
               "RelativeToolTip": "ViewModels\\FinanceAnalysisViewModel.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

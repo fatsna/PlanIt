@@ -25,7 +25,7 @@ namespace RunNow.Core
 
             // ✅ ViewModel 등록
             services.AddSingleton<MainWindowViewModel>();  // 네비게이션 담당
-            services.AddSingleton<MainViewModel>();        // 홈 화면
+            services.AddSingleton<MainViewModel>();        // 홈 화면 , 지도
             services.AddSingleton<ChatBotViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<CareerAnalysisViewModel>();
@@ -36,6 +36,8 @@ namespace RunNow.Core
             services.AddTransient<EmotionViewModel>();
             services.AddTransient<EmotionResultViewModel>();
             services.AddTransient<DeepResultViewModel>();
+            services.AddTransient<MapViewModel>();
+
 
 
             // ✅ MainWindow
