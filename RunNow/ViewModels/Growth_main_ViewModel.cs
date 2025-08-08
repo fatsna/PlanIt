@@ -16,7 +16,7 @@ namespace RunNow.ViewModels
     {
         private readonly NavigationStore _navigationStore; // 메인에게 화면넘겨! 객체
         private readonly IAuthService _authService;         // 서버와 통신 객체
-        private readonly ShareDataService _shareDataService;    // 유저 데이터 객체
+        public ShareDataService shareDataService;    // 유저 데이터 객체
         private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
         private bool check = true; // 확인용 변수
         private JObject? json = null; // 서버응답 변수
@@ -25,7 +25,7 @@ namespace RunNow.ViewModels
             // 통신용 클래스 객체
             this._authService = authService;
             // 유저의 모든정보 서비스 객체
-            this._shareDataService = shareDataService;
+            this.shareDataService = shareDataService;
             // 메인에게 페이지 전환알리는 객체
             this._navigationStore = navigationStore;
             this._serviceProvider = serviceProvider;
@@ -47,11 +47,11 @@ namespace RunNow.ViewModels
                                                         "시장을 분석하고 소비자 니즈를 파악하여 효과적인 전략으로 제품이나 서비스를 홍보하고 판매를 촉진합니다2222222222222222.", "컴퓨터 소프트웨어와 애플리케이션을 설계하고 구현하며, 시스템 유지보수와 오류 수정도 수행합니다.123123",
                                                      "시각적 요소를 기획하고 디자인하여 사용자 경험을 개선하며, 브랜드 이미지를 시각적으로 표현합니다12123.",
                                                         "시장을 분석하고 소비자 니즈를 파악하여 효과적인 전략으로 제품이나 서비스를 홍보하고 판매를 촉진합니다123123."};
-            
-            this._shareDataService.Jobs = tmp;
-            this._shareDataService.Jobs_EXPLAIN = tmp2;
+
+            this.shareDataService.Jobs = tmp;
+            this.shareDataService.Jobs_EXPLAIN = tmp2;
             this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_start_ViewModel>();
-            
+
             //}
             //else
             //{
@@ -92,13 +92,17 @@ namespace RunNow.ViewModels
             // this.json에 받은 데이터를 this._shareDataService << 에 저장
             // services.AddSingleton<ShareDataService>(); << 이게 인스턴스를 싱글톤으로 등록한것
             // C# 에서 클래스는 참조공유다!
-            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_check_ViewModel>();
+            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_My_ViewModel>();
             //}
             //else
             //{
             //    // 테스트결과가 없음 플래닛만들기나 종합결과를 유도
             //  this.check = true
             //}
+        }
+        [RelayCommand] private void Back()
+        {
+            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<MainViewModel>();
         }
     }
 }

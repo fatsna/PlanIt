@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:RunNow.Views"
       mc:Ignorable="d" 
       FontFamily="Noto sans KR"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"             
       d:DesignHeight="1000" d:DesignWidth="760"
       Background="White"
       xmlns:lowbar="clr-namespace:RunNow.Views"
@@ -17,6 +18,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- 상단 타이틀 -->
+        <Image Source="/Views/뒤로가기파랑.drawio.png"
+                     HorizontalAlignment="Left"
+                     Margin="10,10,0,0"
+                     VerticalAlignment="Top"
+                     Width="80"
+                     Height="80"
+                     Grid.Row="0"
+                     Grid.Column="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding BackCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
         <TextBlock x:Name="TextBlock_title" Text="성장플래닛"
                    FontFamily="Noto sans KR"
                    FontSize="40"
@@ -28,6 +43,20 @@
                    VerticalAlignment="Top"
                    Margin="0,20,0,0"
                    Width="400" Height="60"/>
+        <Image Source="/Assets/sendblue.png"
+                     HorizontalAlignment="Right"
+                     Margin="10,10,30,0"
+                     VerticalAlignment="Top"
+                     Width="80"
+                     Height="80"
+                     Grid.Row="0"
+                     Grid.Column="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <!--무언가 커맨드해서 기능추가가능-->
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
         <Grid x:Name="Grid_button"
               Background="#00478F"
               Margin="0, 100, 0, 0">

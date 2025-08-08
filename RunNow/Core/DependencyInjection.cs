@@ -38,6 +38,7 @@ namespace RunNow.Core
             services.AddTransient<Growth_main_ViewModel>();
             services.AddTransient<growth_check_ViewModel>();
             services.AddTransient<growth_start_ViewModel>();
+            services.AddTransient<Growth_My_ViewModel>();
             // ✅ MainWindow
             services.AddSingleton<MainWindow>(sp =>
             {

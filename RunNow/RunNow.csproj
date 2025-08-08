@@ -15,6 +15,7 @@
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\LOGO2.png" />
     <None Remove="Assets\sendb.png" />
+    <None Remove="Assets\sendblue.png" />
     <None Remove="Assets\user.png" />
     <None Remove="Assets\돋보기.drawio.png" />
     <None Remove="Assets\뒤로가기파랑.drawio.png" />
@@ -59,6 +60,9 @@
     </Resource>
     <Resource Include="Assets\sendb.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\sendblue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
