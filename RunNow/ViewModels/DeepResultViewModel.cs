@@ -16,7 +16,6 @@ namespace RunNow.ViewModels
 {
     public partial class DeepResultViewModel : ObservableObject
     {
-//<<<<<<< HEAD
 //        [ObservableProperty]
 //        private string resultText = "분석 결과가 여기에 표시됩니다.";
 
@@ -31,7 +30,6 @@ namespace RunNow.ViewModels
 
 //        [ObservableProperty]
 //        private ObservableCollection<RecommendedJobItem> recommendedJobs = new();
-//=======
         [ObservableProperty] private string resultText = "분석 결과가 여기에 표시됩니다.";
 
         [ObservableProperty] private ISeries[] series;
@@ -49,7 +47,6 @@ namespace RunNow.ViewModels
         public SolidColorPaint? TitlePaint { get; set; }
         public string Title { get; set; } = "감정 진단 결과";
         public double TitleTextSize { get; set; } = 18;
-//>>>>>>> HJY
 
         public DeepResultViewModel()
         {
@@ -78,11 +75,8 @@ namespace RunNow.ViewModels
                 {
                     Name = "카테고리별 평균 점수",
                     Values = values,
-//<<<<<<< HEAD
 //                    DataLabelsPaint = new SolidColorPaint(SKColors.Black),
-//=======
                     DataLabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface },
-//>>>>>>> HJY
                     DataLabelsSize = 14,
                     DataLabelsPosition = DataLabelsPosition.Top
                 }
@@ -97,13 +91,10 @@ namespace RunNow.ViewModels
                     TextSize = 14,
                     LabelsPaint = new SolidColorPaint
                     {
-//<<<<<<< HEAD
 //                        SKTypeface = SKTypeface.FromFamilyName("맑은 고딕", SKFontStyle.Normal),
 //                        Color = SKColors.Black // 폰트 색상
-//=======
                         SKTypeface = typeface,
                         Color = SKColors.Black
-//>>>>>>> HJY
                     }
                 }
             };
@@ -117,11 +108,8 @@ namespace RunNow.ViewModels
                     TextSize = 14,
                     LabelsPaint = new SolidColorPaint
                     {
-//<<<<<<< HEAD
 //                        SKTypeface = SKTypeface.FromFamilyName("맑은 고딕", SKFontStyle.Normal),
-//=======
                         SKTypeface = typeface,
-//>>>>>>> HJY
                         Color = SKColors.Black
                     }
                 }
