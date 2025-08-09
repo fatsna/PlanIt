@@ -30,7 +30,7 @@
                             </Ellipse.Fill>
                         </Ellipse>
                     </StackPanel>
-
+    
                     <!-- 기본 정보 -->
                     <StackPanel Margin="10" Orientation="Vertical">
                         <TextBlock Text="이름" FontWeight="Bold"/>
