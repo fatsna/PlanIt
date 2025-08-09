@@ -6,6 +6,10 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\up\\desktop\\planit\\runnow\\views\\growth_check_view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\growth_check_view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\up\\desktop\\planit\\runnow\\viewmodels\\growth_main_viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\growth_main_viewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,10 +35,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\up\\desktop\\planit\\runnow\\assets\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:assets\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\up\\desktop\\planit\\runnow\\views\\growth_check_view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\growth_check_view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\up\\desktop\\planit\\runnow\\views\\growth_start_view.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -82,14 +82,14 @@
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAADUWAAAAAAAAAAAewEsWAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAGINAAAAAAAAAAAvwH4NAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2025-08-09T04:38:36.923Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Growth_main_ViewModel.cs",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\ViewModels\\Growth_main_ViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Growth_main_ViewModel.cs",
@@ -101,18 +101,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "styles.xaml",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\Converters\\styles.xaml",
               "RelativeDocumentMoniker": "Converters\\styles.xaml",
               "ToolTip": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\Converters\\styles.xaml",
               "RelativeToolTip": "Converters\\styles.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-09T00:01:42.314Z"
+              "WhenOpened": "2025-08-09T00:01:42.314Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "RunNow.csproj",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\RunNow.csproj",
               "RelativeDocumentMoniker": "RunNow.csproj",
@@ -125,18 +126,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "growth_check_View.xaml",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\Views\\growth_check_View.xaml",
               "RelativeDocumentMoniker": "Views\\growth_check_View.xaml",
               "ToolTip": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\Views\\growth_check_View.xaml",
               "RelativeToolTip": "Views\\growth_check_View.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-08T12:39:17.293Z"
+              "WhenOpened": "2025-08-08T12:39:17.293Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": ".gitkeep",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\Assets\\.gitkeep",
               "RelativeDocumentMoniker": "Assets\\.gitkeep",
@@ -148,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Microsoft.WinFX.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
@@ -160,7 +162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "growth_check_ViewModel.cs",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\ViewModels\\growth_check_ViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\growth_check_ViewModel.cs",
@@ -172,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Growth_My_ViewModel.cs",
               "DocumentMoniker": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\ViewModels\\Growth_My_ViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\Growth_My_ViewModel.cs",
@@ -247,7 +249,8 @@
               "ToolTip": "C:\\Users\\up\\Desktop\\PLANIT\\RunNow\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-08T12:19:39.796Z"
+              "WhenOpened": "2025-08-08T12:19:39.796Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
