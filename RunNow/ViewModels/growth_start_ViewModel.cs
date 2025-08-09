@@ -24,6 +24,7 @@ namespace RunNow.ViewModels
             this.shareDataService = shareDataService;
             Console.WriteLine($"생성자에서의 값 : {this.shareDataService.IsDetailVisible}");
 
+            this.Wantjobtext = "플래닛 만들기"; // 처음에 써질값.
             // 복사~
             // 기존 string 리스트 → JobItem으로 변환
             this.jobs = new ObservableCollection<JobItem>(
@@ -44,6 +45,8 @@ namespace RunNow.ViewModels
         [ObservableProperty] private string selectedJobExplain; // ui와 바인딩될 직업설명 변수
         [ObservableProperty] private string selectedJobReson; // ui와 바인딩될 직업설명 변수
         [ObservableProperty] private string serchJob; // 유저가 검색한 직업
+        [ObservableProperty] private string wantjob; // 유저가 고른 직업
+        [ObservableProperty] private string wantjobtext; // 
         public class JobItem
         {
             public string Name { get; set; }
@@ -73,6 +76,8 @@ namespace RunNow.ViewModels
                 Console.WriteLine($"{this.job_explains[index]}");
                 this.SelectedJobExplain = this.job_explains[index];
                 this.SelectedJobReson = this.shareDataService.jobs_REASONS[index];
+                this.Wantjob = this.jobs[index].Name;
+                this.Wantjobtext = this.wantjob + "<< 플랜잇 만들기 !!";
             }
         }
 
@@ -83,6 +88,7 @@ namespace RunNow.ViewModels
             if (!(this.SerchJob == ""))
             {
                 JObject result = await this._authService.PlanIT_serch(this.SerchJob);
+                Console.WriteLine($"서버가 준값 : {result.ToString()}");
                 if (!(result["protocol"]?.ToString() == "100_5_1"))
                 {
                     //실패!
@@ -111,11 +117,12 @@ namespace RunNow.ViewModels
         [RelayCommand] private async Task Make_PlanIT()
         {
             Console.WriteLine("플랜잇 생성!!");
-            Console.WriteLine($"생성할 직업! : {this.SerchJob}");
+            Console.WriteLine($"생성할 직업! : {this.Wantjob}");
             // 서버에게 요청
-            if (!(this.SerchJob == ""))
+            if (!(this.Wantjob == ""))
             {
-                JObject result = await this._authService.PlanIT_make(this.SerchJob);
+                JObject result = await this._authService.PlanIT_make(this.Wantjob);
+                Console.WriteLine($"서버가 준값 : {result.ToString()}");
                 if (!(result["protocol"]?.ToString() == "100_6_1"))
                 {
                     Console.WriteLine("요청 실패!");
@@ -126,7 +133,7 @@ namespace RunNow.ViewModels
                     Console.WriteLine("만들기 성공!");
                     // 성공! 
                     // 쉐어 데이터 서비스에 서버에게 받은 데이터 저장후 화면전환
-                    //this._shareDataService.
+                    //this._shareDataService
                     this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_check_ViewModel>();
                 }
                 // 검색했으면 초기화

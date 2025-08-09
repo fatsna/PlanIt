@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+
 
   <ItemGroup>
     <None Remove="Assets\Bot.png" />
@@ -19,28 +21,36 @@
     <None Remove="Assets\user.png" />
     <None Remove="Assets\돋보기.drawio.png" />
     <None Remove="Assets\뒤로가기파랑.drawio.png" />
+    <None Remove="Assets\뒤로가기하양.png" />
     <None Remove="Assets\엑스버튼.drawio.png" />
     <None Remove="Assets\체크버튼.drawio.png" />
+    <None Remove="Assets\하얀종이비행기.png" />
     <None Remove="Data\certificates.json" />
     <None Remove="Data\scenario.json" />
     <None Remove="Views\뒤로가기파랑.drawio.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Data\certificates.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\scenario.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
+	</ItemGroup>
+	<!-- 실행 폴더로 복사되어야 하는 데이터/정적 파일들 -->
+	<ItemGroup>
+		<Content Include="Data\certificates.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Data\scenario.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\Map\index.html">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\Bot.png">
@@ -62,24 +72,37 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\sendblue.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\돋보기.drawio.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\뒤로가기파랑.drawio.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\뒤로가기하양.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\엑스버튼.drawio.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\체크버튼.drawio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\하얀종이비행기.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Views\뒤로가기파랑.drawio.png" />
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Compile Update="Converters\StatusToColorConverter.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

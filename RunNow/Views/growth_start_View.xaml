@@ -209,7 +209,7 @@
                     Background="#B0C4DE"
                     FontWeight="Bold"        
                     Foreground="white"                    
-                    Content="플래닛 만들기"
+                    Content="{Binding Wantjobtext}"
                     FontSize="30"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"

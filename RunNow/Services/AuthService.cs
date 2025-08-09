@@ -53,7 +53,7 @@ namespace RunNow.Services
         {
             JObject json = new JObject()
             {
-                ["protocol"] = "5_0",
+                ["protocol"] = "9_0",
                 ["user_id"] = User_id
             };
 
