@@ -158,6 +158,7 @@
             <!-- 하단 네비게이션 -->
             <lowbar:BottomNav Grid.Row="2"/>
         </Grid>
+        <!--두번째 레이아웃-->
         <!--달력!-->
         <Grid   x:Name="Grid_calendar"
        Visibility="{Binding shareDataService.IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}">
@@ -289,6 +290,16 @@
                 </Grid>
             </Border>
         </Grid>
-
+        <!--세번째 레이아웃-->
+        <Grid Visibility="{Binding Popup, Converter={StaticResource BoolToVisibilityConverter}}">
+            <!-- 투명 배경 -->
+            <Rectangle Fill="Transparent">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding RectanglePupupClickCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Rectangle>
+        </Grid>
     </Grid>
 </UserControl>

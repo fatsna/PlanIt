@@ -55,6 +55,8 @@ namespace RunNow.ViewModels
         [ObservableProperty] private int nightCnt = 8;
         [ObservableProperty] private int offCnt = 6;
         [ObservableProperty] private string scheduleSummaryText;
+        [ObservableProperty] private bool popup = false; // 날짜눌렀을때 팝업
+
         public ICommand RectangleMouseDownCommand { get; }
 
         private void GenerateCalendar(DateTime targetDate)
@@ -109,6 +111,7 @@ namespace RunNow.ViewModels
 
             Console.WriteLine($"[Model] {day.Date.Value:yyyy-MM-dd} 클릭됨");
 
+            this.Popup = true; // 팝업 보이게!
             //// 테스트 데이터 생성
             //var testModel = new WorkRequestManager(_socket, _session)
             //{
@@ -166,6 +169,18 @@ namespace RunNow.ViewModels
             this._navigationStore.CurrentViewModel =
                 this._serviceProvider.GetRequiredService<Growth_My_ViewModel>();
         }
+        [RelayCommand] private void RectanglePupup() // 달력팝업 숨기기
+        {
+            this.Popup = false;
+        }
 
+        [RelayCommand] private void goal_finish()
+        {
+            string id = this.shareDataService.User_id;
+            int Growth_id = this.shareDataService.Growth_ID;
+            string goal = "";
+            // 서버에게 11_0 목표달성 요청하기!
+            this._authService.PlanIT_goal(id, Growth_id, goal);
+        }
     }
 }
