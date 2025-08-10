@@ -1,16 +1,59 @@
-#include "server.h"
+ï»¿#include "server.h"
 #include "parsing_Json.h"
+#include "db_class.h"
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <nlohmann/json.hpp>
 #include <iostream>
 #include <thread>
 #include <mutex>
+#include <windows.h>
 
 #pragma comment(lib, "ws2_32.lib")
 
 using namespace std;
 
+// TcpServerì˜ DB ë¡œê·¸ì¸ ì²´í¬ í•¨ìˆ˜ êµ¬í˜„
+bool TcpServer::checkLoginFromDB(const std::string& id, const std::string& pw) {
+    return db.checkLoginFromDB(id, pw);
+}
+// TcpServerì˜ DB íšŒì›ê°€ì… êµ¬í˜„
+bool TcpServer::insertUserToDB(const RequestHandler::Signup& u) {
+    return db.insertUserToDB(u);
+}
+// TcpServerì˜ DB ì–¼êµ´ë¡œê·¸ì¸
+std::string TcpServer::findUserByFaceVector(const std::vector<float>& faceVec) {
+    return db.findUserByFace(faceVec);  // DBClass í˜¸ì¶œ
+}
+// TcpServerì˜ DB ID ì¤‘ë³µ í™•ì¸
+bool TcpServer::isUserIdExists(const std::string& id) {
+    return db.isUserIdExists(id);
+}
+// TcpServerì˜ DB ì¢…í•©ê²°ê³¼ ì €ì¥
+bool TcpServer::insertUserTotalResult(const RequestHandler::TotalResult& r)
+{
+    return db.insertUserTotalResult(r);
+}
+// TcpServerì˜ DB ì¢…í•©ê²°ê³¼ (ì¶”ì²œ & ì§ì—… í…Œì´ë¸” 1)
+bool TcpServer::insertUserTotalResultWithId(const RequestHandler::TotalResult& r, uint64_t& out_res_id) {
+    return db.insertUserTotalResultWithId(r, out_res_id);
+}
+// TcpServerì˜ DB ì¢…í•©ê²°ê³¼ (ì¶”ì²œ & ì§ì—… í…Œì´ë¸” 2)
+bool TcpServer::insertRecommendedJobs(uint64_t res_id,
+    const std::vector<RequestHandler::RecommendedJob>& jobs) {
+    return db.insertRecommendedJobs(res_id, jobs);
+}
+
+// TcpServerì˜ DB ì´ë ¥ì„œê´€ë¦¬ ì €ì¥
+bool TcpServer::upsertUserCV(const RequestHandler::Resume& cv, uint64_t& out_cv_id) {
+    return db.upsertUserCV(cv, out_cv_id);
+}
+
+
+
+// ============================================================
+// TcpServer ìƒì„±ì / ì†Œë©¸ì
+// ============================================================
 TcpServer::TcpServer(int port)
     : port_(port), server_fd_(INVALID_SOCKET), python_fd_(INVALID_SOCKET), running_(false) {
 }
@@ -19,7 +62,9 @@ TcpServer::~TcpServer() {
     stop();
 }
 
-// ===== ¼ÒÄÏ »ı¼º =====
+// ============================================================
+// Winsock ì´ˆê¸°í™” ë° ì„œë²„ ì†Œì¼“ ìƒì„±
+// ============================================================
 bool TcpServer::createSocket() {
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
@@ -28,14 +73,16 @@ bool TcpServer::createSocket() {
     }
     server_fd_ = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd_ == INVALID_SOCKET) {
-        cerr << "socket ½ÇÆĞ: " << WSAGetLastError() << endl;
+        cerr << "socket ì‹¤íŒ¨: " << WSAGetLastError() << endl;
         WSACleanup();
         return false;
     }
     return true;
 }
 
-// ===== ¼ÒÄÏ ¹ÙÀÎµù =====
+// ============================================================
+// ì„œë²„ ì†Œì¼“ ë°”ì¸ë”©
+// ============================================================
 bool TcpServer::bindSocket() {
     sockaddr_in address{};
     address.sin_family = AF_INET;
@@ -52,126 +99,198 @@ bool TcpServer::bindSocket() {
     return true;
 }
 
-// ===== Å¬¶óÀÌ¾ğÆ® ¿¬°á ´ë±â ½ÃÀÛ =====
+// ============================================================
+// ì„œë²„ ì†Œì¼“ ë¦¬ìŠ¤ë‹ ì‹œì‘
+// ============================================================
 bool TcpServer::listenSocket() {
     return listen(server_fd_, 5) != SOCKET_ERROR;
 }
 
-// ===== WPF ¿äÃ» Ã³¸® =====
-void TcpServer::handleClient(int client_fd) {
-    char buffer[4096];
-    int bytes;
-
-    // TcpServer Æ÷ÀÎÅÍ ³Ñ°Ü¼­ RequestHandler »ı¼º
-    RequestHandler handler(this);
-
-    while ((bytes = recv(client_fd, buffer, sizeof(buffer), 0)) > 0) {
-        string jsonStr(buffer, bytes);
-        cout << "[C++] WPF·ÎºÎÅÍ ¹ŞÀº JSON: " << jsonStr << endl;
-        handler.process(client_fd, python_fd_, jsonStr, client_ip_);
+// ============================================================
+// ì „ì²´ ë°ì´í„° ì „ì†¡ í•¨ìˆ˜ (ê¸¸ì´/ë³¸ë¬¸ í¬í•¨ ì „ì†¡ ë³´ì¡° í•¨ìˆ˜)
+// ============================================================
+bool TcpServer::sendAll(SOCKET sock, const char* data, int length) {
+    int totalSent = 0;
+    while (totalSent < length) {
+        int sent = send(sock, data + totalSent, length - totalSent, 0);
+        if (sent <= 0) return false; // ì˜¤ë¥˜ or ì—°ê²° ì¢…ë£Œ
+        totalSent += sent;
     }
-
-    if (bytes == SOCKET_ERROR) {
-        cerr << "recv failed: " << WSAGetLastError() << endl;
-    }
-    else if (bytes == 0) {
-        cout << "Client disconnected gracefully." << endl;
-    }
-    closesocket(client_fd);
-    cout << "Client disconnected." << endl;
+    return true;
 }
 
-// ===== Python¿¡ ¿äÃ» º¸³»°í ÀÀ´ä ¹Ş±â =====
-//string TcpServer::sendToPythonAndReceive(const string& jsonStr) {
-//    if (python_fd_ == INVALID_SOCKET) {
-//        cerr << "[C++] Python ¹Ì¿¬°á »óÅÂ!" << endl;
-//        return R"({"PROTOCOL":999,"TEXT":"Python not connected"})";
-//    }
-//
-//    uint32_t len = htonl((uint32_t)jsonStr.size());
-//    send(python_fd_, (char*)&len, sizeof(len), 0);
-//    send(python_fd_, jsonStr.c_str(), (int)jsonStr.size(), 0);
-//
-//    uint32_t respLenNet;
-//    if (recv(python_fd_, (char*)&respLenNet, sizeof(respLenNet), MSG_WAITALL) <= 0) {
-//        cerr << "[C++] Python ÀÀ´ä ±æÀÌ ¼ö½Å ½ÇÆĞ" << endl;
-//        return "";
-//    }
-//    uint32_t respLen = ntohl(respLenNet);
-//
-//    string buffer(respLen, '\0');
-//    recv(python_fd_, &buffer[0], respLen, MSG_WAITALL);
-//    return buffer;
-//}
+// ============================================================
+// ì •í™•í•œ ê¸¸ì´ë§Œí¼ ìˆ˜ì‹  í•¨ìˆ˜ (ê¸¸ì´/ë³¸ë¬¸ í¬í•¨ ìˆ˜ì‹  ë³´ì¡° í•¨ìˆ˜)
+// ============================================================
+
+bool TcpServer::recvAll(SOCKET sock, char* buffer, int length) {
+    int totalRecv = 0;
+    while (totalRecv < length) {
+        int received = recv(sock, buffer + totalRecv, length - totalRecv, 0);
+        if (received <= 0) return false; // ì˜¤ë¥˜ or ì—°ê²° ì¢…ë£Œ
+        totalRecv += received;
+
+        //ë””ë²„ê¹…ìš©
+        std::cout << "[recvAll] ëˆ„ì  ìˆ˜ì‹  ë°”ì´íŠ¸: " << totalRecv
+            << "/" << length << " (ì´ë²ˆ ìˆ˜ì‹ : " << received << ")" << std::endl;
+    }
+    return true;
+}
+
+// ============================================================
+// WPF í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ ì²˜ë¦¬
+// (ê¸¸ì´ + ë³¸ë¬¸ êµ¬ì¡° ìœ ì§€)
+// ============================================================
+void TcpServer::handleClient(int client_fd) {
+    std::cout << "[C++] í´ë¼ì´ì–¸íŠ¸ ì—°ê²°ë¨" << endl;
+
+    //ë””ë²„ê¹…
+    static int msgCount = 0; // ì „ì²´ ìˆ˜ì‹  ë©”ì‹œì§€ ì¹´ìš´í„°
+
+    while (true) {
+        // 1. ê¸¸ì´(4ë°”ì´íŠ¸) ìˆ˜ì‹ 
+        uint32_t msgLenNet; // ë„¤íŠ¸ì›Œí¬ì—ì„œ ë°›ì€ ê¸¸ì´ (Big Endian)
+        if (!recvAll(client_fd, (char*)&msgLenNet, sizeof(msgLenNet))) {
+            cerr << "[C++] ê¸¸ì´ ìˆ˜ì‹  ì‹¤íŒ¨" << endl;
+            break;
+        }
+
+        uint32_t msgLen = ntohl(msgLenNet); // Host Endianìœ¼ë¡œ ë³€í™˜
+
+        // ê¸¸ì´ ê°’ ìœ íš¨ì„± ê²€ì‚¬
+        if (msgLen == 0 || msgLen > 10 * 1024 * 1024) {
+            cerr << "[C++] ë¹„ì •ìƒì ì¸ ë©”ì‹œì§€ ê¸¸ì´: " << msgLen << endl;
+            break;
+        }
+        // 2. JSON ë³¸ë¬¸ ìˆ˜ì‹ 
+        string jsonStr(msgLen, '\0'); // ì •í™•í•œ í¬ê¸°ë§Œí¼ ë¬¸ìì—´ ë²„í¼ ìƒì„±
+        if (!recvAll(client_fd, &jsonStr[0], msgLen)) {
+            cerr << "[C++] ë³¸ë¬¸ ìˆ˜ì‹  ì‹¤íŒ¨" << endl;
+            break;
+        }
+        std::cout << "[C++] ë°›ì€ JSON: " << jsonStr << endl;
+
+        //ë””ë²„ê¹…
+        msgCount++;
+        std::cout << "[C++] (" << msgCount << ") ë°›ì€ JSON ì¼ë¶€: "
+            << jsonStr.substr(0, 200) << "..." << std::endl;
 
 
-//Å×½ºÆ®Å×½ºÆ®Å×½ºÆ®
-// ===== Python¿¡ ¿äÃ» º¸³»°í ÀÀ´ä ¹Ş±â =====
+        // ===== 3. í”„ë¡œí† ì½œ ìš”ì²­ ì²˜ë¦¬ =====
+        RequestHandler handler(this); //this : TcpServerê°ì²´ì˜ í¬ì¸í„°
+
+        string aiResponse = handler.process( //processê°€ ê²°ê³¼ë¥¼ ë¬¸ìì—´ë¡œ ë°˜í™˜
+            client_fd, 
+            python_fd_, 
+            jsonStr,
+            ""
+            //getClientIP(client_fd)
+        );
+
+        // 4. ì‘ë‹µ ê¸¸ì´(4ë°”ì´íŠ¸) + ë³¸ë¬¸ ì „ì†¡
+        uint32_t respLenNet = htonl((uint32_t)aiResponse.size());
+        if (!sendAll(client_fd, (char*)&respLenNet, sizeof(respLenNet))) {
+            cerr << "[C++] ì‘ë‹µ ê¸¸ì´ ì „ì†¡ ì‹¤íŒ¨" << endl;
+            break;
+        }
+        if (!sendAll(client_fd, aiResponse.c_str(), (int)aiResponse.size())) {
+            cerr << "[C++] ì‘ë‹µ ë°ì´í„° ì „ì†¡ ì‹¤íŒ¨" << endl;
+            break;
+        }
+        //std::cout << "[C++] ì‘ë‹µ ì „ì†¡ ì™„ë£Œ" << endl;
+
+        //ë””ë²„ê¹…
+        std::cout << "[C++] ì‘ë‹µ ì „ì†¡ ì™„ë£Œ (ê¸¸ì´: " << aiResponse.size() << " bytes)" << std::endl;
+        std::cout << "[C++] ì‘ë‹µ ì „ì†¡ ì™„ë£Œ (ë‚´ìš©: " << aiResponse << std::endl;
+      
+    }
+    closesocket(client_fd);
+    std::cout << "[C++] í´ë¼ì´ì–¸íŠ¸ ì†Œì¼“ ì¢…ë£Œ" << endl;
+}
+
+// ============================================================
+// Pythonì— ìš”ì²­ ë³´ë‚´ê³  ì‘ë‹µ ë°›ê¸°
+// (ê¸¸ì´ + ë³¸ë¬¸ êµ¬ì¡° ìœ ì§€)
+// ============================================================
 string TcpServer::sendToPythonAndReceive(const string& jsonStr) {
-    // Python ¼ÒÄÏÀÌ ¿¬°áµÇ¾î ÀÖ´ÂÁö È®ÀÎ
     if (python_fd_ == INVALID_SOCKET) {
-        cerr << "[C++] Python ¹Ì¿¬°á »óÅÂ!" << endl;
+        cerr << "[C++] Python ë¯¸ì—°ê²° ìƒíƒœ!" << endl;
         return R"({"PROTOCOL":999,"TEXT":"Python not connected"})";
     }
 
-    // [Å×½ºÆ®¿ë] ¸¸¾à jsonStrÀÌ ºñ¾îÀÖÀ¸¸é ±âº» Å×½ºÆ® JSON Àü¼Û
+    // ìš”ì²­ ë°ì´í„° ì¤€ë¹„
     string sendData = jsonStr.empty()
-        ? R"({"PROTOCOL":0,"TEXT":"PING TEST"})" // ±âº» Å×½ºÆ® ¿äÃ»
+        ? R"({"PROTOCOL":0,"TEXT":"PING TEST"})"
         : jsonStr;
 
-    cout << "[C++] PythonÀ¸·Î º¸³¾ µ¥ÀÌÅÍ: " << sendData << endl;
+    std::cout << "[C++] Pythonìœ¼ë¡œ ë³´ë‚¼ ë°ì´í„°: " << sendData << endl;
 
-    // ===== 1. µ¥ÀÌÅÍ ±æÀÌ(4¹ÙÀÌÆ®) Àü¼Û =====
+    // 1. ê¸¸ì´ ì „ì†¡
     uint32_t len = htonl((uint32_t)sendData.size());
-    int sentLen = send(python_fd_, (char*)&len, sizeof(len), 0);
-    if (sentLen <= 0) {
-        cerr << "[C++] Python ±æÀÌ Àü¼Û ½ÇÆĞ: " << WSAGetLastError() << endl;
-        return "";
+    if (!sendAll(python_fd_, (char*)&len, sizeof(len))) {
+        cerr << "[C++] Python ê¸¸ì´ ì „ì†¡ ì‹¤íŒ¨" << endl;
+        return R"({"protocol":"100_2","TEXT":"Send length failed"})"; // ì‹¤íŒ¨
     }
 
-    // ===== 2. ½ÇÁ¦ µ¥ÀÌÅÍ Àü¼Û =====
-    int sentData = send(python_fd_, sendData.c_str(), (int)sendData.size(), 0);
-    if (sentData <= 0) {
-        cerr << "[C++] Python µ¥ÀÌÅÍ Àü¼Û ½ÇÆĞ: " << WSAGetLastError() << endl;
-        return "";
+    // 2. ë³¸ë¬¸ ì „ì†¡
+    if (!sendAll(python_fd_, sendData.c_str(), (int)sendData.size())) {
+        cerr << "[C++] Python ë°ì´í„° ì „ì†¡ ì‹¤íŒ¨" << endl;
+        return R"({"protocol":"100_2","TEXT":"Send data failed"})"; // ì‹¤íŒ¨
     }
-    cout << "[C++] PythonÀ¸·Î µ¥ÀÌÅÍ Àü¼Û ¿Ï·á (" << sentData << " bytes)" << endl;
+    std::cout << "[C++] Python ë°ì´í„° ì „ì†¡ ì™„ë£Œ (" << sendData.size() << " bytes)" << endl;
 
-    // ===== 3. Python ÀÀ´ä ±æÀÌ(4¹ÙÀÌÆ®) ¼ö½Å =====
+    // 3. ì‘ë‹µ ê¸¸ì´ ìˆ˜ì‹ 
     uint32_t respLenNet;
-    int recvLen = recv(python_fd_, (char*)&respLenNet, sizeof(respLenNet), MSG_WAITALL);
-    if (recvLen <= 0) {
-        cerr << "[C++] Python ÀÀ´ä ±æÀÌ ¼ö½Å ½ÇÆĞ" << endl;
-        return "";
+    if (!recvAll(python_fd_, (char*)&respLenNet, sizeof(respLenNet))) {
+        cerr << "[C++] Python ì‘ë‹µ ê¸¸ì´ ìˆ˜ì‹  ì‹¤íŒ¨" << endl;
+        return R"({"protocol":"100_2","TEXT":"Recv length failed"})"; // ì‹¤íŒ¨
     }
     uint32_t respLen = ntohl(respLenNet);
 
-    // ===== 4. Python ÀÀ´ä º»¹® ¼ö½Å =====
-    string buffer(respLen, '\0');
-    int recvData = recv(python_fd_, &buffer[0], respLen, MSG_WAITALL);
-    if (recvData <= 0) {
-        cerr << "[C++] Python ÀÀ´ä µ¥ÀÌÅÍ ¼ö½Å ½ÇÆĞ" << endl;
-        return "";
+    // ì‘ë‹µ ê¸¸ì´ ìœ íš¨ì„± ì²´í¬
+    if (respLen == 0 || respLen > 1024 * 1024) {
+        cerr << "[C++] Python ì‘ë‹µ ê¸¸ì´ ë¹„ì •ìƒ: " << respLen << endl;
+        return R"({"protocol":"100_2","TEXT":"Invalid response length"})"; // ì‹¤íŒ¨
     }
 
-    cout << "[C++] Python ÀÀ´ä ¼ö½Å ¿Ï·á (" << recvData << " bytes)" << endl;
-    cout << "[C++] ¹ŞÀº ÀÀ´ä: " << buffer << endl;
+    // 4. ì‘ë‹µ ë³¸ë¬¸ ìˆ˜ì‹ ë©”
+    string buffer(respLen, '\0');
+    if (!recvAll(python_fd_, &buffer[0], respLen)) {
+        cerr << "[C++] Python ì‘ë‹µ ë°ì´í„° ìˆ˜ì‹  ì‹¤íŒ¨" << endl;
+        return R"({"protocol":"100_2","TEXT":"Recv data failed"})"; // ì‹¤íŒ¨
+    }
 
-    return buffer;
+    std::cout << "[C++] Python ì‘ë‹µ ìˆ˜ì‹  ì™„ë£Œ (" << respLen << " bytes)" << endl;
+    std::cout << "[C++] ë°›ì€ ì‘ë‹µ: " << buffer << endl;
+
+    return buffer;// Python JSON ê·¸ëŒ€ë¡œ ë°˜í™˜
 }
 
-// ===== ¼­¹ö ½ÃÀÛ =====
+// ============================================================
+// ì„œë²„ ì‹œì‘
+// ============================================================
 bool TcpServer::start() {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
+    // 1. DB ì—°ê²°
+    if (!db.connectDB("127.0.0.1", "root", "1234", "PLANIT", 3306)) {
+        return false;
+    }
+
     if (!createSocket()) return false;
     if (!bindSocket()) return false;
     if (!listenSocket()) return false;
 
     running_ = true;
     thread(&TcpServer::acceptClients, this).detach();
-    cout << "[C++] ¼­¹ö Æ÷Æ® " << port_ << "¿¡¼­ ´ë±âÁß..." << endl;
+    std::cout << "[C++] ì„œë²„ í¬íŠ¸ " << port_ << "ì—ì„œ ëŒ€ê¸°ì¤‘..." << endl;
     return true;
 }
 
+// ============================================================
+// ì„œë²„ ì •ì§€
+// ============================================================
 void TcpServer::stop() {
     running_ = false;
     if (server_fd_ != INVALID_SOCKET) closesocket(server_fd_);
@@ -183,7 +302,10 @@ void TcpServer::stop() {
     WSACleanup();
 }
 
-// ===== Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¼ö¶ô =====
+// ============================================================
+// í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ìˆ˜ë½
+// (ì²« ë²ˆì§¸ ì ‘ì†ì€ Pythonìœ¼ë¡œ ê°„ì£¼)
+// ============================================================
 void TcpServer::acceptClients() {
     while (running_) {
         sockaddr_in clientAddr{};
@@ -196,514 +318,16 @@ void TcpServer::acceptClients() {
 
         char ip_str[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &(clientAddr.sin_addr), ip_str, INET_ADDRSTRLEN);
-        cout << "[C++] »õ ¿¬°á: " << ip_str << endl;
+        std::cout << "[C++] ìƒˆ ì—°ê²°: " << ip_str << endl;
 
+        // ì²« ë²ˆì§¸ ì—°ê²°ì€ Pythonìœ¼ë¡œ ì²˜ë¦¬
         if (python_fd_ == INVALID_SOCKET) {
             python_fd_ = client_fd;
-            cout << "[C++] Python ¿¬°á ¿Ï·á!" << endl;
-            string jsonStr;
-            string sendData = jsonStr.empty()
-                ? R"({"PROTOCOL":0,"TEXT":"3+3=?"})" // ±âº» Å×½ºÆ® ¿äÃ»
-                : jsonStr;
-
-            sendToPythonAndReceive(sendData);
+            std::cout << "[C++] Python ì—°ê²° ì™„ë£Œ!" << endl;
         }
         else {
+            // ì´í›„ ì—°ê²°ì€ WPF í´ë¼ì´ì–¸íŠ¸ë¡œ ì²˜ë¦¬
             thread(&TcpServer::handleClient, this, client_fd).detach();
         }
     }
 }
-
-
-
-//#include "server.h"
-//#include "parsing_Json.h"
-//// Windows Àü¿ë
-//#include <winsock2.h>
-//#include <ws2tcpip.h>
-//#pragma comment(lib, "ws2_32.lib")
-//#include <cstring>
-//#include <fstream>
-//#include <nlohmann/json.hpp>
-//using namespace std;
-//
-//TcpServer::TcpServer(int port)
-//    : port_(port), server_fd_(INVALID_SOCKET), python_fd_(INVALID_SOCKET), running_(false) {
-//}
-//
-//TcpServer::~TcpServer() {
-//    stop();
-//}
-//
-//// ===== ¼ÒÄÏ »ı¼º =====
-//bool TcpServer::createSocket() {
-//    WSADATA wsaData;
-//    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-//        cerr << "WSAStartup failed: " << WSAGetLastError() << endl;
-//        return false;
-//    }
-//    server_fd_ = socket(AF_INET, SOCK_STREAM, 0);
-//    if (server_fd_ == INVALID_SOCKET) {
-//        cerr << "socket ½ÇÆĞ: " << WSAGetLastError() << endl;
-//        WSACleanup();
-//        return false;
-//    }
-//    return true;
-//}
-//
-//// ===== ¼ÒÄÏ ¹ÙÀÎµù =====
-//bool TcpServer::bindSocket() {
-//    sockaddr_in address{};
-//    address.sin_family = AF_INET;
-//    address.sin_addr.s_addr = INADDR_ANY;
-//    address.sin_port = htons(port_);
-//
-//    int opt = 1;
-//    setsockopt(server_fd_, SOL_SOCKET, SO_REUSEADDR, (const char*)&opt, sizeof(opt));
-//
-//    if (::bind(server_fd_, reinterpret_cast<struct sockaddr*>(&address), sizeof(address)) == SOCKET_ERROR) {
-//        cerr << "bind failed: " << WSAGetLastError() << endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
-//// ===== Å¬¶óÀÌ¾ğÆ® ¿¬°á ´ë±â ½ÃÀÛ =====
-//bool TcpServer::listenSocket() {
-//    return listen(server_fd_, 5) != SOCKET_ERROR;
-//}
-//
-//// [»èÁ¦] Python AI ¼­¹ö¿¡ Á÷Á¢ ¿¬°áÇÏ´Â ÄÚµå (connectToPythonServer) ¿ÏÀüÈ÷ Á¦°Å
-//
-//// ===== WPF ¿äÃ» Ã³¸® =====
-//void TcpServer::handleClient(int client_fd) { // [¼öÁ¤] ±âÁ¸ int ¡æ SOCKET·Î ÅëÀÏ
-//    char buffer[4096];
-//    int bytes;
-//
-//    // ¼­¹ö Æ÷ÀÎÅÍ ³Ñ°Ü¼­ RequestHandler »ı¼º
-//    RequestHandler handler(this);
-//
-//    while ((bytes = recv(client_fd, buffer, sizeof(buffer), 0)) > 0) {
-//        std::string jsonStr(buffer, bytes);
-//        cout << "[C++] WPF·ÎºÎÅÍ ¹ŞÀº JSON: " << jsonStr << endl;
-//        std::cout << "client_fd: " << client_fd << std::endl;
-//
-//        //// [¼öÁ¤] ±âÁ¸ connectToPythonServer() ´ë½Å ÀÌ¹Ì ¿¬°áµÈ python_fd_ »ç¿ë
-//        //string aiResponse = sendToPythonAndReceive(jsonStr);
-//        //send(client_fd, aiResponse.c_str(), (int)aiResponse.size(), 0);
-//        // 
-//        // JSON Ã³¸®
-//        handler.process(client_fd, python_fd_, jsonStr, client_ip_);
-//    }
-//    if (bytes == SOCKET_ERROR) {
-//        std::cerr << "recv failed: " << WSAGetLastError() << std::endl;
-//    }
-//    else if (bytes == 0) {
-//        std::cout << "Client disconnected gracefully." << std::endl;
-//    }
-//    closesocket(client_fd);
-//    std::cout << "Client disconnected." << std::endl;
-//}
-//
-//// ===== Python¿¡ ¿äÃ» º¸³»°í ÀÀ´ä ¹Ş±â =====
-//string TcpServer::sendToPythonAndReceive(const string& jsonStr) { // [¼öÁ¤] python_fd_ Àç»ç¿ë
-//    if (python_fd_ == INVALID_SOCKET) {
-//        cerr << "[C++] Python ¹Ì¿¬°á »óÅÂ!" << endl;
-//        return R"({"PROTOCOL":999,"TEXT":"Python not connected"})";
-//    }
-//
-//    uint32_t len = htonl((uint32_t)jsonStr.size());
-//    send(python_fd_, (char*)&len, sizeof(len), 0);
-//    send(python_fd_, jsonStr.c_str(), (int)jsonStr.size(), 0);
-//
-//    uint32_t respLenNet;
-//    if (recv(python_fd_, (char*)&respLenNet, sizeof(respLenNet), MSG_WAITALL) <= 0) {
-//        cerr << "[C++] Python ÀÀ´ä ±æÀÌ ¼ö½Å ½ÇÆĞ" << endl;
-//        return "";
-//    }
-//    uint32_t respLen = ntohl(respLenNet);
-//
-//    string buffer(respLen, '\0');
-//    recv(python_fd_, &buffer[0], respLen, MSG_WAITALL);
-//    return buffer;
-//}
-//
-//// ===== RequestHandler =====
-//void RequestHandler::process(int client_fd, int python_fd, const std::string& jsonStr, std::string client_ip) {
-//    std::cout << "[RequestHandler] process È£ÃâµÊ" << std::endl;
-//    std::cout << "Client FD: " << client_fd << ", Python FD: " << python_fd << std::endl;
-//    std::cout << "Client IP: " << client_ip << std::endl;
-//    std::cout << "¹ŞÀº JSON: " << jsonStr << std::endl;
-//
-//    std::string aiResponse = serverInstance.sendToPythonAndReceive(jsonStr);
-//
-//    int sendResult = send(client_fd, aiResponse.c_str(), (int)aiResponse.size(), 0);
-//    if (sendResult == SOCKET_ERROR) {
-//        std::cerr << "[¿À·ù] Å¬¶óÀÌ¾ğÆ® ÀÀ´ä Àü¼Û ½ÇÆĞ: " << WSAGetLastError() << std::endl;
-//    }
-//    else {
-//        std::cout << "[¼º°ø] Å¬¶óÀÌ¾ğÆ®·Î ÀÀ´ä Àü¼Û ¿Ï·á" << std::endl;
-//    }
-//}
-//
-//// ===== ¼­¹ö ½ÃÀÛ =====
-//bool TcpServer::start() {
-//    if (!createSocket()) return false;
-//    if (!bindSocket()) return false;
-//    if (!listenSocket()) return false;
-//
-//    running_ = true;
-//    thread(&TcpServer::acceptClients, this).detach(); // [¼öÁ¤] Python + WPF ¸ğµÎ ¼ö¶ô
-//    cout << "[C++] ¼­¹ö Æ÷Æ® " << port_ << "¿¡¼­ ´ë±âÁß..." << endl;
-//    return true;
-//}
-//
-//void TcpServer::stop() {
-//    running_ = false;
-//    if (server_fd_ != INVALID_SOCKET) closesocket(server_fd_);
-//    if (python_fd_ != INVALID_SOCKET) closesocket(python_fd_);
-//    if (pythonReceiverThread_.joinable()) pythonReceiverThread_.join();
-//    lock_guard<mutex> lock(threadMutex_);
-//    for (auto& t : clientThreads_) if (t.joinable()) t.join();
-//    clientThreads_.clear();
-//    WSACleanup();
-//}
-//
-//// ===== Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¼ö¶ô =====
-//void TcpServer::acceptClients() {
-//    while (running_) {
-//        sockaddr_in clientAddr{};
-//        int addrlen = sizeof(clientAddr);
-//        SOCKET client_fd = accept(server_fd_, (struct sockaddr*)&clientAddr, &addrlen);
-//        if (client_fd == INVALID_SOCKET) {
-//            cerr << "accept failed: " << WSAGetLastError() << endl;
-//            continue;
-//        }
-//
-//        char ip_str[INET_ADDRSTRLEN];
-//        inet_ntop(AF_INET, &(clientAddr.sin_addr), ip_str, INET_ADDRSTRLEN);
-//        cout << "[C++] »õ ¿¬°á: " << ip_str << endl;
-//
-//        // [¼öÁ¤] Ã¹ ¹øÂ° ¿¬°áÀ» Python ¿¬°á·Î °£ÁÖ
-//        if (python_fd_ == INVALID_SOCKET) {
-//            python_fd_ = client_fd;
-//            cout << "[C++] Python ¿¬°á ¿Ï·á!" << endl;
-//        }
-//        else {
-//            // [¼öÁ¤] ±× ¿Ü ¿¬°áÀº WPF Å¬¶óÀÌ¾ğÆ® Ã³¸®
-//            thread(&TcpServer::handleClient, this, client_fd).detach();
-//        }
-//    }
-//}
-//
-
-
-
-//
-//
-//// ===== »ı¼ºÀÚ =====
-//// Æ÷Æ® ¹øÈ£¸¦ ¹Ş¾Æ¼­ ÃÊ±âÈ­, ¼­¹ö ¼ÒÄÏÀº ¾ÆÁ÷ »ı¼º Àü(-1)
-//TcpServer::TcpServer(int port)
-//    : port_(port), server_fd_(INVALID_SOCKET), python_fd_(INVALID_SOCKET), running_(false) {
-//}
-//
-//TcpServer::~TcpServer() {
-//    stop();
-//}
-//
-//// ===== ¼ÒÄÏ »ı¼º =====
-//bool TcpServer::createSocket() {
-//
-//    // Winsock ÃÊ±âÈ­
-//    WSADATA wsaData;
-//    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
-//        cerr << "WSAStartup failed: " << WSAGetLastError() << endl;
-//        return false;
-//    }
-//
-//    server_fd_ = socket(AF_INET, SOCK_STREAM, 0);
-//    if (server_fd_ == INVALID_SOCKET) {
-//        cerr << "socket ½ÇÆĞ: " << WSAGetLastError() << endl;
-//        WSACleanup();
-//        return false;
-//    }
-//    return true;
-//}
-//
-//// ===== ¼ÒÄÏ ¹ÙÀÎµù =====
-//bool TcpServer::bindSocket() {
-//    sockaddr_in address{};
-//    address.sin_family = AF_INET;
-//    address.sin_addr.s_addr = INADDR_ANY;
-//    address.sin_port = htons(port_);
-//
-//    int opt = 1;
-//    // Æ÷Æ® Àç»ç¿ë ¿É¼Ç ¼³Á¤ (¼­¹ö Àç½ÃÀÛ ½Ã TIME_WAIT ¹æÁö)
-//    setsockopt(server_fd_, SOL_SOCKET, SO_REUSEADDR, (const char*)&opt, sizeof(opt));
-//
-//    if (::bind(server_fd_, reinterpret_cast<struct sockaddr*>(&address), sizeof(address)) == SOCKET_ERROR) {
-//        std::cerr << "bind failed: " << WSAGetLastError() << std::endl;
-//        return false;
-//    }
-//    return true;
-//}
-//
-//// ===== Å¬¶óÀÌ¾ğÆ® ¿¬°á ´ë±â ½ÃÀÛ =====
-//bool TcpServer::listenSocket() {
-//    return listen(server_fd_, 5) != SOCKET_ERROR;
-//}
-//
-//// ===== Python AI ¼­¹ö ¿¬°á =====
-////bool TcpServer::connectToPythonServer(const string& host, int port) {
-////    python_fd_ = socket(AF_INET, SOCK_STREAM, 0);
-////    if (python_fd_ == INVALID_SOCKET) {
-////        cerr << "[Python ¿¬°á] ¼ÒÄÏ »ı¼º ½ÇÆĞ: " << WSAGetLastError() << endl;
-////        return false;
-////    }
-////
-////    sockaddr_in serv_addr{};
-////    serv_addr.sin_family = AF_INET;
-////    serv_addr.sin_port = htons(port);
-////
-////    if (inet_pton(AF_INET, host.c_str(), &serv_addr.sin_addr) <= 0) {
-////        cerr << "[Python ¿¬°á] IP º¯È¯ ½ÇÆĞ" << endl;
-////        return false;
-////    }
-////
-////    if (connect(python_fd_, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR) {
-////        cerr << "[Python ¿¬°á] ½ÇÆĞ: " << WSAGetLastError() << endl;
-////        closesocket(python_fd_);
-////        python_fd_ = INVALID_SOCKET;
-////        return false;
-////    }
-////
-////    cout << "[Python ¿¬°á] ¼º°ø: " << host << ":" << port << endl;
-////    return true;
-////}
-//
-//
-//static const char* PYTHON_SERVER_IP = "127.0.0.1";
-//static const int   PYTHON_SERVER_PORT = 5000;
-//// WPF ¿äÃ» Ã³¸®
-//void TcpServer::handleClient(SOCKET client_fd) {
-//    char buffer[4096];
-//    int bytes;
-//    while ((bytes = recv(client_fd, buffer, sizeof(buffer), 0)) > 0) {
-//        string jsonStr(buffer, bytes);
-//        cout << "[C++] WPF·ÎºÎÅÍ ¹ŞÀº JSON: " << jsonStr << endl;
-//
-//        // ÀÌ¹Ì ¿¬°áµÈ python_fd_ »ç¿ë
-//        string aiResponse = sendToPythonAndReceive(jsonStr);
-//
-//        send(client_fd, aiResponse.c_str(), (int)aiResponse.size(), 0);
-//    }
-//    closesocket(client_fd);
-//}
-//
-//// Python¿¡ ¿äÃ» º¸³»°í ÀÀ´ä ¹Ş±â
-//string TcpServer::sendToPythonAndReceive(const string& jsonStr) {
-//    if (python_fd_ == INVALID_SOCKET) {
-//        cerr << "[C++] Python ¹Ì¿¬°á »óÅÂ!" << endl;
-//        return R"({"PROTOCOL":999,"TEXT":"Python not connected"})";
-//    }
-//
-//    // ¸Å¹ø »õ ¼ÒÄÏ »ı¼ºÇÏÁö ¾Ê°í python_fd_ Àç»ç¿ë
-//    uint32_t len = htonl((uint32_t)jsonStr.size());
-//    send(python_fd_, (char*)&len, sizeof(len), 0);
-//    send(python_fd_, jsonStr.c_str(), (int)jsonStr.size(), 0);
-//
-//    uint32_t respLenNet;
-//    if (recv(python_fd_, (char*)&respLenNet, sizeof(respLenNet), MSG_WAITALL) <= 0) {
-//        cerr << "[C++] Python ÀÀ´ä ±æÀÌ ¼ö½Å ½ÇÆĞ" << endl;
-//        return "";
-//    }
-//    uint32_t respLen = ntohl(respLenNet);
-//
-//    string buffer(respLen, '\0');
-//    recv(python_fd_, &buffer[0], respLen, MSG_WAITALL);
-//    return buffer;
-//}
-////std::string sendToPythonAndReceive(const std::string& userMessage)
-////{
-////    SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-////    if (sock == INVALID_SOCKET) {
-////        cerr << "[Python ¿¬°á] ¼ÒÄÏ »ı¼º ½ÇÆĞ: " << WSAGetLastError() << endl;
-////        return "";
-////    }
-////
-////    sockaddr_in serv_addr{};
-////    serv_addr.sin_family = AF_INET;
-////    serv_addr.sin_port = htons(PYTHON_SERVER_PORT);
-////    inet_pton(AF_INET, PYTHON_SERVER_IP, &serv_addr.sin_addr);
-////
-////    if (connect(sock, (sockaddr*)&serv_addr, sizeof(serv_addr)) == SOCKET_ERROR) {
-////        cerr << "[Python ¿¬°á] ½ÇÆĞ: " << WSAGetLastError() << endl;
-////        closesocket(sock);
-////        return "";
-////    }
-////
-////    // ±æÀÌ(4¹ÙÀÌÆ®) + µ¥ÀÌÅÍ Àü¼Û
-////    uint32_t dataLen = htonl((uint32_t)userMessage.size());
-////    send(sock, (char*)&dataLen, sizeof(dataLen), 0);
-////    send(sock, userMessage.c_str(), (int)userMessage.size(), 0);
-////
-////    // ÀÀ´ä ±æÀÌ ¼ö½Å
-////    uint32_t respLenNet;
-////    if (recv(sock, (char*)&respLenNet, sizeof(respLenNet), MSG_WAITALL) <= 0) {
-////        cerr << "[Python ¿¬°á] ÀÀ´ä ±æÀÌ ¼ö½Å ½ÇÆĞ" << endl;
-////        closesocket(sock);
-////        return "";
-////    }
-////    uint32_t respLen = ntohl(respLenNet);
-////
-////    // ÀÀ´ä º»¹® ¼ö½Å
-////    std::string buffer(respLen, '\0');
-////    int totalRead = 0;
-////    while (totalRead < (int)respLen) {
-////        int bytes = recv(sock, &buffer[totalRead], respLen - totalRead, 0);
-////        if (bytes <= 0) break;
-////        totalRead += bytes;
-////    }
-////
-////    closesocket(sock);
-////    return buffer;
-////}
-//
-//void RequestHandler::process(int client_fd, int python_fd, const std::string& jsonStr, std::string client_ip)
-//{
-//    std::cout << "[RequestHandler] process È£ÃâµÊ" << std::endl;
-//    std::cout << "Client FD: " << client_fd << ", Python FD: " << python_fd << std::endl;
-//    std::cout << "Client IP: " << client_ip << std::endl;
-//    std::cout << "¹ŞÀº JSON: " << jsonStr << std::endl;
-//
-//    // Python AI ¼­¹ö·Î ¿äÃ» Àü¼Û ¹× ÀÀ´ä ¼ö½Å
-//    std::string aiResponse = sendToPythonAndReceive(jsonStr);
-//
-//    // AI ¼­¹ö ÀÀ´äÀ» Å¬¶óÀÌ¾ğÆ®·Î Àü¼Û
-//    int sendResult = send(client_fd, aiResponse.c_str(), (int)aiResponse.size(), 0);
-//    if (sendResult == SOCKET_ERROR) {
-//        std::cerr << "[¿À·ù] Å¬¶óÀÌ¾ğÆ® ÀÀ´ä Àü¼Û ½ÇÆĞ: " << WSAGetLastError() << std::endl;
-//    }
-//    else {
-//        std::cout << "[¼º°ø] Å¬¶óÀÌ¾ğÆ®·Î ÀÀ´ä Àü¼Û ¿Ï·á" << std::endl;
-//    }
-//}
-//
-//// ===== ¼­¹ö ½ÃÀÛ =====
-//bool TcpServer::start() {
-//    if (!createSocket()) {
-//        cerr << "createSocket ½ÇÆĞ" << endl;
-//        return false;
-//    }
-//    if (!bindSocket()) {
-//        cerr << "bindSocket ½ÇÆĞ" << endl;
-//        return false;
-//    }
-//    if (!listenSocket()) {
-//        cerr << "listenSocket ½ÇÆĞ" << endl;
-//        return false;
-//    }
-//
-//    running_ = true;
-//
-//    // Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¼ö¶ô ½º·¹µå ½ÇÇà (¹é±×¶ó¿îµå)
-//    thread(&TcpServer::acceptClients, this).detach();
-//
-//    cout << "[C++] ¼­¹ö Æ÷Æ® " << port_ << "¿¡¼­ ´ë±âÁß..." << endl;
-//    return true;
-//}
-//
-//void TcpServer::stop() {
-//    running_ = false;
-//    cout << "¼ÒÄÏ´İ°í ½º·¹µå Á¾·á´ë±â";
-//
-//    // ¼­¹ö ¼ÒÄÏ ´İ±â
-//    if (server_fd_ != INVALID_SOCKET) {
-//        closesocket(server_fd_);
-//        server_fd_ = INVALID_SOCKET;
-//    }
-//    // ÆÄÀÌ½ã ¼­¹ö¿Í ¿¬°áµÈ ¼ÒÄÏ ´İ±â
-//    if (python_fd_ != INVALID_SOCKET) {
-//        closesocket(python_fd_);
-//        python_fd_ = INVALID_SOCKET;
-//    }
-//    // ÆÄÀÌ½ã ¼ö½Å ½º·¹µå Á¾·á ´ë±â
-//    if (pythonReceiverThread_.joinable()) {
-//        pythonReceiverThread_.join();
-//    }
-//    // ¸ğµç Å¬¶óÀÌ¾ğÆ® ½º·¹µå Á¾·á ´ë±â
-//    lock_guard<mutex> lock(threadMutex_);
-//    for (auto& t : clientThreads_) {
-//        if (t.joinable())
-//            t.join();
-//    }
-//    clientThreads_.clear();
-//
-//    // Winsock Á¾·á
-//    WSACleanup();
-//}
-//
-//// ===== Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ¼ö¶ô =====
-//void TcpServer::acceptClients() {
-//    while (running_) {
-//        sockaddr_in clientAddr{};
-//        //socklen_t addrlen = sizeof(clientAddr);
-//        int addrlen = sizeof(clientAddr);
-//
-//        // Å¬¶óÀÌ¾ğÆ® ¿¬°á ´ë±â
-//        SOCKET client_fd = accept(server_fd_, (struct sockaddr*)&clientAddr, &addrlen);
-//        if (client_fd == INVALID_SOCKET) {
-//            cerr << "accept failed: " << WSAGetLastError() << endl;
-//            continue;
-//        }
-//        // Å¬¶óÀÌ¾ğÆ® IP ¹®ÀÚ¿­·Î º¯È¯
-//        char ip_str[INET_ADDRSTRLEN];
-//        inet_ntop(AF_INET, &(clientAddr.sin_addr), ip_str, INET_ADDRSTRLEN);
-//        cout << "[C++] »õ ¿¬°á: " << ip_str << endl;
-//
-//        // [¼öÁ¤] Ã¹ ¹øÂ° ¿¬°áÀ» Python ¿¬°á·Î °£ÁÖ
-//        if (python_fd_ == INVALID_SOCKET) {
-//            python_fd_ = client_fd;
-//            cout << "[C++] Python ¿¬°á ¿Ï·á!" << endl;
-//        }
-//        else {
-//            // [¼öÁ¤] ±× ¿Ü ¿¬°áÀº WPF Å¬¶óÀÌ¾ğÆ® Ã³¸®
-//            thread(&TcpServer::handleClient, this, client_fd).detach();
-//        }
-//        
-//        //client_ip_ = ip_str; // ¸â¹ö º¯¼ö¿¡ ÀúÀå
-//        //// Å¬¶óÀÌ¾ğÆ® Àü´ã ½º·¹µå »ı¼º
-//        //lock_guard<mutex> lock(threadMutex_);
-//        //clientThreads_.emplace_back(&TcpServer::handleClient, this, client_fd);
-//    }
-//}
-//
-//// ===== Å¬¶óÀÌ¾ğÆ® ¿äÃ» Ã³¸® =====
-//void TcpServer::handleClient(int client_fd) {
-//    char buffer[1024];
-//    int bytesRead;
-//    // JSON ¿äÃ» Ã³¸® Å¬·¡½º
-//    RequestHandler handler;
-//
-//    // µ¥ÀÌÅÍ ¼ö½Å ·çÇÁ
-//    while ((bytesRead = recv(client_fd, buffer, sizeof(buffer), 0)) > 0) {
-//        string message(buffer, bytesRead);
-//        cout << "Received: " << message << endl;
-//        cout << "client_fd: " << client_fd << endl;
-//
-//        // JSON ÆÄ½Ì ¹× Ã³¸®
-//        handler.process(client_fd, python_fd_, message, client_ip_);
-//    }
-//
-//
-//
-//    if (bytesRead == SOCKET_ERROR) {
-//        cerr << "recv failed: " << WSAGetLastError() << endl;
-//    }
-//    else if (bytesRead == 0) {
-//        cout << "Client disconnected gracefully." << endl;
-//    }
-//
-//    closesocket(client_fd);
-//    cout << "Client disconnected." << endl;
-//}

@@ -15,19 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Server01.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Server02.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="parsing_json.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="mid_server.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="parsing_json.cpp">
+    <ClCompile Include="db_class.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,6 +33,9 @@
       <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="parsing_Json.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="db_class.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
   </ItemGroup>

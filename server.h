@@ -1,50 +1,85 @@
-#pragma once         //Áßº¹Á¤ÀÇ·Î ÀÎÇØ Ãæµ¹µÊÀ» ¹æÁöÇÔ
-// server.h°¡ ÇÁ·ÎÁ§Æ® ¿©·¯ °÷¿¡¼­ #includeµÇ´õ¶óµµ ÇÑ ¹ø¸¸ Æ÷ÇÔµÇ°Ô ÇÔ.
-#include <vector>    //Å¬¶óÀÌ¾ğÆ® ½º·¹µå ÀúÀå¿ë
-#include <thread>   //¸ÖÆ¼½º·¹µå
-#include <mutex>    //µ¿±âÈ­
+ï»¿#pragma once         //ì¤‘ë³µì •ì˜ë¡œ ì¸í•´ ì¶©ëŒë¨ì„ ë°©ì§€í•¨
+// server.hê°€ í”„ë¡œì íŠ¸ ì—¬ëŸ¬ ê³³ì—ì„œ #includeë˜ë”ë¼ë„ í•œ ë²ˆë§Œ í¬í•¨ë˜ê²Œ í•¨.
+#include <vector>    //í´ë¼ì´ì–¸íŠ¸ ìŠ¤ë ˆë“œ ì €ì¥ìš©
+#include <thread>   //ë©€í‹°ìŠ¤ë ˆë“œ
+#include <mutex>    //ë™ê¸°í™”
 #include <iostream>
 #include <string>
-//================== TCP ¼­¹ö Å¬·¡½º ================
+#include "db_class.h"
+#include "parsing_Json.h"
+#include <winsock2.h>   // SOCKET íƒ€ì… ì •ì˜
+#include <ws2tcpip.h>   // ì¶”ê°€ ë„¤íŠ¸ì›Œí¬ í•¨ìˆ˜
+#pragma comment(lib, "ws2_32.lib") // ìœˆì† ë¼ì´ë¸ŒëŸ¬ë¦¬ ë§í¬
+
+
+//================== TCP ì„œë²„ í´ë˜ìŠ¤ ================
 class TcpServer {
 public:
     explicit TcpServer(int port);
     ~TcpServer();
 
+    // Pythonì—ê²Œ JSON ìš”ì²­ì„ ë³´ë‚´ê³  ì‘ë‹µì„ ë°›ëŠ” í•¨ìˆ˜
     std::string sendToPythonAndReceive(const std::string& userMessage);
+
+    //=========================DBê°’ í™•ì¸í•˜ëŠ” ====================
+    // ë¡œê·¸ì¸ ê²€ì¦
+    bool checkLoginFromDB(const std::string& id, const std::string& pw);
+    // íšŒì›ê°€ì…
+    bool insertUserToDB(const RequestHandler::Signup& u);
+    // ì–¼êµ´ì¸ì‹
+    std::string findUserByFaceVector(const std::vector<float>& faceVec);
+    // IDì¤‘ë³µí™•ì¸
+    bool isUserIdExists(const std::string& id);
+    // ì¢…í•©ê²°ê³¼ ì €ì¥
+    bool insertUserTotalResult(const RequestHandler::TotalResult& r);
+
+    bool insertUserTotalResultWithId(const RequestHandler::TotalResult& r, uint64_t& out_res_id);
+
+    bool insertRecommendedJobs(uint64_t res_id, const std::vector<RequestHandler::RecommendedJob>& jobs);
+
+    //ì´ë ¥ì„œê´€ë¦¬ ì €ì¥
+    bool upsertUserCV(const RequestHandler::Resume& cv, uint64_t& out_cv_id);
+    // ì´ë ¥ì„œ ê´€ë¦¬ ì¡°íšŒ
+    bool getUserCVByUid(const std::string& u_id, ResumeRow& out) {
+        return db.getUserCVByUid(u_id, out);   // dbëŠ” ê°ì²´ì´ë¯€ë¡œ ì (.) ì‚¬ìš©
+    }
+
+    DBClass db; // DBClass ë©¤ë²„ ë³€ìˆ˜
+    DBClass* getDB() { return &db; }  // â˜… ì¶”ê°€
+
+    bool sendAll(SOCKET sock, const char* data, int length);
+    bool recvAll(SOCKET sock, char* buffer, int length);
+
     bool start();
     void stop();
 
 
 private:
-    int server_fd_;         //¼­¹ö¼ÒÄÏ ÆÄÀÏµğ½ºÅ©¸³ÅÍ **
-    int python_fd_;         //Python AI¼­¹ö¿Í ¿¬°áµÈ º°µµÀÇ ¼ÒÄÏ **
-    int port_;              //¼­¹ö Æ÷Æ® ¹øÈ£
-    bool running_;          //¼­¹ö ½ÇÇà »óÅÂ ÇÃ·¡±×
-    std::string client_ip_; //¸¶Áö¸· Á¢¼ÓÇÑ Å¬¶óÀÌ¾ğÆ® IP ÀúÀå
 
-    std::thread pythonReceiverThread_;       //Python ¼­¹ö ¼ö½ÅÀü¿ë ½º·¹µå **
-    std::vector<std::thread> clientThreads_; //Å¬¶óÀÌ¾ğÆ®º° Ã³¸® ½º·¹µå ¸ñ·Ï **  
-    std::mutex threadMutex_;                 //½º·¹µå µ¿±âÈ­¿ë ¹ÂÅØ½º
+    int server_fd_;         //ì„œë²„ì†Œì¼“ íŒŒì¼ë””ìŠ¤í¬ë¦½í„° **
+    int python_fd_;         //Python AIì„œë²„ì™€ ì—°ê²°ëœ ë³„ë„ì˜ ì†Œì¼“ **
+    int port_;              //ì„œë²„ í¬íŠ¸ ë²ˆí˜¸
+    bool running_;          //ì„œë²„ ì‹¤í–‰ ìƒíƒœ í”Œë˜ê·¸
+    std::string client_ip_; //ë§ˆì§€ë§‰ ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ IP ì €ì¥
 
-    // ----------- ¼­¹ö ¼ÒÄÏ ÁØºñ ¸Ş¼­µå -----------
+    std::thread pythonReceiverThread_;       //Python ì„œë²„ ìˆ˜ì‹ ì „ìš© ìŠ¤ë ˆë“œ **
+    std::vector<std::thread> clientThreads_; //í´ë¼ì´ì–¸íŠ¸ë³„ ì²˜ë¦¬ ìŠ¤ë ˆë“œ ëª©ë¡ **  
+    std::mutex threadMutex_;                 //ìŠ¤ë ˆë“œ ë™ê¸°í™”ìš© ë®¤í…ìŠ¤
+
+    // ----------- ì„œë²„ ì†Œì¼“ ì¤€ë¹„ ë©”ì„œë“œ -----------
     bool createSocket();
     bool bindSocket();
     bool listenSocket();
 
-    // ----------- Å¬¶óÀÌ¾ğÆ® Ã³¸® ¸Ş¼­µå -----------
-    void acceptClients();               //Å¬¶óÀÌ¾ğÆ® ¿¬°á ¼ö¶ô
-    void handleClient(int client_fd);   //Å¬¶óÀÌ¾ğÆ® ¿äÃ» Ã³¸®
-    void cleanup();                     //½º·¹µå ¹× ¼ÒÄÏ Á¤¸®
+    // ----------- í´ë¼ì´ì–¸íŠ¸ ì²˜ë¦¬ ë©”ì„œë“œ -----------
+    void acceptClients();               //í´ë¼ì´ì–¸íŠ¸ ì—°ê²° ìˆ˜ë½
+    void handleClient(int client_fd);   //í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ ì²˜ë¦¬
+    void cleanup();                     //ìŠ¤ë ˆë“œ ë° ì†Œì¼“ ì •ë¦¬
 
-    // ----------- Python AI ¼­¹ö ¿¬°á °ü·Ã -----------
-    bool connectToPythonServer(const std::string& ip, int port); //Python AI ¼­¹ö¿Í TCP¿¬°á½Ãµµ
-    void pythonReceiveThread();                                  //Python AI ¼­¹ö¿¡¼­ º¸³»´Â µ¥ÀÌÅÍ¸¦ ¼ö½ÅÇÏ´Â ½º·¹µå  
-    
+    // ----------- Python AI ì„œë²„ ì—°ê²° ê´€ë ¨ -----------
+    //bool connectToPythonServer(const std::string& ip, int port); //Python AI ì„œë²„ì™€ TCPì—°ê²°ì‹œë„
+    //void pythonReceiveThread();                                  //Python AI ì„œë²„ì—ì„œ ë³´ë‚´ëŠ” ë°ì´í„°ë¥¼ ìˆ˜ì‹ í•˜ëŠ” ìŠ¤ë ˆë“œ  
 
-
-    //void handlePythonProtocol7(const std::string& jsonStr);      //ÇÁ·ÎÅäÄİ 7(JSON) Ã³¸®(Æ¯Á¤ JSON ÇÁ·ÎÅäÄİ Ã³¸®)
-                                                                   //¸Ş½ÃÁö¸¦ ±¸ºĞÇØ¼­ ¾Ë¸ÂÀº ÇÔ¼ö¸¦ È£ÃâÇØ¼­ Ã³¸®ÇÏ´Â ºÎºĞ
 };
 
 

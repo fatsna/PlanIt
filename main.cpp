@@ -1,26 +1,28 @@
-#include "server.h" //TCP ¼­¹öÅ¬·¡½º ¼±¾ğ
+ï»¿#include "server.h" //TCP ì„œë²„í´ë˜ìŠ¤ ì„ ì–¸
 #include <csignal>
 #include <atomic>
 #include <thread>
 #include <iostream>
 
 using namespace std;
-atomic<bool>running_(true); // atomic :¿©·¯ ½º·¹µå°¡ µ¿½Ã¿¡ °°Àº º¯¼ö¿¡ Á¢±ÙÇØµµ Ãæµ¹ÇÏÁö¾ÊÀ½
+atomic<bool>running_(true); // atomic :ì—¬ëŸ¬ ìŠ¤ë ˆë“œê°€ ë™ì‹œì— ê°™ì€ ë³€ìˆ˜ì— ì ‘ê·¼í•´ë„ ì¶©ëŒí•˜ì§€ì•ŠìŒ
 
 void signalHandler(int signum) {
     cout << "Stopping server.." << endl;
     running_ = false;
 }
 
-int main() {
-    signal(SIGINT, signalHandler); // Ctrl + C Á¾·á
+int main() { 
 
-    //Æ÷Æ®¹øÈ£ 12345ÀÎ
+    signal(SIGINT, signalHandler); // Ctrl + C ì¢…ë£Œ
+
+    //í¬íŠ¸ë²ˆí˜¸ 12345ì¸
     TcpServer server(12345);
+
     if (server.start()) {
 
         while (running_) {
-            //´Ü¼øÈ÷ ÇÁ·Î±×·¥ÀÌ ³¡³ªÁö ¾Ê°Ô ¹«ÇÑ ´ë±â
+            //ë‹¨ìˆœíˆ í”„ë¡œê·¸ë¨ì´ ëë‚˜ì§€ ì•Šê²Œ ë¬´í•œ ëŒ€ê¸°
             this_thread::sleep_for(chrono::seconds(1));
         }
         server.stop();
