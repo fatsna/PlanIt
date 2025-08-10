@@ -74,8 +74,7 @@
                                             <Button Content="{Binding}"
                                                 Style="{StaticResource ButtonStyleRound}"                        
                                                 FontSize="10"
-                                                FontWeight="Bold"
-                                                Foreground="#708090"
+                                                Foreground="Black"
                                                 BorderThickness="0"
                                                 Command="{Binding DataContext.SelectAnswerCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
                                                 <!-- ✅ 이 부분이 배경색을 결정합니다 -->

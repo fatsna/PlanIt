@@ -13,6 +13,6 @@
                 <ResourceDictionary Source="/Converters/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>        
         </ResourceDictionary>
-        
+
     </Application.Resources>
 </Application>

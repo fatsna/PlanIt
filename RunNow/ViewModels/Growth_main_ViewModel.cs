@@ -20,7 +20,7 @@ namespace RunNow.ViewModels
         private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
         private bool check = true; // 확인용 변수
         private JObject? json = null; // 서버응답 변수
-        public Growth_main_ViewModel(NavigationStore navigationStore, IAuthService authService, IServiceProvider serviceProvider, ShareDataService shareDataService)
+        public Growth_main_ViewModel(NavigationStore navigationStore, IAuthService authService, IServiceProvider serviceProvider, ShareDataService shareDataService, TcpClientService tcpClientService)
         {
             // 통신용 클래스 객체
             this._authService = authService;
@@ -29,6 +29,10 @@ namespace RunNow.ViewModels
             // 메인에게 페이지 전환알리는 객체
             this._navigationStore = navigationStore;
             this._serviceProvider = serviceProvider;
+            //@@@@@@@@@@@가짜아이디붙여보내기
+            tcpClientService.ConnectAsync();
+            this.shareDataService.User_id = "admin";
+            //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         }
 
         [RelayCommand] private async Task Planit_start()
@@ -39,18 +43,22 @@ namespace RunNow.ViewModels
             if (this.check = (this.json["protocol"]?.ToString() == "5_1"))
             {
                 Console.WriteLine("플래닛 시작!!");
+                List<string> jobs = new List<string>(); // 직업들
+                List<string> descriptions = new List<string>(); // 직업 설명들
+                List<string> reason = new List<string>(); // 추천이유
+                Console.WriteLine("직업받기 시작!!");
 
-                List<string> tmp = new List<string>() { "개발자", "디자이너", "마케터", "개발자1", "디자이1너", "마케1터", "개발2자", "디자이2너", "마2케터" };
-                List<string> tmp2 = new List<string>() { "컴퓨터 소프트웨어와 애플리케이션을 설계하고 구현하며, 시스템 유지보수와 오류 수정도 수행합니다.",
-                                                     "시각적 요소를 기획하고 디자인하여 사용자 경험을 개선하며, 브랜드 이미지를 시각적으로 표현합니다.",
-                                                        "시장을 분석하고 소비자 니즈를 파악하여 효과적인 전략으로 제품이나 서비스를 홍보하고 판매를 촉진합니다.", "컴퓨터 소프트웨어와 애플리케이션을 설계하고 구현하며, 시스템 유지보수와 오류 수정도 수행합니다.222222",
-                                                     "시각적 요소를 기획하고 디자인하여 사용자 경험을 개선하며, 브랜드 이미지를 시각적으로 표현합니다.222222222",
-                                                        "시장을 분석하고 소비자 니즈를 파악하여 효과적인 전략으로 제품이나 서비스를 홍보하고 판매를 촉진합니다2222222222222222.", "컴퓨터 소프트웨어와 애플리케이션을 설계하고 구현하며, 시스템 유지보수와 오류 수정도 수행합니다.123123",
-                                                     "시각적 요소를 기획하고 디자인하여 사용자 경험을 개선하며, 브랜드 이미지를 시각적으로 표현합니다12123.",
-                                                        "시장을 분석하고 소비자 니즈를 파악하여 효과적인 전략으로 제품이나 서비스를 홍보하고 판매를 촉진합니다123123."};
-
-                this.shareDataService.Jobs = tmp;
-                this.shareDataService.Jobs_EXPLAIN = tmp2;
+                foreach (var item in this.json["items"])
+                {
+                    Console.WriteLine($"저장하는 직업정보!{item}");
+                    jobs.Add(item["job"].ToString());
+                    descriptions.Add(item["description"].ToString());
+                    reason.Add(item["reason"].ToString());
+                }
+                Console.WriteLine("직업받기 끝!!!");
+                this.shareDataService.Jobs = jobs;
+                this.shareDataService.Jobs_EXPLAIN = descriptions;
+                this.shareDataService.Jobs_REASON = reason;
                 this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_start_ViewModel>();
 
             }

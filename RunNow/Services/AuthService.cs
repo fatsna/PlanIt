@@ -43,7 +43,7 @@ namespace RunNow.Services
             JObject json = new JObject()
             {
                 ["protocol"] = "5_0",
-                ["user_id"] = User_id
+                ["u_id"] = User_id
             };
 
             var response = await this._tcpClientService.SendJsonToServer(json);
@@ -54,7 +54,7 @@ namespace RunNow.Services
             JObject json = new JObject()
             {
                 ["protocol"] = "9_0",
-                ["user_id"] = User_id
+                ["u_id"] = User_id
             };
 
             var response = await this._tcpClientService.SendJsonToServer(json);
@@ -70,12 +70,26 @@ namespace RunNow.Services
             JObject response = await this._tcpClientService.SendJsonToServer(json);
             return response;
         }
-        public async Task<JObject> PlanIT_make(string job)
+        public async Task<JObject> PlanIT_make(string job, string id)
         {
             JObject json = new JObject()
             {
                 ["protocol"] = "100_6_0",
+                ["u_id"] = id,
                 ["job"] = job
+            };
+            JObject response = await this._tcpClientService.SendJsonToServer(json);
+            return response;
+        }
+        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, string GOAL) 
+        {
+            JObject json = new JObject()
+            {
+                ["protocol"] = "10_0",
+                ["u_id"] = id,
+                ["GROWN_ID"] = GROWN_ID,
+                ["GOAL"] = GOAL,
+                ["GOAL_DATE"] = DateTime.Now.ToString("yyyy-MM-dd") // 날짜만 전송
             };
             JObject response = await this._tcpClientService.SendJsonToServer(json);
             return response;

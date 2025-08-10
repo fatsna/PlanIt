@@ -57,4 +57,28 @@
         </Setter>
 
     </Style>
+
+    <!-- Colors -->
+    <SolidColorBrush x:Key="BrandBlue" Color="#174E9E"/>
+    <SolidColorBrush x:Key="LineGrey"  Color="#E1E7F0"/>
+    <SolidColorBrush x:Key="ChipBgBlue" Color="#EAF1FF"/>
+    <SolidColorBrush x:Key="ChipBgBeige" Color="#FFF3E6"/>
+
+    <!-- 카드 공통 -->
+    <Style x:Key="Card" TargetType="Border">
+        <Setter Property="CornerRadius" Value="18"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Padding" Value="14"/>
+        <Setter Property="Margin" Value="0,0,0,12"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrandBlue}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <!-- 얇은 진행바 -->
+    <Style TargetType="ProgressBar" x:Key="ThinBar">
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="Background" Value="#E8ECF2"/>
+        <Setter Property="Foreground" Value="#1F5FBF"/>
+        <Setter Property="Maximum" Value="1"/>
+    </Style>
 </ResourceDictionary>

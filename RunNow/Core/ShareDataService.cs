@@ -18,8 +18,7 @@ namespace RunNow.Core
         // 성장플래닛 시작하기 맴버
         public List<string>? Jobs { get; set; } // 추천 & 희망 직업 리스트
         public List<string>? Jobs_EXPLAIN { get; set; }  // 추천 & 희망 직업 설명 리스트
-        public List<string>? jobs_REASONS { get; set; }  // 추천 & 희망 직업 이유 리스트
-
+        public List<string>? Jobs_REASON { get; set; }  // 추천 & 희망 직업 이유 리스트
         [ObservableProperty ] private bool isDetailVisible = false; // 뒤로가기 메시지
 
         [ObservableProperty] private int period = 0; // 성장플래닛 예상기간

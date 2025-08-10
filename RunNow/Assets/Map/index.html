@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kakao Map</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .toast {
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            padding: 8px 12px;
+            background: #000a;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 12px
+        }
+    </style>
+    <script>
+        const params = new URLSearchParams(location.search);
+        const key = params.get('key') || '';
+        const latQ = parseFloat(params.get('lat') || '37.5665');
+        const lngQ = parseFloat(params.get('lng') || '126.9780');
+        const level = parseInt(params.get('level') || '3', 10);
+        const query = params.get('q') || '고용복지플러스센터';
+
+        const s = document.createElement('script');
+        s.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${key}&autoload=false&libraries=services`;
+        s.onload = () => { if (!window.kakao || !kakao.maps) { console.error('Kakao SDK failed'); return; } kakao.maps.load(init); };
+        s.onerror = () => console.error('Kakao SDK network error.');
+        document.head.appendChild(s);
+
+        let map, meMarker, placeMarker, info;
+
+        function toast(msg) {
+            let el = document.querySelector('.toast');
+            if (!el) { el = document.createElement('div'); el.className = 'toast'; document.body.appendChild(el); }
+            el.textContent = msg;
+            setTimeout(() => el.remove(), 2500);
+        }
+
+        function init() {
+            const container = document.getElementById('map');
+            const center = new kakao.maps.LatLng(latQ, lngQ); // 초기만 서울
+            map = new kakao.maps.Map(container, { center, level });
+            info = new kakao.maps.InfoWindow({ zIndex: 2 });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const { latitude: lat, longitude: lng } = pos.coords;
+                        drawMe(lat, lng);
+                        searchNearest(lat, lng);
+                    },
+                    (err) => {
+                        console.warn('geolocation denied/fail:', err);
+                        toast('현재 위치 권한 거부됨. 기본 위치로 검색합니다.');
+                        drawMe(latQ, lngQ);
+                        searchNearest(latQ, lngQ);
+                    },
+                    { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+                );
+            } else {
+                drawMe(latQ, lngQ);
+                searchNearest(latQ, lngQ);
+            }
+        }
+
+        function drawMe(lat, lng) {
+            const ll = new kakao.maps.LatLng(lat, lng);
+            map.setCenter(ll);
+            meMarker && meMarker.setMap(null);
+            meMarker = new kakao.maps.Marker({ position: ll, map });
+        }
+
+        function searchNearest(lat, lng) {
+            const ps = new kakao.maps.services.Places();
+            const center = new kakao.maps.LatLng(lat, lng);
+            ps.keywordSearch(
+                query,
+                (data, status) => {
+                    if (status !== kakao.maps.services.Status.OK || !data.length) {
+                        // 보조 키워드
+                        ps.keywordSearch('고용복지센터', (data2, st2) => handleResults(center, data2, st2));
+                        return;
+                    }
+                    handleResults(center, data, status);
+                },
+                { location: center, radius: 20000, sort: kakao.maps.services.SortBy.DISTANCE }
+            );
+        }
+
+        function handleResults(center, data, status) {
+            if (status !== kakao.maps.services.Status.OK || !data || !data.length) {
+                toast('주변에 검색 결과가 없습니다.');
+                return;
+            }
+            const top = data[0]; // 거리순: 0번이 가장 가까움
+            const pos = new kakao.maps.LatLng(top.y, top.x);
+
+            placeMarker && placeMarker.setMap(null);
+            placeMarker = new kakao.maps.Marker({ position: pos, map });
+
+            const html = `
+                  <div style="padding:8px 10px;">
+                    <div style="font-weight:700">${top.place_name}</div>
+                    <div style="font-size:12px;opacity:.8">${top.road_address_name || top.address_name || ''}</div>
+                    <div style="font-size:12px;opacity:.8">${top.phone || ''}</div>
+                  </div>`;
+            info.setContent(html);
+            info.open(map, placeMarker);
+
+            kakao.maps.event.addListener(placeMarker, 'click', () => { info.setContent(html); info.open(map, placeMarker); });
+
+            const bounds = new kakao.maps.LatLngBounds();
+            bounds.extend(center);
+            bounds.extend(pos);
+            map.setBounds(bounds, 40, 40, 40, 40);
+        }
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
