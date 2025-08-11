@@ -345,8 +345,8 @@
               "Title": "EmotionView.xaml",
               "DocumentMoniker": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\EmotionView.xaml",
               "RelativeDocumentMoniker": "Views\\EmotionView.xaml",
-              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\EmotionView.xaml*",
-              "RelativeToolTip": "Views\\EmotionView.xaml*",
+              "ToolTip": "D:\\c\uC0F5\\PlanIt\\RunNow\\Views\\EmotionView.xaml",
+              "RelativeToolTip": "Views\\EmotionView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-08-11T01:21:43.655Z",
               "EditorCaption": ""
@@ -361,8 +361,7 @@
               "RelativeToolTip": "ViewModels\\EmotionResultViewModel.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T11:50:18.826Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-09T11:50:18.826Z"
             },
             {
               "$type": "Document",
@@ -408,8 +407,7 @@
               "RelativeToolTip": "ViewModels\\EmotionViewModel.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAQwOwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T11:50:22.466Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-09T11:50:22.466Z"
             },
             {
               "$type": "Document",
@@ -421,8 +419,7 @@
               "RelativeToolTip": "Models\\Emotion_result_model.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAUwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-09T11:49:11.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-09T11:49:11.217Z"
             },
             {
               "$type": "Document",
