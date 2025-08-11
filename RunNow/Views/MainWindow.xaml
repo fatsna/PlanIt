@@ -60,7 +60,15 @@
         <DataTemplate DataType="{x:Type vm:Growth_My_ViewModel}">
             <views:Growth_My_View/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:MyPageViewModel}">
+            <views:MyPageView/>
+        </DataTemplate>
         
+        <DataTemplate DataType="{x:Type vm:EmotionResultViewModel}">
+            <views:EmotionResultView/>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>

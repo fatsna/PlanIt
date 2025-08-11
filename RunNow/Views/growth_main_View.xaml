@@ -18,7 +18,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- 상단 타이틀 -->
-        <Image Source="pack://application:,,,/Assets/뒤로가기파랑.drawio.png"
+        <Image Source="/Assets/뒤로가기파랑.drawio.png"
+
                      HorizontalAlignment="Left"
                      Margin="10,10,0,0"
                      VerticalAlignment="Top"

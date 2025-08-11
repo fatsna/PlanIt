@@ -22,11 +22,9 @@
                    Panel.ZIndex="0"
                    IsHitTestVisible="False"/>
 
-        <!-- 하단 네비게이션 바 -->
-        <Border Grid.Row="1"
-                Background="#F5F5F5"
-                Padding="0,30,0,10"
-                Panel.ZIndex="0">
+        <!-- 하단 네비게이션 -->
+        <Border Grid.Row="1" Background="#F5F5F5" Padding="0,25,0,20">
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -35,16 +33,15 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- 메뉴 1: 성장플래닛 -->
+                <!-- 메뉴 1 -->
+
                 <Button Grid.Column="0"
-                        Panel.ZIndex="1"
                         Background="Transparent"
+                        Command="{Binding DataContext.PlanitCommand , RelativeSource={RelativeSource AncestorType=Window}}"
                         BorderThickness="0"
-                        Cursor="Hand"
-                        Command="{Binding DataContext.PlanitCommand,
-                                          RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" FontSize="16" HorizontalAlignment="Center"/>
+                        Margin="0,0,0,0">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" FontSize="30" HorizontalAlignment="Center"/>
                         <TextBlock Text="성장플래닛" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
@@ -58,8 +55,15 @@
                         Command="{Binding DataContext.ChatBotCommand,
                                           RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <StackPanel HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE720;" FontSize="16" HorizontalAlignment="Center"/>
-                        <TextBlock Text="챗봇상담" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                             Text="&#xE720;"
+                             FontSize="30"
+                             HorizontalAlignment="Center"/>
+                        <TextBlock Text="챗봇상담"
+                             FontSize="12"
+                             Foreground="#444"
+                             HorizontalAlignment="Center"
+                             Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
 
@@ -72,31 +76,45 @@
                         Command="{Binding DataContext.ResumeManageCommand,
                                           RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <StackPanel HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8A5;" FontSize="16" HorizontalAlignment="Center"/>
-                        <TextBlock Text="이력서관리" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE8A5;"
+                           FontSize="30"
+                           HorizontalAlignment="Center"/>
+                        <TextBlock Text="이력서관리"
+                           FontSize="12"
+                           Foreground="#444"
+                           HorizontalAlignment="Center"
+                           Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
 
-                <!-- 메뉴 4: 마이페이지(예비) -->
-                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
-                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE77B;" FontSize="16" HorizontalAlignment="Center"/>
-                    <TextBlock Text="마이페이지" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
-                </StackPanel>
+
+                <!-- 메뉴 4  -->
+                <Button Grid.Column="3"
+                        Command="{Binding DataContext.MyPageCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Cursor="Hand">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE77B;" FontSize="30" HorizontalAlignment="Center"/>
+                        <TextBlock Text="마이페이지" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Button>
+
             </Grid>
         </Border>
 
-        <!-- 홈 버튼(가운데) -->
-        <Button Width="70" Height="70"
-                Grid.RowSpan="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                Background="#00478F"
-                BorderThickness="2"
-                BorderBrush="White"
-                Cursor="Hand"
-                Panel.ZIndex="2"
-                Command="{Binding DataContext.GoHomeCommand,
-                                  RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+        <!-- 홈 버튼 (중앙 원형, 클릭 시 MainView로 이동) -->
+        <Button Width="85" Height="85"
+        Command="{Binding DataContext.GoHomeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+        Grid.RowSpan="2"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Background="#00478F"
+        BorderThickness="2"
+        BorderBrush="White" Click="Button_Click">
+
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
@@ -111,11 +129,12 @@
             </Button.Template>
 
             <TextBlock FontFamily="Segoe MDL2 Assets"
-                       Text="&#xE80F;"
-                       Foreground="White"
-                       FontSize="28"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
+               Text="&#xE80F;"
+               Foreground="White"
+               FontSize="50"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+
         </Button>
 
     </Grid>

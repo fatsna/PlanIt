@@ -87,6 +87,8 @@ namespace RunNow.ViewModels
         {
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
+
+                await ShowPopup("아이디/비번 입력 필요", "warning.png");
                 return;
             }
 
@@ -95,12 +97,14 @@ namespace RunNow.ViewModels
 
             if (protocol == "1_1") // 로그인 성공
             {
+
                 // ✅ 공유 데이터에 저장
+
                 _shareDataService.User_id = Username;
                 _shareDataService.Password = Password;
 
                 await ShowPopup("로그인 성공", "success.png");
-                //await Task.Delay(1000);
+
                 _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             }
             else
@@ -210,7 +214,6 @@ namespace RunNow.ViewModels
             {
                 string pythonPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\.venv\Scripts\python.exe";
                 string scriptPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\real_check_Face.py";
-
 
                 if (!File.Exists(pythonPath) || !File.Exists(scriptPath))
                     return "SCRIPT_NOT_FOUND";

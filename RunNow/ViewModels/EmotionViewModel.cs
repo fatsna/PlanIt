@@ -1,15 +1,16 @@
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Models;
 using RunNow.Services;
-using static System.Formats.Asn1.AsnWriter;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 
 
 namespace RunNow.ViewModels
@@ -18,227 +19,221 @@ namespace RunNow.ViewModels
     {
         private readonly TcpClientService _tcpService;
 
+        // Toolkit이 자동으로 public 프로퍼티를 생성함 (AllQuestions, CurrentQuestions, ... )
         [ObservableProperty] private ObservableCollection<QuestionModel> allQuestions = new();
         [ObservableProperty] private ObservableCollection<QuestionModel> currentQuestions = new();
-        [ObservableProperty] private int currentPageIndex = 0;
 
+        // (유지) 단계 표시용
         [ObservableProperty] private bool isStep1Visible = true;
         [ObservableProperty] private bool isStep2Visible = false;
         [ObservableProperty] private bool isStep3Visible = false;
 
-        private readonly int[] indexMapping = { 6, 5, 4, 3, 2, 1, 0 };
-
         public EmotionViewModel(TcpClientService tcpService)
         {
             _tcpService = tcpService;
+
+            // 문항 로드 & 표시
             LoadQuestions();
             UpdateCurrentQuestions();
+
+            // 버튼 활성 갱신을 위해 변경 알림 구독
+            AllQuestions.CollectionChanged += (_, __) => OnPropertyChanged(nameof(IsAllAnswered));
+            OnPropertyChanged(nameof(IsAllAnswered));
         }
 
+        /// 모든 문항이 응답되었는지 계산 속성 (버튼 활성화에 사용)
+        public bool IsAllAnswered =>
+            AllQuestions != null
+            && AllQuestions.Count > 0
+            && AllQuestions.All(q => q.SelectedAnswerIndex >= 0);
+
+        ///  카테고리별 2문항씩 랜덤 선별 → 총 14문항(7카테고리 가정)
         private void LoadQuestions()
         {
+            AllQuestions.Clear();
+
             var categoryGroups = Constants.Questions
-                .GroupBy(q => q.Category)
+                .GroupBy(q => q.Category!)
                 .ToDictionary(g => g.Key, g => g.ToList());
 
-            Random random = new Random();
-            int totalQuestionCount = 10;
+            const int questionsPerCategory = 2;
+            var selected = new List<QuestionModel>();
+            var rnd = new Random();
 
-            var selectedQuestions = new List<QuestionModel>();
-
-            foreach (var category in categoryGroups.Keys)
+            // 카테고리별 2문항 랜덤 추출
+            foreach (var kv in categoryGroups)
             {
-                var questionsInCategory = categoryGroups[category];
-                var randomQuestion = questionsInCategory[random.Next(questionsInCategory.Count)];
+                var pool = kv.Value.OrderBy(_ => rnd.Next()).ToList();
+                int take = Math.Min(questionsPerCategory, pool.Count);
 
-                var q = new QuestionModel
+                foreach (var item in pool.Take(take))
                 {
-                    QuestionText = $"Q{selectedQuestions.Count + 1}. {randomQuestion.QuestionText}",
-                    Category = randomQuestion.Category,
-                    IsPositive = randomQuestion.IsPositive
-                };
-
-                q.Answered += OnQuestionAnswered;
-                selectedQuestions.Add(q);
-                questionsInCategory.Remove(randomQuestion);
+                    var q = new QuestionModel
+                    {
+                        QuestionText = item.QuestionText!,
+                        Category = item.Category!,
+                        IsPositive = item.IsPositive
+                    };
+                    q.Answered += OnQuestionAnswered; // 라디오 변경 시 호출
+                    selected.Add(q);
+                }
             }
 
-            var remainingQuestionsPool = categoryGroups.Values.SelectMany(q => q).OrderBy(q => Guid.NewGuid()).ToList();
-            for (int i = 0; i < totalQuestionCount - selectedQuestions.Count && i < remainingQuestionsPool.Count; i++)
+            // 목표 미달 시 남은 질문으로 채우기
+            int targetCount = categoryGroups.Count * questionsPerCategory;
+            if (selected.Count < targetCount)
             {
-                var item = remainingQuestionsPool[i];
-                var q = new QuestionModel
+                string KeyOf(Constants.QuestionItem it) => $"{it.Category}|{it.QuestionText}|{it.IsPositive}";
+                var selectedKeys = new HashSet<string>(
+                    selected.Select(s => $"{s.Category}|{s.QuestionText}|{s.IsPositive}")
+                );
+
+                var remainPool = Constants.Questions
+                    .Where(x => !selectedKeys.Contains(KeyOf(x)))
+                    .OrderBy(_ => rnd.Next());
+
+                foreach (var item in remainPool)
                 {
-                    QuestionText = $"Q{selectedQuestions.Count + 1}. {item.QuestionText}",
-                    Category = item.Category,
-                    IsPositive = item.IsPositive
-                };
-                q.Answered += OnQuestionAnswered;
-                selectedQuestions.Add(q);
+                    if (selected.Count >= targetCount) break;
+                    var q = new QuestionModel
+                    {
+                        QuestionText = item.QuestionText!,
+                        Category = item.Category!,
+                        IsPositive = item.IsPositive
+                    };
+                    q.Answered += OnQuestionAnswered;
+                    selected.Add(q);
+                }
             }
-            // 최종 결과를 AllQuestions에 세팅
-            this.AllQuestions.Clear();
-            foreach (var q in selectedQuestions)
-            {
-                this.AllQuestions.Add(q);
-            }
-            //AllQuestions = new ObservableCollection<QuestionModel>(selectedQuestions);
 
+            // 보기 좋게 Q1.~ 번호 부여
+            for (int i = 0; i < selected.Count; i++)
+                selected[i].QuestionText = $"Q{i + 1}. {selected[i].QuestionText}";
+
+            foreach (var q in selected)
+                AllQuestions.Add(q);
         }
 
         private void UpdateCurrentQuestions()
         {
             CurrentQuestions.Clear();
-            foreach (var q in AllQuestions.Skip(CurrentPageIndex * 5).Take(5))
-            {
+            foreach (var q in AllQuestions)
                 CurrentQuestions.Add(q);
-            }
+
+            OnPropertyChanged(nameof(IsAllAnswered));
         }
 
+        // 모든 문항 응답되면 자동 전송
         private void OnQuestionAnswered()
         {
+            // 버튼 활성/비활성 즉시 반영
+            OnPropertyChanged(nameof(IsAllAnswered));
 
-            Console.WriteLine("A question was answered.");
-
-            if (CurrentQuestions.All(q => q.SelectedAnswerIndex != -1))
+            if (IsAllAnswered)
             {
-                if ((CurrentPageIndex + 1) * 5 < AllQuestions.Count)
-                {
-                    CurrentPageIndex++;
-                    UpdateCurrentQuestions();
-                }
-                else
-                {
-                    ShowResults();
-                }
+                // 결과 데이터 생성 후, 토큰을 지정해 메시지 발송
+                var data = BuildEmotionResultData();
+                WeakReferenceMessenger.Default.Send<ValueChangedMessage<JObject>, string>(
+                    new ValueChangedMessage<JObject>(data),
+                    "EmotionSurveyCompleted"); // 토큰
             }
         }
 
-        [RelayCommand]
-        private void GoToStep2()
-        {
-            IsStep1Visible = false;
-            IsStep2Visible = true;
-        }
-
-        [RelayCommand]
-        private void GoToStep3()
-        {
-            IsStep2Visible = false;
-            IsStep3Visible = true;
-        }
-
-        [RelayCommand]
-        private void ShowResults()
-        {
-            JObject result = CalculateCategoryAverages();
-            // 여기서 결과로가는 로직추가해야함
-            MessageBox.Show(string.Join("\n", result.Properties().Select(p => $"{p.Name}: {p.Value:F2}점")), "결과");
-        }
-
+        /// 카테고리별 평균 점수 계산
         private JObject CalculateCategoryAverages()
         {
             var grouped = AllQuestions.GroupBy(q => q.Category);
-            var result = new JObject();
-            JArray categoryNames = new JArray();
-            JArray scores = new JArray();
-            JArray answer = new JArray();
-            JArray scores100 = new JArray();
+            var obj = new JObject();
 
-            foreach (var group in grouped)
+            foreach (var g in grouped)
             {
-                var adjusted = group.Select(q =>
+                // 🔁 CHANGED: 새 매핑 적용
+                var scores = g.Select(q =>
                 {
-                    int score = 5 - q.SelectedAnswerIndex;
-                    if (!q.IsPositive) score = 6 - score;
-                    return score;
+                    int idx = q.SelectedAnswerIndex; // 0~4
+                    return q.IsPositive ? (idx + 1) : (5 - idx);
                 });
-                result[group.Key] = adjusted.Average();
+
+                double avg = scores.Any() ? scores.Average() : 0.0;
+                obj[g.Key] = Math.Round(avg, 2);
             }
-            double step = 100.0 / 7.0;  // 7구간 점수 폭 (14.2857)
 
-            for (int i = 0; i < categoryNames.Count; i++)
+            // 전체 평균
+            if (AllQuestions.Any())
             {
-                // 1. 점수를 정수로 변환 (반올림)
-                int score = (int)Math.Round((double)scores[i] * 20);  // 예: 3.75점 → 75점
+                // 🔁 CHANGED: 새 매핑 적용
+                var total = AllQuestions
+                    .Select(q => q.IsPositive ? (q.SelectedAnswerIndex + 1) : (5 - q.SelectedAnswerIndex))
+                    .Average();
+                obj["전체 평균"] = Math.Round(total, 2);
+            }
 
-                // 2. 구간 인덱스 계산
-                int resultIndex = score / (int)step;  // 정수로 나눔 (14점씩 구간)
-                resultIndex = Math.Clamp(resultIndex, 0, 6);
+            return obj;
+        }
 
-                // 3. 매핑 테이블 적용 (뒤집기)
-                if ((categoryNames[i].ToString() != "감정 상태")
-                    && (categoryNames[i].ToString() != "회복탄력성 / 에너지 상태")
-                    && (categoryNames[i].ToString() != "자기정체감/불확실성 상태"))
+        // (선택) 결과 메시지 확인용 — 페이지 이동은 MainWindow의 EmotionResultCommand 사용
+        [RelayCommand]
+        private void ShowResults()
+        {
+            var result = CalculateCategoryAverages();
+            var lines = result.Properties().Select(p => $"{p.Name}: {p.Value}점");
+            MessageBox.Show(string.Join("\n", lines), "감정 분석 결과");
+        }
+
+        //  결과 데이터 구성 (Emotion_result_model과 맞는 필드명)
+        public JObject BuildEmotionResultData()
+        {
+            var categories = AllQuestions
+                .GroupBy(q => q.Category)
+                .Select(g => g.Key)
+                .ToList();
+
+            var scores100 = new List<int>();
+            var answers = new List<string>();
+
+            foreach (var cat in categories)
+            {
+                var qs = AllQuestions.Where(q => q.Category == cat).ToList();
+                if (qs.Count == 0)
                 {
-                    resultIndex = this.indexMapping[resultIndex];
+                    scores100.Add(0);
+                    answers.Add($"{cat}: 데이터 없음");
+                    continue;
                 }
-                scores100.Add(score);
-                answer.Add(Constants.categori_result[i][resultIndex]);
+
+                // ★ 점수 매핑: 긍정=idx+1, 부정=5-idx (idx: 0~4)
+                double avg5 = qs.Select(q =>
+                {
+                    int idx = Math.Clamp(q.SelectedAnswerIndex, 0, 4);
+                    return q.IsPositive ? (idx + 1) : (5 - idx);   // 1~5
+                }).Average();
+
+                int score100 = (int)Math.Round((avg5 / 5.0) * 100.0);
+                scores100.Add(score100);
+
+                string msg = score100 switch
+                {
+                    >= 80 => $"{cat}: 전반적으로 양호합니다.",
+                    >= 60 => $"{cat}: 보통 수준, 개선 권장.",
+                    >= 40 => $"{cat}: 주의 필요, 습관 조정 권장.",
+                    _ => $"{cat}: 위험 신호, 적극 개선 필요."
+                };
+                answers.Add(msg);
             }
 
-
-            JObject jsonData = new JObject
-            {
-                ["Categorys"] = categoryNames,
-                ["Scores"] = scores,
-                ["answer"] = answer,
-                ["Scores100"] = scores100
-            };
-            return result;
+            var dto = new { Categorys = categories, Scores100 = scores100, answer = answers };
+            return JObject.FromObject(dto);
         }
 
         [RelayCommand]
-        private void SelectAnswer(Tuple<QuestionModel, string> param)
+        private void Submit()
         {
-            Console.WriteLine("으아아ㅏ");
-            var question = param.Item1; // 모델
-            var answerText = param.Item2; // 문자열
-            int index = question.Answers.IndexOf(answerText);
-            question.SelectedAnswerIndex = index;
+            if (!IsAllAnswered) return;
 
-            Console.WriteLine($"[DEBUG] 선택된 질문: {question.QuestionText}");
-            Console.WriteLine($"[DEBUG] 선택된 답변: {answerText} (index {index})");
-
-            if (param == null) return;
-
-            //var (question, answer) = param;
-            var answers = new List<string> { "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다" };
-
- 
-            // 선택된 답변의 인덱스를 저장
-            question.SelectedAnswerIndex = answers.IndexOf(answerText);
-
-//                var categoryObj = new JObject
-//                {
-//                    ["category"] = group.Key,
-//                    ["average"] = adjusted.Average()
-//                };
-
-//                resultArray.Add(categoryObj);
-//            }
-
-//            return resultArray;
-//        }
-
-
-//        [RelayCommand]
-//        private void SelectAnswer(Tuple<QuestionModel, string> param)
-//        {
-//            if (param == null) return;
-
-//            var (question, answer) = param;
-
-//            var answers = new List<string> { "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다" };
-
-//            // 선택된 답변의 인덱스를 저장
-//            question.SelectedAnswerIndex = answers.IndexOf(answer);
-
-
-            // 이벤트 발생 → 다음 페이지 넘어가기 로직 체크
-            //question.Answered?.Invoke();
+            var data = BuildEmotionResultData();
+            WeakReferenceMessenger.Default.Send<ValueChangedMessage<JObject>, string>(
+                new ValueChangedMessage<JObject>(data),
+                "EmotionSurveyCompleted");
         }
-
     }
-
 }

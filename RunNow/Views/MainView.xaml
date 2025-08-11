@@ -10,13 +10,66 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- ✅ 카드용 라운드 하이라이트 버튼 스타일 -->
+        <Grid.Resources>
+            <Style x:Key="RoundTileButton" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid SnapsToDevicePixels="True">
+                                <!-- 둥근 호버/프레스 오버레이 (카드 외곽은 바깥 Border가 담당) -->
+                                <Border x:Name="HoverLayer"
+                                        CornerRadius="30"
+                                        Background="#00000000"/>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="HoverLayer" Property="Background" Value="#22004A91"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="HoverLayer" Property="Background" Value="#33004A91"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="HoverLayer" Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+
         <!-- ✅ 상단 전체 -->
         <Grid Grid.Row="0">
-            <!-- 파란 배경 -->
-            <Border Background="#00478F"/>
+            <!-- 곡선 파란 배경 (LoginView와 동일) -->
+            <Canvas VerticalAlignment="Top" Height="530" Panel.ZIndex="0" IsHitTestVisible="False">
+                <Path Fill="#004A91" Stretch="Fill"
+                      Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="0,0" IsClosed="True">
+                                <LineSegment Point="0,530" />
+                                <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                                <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                                <LineSegment Point="1000,0" />
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </Canvas>
 
             <!-- 로고 + 설명 문구 -->
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,30,0,0" Panel.ZIndex="1">
                 <Image Source="pack://application:,,,/RunNow;component/Assets/LOGO2.png"
                        Width="450" Stretch="Uniform" Margin="0,0,0,20"/>
 
@@ -30,7 +83,7 @@
             <Border Margin="40,280,40,30" Padding="30"
                 CornerRadius="30" Background="White"
                     HorizontalAlignment="Center" VerticalAlignment="Top"
-                    Panel.ZIndex="1">
+                    Panel.ZIndex="2">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" ShadowDepth="5" Color="Gray"/>
                 </Border.Effect>
@@ -40,20 +93,21 @@
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120"
                                 Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.EmotionAnalysisCommand , RelativeSource={RelativeSource AncestorType=Window}}"
-                                     Background="Transparent" BorderThickness="0">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding DataContext.EmotionAnalysisCommand , RelativeSource={RelativeSource AncestorType=Window}}">
                                 <TextBlock Text="❤️" FontSize="60"
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
                         <TextBlock Text="감정분석" FontSize="20"
-                            HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                   HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
                     <!-- 재정분석 -->
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.FinanceAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding DataContext.FinanceAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                                 <TextBlock Text="📊" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
@@ -63,7 +117,8 @@
                     <!-- 경력분석 -->
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.CareerAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding DataContext.CareerAnalysisCommand, RelativeSource={RelativeSource AncestorType=Window}}">
                                 <TextBlock Text="📄" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
@@ -73,26 +128,23 @@
                     <!-- 지도 -->
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120"
-                            Background="White" BorderBrush="#CCCCCC" BorderThickness="1"
-                            SnapsToDevicePixels="True">
-                            <Button
-                                Command="{Binding MapCommand}"
-                                Background="Transparent" BorderThickness="0"
-                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                ToolTip="지도 열기"
-                                AutomationProperties.Name="지도">
+                                Background="White" BorderBrush="#CCCCCC" BorderThickness="1"
+                                SnapsToDevicePixels="True">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding MapCommand}"
+                                    ToolTip="지도 열기"
+                                    AutomationProperties.Name="지도">
                                 <TextBlock Text="🗺️" FontSize="60"/>
                             </Button>
                         </Border>
                         <TextBlock Text="지도" FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,0"/>
                     </StackPanel>
 
-
                     <!-- 정밀테스트 -->
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.QuickTestCommand , RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding DataContext.QuickTestCommand , RelativeSource={RelativeSource AncestorType=Window}}">
                                 <TextBlock Text="🧠" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
@@ -102,7 +154,8 @@
                     <!-- 고용24 -->
                     <StackPanel HorizontalAlignment="Center" Margin="20">
                         <Border CornerRadius="30" Width="120" Height="120" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
-                            <Button Command="{Binding DataContext.Work24Command , RelativeSource={RelativeSource AncestorType=Window}}" Background="Transparent" BorderThickness="0">
+                            <Button Style="{StaticResource RoundTileButton}"
+                                    Command="{Binding DataContext.Work24Command , RelativeSource={RelativeSource AncestorType=Window}}">
                                 <TextBlock Text="24" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Button>
                         </Border>

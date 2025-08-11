@@ -1,78 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RunNow.Core
 {
     public class Constants
     {
-        // 감정분석에 쓰일 질문 구조체
-        public enum Enum_emotion
+        // (옵션) 감정검사 모드
+        public enum Enum_emotion { test = 1, real = 5 }
+
+        // 5점 리커트 고정 선택지: 전혀 그렇지 않다(부정) → 매우 그렇다(긍정)
+        public static readonly IReadOnlyList<string> Likert5 = new[]
         {
-            test = 1, // 감정검사 테스트용
-            real = 5 // 실제 감정검사용
-        }
+            "전혀 그렇지 않다",
+            "그렇지 않다",
+            "보통이다",
+            "그렇다",
+            "매우 그렇다"
+        };
+
+        // 문항 정의
         public class QuestionItem
         {
             public string? Category { get; set; }
             public string? QuestionText { get; set; }
-            public bool IsPositive { get; set; }
-        };
-        // 감정분석에 쓰일 질문 목록
-        public static readonly List<QuestionItem> Questions = new List<QuestionItem>
+            // ✅ 전 항목 긍정 서술 → 정방향 채점 (0→1점, 4→5점)
+            public bool IsPositive { get; set; } = true;
+            public IReadOnlyList<string> Options => Likert5;
+        }
+
+        // ✅ 전 항목 “긍정 서술” (매우 그렇다 = 긍정/고득점)
+        public static readonly List<QuestionItem> Questions = new()
         {
-            new QuestionItem { Category = "감정 상태", QuestionText = "일이 잘 풀릴 거란 희망이 잘 들지 않는다", IsPositive = false },
-            new QuestionItem { Category = "감정 상태", QuestionText = "요즘 기분이 가라앉고 우울한 날이 많다", IsPositive = false },
-            new QuestionItem { Category = "감정 상태", QuestionText = "평소보다 짜증이나 분노가 많아진 것 같다", IsPositive = false },
-            new QuestionItem { Category = "감정 상태", QuestionText = "아무것도 하고 싶지 않은 무기력감이 든다", IsPositive = false },
-            new QuestionItem { Category = "감정 상태", QuestionText = "작은 일에도 자주 불안해진다", IsPositive = false },
-            new QuestionItem { Category = "감정 상태", QuestionText = "하루가 즐겁거나 의미 있게 느껴질 때가 있다", IsPositive = true },
-            new QuestionItem { Category = "감정 상태", QuestionText = "최근 웃거나 기뻤던 기억이 있다", IsPositive = true },
-            new QuestionItem { Category = "감정 상태", QuestionText = "나는 내 감정을 잘 조절하고 있는 편이다", IsPositive = true },
-            new QuestionItem { Category = "감정 상태", QuestionText = "내 상태를 나 스스로 잘 알고 있다고 느낀다", IsPositive = true },
-            new QuestionItem { Category = "감정 상태", QuestionText = "스트레스 상황에서도 긍정적으로 생각하려 한다", IsPositive = true },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "지금의 직장을 계속 다닐 생각이 없다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "이직에 대한 생각이 머릿속을 자주 맴돈다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "새로운 직장을 알아보거나 지원한 적이 있다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "내가 더 잘할 수 있는 환경이 따로 있다고 느낀다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "나의 성장 가능성이 지금 회사에선 낮아 보인다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "현재 일에 대한 몰입도나 열정이 낮다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "현재 회사에서 내 노력을 제대로 인정받지 못한다", IsPositive = false },
-            new QuestionItem { Category = "이직 욕구/동기 상태", QuestionText = "현재 조직에서 나의 미래가 그려지지 않는다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "아무리 쉬어도 피곤하고 회복이 되지 않는다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "출근 생각만 해도 마음이 무겁다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "일하는 도중 감정이 마비되거나 무감각해진다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "사람들과 대화할 힘도 없고, 혼자 있고 싶다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "일이 아닌 일상에도 쉽게 짜증이 난다", IsPositive = false },
-            new QuestionItem { Category = "번아웃/스트레스 지수", QuestionText = "매일매일이 버티는 것처럼 느껴진다", IsPositive = false },
-            new QuestionItem { Category = "회복탄력성 / 에너지 상태", QuestionText = "힘든 상황에서도 다시 일어설 수 있다는 믿음이 있다", IsPositive = true },
-            new QuestionItem { Category = "회복탄력성 / 에너지 상태", QuestionText = "스트레스를 적절히 해소하는 나만의 방식이 있다", IsPositive = true },
-            new QuestionItem { Category = "회복탄력성 / 에너지 상태", QuestionText = "내 에너지를 다시 채울 수 있는 시간이 충분하다", IsPositive = true },
-            new QuestionItem { Category = "회복탄력성 / 에너지 상태", QuestionText = "감정적으로 무너질 것 같을 때 스스로를 다독일 수 있다", IsPositive = true },
-            new QuestionItem { Category = "회복탄력성 / 에너지 상태", QuestionText = "일이 힘들어도 나는 다시 집중할 수 있는 편이다", IsPositive = true },
-            new QuestionItem { Category = "가치/비전 일치도", QuestionText = "지금 회사의 운영방식이나 문화가 나와 맞지 않는다", IsPositive = false },
-            new QuestionItem { Category = "가치/비전 일치도", QuestionText = "나는 조직보다는 개인 성장에 더 가치를 둔다", IsPositive = false },
-            new QuestionItem { Category = "가치/비전 일치도", QuestionText = "나의 핵심가치(예: 자율성, 성취감 등)가 존중받지 않는다", IsPositive = false },
-            new QuestionItem { Category = "가치/비전 일치도", QuestionText = "회사가 추구하는 방향성과 내 인생 목표가 다르다", IsPositive = false },
-            new QuestionItem { Category = "가치/비전 일치도", QuestionText = "나는 내가 바라는 삶과 지금의 삶이 일치한다고 느낀다", IsPositive = true },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "상사나 동료와의 관계가 심리적으로 힘들다", IsPositive = false },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "직장 내에서 심리적 안전감을 느끼기 어렵다", IsPositive = false },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "내가 팀에서 존중받고 있다는 느낌이 없다", IsPositive = false },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "가족이나 가까운 사람과도 갈등이 많다", IsPositive = false },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "주변 사람들이 내 고민을 잘 이해해주지 않는다", IsPositive = false },
-            new QuestionItem { Category = "관계 스트레스", QuestionText = "나와 가까운 사람들도 내가 지쳤다는 걸 모른다", IsPositive = false },
-            new QuestionItem { Category = "자기정체감/불확실성 상태", QuestionText = "나는 내가 어떤 사람인지 점점 헷갈린다", IsPositive = false },
-            new QuestionItem { Category = "자기정체감/불확실성 상태", QuestionText = "나는 내가 정말 원하는 게 뭔지 잘 모르겠다", IsPositive = false },
-            new QuestionItem { Category = "자기정체감/불확실성 상태", QuestionText = "지금 나는 멈춰 있고, 어디로 가야 할지 모르겠다", IsPositive = false },
-            new QuestionItem { Category = "자기정체감/불확실성 상태", QuestionText = "현재 내 위치가 나의 능력에 비해 부족하다고 느낀다", IsPositive = false },
-            new QuestionItem { Category = "자기정체감/불확실성 상태", QuestionText = "나는 지금 삶의 주도권을 잃어버린 것 같다", IsPositive = false },
+            // 감정 상태
+            new() { Category="감정 상태", QuestionText="나는 일상에서 희망과 기대를 느낀다" },
+            new() { Category="감정 상태", QuestionText="요즘 전반적으로 기분이 안정적이다" },
+            new() { Category="감정 상태", QuestionText="짜증이나 분노를 스스로 잘 조절한다" },
+            new() { Category="감정 상태", QuestionText="무기력함보다 활력과 의욕이 더 자주 느껴진다" },
+            new() { Category="감정 상태", QuestionText="작은 일에도 마음이 비교적 안정적으로 유지된다" },
+            new() { Category="감정 상태", QuestionText="하루가 즐겁고 의미 있게 느껴지는 순간이 있다" },
+            new() { Category="감정 상태", QuestionText="최근 웃거나 기뻤던 기억이 있다" },
+            new() { Category="감정 상태", QuestionText="나는 내 감정을 잘 인식하고 조절한다" },
+            new() { Category="감정 상태", QuestionText="내 현재 상태를 스스로 잘 이해하고 있다" },
+            new() { Category="감정 상태", QuestionText="스트레스 상황에서도 긍정적으로 바라보려 한다" },
+
+            // 이직 욕구/동기 상태 (긍정 방향: 현 직장 만족/몰입/성장감)
+            new() { Category="이직 욕구/동기 상태", QuestionText="현재 직장에서 계속 일할 의향이 있다" },
+            new() { Category="이직 욕구/동기 상태", QuestionText="현재 역할에 몰입과 열정을 느낀다" },
+            new() { Category="이직 욕구/동기 상태", QuestionText="나의 노력이 조직에서 인정받는다고 느낀다" },
+            new() { Category="이직 욕구/동기 상태", QuestionText="현재 조직에서 성장 가능성을 보고 있다" },
+            new() { Category="이직 욕구/동기 상태", QuestionText="현재 조직에서 나의 미래가 그려진다" },
+            new() { Category="이직 욕구/동기 상태", QuestionText="현재 업무에서 개인적 의미와 보람을 느낀다" },
+
+            // 번아웃/스트레스 지수 (긍정 방향: 회복/여유/안정)
+            new() { Category="번아웃/스트레스 지수", QuestionText="휴식 후 충분히 회복된다고 느낀다" },
+            new() { Category="번아웃/스트레스 지수", QuestionText="출근을 떠올려도 마음이 비교적 가볍다" },
+            new() { Category="번아웃/스트레스 지수", QuestionText="일할 때 감정이 생생하고 생동감이 있다" },
+            new() { Category="번아웃/스트레스 지수", QuestionText="사람들과 대화할 에너지와 여유가 있다" },
+            new() { Category="번아웃/스트레스 지수", QuestionText="일상에서도 마음이 비교적 안정적이다" },
+            new() { Category="번아웃/스트레스 지수", QuestionText="하루하루를 충분히 감당할 수 있다고 느낀다" },
+
+            // 회복탄력성 / 에너지 상태
+            new() { Category="회복탄력성 / 에너지 상태", QuestionText="힘든 상황에서도 다시 일어설 수 있다는 믿음이 있다" },
+            new() { Category="회복탄력성 / 에너지 상태", QuestionText="스트레스를 해소하는 나만의 방식이 있다" },
+            new() { Category="회복탄력성 / 에너지 상태", QuestionText="내 에너지를 다시 채울 시간이 충분하다" },
+            new() { Category="회복탄력성 / 에너지 상태", QuestionText="감정적으로 힘들 때 스스로를 다독일 수 있다" },
+            new() { Category="회복탄력성 / 에너지 상태", QuestionText="힘든 순간에도 다시 집중할 수 있다" },
+
+            // 가치/비전 일치도 (긍정 방향: 조직-개인 일치)
+            new() { Category="가치/비전 일치도", QuestionText="회사의 문화와 운영 방식이 나와 잘 맞는다" },
+            new() { Category="가치/비전 일치도", QuestionText="조직 목표와 나의 성장 목표가 조화롭다" },
+            new() { Category="가치/비전 일치도", QuestionText="나의 핵심가치가 조직에서 존중받는다" },
+            new() { Category="가치/비전 일치도", QuestionText="조직의 방향성과 나의 인생 목표가 잘 맞는다" },
+            new() { Category="가치/비전 일치도", QuestionText="바라는 삶과 지금의 삶이 대체로 일치한다" },
+
+            // 관계 스트레스 (긍정 방향: 안전감/존중/지지)
+            new() { Category="관계 스트레스", QuestionText="직장 내에서 심리적 안전감을 느낀다" },
+            new() { Category="관계 스트레스", QuestionText="팀에서 충분히 존중받고 있다고 느낀다" },
+            new() { Category="관계 스트레스", QuestionText="가족이나 가까운 사람들과의 관계가 원만하다" },
+            new() { Category="관계 스트레스", QuestionText="주변 사람들이 내 고민을 이해해주고 지지해준다" },
+            new() { Category="관계 스트레스", QuestionText="내가 지칠 때 주변에서 알아차리고 도와준다" },
+
+            // 자기정체감/불확실성 상태 (긍정 방향: 정체감/주도성)
+            new() { Category="자기정체감/불확실성 상태", QuestionText="나는 내가 어떤 사람인지 분명히 알고 있다" },
+            new() { Category="자기정체감/불확실성 상태", QuestionText="나는 내가 정말 원하는 바를 잘 알고 있다" },
+            new() { Category="자기정체감/불확실성 상태", QuestionText="지금 내가 가야 할 방향이 비교적 명확하다" },
+            new() { Category="자기정체감/불확실성 상태", QuestionText="현재 위치가 나의 능력과 비교적 잘 맞는다" },
+            new() { Category="자기정체감/불확실성 상태", QuestionText="나는 내 삶의 주도권을 가지고 있다고 느낀다" },
         };
 
-        public static readonly List<List<string>> categori_result = new List<List<string>>
+        // 카테고리별 8단계 해석문 (네가 준 원문 그대로 유지)
+        public static readonly List<List<string>> categori_result = new()
         {
-            //감정 상태
+            // 감정 상태
             new List<string>
             {
                 "감정 인식과 조절 능력이 크게 저하된 상태입니다. 정서적 소진이 심각하여 즉각적인 개입과 휴식이 필요합니다.",
@@ -84,7 +104,7 @@ namespace RunNow.Core
                 "감정 인식과 조율 능력이 뛰어나며, 일상에서 감정을 건강하게 활용하고 있습니다. 좋은 상태입니다.",
                 "최상의 감정 상태입니다. 감정 인식, 표현, 조절까지 매우 건강하게 유지하고 있으며, 타인에게도 긍정적 영향을 미칠 수 있는 수준입니다."
             },
-            //이직 욕구/동기 상태
+            // 이직 욕구/동기 상태
             new List<string>
             {
                 "현재 업무에 대한 만족도가 매우 높으며, 이직 욕구는 거의 없습니다.",
@@ -96,7 +116,7 @@ namespace RunNow.Core
                 "현 직무에 대한 불만이 극대화된 상태입니다. 구체적인 이직 준비가 필요합니다.",
                 "더 이상 현재 직장에 머무르기 어려운 상황입니다. 빠른 시일 내 변화가 요구됩니다."
             },
-            //번아웃/스트레스 지수
+            // 번아웃/스트레스 지수
             new List<string>
             {
                 "스트레스 요인이 거의 없는 안정적인 상태입니다. 현 상태를 유지하는 것이 중요합니다.",
@@ -108,7 +128,7 @@ namespace RunNow.Core
                 "번아웃 상태가 심각해지고 있으며, 긴급한 휴식과 환경 조정이 필요합니다.",
                 "심각한 번아웃 상태로, 즉각적인 휴직이나 전문가 상담이 권장됩니다."
             },
-            //회복탄력성 / 에너지 상태
+            // 회복탄력성 / 에너지 상태
             new List<string>
             {
                 "에너지와 회복탄력성이 매우 낮은 상태로, 휴식과 에너지 충전이 시급합니다.",
@@ -120,7 +140,7 @@ namespace RunNow.Core
                 "높은 회복력을 유지하고 있으며, 도전적 상황에서도 안정적입니다.",
                 "최상의 에너지 상태로, 어려운 상황도 긍정적으로 극복할 수 있습니다."
             },
-            //가치/비전 일치도
+            // 가치/비전 일치도
             new List<string>
             {
                 "가치와 비전이 현재 직장과 크게 일치하지 않는 상태입니다. 재평가가 필요합니다.",
@@ -132,7 +152,7 @@ namespace RunNow.Core
                 "조직과 개인 가치가 완벽하게 일치하며, 상호 발전이 가능한 상태입니다.",
                 "조직과 개인 가치가 완벽하게 일치하여, 최고의 시너지를 낼 수 있는 상태입니다."
             },
-            //관계 스트레스
+            // 관계 스트레스
             new List<string>
             {
                 "관계 스트레스가 거의 없는 상태입니다. 건강한 대인 관계를 유지하고 있습니다.",
@@ -144,7 +164,7 @@ namespace RunNow.Core
                 "관계에서 심각한 갈등이 발생하고 있으며, 즉각적인 해결이 요구됩니다.",
                 "관계 스트레스가 극대화되어 있으며, 전문가의 개입이 필수적입니다."
             },
-            //자기정체감/불확실성 상태
+            // 자기정체감/불확실성 상태
             new List<string>
             {
                 "자기 정체감 상실로 인해 일상생활에 큰 어려움을 겪고 있으며, 전문적인 치료가 필수적입니다.",
@@ -158,5 +178,26 @@ namespace RunNow.Core
             }
         };
 
+        // --- 채점 유틸 -----------------------------------------------------
+
+        /// <summary>
+        /// 선택 인덱스(0~4) → 1~5점으로 변환.
+        /// 긍정문항(IsPositive=true)이면 정방향: 0→1, 4→5
+        /// 부정문항(IsPositive=false)이면 역채점: 0→5, 4→1
+        /// </summary>
+        public static int ToScore1to5(int selectedIndex, bool isPositive)
+            => selectedIndex < 0 ? 0 : (isPositive ? (selectedIndex + 1) : (5 - selectedIndex));
+
+        /// <summary>
+        /// 1~5 점수들의 평균을 0~100 스케일로 변환(반올림).
+        /// </summary>
+        public static int ToScore100(IEnumerable<int> scores1to5)
+        {
+            var list = scores1to5?.ToList() ?? new List<int>();
+            if (list.Count == 0) return 0;
+            var avg = list.Average();             // 1~5
+            var scaled = avg / 5.0 * 100.0;       // 0~100
+            return (int)Math.Round(scaled, MidpointRounding.AwayFromZero);
+        }
     }
 }

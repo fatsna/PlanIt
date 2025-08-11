@@ -31,7 +31,6 @@
                             </Ellipse.Fill>
                         </Ellipse>
                     </StackPanel>
-
                     <StackPanel Margin="10" Orientation="Vertical">
                         <TextBlock Text="이름" FontWeight="Bold"/>
                         <TextBox Text="{Binding Name}" Margin="0,3,0,10" Height="25"/>

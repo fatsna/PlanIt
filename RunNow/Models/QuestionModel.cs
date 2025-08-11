@@ -12,8 +12,6 @@ namespace RunNow.Models
         public string Category { get; set; }
         public bool IsPositive { get; set; }
 
-        public List<string> Answers { get; } = new() { "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다" };
-
         [ObservableProperty]
         private int selectedAnswerIndex = -1;
 

@@ -18,28 +18,42 @@ namespace RunNow.ViewModels
 {
     public partial class DeepTestViewModel : ObservableObject
     {
-        private readonly TcpClientService _tcpService;
+        // ✅ 프로토콜/네트워크는 AuthService를 통해서만 처리
+        private readonly IAuthService _authService;
+
+        // ⛳ Navigation + VM 생성용
         private readonly NavigationStore _navigationStore;
         private readonly IServiceProvider _serviceProvider;
 
+        // ─────────────────────────────────────────────────────────────
+        // 설문/선택 데이터 바인딩 컬렉션
+        // ─────────────────────────────────────────────────────────────
         public ObservableCollection<DeepQuestionItem> Questions { get; } = new();
         public ObservableCollection<InterestItem> InterestCategories { get; } = new();
 
+        // ─────────────────────────────────────────────────────────────
+        // 스텝 전환용 플래그 (감정 → 재정 → 경력)
+        // ─────────────────────────────────────────────────────────────
         [ObservableProperty] private bool isEmotionStepVisible = true;
         [ObservableProperty] private bool isFinanceStepVisible;
         [ObservableProperty] private bool isCareerStepVisible;
 
-        // XAML 바인딩용
+        // ─────────────────────────────────────────────────────────────
+        // XAML 바인딩용 (UI 드롭다운/입력과 내부 Payload 필드 싱크)
+        // ─────────────────────────────────────────────────────────────
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
         private string currentPosition = string.Empty;
 
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
         private string selectedExperience = string.Empty;
 
+        // CurrentPosition/SelectedExperience 변경 시 내부 Payload용 필드 동기화
         partial void OnCurrentPositionChanged(string value) => Position = value;
         partial void OnSelectedExperienceChanged(string value) => Experience = value;
 
-        // 재정 입력
+        // ─────────────────────────────────────────────────────────────
+        // 재정 입력 항목 (다 입력되어야 다음 단계로 이동 가능)
+        // ─────────────────────────────────────────────────────────────
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string assets = string.Empty;
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string income = string.Empty;
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string rent = string.Empty;
@@ -51,17 +65,24 @@ namespace RunNow.ViewModels
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string savingTarget = string.Empty;
         [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string debt = string.Empty;
 
-        // payload용 경력
+        // ─────────────────────────────────────────────────────────────
+        // Payload용 경력 필드 (최종 서버 전송에 사용)
+        // ─────────────────────────────────────────────────────────────
         [ObservableProperty] private string position = string.Empty;
         [ObservableProperty] private string experience = string.Empty;
-        [ObservableProperty] private string skills = string.Empty; // 선택 항목
+        [ObservableProperty] private string skills = string.Empty; // 선택 항목 문자열 (콤마 등 네가 정한 규칙)
 
-        public DeepTestViewModel(TcpClientService tcpService, NavigationStore navigationStore, IServiceProvider serviceProvider)
+        // ─────────────────────────────────────────────────────────────
+        // 생성자
+        // ─────────────────────────────────────────────────────────────
+        public DeepTestViewModel(
+            IAuthService authService,                  // ✅ 추가: AuthService 주입
+            NavigationStore navigationStore,
+            IServiceProvider serviceProvider)
         {
-            _tcpService = tcpService;
+            _authService = authService;
             _navigationStore = navigationStore;
             _serviceProvider = serviceProvider;
-
 
             var questionsByCategory = new (string Category, string QuestionText)[]
             {
@@ -104,12 +125,10 @@ namespace RunNow.ViewModels
 
             int index = 1;
             foreach (var (category, question) in questionsByCategory)
-            {
 
                 Questions.Add(new DeepQuestionItem { Id = $"Q{index++}", Category = category, QuestionText = question });
-            }
 
-            // 그룹 포함 관심산업 채우기
+            // ── 관심 산업(그룹 포함) 초기값
             Add("공공 & 사회", "공공", "교육", "에너지", "환경", "ESG", "정부정책", "사회복지", "국방/안보");
             Add("헬스케어", "의료", "바이오", "헬스케어", "의료기기", "디지털헬스", "제약", "임상시험");
             Add("금융 & 핀테크", "금융", "핀테크", "보험", "블록체인", "투자", "회계/세무", "부동산금융");
@@ -126,10 +145,13 @@ namespace RunNow.ViewModels
                     InterestCategories.Add(new InterestItem { Group = group, Name = n });
             }
 
-            // 이벤트 훅
+            // 관심사 선택 변경 → Analyze 버튼 활성 조건 갱신
             HookInterestEvents();
         }
 
+        // ─────────────────────────────────────────────────────────────
+        // 스텝 전환: 감정 → 재정
+        // ─────────────────────────────────────────────────────────────
         [RelayCommand]
         private void GoToFinanceStep()
         {
@@ -142,7 +164,6 @@ namespace RunNow.ViewModels
             IsEmotionStepVisible = false;
             IsFinanceStepVisible = true;
         }
-
 
         [RelayCommand(CanExecute = nameof(CanGoToCareerStep))]
         private void GoToCareerStep()
@@ -186,6 +207,7 @@ namespace RunNow.ViewModels
             }).ToList();
         }
 
+        // 결과 화면에 바인딩되는 추천 직무 컬렉션
         public ObservableCollection<RecommendedJobItem> RecommendedJobs { get; } = new();
 
         public void SetRecommendedJobs(JArray jobs)
@@ -202,13 +224,22 @@ namespace RunNow.ViewModels
             }
         }
 
+        // ─────────────────────────────────────────────────────────────
+        // Analyze 버튼 활성/로딩 상태
+        // ─────────────────────────────────────────────────────────────
+
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
         private bool isBusy;
 
+        // ─────────────────────────────────────────────────────────────
+        // 서버로 정밀테스트 요청(100_0) → 응답(100_0_1/100_0_2) 처리
+        // ─────────────────────────────────────────────────────────────
         [RelayCommand(CanExecute = nameof(CanAnalyze))]
         private async Task AnalyzeAsync()
         {
+
+            // 1) 감정 문항 모두 체크됐는지 검증
 
             if (Questions.Any(q => !q.SelectedValue.HasValue))
             {
@@ -217,9 +248,10 @@ namespace RunNow.ViewModels
             }
 
 
-            IsBusy = true;              // ⬅️ 시작: 오버레이 ON
+            IsBusy = true; // ⬅️ 로딩 오버레이 ON
             try
             {
+                // 2) 감정/재정/경력 데이터 수집 → payload 구성
                 var emotionResults = CalculateEmotionResults();
 
                 var finance = new JObject
@@ -247,28 +279,39 @@ namespace RunNow.ViewModels
                     ["position"] = Position,
                     ["experience"] = Experience,
                     ["skills"] = Skills,
-                    ["interests"] = JArray.FromObject(InterestCategories.Where(x => x.IsSelected).Select(x => x.Name))
+                    ["interests"] = JArray.FromObject(
+                        InterestCategories.Where(x => x.IsSelected).Select(x => x.Name))
                 };
 
+                // ⚠️ 여기서 프로토콜은 넣지 않는다. (AuthService가 100_0으로 강제 세팅)
                 var payload = new JObject
                 {
-                    ["protocol"] = "100_0",
                     ["type"] = "deep_analysis",
                     ["emotion"] = new JArray(emotionResults),
                     ["finance"] = finance,
                     ["career"] = career
                 };
 
-                await _tcpService.ConnectAsync();
+                // 3) 서버 호출 (AuthService가 100_0으로 보내고, 응답 그대로 리턴)
+                var response = await _authService.DeepTestAsync(payload);
 
-                var response = await _tcpService.SendJsonToServer(payload);
+                // 4) 응답 프로토콜 검증
+                var proto = response?["protocol"]?.ToString();
+                if (proto != "100_0_1") // 성공이 아니면 모두 실패 처리
+                {
+                    var msg = response?["message"]?.ToString() ?? "정밀테스트 실패(100_0_2 또는 알 수 없는 코드)";
+                    MessageBox.Show(msg, "오류", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return; // 실패 시 결과 화면으로 넘어가지 않음
+                }
 
+                // 5) 화면에 그릴 데이터로 변환
                 var emotionResultItems = ConvertEmotionResultsToItems(emotionResults);
 
                 var deepResultVm = _serviceProvider.GetRequiredService<DeepResultViewModel>();
                 deepResultVm.SetResults(emotionResultItems);
 
-                string summary = response?["analysis_summary"]?.ToString() ?? "결과 요약을 불러오지 못했습니다.";
+                string summary = response?["analysis_summary"]?.ToString()
+                                 ?? "결과 요약을 불러오지 못했습니다.";
                 deepResultVm.SetResultText(summary);
 
                 var recommendedJobs = (JArray?)response?["recommended_jobs"];
@@ -277,22 +320,24 @@ namespace RunNow.ViewModels
                 var realisticAdvice = response?["realistic_advice"] as JArray;
                 if (realisticAdvice != null) deepResultVm.SetRealisticAdvice(realisticAdvice);
 
+                // 6) 결과 화면으로 네비게이션
                 _navigationStore.CurrentViewModel = deepResultVm;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"분석 중 오류가 발생했습니다.\n\n{ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+                // 네트워크/파싱 등 예외
+                MessageBox.Show($"분석 중 오류가 발생했습니다.\n\n{ex.Message}", "오류",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {
-                IsBusy = false;         // ⬅️ 끝: 오버레이 OFF (성공/실패 상관없이)
+                IsBusy = false; // ⬅️ 로딩 오버레이 OFF
             }
         }
 
-
         private bool CanAnalyze()
         {
-            if (IsBusy) return false; // ⬅️ 로딩 중엔 비활성
+            if (IsBusy) return false; // 로딩 중 비활성
             if (Questions.Any(q => !q.SelectedValue.HasValue)) return false;
 
             var hasPosition = !string.IsNullOrWhiteSpace(CurrentPosition);
@@ -301,6 +346,7 @@ namespace RunNow.ViewModels
             return hasPosition && hasExperience && hasInterests;
         }
 
+        // 관심사 토글될 때 Analyze 버튼 활성 조건 갱신
         private void HookInterestEvents()
         {
             foreach (var it in InterestCategories)

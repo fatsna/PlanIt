@@ -36,7 +36,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Margin="0,100,0,0"
-                Width="420"
+                Width="450"
                 Height="480"
                 Padding="25"
                 Panel.ZIndex="2">
@@ -47,7 +47,7 @@
             <StackPanel>
 
                 <!-- 아이디 -->
-                <TextBlock Text="아이디" Margin="0,10,0,6" FontSize="16"/>
+                <TextBlock Text="아이디" Margin="0,42,0,6" FontSize="20"/>
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                          Height="40"
                          FontSize="17"
@@ -55,7 +55,7 @@
                          HorizontalContentAlignment="Left"/>
 
                 <!-- 비밀번호 -->
-                <TextBlock Text="비밀번호" Margin="0,14,0,6" FontSize="16"/>
+                <TextBlock Text="비밀번호" Margin="0,15,0,6" FontSize="20"/>
                 <PasswordBox x:Name="PasswordBox"
                              Height="40"
                              FontSize="17"
@@ -68,14 +68,14 @@
                             Height="50"
                             Background="#007ACC"
                             Foreground="White"
-                            Click="FaceRecognition_Click"/>
+                            Click="FaceRecognition_Click" FontSize="18"/>
 
                     <Button Content="로그인"
-                            Height="60"
+                            Height="50"
                             Margin="0,10,0,0"
                             Background="#004A91"
                             Foreground="White"
-                            Command="{Binding LoginCommand}"/>
+                            Command="{Binding LoginCommand}" FontSize="18"/>
                 </StackPanel>
 
                 <!-- 회원가입 / 비밀번호찾기 -->
@@ -84,11 +84,11 @@
                                Foreground="Gray"
                                Margin="0,0,20,0"
                                Cursor="Hand"
-                               MouseLeftButtonDown="Register_Click"/>
+                               MouseLeftButtonDown="Register_Click" FontSize="16"/>
                     <TextBlock Text="비밀번호 찾기"
                                Foreground="Gray"
                                Cursor="Hand"
-                               MouseLeftButtonDown="FindPassword_Click"/>
+                               MouseLeftButtonDown="FindPassword_Click" FontSize="16"/>
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -36,6 +36,7 @@ namespace RunNow.Core
             services.AddTransient<DeepTestViewModel>();
             services.AddTransient<EmotionViewModel>();
             services.AddTransient<EmotionResultViewModel>();
+            services.AddTransient<MyPageViewModel>();
 
 
             services.AddTransient<Growth_main_ViewModel>();

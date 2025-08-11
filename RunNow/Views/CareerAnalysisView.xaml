@@ -13,28 +13,52 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- 상단 파란 배경 -->
-        <Border Grid.Row="0" Background="#00478F" Padding="0,20">
+        <!-- ✅ 파도 배경 (LoginView와 동일) -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                Height="530"
+                IsHitTestVisible="False"
+                Panel.ZIndex="0">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,530" />
+                            <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                            <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                            <LineSegment Point="1000,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- 상단 파란 배경 -> 투명 (파도 보이게) -->
+        <Border Grid.Row="0" Background="Transparent" Padding="0,20" Panel.ZIndex="1">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Assets/LOGO2.png" Width="150" Height="50" Stretch="Uniform" Margin="0,0,0,40"/>
             </StackPanel>
         </Border>
 
         <!-- 카드 박스 -->
-        <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20">
+        <Border Grid.Row="1" Margin="30,-40,30,20" Padding="20" Background="White" CornerRadius="20" Panel.ZIndex="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
             </Border.Effect>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Width="260" HorizontalAlignment="Center">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+                <!-- 좌우 폭 -->
+                <StackPanel Width="500"
+                    HorizontalAlignment="Center">
 
                     <!-- 현재 직무 -->
-                    <TextBlock Text="현재 직무" Margin="0,10,0,5" FontWeight="Bold"/>
-                    <TextBox Text="{Binding CurrentPosition, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+                    <TextBlock Text="현재 직무" Margin="0,10,0,5" FontWeight="Bold" FontSize="20"/>
+                    <TextBox Text="{Binding CurrentPosition, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" FontSize="15"/>
 
                     <!-- 경력 연수 -->
-                    <TextBlock Text="경력 연수" Margin="0,10,0,5" FontWeight="Bold"/>
+                    <TextBlock Text="경력 연수" Margin="0,10,0,5" FontWeight="Bold" FontSize="20"/>
                     <ComboBox SelectedItem="{Binding Experience}" Margin="0,0,0,10">
                         <ComboBoxItem Content="1년 미만"/>
                         <ComboBoxItem Content="1~3년"/>
@@ -44,29 +68,35 @@
                     </ComboBox>
 
                     <!-- 기술 -->
-                    <TextBlock Text="기술/자격증 (쉼표로 구분)" Margin="0,10,0,5" FontWeight="Bold"/>
-                    <TextBox Text="{Binding Skills, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+                    <TextBlock Text="기술/자격증 (쉼표로 구분)" Margin="0,10,0,5" FontWeight="Bold" FontSize="20"/>
+                    <TextBox Text="{Binding Skills, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10" FontSize="15"/>
 
                     <!-- 관심 산업 분야 -->
-                    <TextBlock Text="관심 산업 분야" Margin="0,10,0,5" FontWeight="Bold"/>
+                    <TextBlock Text="관심 산업 분야" Margin="0,10,0,5" FontWeight="Bold" FontSize="20"/>
 
                     <!-- ✅ MVVM ItemsControl -->
                     <ItemsControl ItemsSource="{Binding InterestCategories}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <TextBlock Text="{Binding Category}" FontWeight="Bold" Margin="0,10,0,5"/>
+                                    <!-- 카테고리 제목도 살짝 키움 -->
+                                    <TextBlock Text="{Binding Category}" FontWeight="Bold" Margin="0,10,0,5" FontSize="18"/>
+                                    <!-- CHANGED -->
                                     <ItemsControl ItemsSource="{Binding Options}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
+                                                <!-- 가로로 넓게 배치되도록 WrapPanel 유지 -->
                                                 <WrapPanel />
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <CheckBox Content="{Binding Name}" 
-                                      IsChecked="{Binding IsSelected, Mode=TwoWay}" 
-                                      Margin="5,2"/>
+                                                <!-- 체크박스 글자 키움 -->
+                                                <CheckBox Content="{Binding Name}"
+                                                          IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                          Margin="8,4"
+                                                          FontSize="16"/>
+                                                <!-- CHANGED -->
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
@@ -75,12 +105,11 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-
                     <!-- 분석 버튼 -->
                     <Button Content="분석하기"
                             Command="{Binding AnalyzeCommand}"
                             Background="#00478F" Foreground="White" FontWeight="Bold"
-                            Padding="8,4" Margin="0,10,0,0"/>
+                            Padding="10,6" Margin="0,20,0,0" FontSize="20"/>
 
                     <!-- 분석 결과 -->
                     <TextBlock Text="{Binding AnalysisResult}"
@@ -92,6 +121,6 @@
         </Border>
 
         <!-- 하단 네비게이션 -->
-        <local:BottomNav Grid.Row="2"/>
+        <local:BottomNav Grid.Row="2" Panel.ZIndex="1"/>
     </Grid>
 </UserControl>

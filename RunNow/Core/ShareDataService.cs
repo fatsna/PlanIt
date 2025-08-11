@@ -32,5 +32,14 @@ namespace RunNow.Core
             public string Goal { get; set; }
             public string Status { get; set; } // 완료 / 진행중
         }
+
+
+        // 로그인 세션 아이디: 기존 User_id와 동일하게 사용하도록 별칭 제공
+        public string? CurrentUserId
+        {
+            get => User_id;
+            set => User_id = value;
+        }
+
     }
 }
