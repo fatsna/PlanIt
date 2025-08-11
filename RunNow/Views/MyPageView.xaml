@@ -1,0 +1,166 @@
+﻿<UserControl x:Class="RunNow.Views.MyPageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:views="clr-namespace:RunNow.Views">
+    <UserControl.Resources>
+        <!-- 로딩/에러 표시용 -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <!-- 로딩 중 새로고침 비활성화 -->
+        <Style x:Key="RefreshButtonStyle" TargetType="Button">
+            <Setter Property="Padding" Value="8,2"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                    <Setter Property="IsEnabled" Value="False"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 헤더 -->
+            <RowDefinition Height="*"/>
+            <!-- 본문 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 하단 네비 -->
+        </Grid.RowDefinitions>
+
+        <!-- ✅ 배경 영역 (LoginView와 동일 파형) -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                Height="530"
+                IsHitTestVisible="False"
+                Panel.ZIndex="0">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,530" />
+                            <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                            <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                            <LineSegment Point="1000,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- 상단 파란 헤더 -->
+        <!-- 배경은 아래 Canvas가 채우도록 투명 처리 -->
+        <Border Grid.Row="0" Background="Transparent" Padding="0,18" Panel.ZIndex="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- 좌측 로고(원하면 Source 지정) -->
+                <Image Grid.Column="0"
+                       Width="70" Height="22"
+                       HorizontalAlignment="Left"
+                       Margin="16,0,0,0"
+                       Stretch="Uniform"/>
+
+                <!-- 타이틀 -->
+                <TextBlock Grid.Column="1" Text="마이페이지"
+                           FontSize="30" FontWeight="Bold"
+                           Foreground="White"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- 본문 -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Panel.ZIndex="1">
+            <StackPanel Margin="22" >
+
+                <!-- 내정보 카드 (읽기 전용) -->
+                <Border Background="White" CornerRadius="28" Padding="20" Margin="0,0,0,20" SnapsToDevicePixels="True">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="16" ShadowDepth="0" Opacity="0.25"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <TextBlock Text="내정보" Foreground="#555" FontSize="25" Margin="4,0,0,8"/>
+
+                        <Border BorderBrush="#D0D0D0" BorderThickness="1" CornerRadius="6" Padding="12">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="이름"  Foreground="#666" Margin="0,2" FontSize="20"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Name, TargetNullValue=-}"  Margin="4,2" FontSize="20"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="아이디" Foreground="#666" Margin="0,2" FontSize="20"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding UserId, TargetNullValue=-}" Margin="4,2" FontSize="20"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="주소" Foreground="#666" Margin="0,2" FontSize="20"/>
+                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Address, TargetNullValue=-}" TextWrapping="Wrap" Margin="4,2" FontSize="20"/>
+
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="전화" Foreground="#666" Margin="0,2" FontSize="20"/>
+                                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Phone, TargetNullValue=-}" Margin="4,2" FontSize="20"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <!-- 검사 결과 내역 카드 (항상 1건) -->
+                <Border Background="White" CornerRadius="28" Padding="20" SnapsToDevicePixels="True">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="16" ShadowDepth="0" Opacity="0.25"/>
+                    </Border.Effect>
+
+                    <StackPanel>
+                        <!-- 제목 + 새로고침 -->
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Text="검사 결과 내역"
+                                       Foreground="#555" FontSize="25" Margin="4,0,0,0"
+                                       VerticalAlignment="Center"/>
+
+                            <Button Grid.Column="1"
+                                    Style="{StaticResource RefreshButtonStyle}"
+                                    Content="새로고침"
+                                    Command="{Binding LoadCommand}" FontSize="15"/>
+                        </Grid>
+
+                        <!-- 결과 내용 카드 -->
+                        <Border BorderBrush="#D0D0D0" BorderThickness="1" CornerRadius="6" Padding="16">
+                            <TextBlock Text="{Binding LatestResultContent, TargetNullValue=조회된 내역이 없습니다.}"
+                                       TextWrapping="Wrap" FontSize="20"/>
+                        </Border>
+
+                        <!-- 로딩/에러 -->
+                        <TextBlock Text="불러오는 중..." Foreground="#666"
+                                   Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   HorizontalAlignment="Center" Margin="0,8,0,0" FontSize="15"/>
+                        <TextBlock Text="{Binding Error}" Foreground="#C62828"
+                                   Visibility="{Binding Error, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   TextWrapping="Wrap" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- 하단 네비 -->
+        <views:BottomNav Grid.Row="2" Panel.ZIndex="1"/>
+    </Grid>
+</UserControl>
