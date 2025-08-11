@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:RunNow.Views"
              mc:Ignorable="d">
     <Grid Background="#00478F">
         <Grid.RowDefinitions>
@@ -11,18 +12,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- 상단 타이틀 -->
         <StackPanel Grid.Row="0" Margin="0,30,0,20" HorizontalAlignment="Center">
             <TextBlock Text="이력서 관리 ✈️"
                        FontSize="20" FontWeight="Bold" Foreground="White"
                        HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <!-- 본문 카드 -->
         <Border Grid.Row="1" Margin="30,0,30,10" Padding="20" CornerRadius="30" Background="White">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <!-- 프로필 이미지 -->
                     <StackPanel HorizontalAlignment="Center">
                         <Ellipse Width="80" Height="80" Stroke="#CCC" StrokeThickness="1" Margin="0,10">
                             <Ellipse.Fill>
@@ -31,7 +29,6 @@
                         </Ellipse>
                     </StackPanel>
 
-                    <!-- 기본 정보 -->
                     <StackPanel Margin="10" Orientation="Vertical">
                         <TextBlock Text="이름" FontWeight="Bold"/>
                         <TextBox Text="{Binding Name}" Margin="0,3,0,10" Height="25"/>
@@ -63,7 +60,6 @@
                         <TextBox Text="{Binding Address}" Margin="0,3,0,10" Height="25"/>
                     </StackPanel>
 
-                    <!-- 경력사항 -->
                     <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,20,0,10">
                         <StackPanel Margin="10">
                             <TextBlock Text="경력사항" FontWeight="Bold" HorizontalAlignment="Center"/>
@@ -71,7 +67,6 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- 자격사항 -->
                     <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,10,0,10">
                         <StackPanel Margin="10">
                             <TextBlock Text="자격사항" FontWeight="Bold" HorizontalAlignment="Center"/>
@@ -100,7 +95,6 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- 특이사항 -->
                     <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,10,0,10">
                         <StackPanel Margin="10">
                             <TextBlock Text="특이사항" FontWeight="Bold" HorizontalAlignment="Center"/>
@@ -108,16 +102,16 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- 저장 버튼 -->
                     <Button Content="이력서 저장"
                             Background="#00478F"
                             Foreground="White"
                             FontWeight="Bold"
                             Height="40"
                             Margin="0,10,0,20"
-                            Command="{Binding SaveResumeCommand}"/>
+                            Command="{Binding SendToServerCommand}"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>
+        <local:BottomNav Grid.Row="2"/>
     </Grid>
 </UserControl>

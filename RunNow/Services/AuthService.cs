@@ -129,6 +129,21 @@ namespace RunNow.Services
 
             return response;
         }
+        public async Task<JObject> SaveResumeAsync(JObject payload)
+        {
+            if (!_tcpClientService.IsConnected)
+            {
+                await _tcpClientService.ConnectAsync(); // ✅ 연결 시도
+            }
+            return await _tcpClientService.SendJsonToServer(payload); // ✅ 전송
+        }
 
+        public async Task<JObject> QueryResumeAsync(JObject payload)
+        {
+            if (!_tcpClientService.IsConnected)
+                await _tcpClientService.ConnectAsync();          // ✅ 연결 보장
+
+            return await _tcpClientService.SendJsonToServer(payload);  // ✅ 6_0 전송
+        }
     }
 }

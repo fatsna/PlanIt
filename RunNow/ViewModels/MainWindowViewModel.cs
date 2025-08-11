@@ -1,12 +1,14 @@
 
-using System;
-using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Views;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks; // ← 추가
+using System.Windows.Threading;
 
 
 namespace RunNow.ViewModels
@@ -23,6 +25,7 @@ namespace RunNow.ViewModels
         {
             _navigationStore = navigationStore;
             _serviceProvider = serviceProvider;
+
 
             _navigationStore.CurrentViewModelChanged += () =>
             {
@@ -74,11 +77,14 @@ namespace RunNow.ViewModels
         }
 
         [RelayCommand]
-        private void ResumeManage()
+        private async Task ResumeManage()
         {
-            _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
-
+            var vm = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
+            _navigationStore.CurrentViewModel = vm;
+            await Task.Yield();
+            await vm.LoadResumeFromServerAsync();   // 이제 정상 컴파일
         }
+
 
         [RelayCommand]
         private void Work24()

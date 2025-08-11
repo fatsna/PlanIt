@@ -42,10 +42,11 @@ namespace RunNow.Core
             services.AddTransient<DeepResultViewModel>();
             services.AddTransient<MapViewModel>();
 
+            services.AddSingleton<IAuthService, AuthService>();
 
 
+            services.AddSingleton<MainWindowViewModel>();
 
-            // ✅ MainWindow
             services.AddSingleton<MainWindow>(sp =>
             {
                 var vm = sp.GetRequiredService<MainWindowViewModel>();
