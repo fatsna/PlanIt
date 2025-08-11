@@ -13,6 +13,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 
 
+
 namespace RunNow.ViewModels
 {
     public partial class RegisterViewModel : ObservableObject
@@ -64,6 +65,7 @@ namespace RunNow.ViewModels
         public List<int> Months { get; }
         public List<int> Days { get; }
 
+
         [ObservableProperty] private int selectedYear;
         [ObservableProperty] private int selectedMonth;
         [ObservableProperty] private int selectedDay;
@@ -74,16 +76,20 @@ namespace RunNow.ViewModels
         // 📌 비밀번호 관련
         // ==============================
 
+
         private string password;
         private string confirmPassword;
 
+
         [ObservableProperty] private bool isPasswordMismatch;
+
 
         public void SetPassword(string pwd)
         {
             password = pwd;
             ValidatePasswordMatch();
             ValidateForm();
+
         }
 
         public void SetConfirmPassword(string pwd)

@@ -15,6 +15,7 @@ namespace RunNow.Converters
 
             Console.WriteLine($"[DEBUG] values[0] type = {values[0].GetType()}");
 
+
             if (values[0] == System.Windows.DependencyProperty.UnsetValue)
                 return Brushes.Transparent;
 
@@ -22,7 +23,9 @@ namespace RunNow.Converters
             if (values[0] is int selectedIndex && values[1] is string answerText)
             {
 
+
                 Console.WriteLine($"[컨버터] selected={selectedIndex}, answer={answerText}");
+
 
                 var allAnswers = new List<string>
                 {

@@ -24,7 +24,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!-- 비밀번호 불일치용 Visibility 변환기 -->
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
@@ -44,6 +43,7 @@
 
         <!-- 상단 장식용 패스 -->
         <Canvas VerticalAlignment="Top" Height="400">
+
             <Path Fill="#004A91" Stretch="Fill"
                   Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
                 <Path.Data>
@@ -61,12 +61,12 @@
 
         <!-- 로고 -->
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0">
+
             <Image Source="/Assets/LOGO2.png"
                    Width="300"
                    Stretch="Uniform"/>
         </StackPanel>
 
-        <!-- 본문 폼 -->
         <Border Background="White"
                 CornerRadius="30"
                 HorizontalAlignment="Center"
@@ -74,6 +74,7 @@
                 Width="460"
                 Padding="30"
                 Margin="0,100,0,0">
+
             <Border.Effect>
                 <DropShadowEffect BlurRadius="12" ShadowDepth="5" Color="Gray" />
             </Border.Effect>
@@ -115,6 +116,7 @@
                                  PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
 
                     <!-- 비밀번호 불일치 문구 -->
+
                     <TextBlock Text="비밀번호가 일치하지 않습니다."
                                Foreground="Red"
                                FontSize="13"
@@ -124,16 +126,19 @@
                     <!-- 생년월일 -->
                     <TextBlock Text="생년월일" FontSize="16" Margin="0,10,0,6"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,6">
+
                         <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="110" Height="35" FontSize="17" Margin="5,0"/>
                         <ComboBox ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Width="90" Height="35" FontSize="17" Margin="5,0"/>
-                        <ComboBox ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedDay}" Width="90" Height="35" FontSize="17" Margin="5,0"/>
+                         <ComboBox ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedDay}" Width="90" Height="35" FontSize="17" Margin="5,0"/>
                     </StackPanel>
 
                     <!-- 성별 -->
                     <TextBlock Text="성별" FontSize="16" Margin="0,10,0,6"/>
+
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <RadioButton Content="남자" IsChecked="{Binding IsMale}" FontSize="17" Margin="20,4"/>
                         <RadioButton Content="여자" IsChecked="{Binding IsFemale}" FontSize="17" Margin="20,4"/>
+
                     </StackPanel>
 
                     <!-- 주소 -->
@@ -164,7 +169,6 @@
                             Background="#007ACC"
                             Foreground="White"
                             Command="{Binding FaceRegisterCommand}"/>
-
                     <!-- 회원가입 -->
                     <Button Content="회원가입"
                             Height="50"

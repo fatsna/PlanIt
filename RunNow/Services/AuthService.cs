@@ -13,6 +13,7 @@ namespace RunNow.Services
         {
             _tcpClientService = tcpClientService;
         }
+
         //로그인
         public async Task<JObject> LoginAsync(string username, string password)
         {
@@ -145,5 +146,6 @@ namespace RunNow.Services
 
             return await _tcpClientService.SendJsonToServer(payload);  // ✅ 6_0 전송
         }
+
     }
 }

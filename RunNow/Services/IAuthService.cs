@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
+
 using Newtonsoft.Json.Linq;
 
 namespace RunNow.Services
 {
     public interface IAuthService
     {
-        //로그인
         Task<JObject> LoginAsync(string username, string password);
         //얼굴인식 로그인
         Task<JObject> FaceLoginAsync(float[] embedding);
@@ -20,6 +20,7 @@ namespace RunNow.Services
         //이력서 보내기 
         Task<JObject> SaveResumeAsync(JObject Payload);
         Task<JObject> QueryResumeAsync(JObject payload);//이력서 조회
+
 
     }
 }

@@ -7,13 +7,10 @@
       FontFamily="Noto sans KR"
       Background="#00478F">
 
-
     <UserControl.Resources>
         <conv:AnswerToColorConverter x:Key="AnswerColorConverters"/>
         <conv:QuestionAnswerParameterConverter x:Key="QuestionAnswerParameterConverter"/>
     </UserControl.Resources>
-
-
 
     <Grid>
         <Grid.RowDefinitions>
@@ -36,7 +33,6 @@
                    Margin="0,27,0,0"
                    Width="400" Height="45"/>
 
-
         <!-- 질문 리스트 영역 -->
         <ScrollViewer Margin="0,80,0,0"
                       VerticalScrollBarVisibility="Auto">
@@ -45,8 +41,6 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="10">
-							
-                            <!-- 질문 카드 배경 -->
 
                             <Rectangle Height="100" Width="380"
                                        RadiusX="20" RadiusY="20"
@@ -54,8 +48,8 @@
                                        Fill="White"
                                        HorizontalAlignment="Center"/>
 
-
                             <!-- 질문 텍스트 -->
+
 
                             <TextBlock Text="{Binding QuestionText}"
                                        Foreground="#708090"
@@ -70,7 +64,6 @@
 
                             <ItemsControl ItemsSource="{Binding Answers}"
                                           Margin="0,-50,0,0">
-
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
@@ -79,7 +72,6 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Border BorderBrush="Black"
-
                                                 BorderThickness="1.5"
                                                 Height="25"
                                                 Width="60"
@@ -102,12 +94,10 @@
                                                     </MultiBinding>
                                                 </Button.Background>
 
-
                                                 <!-- 기존처럼 CommandParameter도 유지 -->
                                                 <Button.CommandParameter>
                                                     <MultiBinding Converter="{StaticResource QuestionAnswerParameterConverter}">
                                                         <Binding Path="DataContext" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
-
                                                         <Binding />
                                                     </MultiBinding>
                                                 </Button.CommandParameter>
@@ -121,7 +111,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
         <local:BottomNav Grid.Row="2"/>
         <!-- 하단 네비게이션 -->
 

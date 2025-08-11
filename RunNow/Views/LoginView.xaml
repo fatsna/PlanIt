@@ -45,6 +45,7 @@
             </Border.Effect>
 
             <StackPanel>
+
                 <!-- 아이디 -->
                 <TextBlock Text="아이디" Margin="0,10,0,6" FontSize="16"/>
                 <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"

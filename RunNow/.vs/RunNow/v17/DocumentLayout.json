@@ -1,0 +1,1171 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\bottomnav.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\bottomnav.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\idialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\idialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:converters\\answertocolorconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\resumemanageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\resumemanageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\sharedataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\sharedataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\chatmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\careerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\resumemanageview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\resumemanageview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.304\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\dialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\dialogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\registerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\registerview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\financeanalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\financeanalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\careeranalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\careeranalysisview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\certificatepopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\certificatepopup.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\certificatepopupviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\certificatepopupviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\viewmodels\\careeranalysisviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:viewmodels\\careeranalysisviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\passwordboxhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\registerview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\registerview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\logo.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\Model\\CareerProfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\BottomNav.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\CareerAnalysisPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\FinanceAnalysisPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\QuickTestPage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\scenariostep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\questionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\interestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\navigationstore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\emotion_result_model.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\deepquestionitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\core\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:core\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\mainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\mainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\emotionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\emotionview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\services\\scenarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:services\\scenarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\assets\\logo2.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:assets\\logo2.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\financeanalysisview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\financeanalysisview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\emotionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\emotionview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\emotionresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\emotionresultview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:views\\deeptestview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\models\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:models\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|c:\\users\\yesom\\desktop\\real_plan\\runnow\\assets\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B80E7CD8-8FA6-4B7A-9244-14CC69C467A3}|RunNow.csproj|solutionrelative:assets\\.gitkeep||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 139,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AnswerToColorConverter.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Converters\\AnswerToColorConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\AnswerToColorConverter.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Converters\\AnswerToColorConverter.cs",
+              "RelativeToolTip": "Converters\\AnswerToColorConverter.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-11T01:10:50.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DependencyInjection.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeDocumentMoniker": "Core\\DependencyInjection.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\DependencyInjection.cs",
+              "RelativeToolTip": "Core\\DependencyInjection.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:39:05.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\MainWindowViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:32:00.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T07:05:58.801Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T07:05:59.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Services\\IAuthService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\IAuthService.cs",
+              "RelativeToolTip": "Services\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:27.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAuwIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:22:13.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IDialogService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\IDialogService.cs",
+              "RelativeDocumentMoniker": "Services\\IDialogService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\IDialogService.cs",
+              "RelativeToolTip": "Services\\IDialogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:26.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BottomNav.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\BottomNav.xaml",
+              "RelativeDocumentMoniker": "Views\\BottomNav.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\BottomNav.xaml",
+              "RelativeToolTip": "Views\\BottomNav.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T10:15:51.396Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ResumeManageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\ResumeManageViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ResumeManageViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\ResumeManageViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ResumeManageViewModel.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAswBMBAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T06:05:46.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAAAgwM0AAABoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T00:46:21.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:41:11.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-09T05:51:36.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T06:39:57.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ShareDataService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\ShareDataService.cs",
+              "RelativeDocumentMoniker": "Core\\ShareDataService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\ShareDataService.cs",
+              "RelativeToolTip": "Core\\ShareDataService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T09:59:01.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T10:24:37.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MainView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainView.xaml",
+              "RelativeDocumentMoniker": "Views\\MainView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainView.xaml",
+              "RelativeToolTip": "Views\\MainView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T06:41:14.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ChatMessage.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\ChatMessage.cs",
+              "RelativeDocumentMoniker": "Models\\ChatMessage.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\ChatMessage.cs",
+              "RelativeToolTip": "Models\\ChatMessage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:14.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CareerProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\CareerProfile.cs",
+              "RelativeDocumentMoniker": "Models\\CareerProfile.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\CareerProfile.cs",
+              "RelativeToolTip": "Models\\CareerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:11.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ResumeManageView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\ResumeManageView.xaml",
+              "RelativeDocumentMoniker": "Views\\ResumeManageView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\ResumeManageView.xaml",
+              "RelativeToolTip": "Views\\ResumeManageView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T10:15:13.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Microsoft.WinFX.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.304\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.304\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.304\\Sdks\\Microsoft.NET.Sdk.WindowsDesktop\\targets\\Microsoft.WinFX.targets",
+              "ViewState": "AgIAAK8CAAAAAAAAAAAAAMICAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-08-08T10:12:08.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DialogService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\DialogService.cs",
+              "RelativeDocumentMoniker": "Services\\DialogService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\DialogService.cs",
+              "RelativeToolTip": "Services\\DialogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:28.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "Views\\LoginView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\LoginView.xaml",
+              "RelativeToolTip": "Views\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T06:43:56.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "RegisterView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\RegisterView.xaml",
+              "RelativeDocumentMoniker": "Views\\RegisterView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\RegisterView.xaml",
+              "RelativeToolTip": "Views\\RegisterView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T08:21:15.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FinanceAnalysisView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\FinanceAnalysisView.xaml",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T07:18:21.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "CareerAnalysisView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\CareerAnalysisView.xaml",
+              "RelativeDocumentMoniker": "Views\\CareerAnalysisView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\CareerAnalysisView.xaml",
+              "RelativeToolTip": "Views\\CareerAnalysisView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T10:16:32.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CertificatePopup.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\CertificatePopup.xaml",
+              "RelativeDocumentMoniker": "Views\\CertificatePopup.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\CertificatePopup.xaml",
+              "RelativeToolTip": "Views\\CertificatePopup.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-08T10:16:31.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "TcpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\TcpClientService.cs",
+              "RelativeDocumentMoniker": "Services\\TcpClientService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\TcpClientService.cs",
+              "RelativeToolTip": "Services\\TcpClientService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAIA6wBMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:21.017Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CertificatePopupViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\CertificatePopupViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\CertificatePopupViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\CertificatePopupViewModel.cs",
+              "RelativeToolTip": "ViewModels\\CertificatePopupViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T09:55:51.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "CareerAnalysisViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\CareerAnalysisViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\CareerAnalysisViewModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\ViewModels\\CareerAnalysisViewModel.cs",
+              "RelativeToolTip": "ViewModels\\CareerAnalysisViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-08T09:55:49.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PasswordBoxHelper.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\PasswordBoxHelper.cs",
+              "RelativeDocumentMoniker": "Core\\PasswordBoxHelper.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\PasswordBoxHelper.cs",
+              "RelativeToolTip": "Core\\PasswordBoxHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:17:51.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "LoginView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\LoginView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\LoginView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\LoginView.xaml.cs",
+              "RelativeToolTip": "Views\\LoginView.xaml.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAALgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T01:54:23.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "RegisterView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\RegisterView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\RegisterView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\RegisterView.xaml.cs",
+              "RelativeToolTip": "Views\\RegisterView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T08:21:28.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "AppConfig.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\AppConfig.cs",
+              "RelativeDocumentMoniker": "Core\\AppConfig.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\AppConfig.cs",
+              "RelativeToolTip": "Core\\AppConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:43:38.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ScenarioStep.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\ScenarioStep.cs",
+              "RelativeDocumentMoniker": "Models\\ScenarioStep.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\ScenarioStep.cs",
+              "RelativeToolTip": "Models\\ScenarioStep.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:24.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "QuestionModel.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\QuestionModel.cs",
+              "RelativeDocumentMoniker": "Models\\QuestionModel.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\QuestionModel.cs",
+              "RelativeToolTip": "Models\\QuestionModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:22.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "InterestItem.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\InterestItem.cs",
+              "RelativeDocumentMoniker": "Models\\InterestItem.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\InterestItem.cs",
+              "RelativeToolTip": "Models\\InterestItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:09.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\.gitkeep",
+              "RelativeDocumentMoniker": "Services\\.gitkeep",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\.gitkeep",
+              "RelativeToolTip": "Services\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-08T06:08:16.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\Constants.cs",
+              "RelativeDocumentMoniker": "Core\\Constants.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\Constants.cs",
+              "RelativeToolTip": "Core\\Constants.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:58.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "NavigationStore.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\NavigationStore.cs",
+              "RelativeDocumentMoniker": "Core\\NavigationStore.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\NavigationStore.cs",
+              "RelativeToolTip": "Core\\NavigationStore.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:43:33.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "Emotion_result_model.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\Emotion_result_model.cs",
+              "RelativeDocumentMoniker": "Models\\Emotion_result_model.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\Emotion_result_model.cs",
+              "RelativeToolTip": "Models\\Emotion_result_model.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:19.645Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "DeepQuestionItem.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\DeepQuestionItem.cs",
+              "RelativeDocumentMoniker": "Models\\DeepQuestionItem.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\DeepQuestionItem.cs",
+              "RelativeToolTip": "Models\\DeepQuestionItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T02:18:14.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "JsonHelper.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\JsonHelper.cs",
+              "RelativeDocumentMoniker": "Core\\JsonHelper.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\JsonHelper.cs",
+              "RelativeToolTip": "Core\\JsonHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:43:35.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\.gitkeep",
+              "RelativeDocumentMoniker": "Core\\.gitkeep",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Core\\.gitkeep",
+              "RelativeToolTip": "Core\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-06T06:52:08.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "MainView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\MainView.xaml.cs",
+              "RelativeToolTip": "Views\\MainView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T12:08:46.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "EmotionView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\EmotionView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionView.xaml.cs",
+              "RelativeToolTip": "Views\\EmotionView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T09:17:16.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T09:17:26.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "ScenarioService.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\ScenarioService.cs",
+              "RelativeDocumentMoniker": "Services\\ScenarioService.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Services\\ScenarioService.cs",
+              "RelativeToolTip": "Services\\ScenarioService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAywAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:24.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "LOGO2.png - PNG [1024x349, 32\uBE44\uD2B8, PNG]",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Assets\\LOGO2.png",
+              "RelativeDocumentMoniker": "Assets\\LOGO2.png",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Assets\\LOGO2.png - PNG [1024x349, 32\uBE44\uD2B8, PNG]",
+              "RelativeToolTip": "Assets\\LOGO2.png - PNG [1024x349, 32\uBE44\uD2B8, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-08-06T08:20:23.424Z",
+              "EditorCaption": " - PNG [1024x349, 32\uBE44\uD2B8, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "FinanceAnalysisView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\FinanceAnalysisView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\FinanceAnalysisView.xaml.cs",
+              "RelativeToolTip": "Views\\FinanceAnalysisView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T07:18:23.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "EmotionView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionView.xaml",
+              "RelativeDocumentMoniker": "Views\\EmotionView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionView.xaml",
+              "RelativeToolTip": "Views\\EmotionView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T06:43:55.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "DeepTestView.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\DeepTestView.xaml",
+              "RelativeToolTip": "Views\\DeepTestView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T06:37:51.005Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "EmotionResultView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionResultView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\EmotionResultView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\EmotionResultView.xaml.cs",
+              "RelativeToolTip": "Views\\EmotionResultView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:38:04.217Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "DeepTestView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\DeepTestView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\DeepTestView.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Views\\DeepTestView.xaml.cs",
+              "RelativeToolTip": "Views\\DeepTestView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T06:37:47.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "LoginPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\LoginPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\LoginPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T03:36:51.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "LoginPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\LoginPage.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\LoginPage.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\LoginPage.xaml.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAcwIMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T05:16:55.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "RegisterPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\RegisterPage.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\RegisterPage.xaml.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAUwEwAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T09:56:06.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RegisterPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\RegisterPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\RegisterPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\RegisterPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T09:49:34.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvxUAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T03:30:39.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ResumeManagePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T10:25:44.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainWindow.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T03:30:24.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "logo.png - PNG [1024x1024, 32\uBE44\uD2B8, PNG]",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\logo.png",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\logo.png",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\logo.png - PNG [1024x1024, 32\uBE44\uD2B8, PNG]",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\logo.png - PNG [1024x1024, 32\uBE44\uD2B8, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-08-05T03:15:29.031Z",
+              "EditorCaption": " - PNG [1024x1024, 32\uBE44\uD2B8, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ResumeManagePage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\ResumeManagePage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:19.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\.gitkeep",
+              "RelativeDocumentMoniker": "Models\\.gitkeep",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Models\\.gitkeep",
+              "RelativeToolTip": "Models\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-04T09:52:42.512Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T09:52:46.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\MainPage.xaml.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAcwDcAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T07:06:12.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\MainPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\MainPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:24.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\App.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\App.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T03:30:17.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "CareerProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\Model\\CareerProfile.cs",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\Model\\CareerProfile.cs",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\Model\\CareerProfile.cs",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\Model\\CareerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-04T04:27:10.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "BottomNav.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\BottomNav.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\BottomNav.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\BottomNav.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\BottomNav.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:40.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": ".gitkeep",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Assets\\.gitkeep",
+              "RelativeDocumentMoniker": "Assets\\.gitkeep",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\real_plan\\RunNow\\Assets\\.gitkeep",
+              "RelativeToolTip": "Assets\\.gitkeep",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-08-04T03:33:51.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "CareerAnalysisPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\CareerAnalysisPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\CareerAnalysisPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\CareerAnalysisPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\CareerAnalysisPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:31.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "FinanceAnalysisPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\FinanceAnalysisPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\FinanceAnalysisPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\FinanceAnalysisPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\FinanceAnalysisPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:30.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "QuickTestPage.xaml",
+              "DocumentMoniker": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\QuickTestPage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\PlanIt\\RunNow\\View\\QuickTestPage.xaml",
+              "ToolTip": "C:\\Users\\YESOM\\Desktop\\PlanIt\\RunNow\\View\\QuickTestPage.xaml",
+              "RelativeToolTip": "..\\..\\PlanIt\\RunNow\\View\\QuickTestPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-04T04:26:22.235Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

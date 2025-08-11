@@ -5,7 +5,11 @@ using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Models;
 using RunNow.Services;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,284 +18,170 @@ namespace RunNow.ViewModels
 {
     public partial class DeepTestViewModel : ObservableObject
     {
-////<<<<<<< HEAD
-//        private readonly TcpClientService _tcpService;
-
-//        public ObservableCollection<DeepQuestionItem> Questions { get; } = new();
-//        public ObservableCollection<InterestItem> InterestCategories { get; } = new();
-
-//        [ObservableProperty] private bool isEmotionStepVisible = true;
-//        [ObservableProperty] private bool isFinanceStepVisible;
-//        [ObservableProperty] private bool isCareerStepVisible;
-
-//        [ObservableProperty] private string assets = string.Empty;
-//        [ObservableProperty] private string income = string.Empty;
-//        [ObservableProperty] private string rent = string.Empty;
-//        [ObservableProperty] private string phone = string.Empty;
-//        [ObservableProperty] private string subscription = string.Empty;
-//        [ObservableProperty] private string food = string.Empty;
-//        [ObservableProperty] private string transport = string.Empty;
-//        [ObservableProperty] private string leisure = string.Empty;
-//        [ObservableProperty] private string savingTarget = string.Empty;
-//        [ObservableProperty] private string debt = string.Empty;
-
-//        [ObservableProperty] private string position = string.Empty;
-//        [ObservableProperty] private string experience = string.Empty;
-//        [ObservableProperty] private string skills = string.Empty;
-
-//        public DeepTestViewModel(TcpClientService tcpService)
-//        {
-//            _tcpService = tcpService;
-
-//            // 30개 감정 설문
-//            var texts = new[]
-//            {
-//                "일이 잘 풀릴 거란 희망이 잘 들지 않는다",
-//                "요즘 기분이 가라앉고 우울한 날이 많다",
-//                "아무것도 하고 싶지 않은 무기력감이 든다",
-//                "최근 웃거나 기뻤던 기억이 있다",
-//                "스트레스 상황에서도 긍정적으로 생각하려 한다",
-//                "지금의 직장을 계속 다닐 생각이 없다",
-//                "이직에 대한 생각이 머릿속을 자주 맴돈다",
-//                "내가 더 잘할 수 있는 환경이 따로 있다고 느낀다",
-//                "현재 회사에서 내 노력을 제대로 인정받지 못한다",
-//                "현재 조직에서 나의 미래가 그려지지 않는다",
-//                "아무리 쉬어도 피곤하고 회복이 되지 않는다",
-//                "출근 생각만 해도 마음이 무겁다",
-//                "일하는 도중 감정이 마비되거나 무감각해진다",
-//                "매일매일이 버티는 것처럼 느껴진다",
-//                "사람들과 대화할 힘도 없고, 혼자 있고 싶다",
-//                "힘든 상황에서도 다시 일어설 수 있다는 믿음이 있다",
-//                "스트레스를 적절히 해소하는 나만의 방식이 있다",
-//                "내 에너지를 다시 채울 수 있는 시간이 충분하다",
-//                "일이 힘들어도 나는 다시 집중할 수 있는 편이다",
-//                "감정적으로 무너질 것 같을 때 스스로를 다독일 수 있다",
-//                "지금 회사의 운영방식이나 문화가 나와 맞지 않는다",
-//                "나의 핵심가치가 존중받지 않는다",
-//                "회사가 추구하는 방향성과 내 인생 목표가 다르다",
-//                "나는 내가 바라는 삶과 지금의 삶이 일치한다고 느낀다",
-//                "나는 조직보다는 개인 성장에 더 가치를 둔다",
-//                "상사나 동료와의 관계가 심리적으로 힘들다",
-//                "직장 내에서 심리적 안전감을 느끼기 어렵다",
-//                "주변 사람들이 내 고민을 잘 이해해주지 않는다",
-//                "나는 내가 정말 원하는 게 뭔지 잘 모르겠다",
-//                "지금 나는 멈춰 있고, 어디로 가야 할지 모르겠다"
-//            };
-
-//            int i = 1;
-//            foreach (var text in texts)
-//            {
-//                Questions.Add(new DeepQuestionItem { Id = $"Q{i++}", QuestionText = text });
-//            }
-//        }
-
-//        // 관심 산업 카테고리
-//        =======
-        // TCP 통신 서비스
         private readonly TcpClientService _tcpService;
-
-        // 네비게이션 상태 관리용 스토어
         private readonly NavigationStore _navigationStore;
-
-        // DI 서비스 공급자
         private readonly IServiceProvider _serviceProvider;
 
-        // 질문 목록 (감정 진단 문항)
         public ObservableCollection<DeepQuestionItem> Questions { get; } = new();
-
-        // 관심 산업 분야 목록
         public ObservableCollection<InterestItem> InterestCategories { get; } = new();
 
-        // UI 단계별 표시 제어용 프로퍼티
-        [ObservableProperty] private bool isEmotionStepVisible = true;  // 감정 진단 단계 보임 여부
-        [ObservableProperty] private bool isFinanceStepVisible;          // 재정 진단 단계 보임 여부
-        [ObservableProperty] private bool isCareerStepVisible;           // 경력 진단 단계 보임 여부
+        [ObservableProperty] private bool isEmotionStepVisible = true;
+        [ObservableProperty] private bool isFinanceStepVisible;
+        [ObservableProperty] private bool isCareerStepVisible;
 
-        // 재정 진단 입력값 프로퍼티
-        [ObservableProperty] private string assets = string.Empty;       // 총 자산
-        [ObservableProperty] private string income = string.Empty;       // 월 수입
-        [ObservableProperty] private string rent = string.Empty;         // 월세 등 고정 지출
-        [ObservableProperty] private string phone = string.Empty;        // 통신비
-        [ObservableProperty] private string subscription = string.Empty; // 구독료
-        [ObservableProperty] private string food = string.Empty;         // 식비
-        [ObservableProperty] private string transport = string.Empty;    // 교통비
-        [ObservableProperty] private string leisure = string.Empty;      // 여가비용
-        [ObservableProperty] private string savingTarget = string.Empty; // 저축 목표
-        [ObservableProperty] private string debt = string.Empty;         // 부채
+        // XAML 바인딩용
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
+        private string currentPosition = string.Empty;
 
-        // 경력 진단 입력값 프로퍼티
-        [ObservableProperty] private string position = string.Empty;     // 현재 직무
-        [ObservableProperty] private string experience = string.Empty;   // 경력 연수
-        [ObservableProperty] private string skills = string.Empty;       // 기술/자격증
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
+        private string selectedExperience = string.Empty;
 
-        // 생성자: DI 주입 및 초기 질문, 관심분야 리스트 구성
-        public DeepTestViewModel(
-            TcpClientService tcpService,
-            NavigationStore navigationStore,
-            IServiceProvider serviceProvider)
+        partial void OnCurrentPositionChanged(string value) => Position = value;
+        partial void OnSelectedExperienceChanged(string value) => Experience = value;
+
+        // 재정 입력
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string assets = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string income = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string rent = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string phone = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string subscription = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string food = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string transport = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string leisure = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string savingTarget = string.Empty;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(GoToCareerStepCommand))] private string debt = string.Empty;
+
+        // payload용 경력
+        [ObservableProperty] private string position = string.Empty;
+        [ObservableProperty] private string experience = string.Empty;
+        [ObservableProperty] private string skills = string.Empty; // 선택 항목
+
+        public DeepTestViewModel(TcpClientService tcpService, NavigationStore navigationStore, IServiceProvider serviceProvider)
         {
             _tcpService = tcpService;
             _navigationStore = navigationStore;
             _serviceProvider = serviceProvider;
 
-            // 카테고리와 문항 묶어서 초기화
+
             var questionsByCategory = new (string Category, string QuestionText)[]
             {
-            // 감정 상태
-            ("감정 상태", "요즘 일이 잘 풀릴 거라는 희망이 전혀 들지 않는다"),
-            ("감정 상태", "기분이 가라앉고 우울한 날이 대부분이다"),
-            ("감정 상태", "아무것도 하고 싶지 않고 무기력하다"),
-            ("감정 상태", "기뻤던 기억이 거의 없다"),
-            ("감정 상태", "스트레스를 받을 때 긍정적으로 생각하지 못한다"),
-
-            // 이직 욕구/동기 상태
-            ("이직 욕구/동기 상태", "지금의 직장에 더 이상 다니고 싶지 않다"),
-            ("이직 욕구/동기 상태", "이직 생각이 머릿속을 떠나지 않는다"),
-            ("이직 욕구/동기 상태", "지금보다 더 나은 환경이 따로 있을 것 같다"),
-            ("이직 욕구/동기 상태", "현재 회사는 내 노력을 인정해주지 않는다"),
-            ("이직 욕구/동기 상태", "이 조직에서 내 미래가 보이지 않는다"),
-
-            // 번아웃/스트레스 지수
-            ("번아웃/스트레스 지수", "충분히 쉬어도 피곤하고 회복되지 않는다"),
-            ("번아웃/스트레스 지수", "출근 생각만 해도 마음이 무겁고 괴롭다"),
-            ("번아웃/스트레스 지수", "일하면서 감정이 마비되거나 무감각해진다"),
-            ("번아웃/스트레스 지수", "매일이 버티는 것처럼 느껴진다"),
-            ("번아웃/스트레스 지수", "사람들과의 대화가 버겁고 혼자 있고 싶다"),
-
-            // 회복탄력성 / 에너지 상태
-            ("회복탄력성 / 에너지 상태", "힘든 상황에서 쉽게 무너진다"),
-            ("회복탄력성 / 에너지 상태", "스트레스를 해소할 방법이 없다"),
-            ("회복탄력성 / 에너지 상태", "에너지를 회복할 시간이나 여유가 없다"),
-            ("회복탄력성 / 에너지 상태", "힘든 일이 생기면 다시 집중하기 어렵다"),
-            ("회복탄력성 / 에너지 상태", "감정적으로 힘들 때 스스로 다독이지 못한다"),
-
-            // 가치/비전 일치도
-            ("가치/비전 일치도", "회사의 운영방식이나 문화가 나와 전혀 맞지 않는다"),
-            ("가치/비전 일치도", "나의 핵심 가치가 회사에서 전혀 존중받지 못한다"),
-            ("가치/비전 일치도", "회사의 방향성과 내 인생 목표가 완전히 다르다"),
-            ("가치/비전 일치도", "현재의 삶은 내가 바라는 삶과 많이 다르다"),
-            ("가치/비전 일치도", "조직보다 나의 성장에만 더 집중하고 싶다"),
-
-            // 관계 스트레스
-            ("관계 스트레스", "상사나 동료와의 관계가 심리적으로 너무 힘들다"),
-            ("관계 스트레스", "직장 내에서 심리적 안전감을 전혀 느낄 수 없다"),
-            ("관계 스트레스", "내 주변 사람들은 내 고민을 이해하지 못한다"),
-            ("관계 스트레스", "나는 팀에서 존중받지 못한다고 느낀다"),
-            ("관계 스트레스", "가까운 사람들과도 감정적으로 거리감이 느껴진다"),
-
-            // 자기정체감/불확실성 상태
-            ("자기정체감/불확실성 상태", "내가 정말 원하는 것이 무엇인지 전혀 모르겠다"),
-            ("자기정체감/불확실성 상태", "앞으로 어떻게 나아가야 할지 방향이 전혀 보이지 않는다"),
-            ("자기정체감/불확실성 상태", "나는 어떤 사람인지 스스로도 잘 모르겠다"),
-            ("자기정체감/불확실성 상태", "지금 나는 멈춰있고 제자리걸음 중인 것 같다"),
-            ("자기정체감/불확실성 상태", "삶에 대한 주도권을 잃은 느낌이 든다"),
+                ("감정 상태", "요즘 일이 잘 풀릴 거라는 희망이 전혀 들지 않는다"),
+                ("감정 상태", "기분이 가라앉고 우울한 날이 대부분이다"),
+                ("감정 상태", "아무것도 하고 싶지 않고 무기력하다"),
+                ("감정 상태", "기뻤던 기억이 거의 없다"),
+                ("감정 상태", "스트레스를 받을 때 긍정적으로 생각하지 못한다"),
+                ("이직 욕구/동기 상태", "지금의 직장에 더 이상 다니고 싶지 않다"),
+                ("이직 욕구/동기 상태", "이직 생각이 머릿속을 떠나지 않는다"),
+                ("이직 욕구/동기 상태", "지금보다 더 나은 환경이 따로 있을 것 같다"),
+                ("이직 욕구/동기 상태", "현재 회사는 내 노력을 인정해주지 않는다"),
+                ("이직 욕구/동기 상태", "이 조직에서 내 미래가 보이지 않는다"),
+                ("번아웃/스트레스 지수", "충분히 쉬어도 피곤하고 회복되지 않는다"),
+                ("번아웃/스트레스 지수", "출근 생각만 해도 마음이 무겁고 괴롭다"),
+                ("번아웃/스트레스 지수", "일하면서 감정이 마비되거나 무감각해진다"),
+                ("번아웃/스트레스 지수", "매일이 버티는 것처럼 느껴진다"),
+                ("번아웃/스트레스 지수", "사람들과의 대화가 버겁고 혼자 있고 싶다"),
+                ("회복탄력성 / 에너지 상태", "힘든 상황에서 쉽게 무너진다"),
+                ("회복탄력성 / 에너지 상태", "스트레스를 해소할 방법이 없다"),
+                ("회복탄력성 / 에너지 상태", "에너지를 회복할 시간이나 여유가 없다"),
+                ("회복탄력성 / 에너지 상태", "힘든 일이 생기면 다시 집중하기 어렵다"),
+                ("회복탄력성 / 에너지 상태", "감정적으로 힘들 때 스스로 다독이지 못한다"),
+                ("가치/비전 일치도", "회사의 운영방식이나 문화가 나와 전혀 맞지 않는다"),
+                ("가치/비전 일치도", "나의 핵심 가치가 회사에서 전혀 존중받지 못한다"),
+                ("가치/비전 일치도", "회사의 방향성과 내 인생 목표가 완전히 다르다"),
+                ("가치/비전 일치도", "현재의 삶은 내가 바라는 삶과 많이 다르다"),
+                ("가치/비전 일치도", "조직보다 나의 성장에만 더 집중하고 싶다"),
+                ("관계 스트레스", "상사나 동료와의 관계가 심리적으로 너무 힘들다"),
+                ("관계 스트레스", "직장 내에서 심리적 안전감을 전혀 느낄 수 없다"),
+                ("관계 스트레스", "내 주변 사람들은 내 고민을 이해하지 못한다"),
+                ("관계 스트레스", "나는 팀에서 존중받지 못한다고 느낀다"),
+                ("관계 스트레스", "가까운 사람들과도 감정적으로 거리감이 느껴진다"),
+                ("자기정체감/불확실성 상태", "내가 정말 원하는 것이 무엇인지 전혀 모르겠다"),
+                ("자기정체감/불확실성 상태", "앞으로 어떻게 나아가야 할지 방향이 전혀 보이지 않는다"),
+                ("자기정체감/불확실성 상태", "나는 어떤 사람인지 스스로도 잘 모르겠다"),
+                ("자기정체감/불확실성 상태", "지금 나는 멈춰있고 제자리걸음 중인 것 같다"),
+                ("자기정체감/불확실성 상태", "삶에 대한 주도권을 잃은 느낌이 든다"),
             };
 
             int index = 1;
             foreach (var (category, question) in questionsByCategory)
             {
-                Questions.Add(new DeepQuestionItem
-                {
-                    Id = $"Q{index++}",
-                    Category = category,
-                    QuestionText = question
-                });
+
+                Questions.Add(new DeepQuestionItem { Id = $"Q{index++}", Category = category, QuestionText = question });
             }
 
-            // 관심 산업 초기화는 그대로 유지
-//>>>>>>> HJY
+            // 그룹 포함 관심산업 채우기
+            Add("공공 & 사회", "공공", "교육", "에너지", "환경", "ESG", "정부정책", "사회복지", "국방/안보");
+            Add("헬스케어", "의료", "바이오", "헬스케어", "의료기기", "디지털헬스", "제약", "임상시험");
+            Add("금융 & 핀테크", "금융", "핀테크", "보험", "블록체인", "투자", "회계/세무", "부동산금융");
+            Add("산업 & 제조", "제조", "스마트팩토리", "건설", "모빌리티", "반도체", "기계/설비", "전기/전자");
+            Add("콘텐츠 & IT", "게임", "IT/SW", "보안", "클라우드", "AI", "메타버스", "XR/VR/AR", "영상/미디어");
+            Add("유통 & 이커머스", "유통", "이커머스", "브랜드", "리테일테크", "라이브커머스");
+            Add("물류 & 공급망", "물류", "SCM", "배송", "3PL", "창고관리");
+            Add("HR & 조직문화", "HR", "채용", "조직문화", "복지", "교육훈련");
+            Add("스타트업 & 혁신", "스타트업", "Social Impact", "GreenTech", "Tech for Good", "임팩트 투자");
 
-            InterestCategories.Add(new InterestItem { Name = "공공" });
-            InterestCategories.Add(new InterestItem { Name = "교육" });
-            InterestCategories.Add(new InterestItem { Name = "에너지" });
-            InterestCategories.Add(new InterestItem { Name = "헬스케어" });
-            InterestCategories.Add(new InterestItem { Name = "AI" });
-            InterestCategories.Add(new InterestItem { Name = "게임" });
+            void Add(string group, params string[] names)
+            {
+                foreach (var n in names)
+                    InterestCategories.Add(new InterestItem { Group = group, Name = n });
+            }
 
+            // 이벤트 훅
+            HookInterestEvents();
         }
 
-        // 감정 단계에서 재정 단계로 넘어갈 때 호출하는 커맨드
         [RelayCommand]
         private void GoToFinanceStep()
         {
-            // 응답 누락 문항 체크
             if (Questions.Any(q => !q.SelectedValue.HasValue))
             {
                 MessageBox.Show("모든 문항에 응답해주세요.");
                 return;
             }
-            // UI 표시 상태 전환
+
             IsEmotionStepVisible = false;
             IsFinanceStepVisible = true;
         }
 
 
-        // 재정 단계에서 경력 단계로 넘어갈 때 호출하는 커맨드
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanGoToCareerStep))]
         private void GoToCareerStep()
         {
-            // UI 표시 상태 전환
+
             IsFinanceStepVisible = false;
             IsCareerStepVisible = true;
         }
 
-//<<<<<<< HEAD
-//        [RelayCommand]
-//        private async Task AnalyzeAsync()
-//        {
-//            var payload = new JObject
-//            {
-//                ["type"] = "deep_analysis",
-//                ["emotion"] = JArray.FromObject(Questions),
-//                ["finance"] = new JObject
-//                {
-//                    ["assets"] = Assets,
-//                    ["income"] = Income,
-//                    ["rent"] = Rent,
-//                    ["phone"] = Phone,
-//                    ["subscription"] = Subscription,
-//                    ["food"] = Food,
-//                    ["transport"] = Transport,
-//                    ["leisure"] = Leisure,
-//                    ["savingTarget"] = SavingTarget,
-//                    ["debt"] = Debt
-//                },
-//                ["career"] = new JObject
-//                {
-//                    ["position"] = Position,
-//                    ["experience"] = Experience,
-//                    ["skills"] = Skills,
-//                    ["interests"] = JArray.FromObject(InterestCategories.Where(x => x.IsSelected).Select(x => x.Name))
-//                }
-//            };
 
-//            await _tcpService.ConnectAsync();
-//            var response = await _tcpService.SendJsonToServer(payload);
+        private bool CanGoToCareerStep()
+        {
+            bool Has(string s) => !string.IsNullOrWhiteSpace(s);
+            return Has(Assets) && Has(Income) && Has(Rent) && Has(Phone) && Has(Subscription)
+                && Has(Food) && Has(Transport) && Has(Leisure) && Has(SavingTarget) && Has(Debt);
+        }
 
-//=======
-        // 감정 진단 결과 계산 - 각 카테고리별 평균 점수 계산하여 리스트 반환
+
         private List<JObject> CalculateEmotionResults()
         {
             return Questions
                 .GroupBy(q => q.Category)
-                .Select(g =>
+
+                .Select(g => new JObject
                 {
-                    var avg = g.Average(q => q.SelectedValue ?? 0);
-                    return new JObject
-                    {
-                        ["category"] = g.Key,
-                        ["average"] = avg
-                    };
+                    ["category"] = g.Key,
+                    ["average"] = g.Average(q => q.SelectedValue ?? 0)
                 })
                 .ToList();
         }
-        // 감정 결과를 UI용 아이템 리스트로 변환
+
         private List<EmotionResultItem> ConvertEmotionResultsToItems(List<JObject> emotionResults)
         {
             return emotionResults.Select(r => new EmotionResultItem
             {
                 Category = r["category"]?.ToString() ?? "",
-                Score = (int)System.Math.Round(r["average"]?.ToObject<double>() ?? 0),
+
+                Score = (int)Math.Round(r["average"]?.ToObject<double>() ?? 0),
+
                 Description = $"{r["category"]?.ToString()} 평균 {r["average"]?.ToObject<double>():F1}점"
             }).ToList();
         }
@@ -312,95 +202,128 @@ namespace RunNow.ViewModels
             }
         }
 
-        // 분석 실행 커맨드 (비동기)
-        [RelayCommand]
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AnalyzeCommand))]
+        private bool isBusy;
+
+        [RelayCommand(CanExecute = nameof(CanAnalyze))]
         private async Task AnalyzeAsync()
         {
-            // 필수 문항 응답 체크
+
             if (Questions.Any(q => !q.SelectedValue.HasValue))
             {
                 MessageBox.Show("모든 문항에 응답해주세요.");
                 return;
             }
 
-            // 감정 진단 결과 계산
-            var emotionResults = CalculateEmotionResults();
 
-            // 재정 데이터 JSON 생성
-            var finance = new JObject
+            IsBusy = true;              // ⬅️ 시작: 오버레이 ON
+            try
             {
-                ["assets"] = Assets,
-                ["income"] = Income,
-                ["saving_target"] = SavingTarget,
-                ["debt"] = Debt,
-                ["fixed_expense"] = new JObject
+                var emotionResults = CalculateEmotionResults();
+
+                var finance = new JObject
                 {
-                    ["rent"] = Rent,
-                    ["phone"] = Phone,
-                    ["subscription"] = Subscription
-                },
-                ["variable_expense"] = new JObject
+                    ["assets"] = Assets,
+                    ["income"] = Income,
+                    ["saving_target"] = SavingTarget,
+                    ["debt"] = Debt,
+                    ["fixed_expense"] = new JObject
+                    {
+                        ["rent"] = Rent,
+                        ["phone"] = Phone,
+                        ["subscription"] = Subscription
+                    },
+                    ["variable_expense"] = new JObject
+                    {
+                        ["food"] = Food,
+                        ["transport"] = Transport,
+                        ["leisure"] = Leisure
+                    }
+                };
+
+                var career = new JObject
                 {
-                    ["food"] = Food,
-                    ["transport"] = Transport,
-                    ["leisure"] = Leisure
-                }
-            };
+                    ["position"] = Position,
+                    ["experience"] = Experience,
+                    ["skills"] = Skills,
+                    ["interests"] = JArray.FromObject(InterestCategories.Where(x => x.IsSelected).Select(x => x.Name))
+                };
 
-            // 경력 데이터 JSON 생성
-            var career = new JObject
-            {
-                ["position"] = Position,
-                ["experience"] = Experience,
-                ["skills"] = Skills,
-                ["interests"] = JArray.FromObject(InterestCategories.Where(x => x.IsSelected).Select(x => x.Name))
-            };
+                var payload = new JObject
+                {
+                    ["protocol"] = "100_0",
+                    ["type"] = "deep_analysis",
+                    ["emotion"] = new JArray(emotionResults),
+                    ["finance"] = finance,
+                    ["career"] = career
+                };
 
-            // 최종 전송 payload 생성
-            var payload = new JObject
-            {
-                ["protocol"] = "100_0",
-                ["type"] = "deep_analysis",
-                ["emotion"] = new JArray(emotionResults),
-                ["finance"] = finance,
-                ["career"] = career
-            };
+                await _tcpService.ConnectAsync();
 
-            // TCP 서버 연결 및 데이터 전송
-            await _tcpService.ConnectAsync();
+                var response = await _tcpService.SendJsonToServer(payload);
 
-            // 서버한테 어떻게 쏘는지
-            Console.WriteLine("최종 payload:");
-            Console.WriteLine(payload.ToString());
+                var emotionResultItems = ConvertEmotionResultsToItems(emotionResults);
 
-            var response = await _tcpService.SendJsonToServer(payload);
-            //디버기용ㅇ
-            Console.WriteLine("서버 응답:");
-            Console.WriteLine(response?.ToString());
+                var deepResultVm = _serviceProvider.GetRequiredService<DeepResultViewModel>();
+                deepResultVm.SetResults(emotionResultItems);
 
-            // 감정 결과를 UI 표시용 아이템으로 변환
-            var emotionResultItems = ConvertEmotionResultsToItems(emotionResults);
+                string summary = response?["analysis_summary"]?.ToString() ?? "결과 요약을 불러오지 못했습니다.";
+                deepResultVm.SetResultText(summary);
 
-            // 결과 페이지 ViewModel 생성 및 결과 세팅
-            var deepResultVm = _serviceProvider.GetRequiredService<DeepResultViewModel>();
-            deepResultVm.SetResults(emotionResultItems);
+                var recommendedJobs = (JArray?)response?["recommended_jobs"];
+                if (recommendedJobs != null) deepResultVm.SetRecommendedJobs(recommendedJobs);
 
-            // 서버 응답에서 summary 항목 추출 후 텍스트 결과 설정
-            string summary = response?["analysis_summary"]?.ToString() ?? "결과 요약을 불러오지 못했습니다.";
-            deepResultVm.SetResultText(summary);
+                var realisticAdvice = response?["realistic_advice"] as JArray;
+                if (realisticAdvice != null) deepResultVm.SetRealisticAdvice(realisticAdvice);
 
-            var recommendedJobs = (JArray?)response?["recommended_jobs"];
-            if (recommendedJobs != null)
-            {
-                deepResultVm.SetRecommendedJobs(recommendedJobs);
+                _navigationStore.CurrentViewModel = deepResultVm;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"분석 중 오류가 발생했습니다.\n\n{ex.Message}", "오류", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            finally
+            {
+                IsBusy = false;         // ⬅️ 끝: 오버레이 OFF (성공/실패 상관없이)
+            }
+        }
 
-            // 화면 전환 (네비게이션)
-            _navigationStore.CurrentViewModel = deepResultVm;
 
-            // 서버 응답 메시지 출력
-//>>>>>>> HJY
-            MessageBox.Show($"서버 응답:\n{response}", "분석 결과", MessageBoxButton.OK, MessageBoxImage.Information);
+        private bool CanAnalyze()
+        {
+            if (IsBusy) return false; // ⬅️ 로딩 중엔 비활성
+            if (Questions.Any(q => !q.SelectedValue.HasValue)) return false;
+
+            var hasPosition = !string.IsNullOrWhiteSpace(CurrentPosition);
+            var hasExperience = !string.IsNullOrWhiteSpace(SelectedExperience);
+            var hasInterests = InterestCategories.Any(i => i.IsSelected);
+            return hasPosition && hasExperience && hasInterests;
+        }
+
+        private void HookInterestEvents()
+        {
+            foreach (var it in InterestCategories)
+                it.PropertyChanged += OnInterestItemPropertyChanged;
+
+            InterestCategories.CollectionChanged += (s, e) =>
+            {
+                if (e.NewItems != null)
+                    foreach (InterestItem it in e.NewItems)
+                        it.PropertyChanged += OnInterestItemPropertyChanged;
+
+                if (e.OldItems != null)
+                    foreach (InterestItem it in e.OldItems)
+                        it.PropertyChanged -= OnInterestItemPropertyChanged;
+
+                AnalyzeCommand?.NotifyCanExecuteChanged();
+            };
+        }
+
+        private void OnInterestItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(InterestItem.IsSelected))
+                AnalyzeCommand?.NotifyCanExecuteChanged();
         }
     }
 }

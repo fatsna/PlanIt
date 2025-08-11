@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="clr-namespace:RunNow.Views"
       xmlns:converters="clr-namespace:RunNow.Converters"
+
       x:Name = "Root"
       Background="White">
 
@@ -41,7 +42,9 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Content="{Binding}"
+
                             Command="{Binding DataContext.SelectOptionCommand, Source={x:Reference Root}}"
+
                             CommandParameter="{Binding}"
                             Margin="5" Padding="10,5" FontSize="12" MinWidth="80" MaxWidth="200">
                         <Button.Template>
