@@ -94,14 +94,14 @@ namespace RunNow.ViewModels
             JObject response = await _authService.LoginAsync(Username, Password);
             var protocol = response["protocol"]?.ToString();
 
-            if (protocol == "101_1") // 로그인 성공
+            if (protocol == "1_1") // 로그인 성공
             {
                 // ✅ 공유 데이터에 저장
                 _shareDataService.User_id = Username;
                 _shareDataService.Password = Password;
 
                 await ShowPopup("로그인 성공", "success.png");
-                await Task.Delay(1000);
+                //await Task.Delay(1000);
                 _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
             }
             else
