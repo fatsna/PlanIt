@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:local="clr-namespace:RunNow.Views"
+             xmlns:local="clr-namespace:RunNow.Views"
              mc:Ignorable="d">
     <Grid Background="#00478F">
         <Grid.RowDefinitions>
@@ -12,15 +12,19 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- 상단 타이틀 -->
         <StackPanel Grid.Row="0" Margin="0,30,0,20" HorizontalAlignment="Center">
             <TextBlock Text="이력서 관리 ✈️"
                        FontSize="20" FontWeight="Bold" Foreground="White"
                        HorizontalAlignment="Center"/>
         </StackPanel>
 
+        <!-- 내용 -->
         <Border Grid.Row="1" Margin="30,0,30,10" Padding="20" CornerRadius="30" Background="White">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
+
+                    <!-- 프로필 -->
                     <StackPanel HorizontalAlignment="Center">
                         <Ellipse Width="80" Height="80" Stroke="#CCC" StrokeThickness="1" Margin="0,10">
                             <Ellipse.Fill>
@@ -29,65 +33,102 @@
                         </Ellipse>
                     </StackPanel>
 
-                    <StackPanel Margin="10" Orientation="Vertical">
-                        <TextBlock Text="이름" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Name}" Margin="0,3,0,10" Height="25"/>
+                    <!-- 기본 입력 (박스 없이, 좌우 여백만) -->
+                    <StackPanel Margin="20,10,20,10" Orientation="Vertical">
+                        <TextBlock Text="이름" FontWeight="Bold" FontSize="17"/>
+                        <TextBox Text="{Binding Name}" Margin="0,3,0,10" Height="25" FontSize="17"/>
 
-                        <TextBlock Text="생년월일" FontWeight="Bold"/>
+                        <TextBlock Text="생년월일" FontWeight="Bold" FontSize="17"/>
                         <StackPanel Orientation="Horizontal" Margin="0,3,0,10">
-                            <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="80" Margin="0,0,10,0"/>
-                            <ComboBox ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Width="60" Margin="0,0,10,0"/>
-                            <ComboBox ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedDay}" Width="60"/>
+                            <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="80" Margin="0,0,10,0" FontSize="17"/>
+                            <ComboBox ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Width="60" Margin="0,0,10,0" FontSize="17"/>
+                            <ComboBox ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedDay}" Width="60" FontSize="17"/>
                         </StackPanel>
 
-                        <TextBlock Text="E-mail" FontWeight="Bold"/>
+                        <TextBlock Text="E-mail" FontWeight="Bold" FontSize="17"/>
                         <StackPanel Orientation="Horizontal" Margin="0,3,0,10">
-                            <TextBox Text="{Binding EmailId}" Width="150" Height="25"/>
-                            <TextBlock Text="@" VerticalAlignment="Center" Margin="5,0"/>
-                            <ComboBox ItemsSource="{Binding EmailDomains}" SelectedItem="{Binding SelectedEmailDomain}" Width="150" Height="30"/>
+                            <TextBox Text="{Binding EmailId}" Width="150" Height="25" FontSize="17"/>
+                            <TextBlock Text="@" VerticalAlignment="Center" Margin="5,0" FontSize="17"/>
+                            <ComboBox ItemsSource="{Binding EmailDomains}" SelectedItem="{Binding SelectedEmailDomain}" Width="150" Height="30" FontSize="17"/>
                         </StackPanel>
 
-                        <TextBlock Text="전화번호" FontWeight="Bold"/>
+                        <TextBlock Text="전화번호" FontWeight="Bold" FontSize="17"/>
                         <StackPanel Orientation="Horizontal" Margin="0,3,0,10">
-                            <ComboBox ItemsSource="{Binding PhonePrefixes}" SelectedItem="{Binding SelectedPhonePrefix}" Width="70"/>
-                            <TextBlock Text="-" Margin="5,0"/>
-                            <TextBox Text="{Binding PhoneMid}" Width="80" MaxLength="4"/>
-                            <TextBlock Text="-" Margin="5,0"/>
-                            <TextBox Text="{Binding PhoneEnd}" Width="80" MaxLength="4"/>
+                            <ComboBox ItemsSource="{Binding PhonePrefixes}" SelectedItem="{Binding SelectedPhonePrefix}" Width="70" FontSize="17"/>
+                            <TextBlock Text="-" Margin="5,0" FontSize="17"/>
+                            <TextBox Text="{Binding PhoneMid}" Width="80" MaxLength="4" FontSize="17"/>
+                            <TextBlock Text="-" Margin="5,0" FontSize="17"/>
+                            <TextBox Text="{Binding PhoneEnd}" Width="80" MaxLength="4" FontSize="17"/>
                         </StackPanel>
 
-                        <TextBlock Text="주소" FontWeight="Bold"/>
-                        <TextBox Text="{Binding Address}" Margin="0,3,0,10" Height="25"/>
+                        <TextBlock Text="주소" FontWeight="Bold" FontSize="17"/>
+                        <TextBox Text="{Binding Address}" Margin="0,3,0,10" Height="25" FontSize="17"/>
                     </StackPanel>
 
-                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,20,0,10">
+                    <!-- 경력사항 -->
+                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="20,20,20,10" MinHeight="150">
                         <StackPanel Margin="10">
-                            <TextBlock Text="경력사항" FontWeight="Bold" HorizontalAlignment="Center"/>
-                            <TextBox Text="{Binding Career}" AcceptsReturn="True" Height="80"/>
+                            <TextBlock Text="경력사항" FontWeight="Bold" HorizontalAlignment="Center" FontSize="17"/>
+                            <TextBox Text="{Binding Career}" AcceptsReturn="True" Height="80" FontSize="17"/>
                         </StackPanel>
                     </Border>
 
-                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,10,0,10">
+                    <!-- 자격사항 (검색 + 리스트 통합) -->
+                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="20,10,20,10" MinHeight="150">
                         <StackPanel Margin="10">
-                            <TextBlock Text="자격사항" FontWeight="Bold" HorizontalAlignment="Center"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <TextBox Text="{Binding SelectedCertificate}" Width="300" IsReadOnly="True"/>
-                                <Button Content="🔍" Width="30" Height="30" Command="{Binding OpenCertificateCommand}"/>
-                            </StackPanel>
+                            <TextBlock Text="자격사항" FontWeight="Bold" HorizontalAlignment="Center" FontSize="17"/>
 
-                            <Border BorderBrush="#ccc" BorderThickness="1" CornerRadius="5" Margin="0,10,0,0" Padding="5">
-                                <ListBox ItemsSource="{Binding Certificates}">
+                            <!-- 검색 영역 -->
+                            <Grid Margin="0,10,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0"
+                                         Text="{Binding SelectedCertificate}"
+                                         Height="30"
+                                         VerticalAlignment="Center"
+                                         FontSize="17"/>
+                                <Button Grid.Column="1"
+                                        Content="🔍"
+                                        Width="34" Height="30" Margin="8,0,0,0"
+                                        Command="{Binding OpenCertificateCommand}"
+                                        FontSize="17"/>
+                            </Grid>
+
+                            <!-- 리스트 -->
+                            <Border BorderBrush="#ccc" BorderThickness="1" CornerRadius="5" Padding="5">
+                                <ListBox ItemsSource="{Binding Certificates}"
+                                         MinHeight="80"
+                                         FontSize="17"
+                                         HorizontalContentAlignment="Stretch">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Horizontal" Margin="2">
-                                                <TextBlock Text="{Binding}" Margin="0,0,5,0"/>
-                                                <Button Content="❌"
+                                            <!-- 한 줄을 좌: 텍스트 / 우: X버튼 으로 분리 -->
+                                            <Grid Margin="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 왼쪽: 자격증 이름 -->
+                                                <TextBlock Text="{Binding}"
+                                                           VerticalAlignment="Center"
+                                                           FontSize="17"
+                                                           Margin="0,0,8,0" />
+
+                                                <!-- 오른쪽 끝: X 버튼(삭제) -->
+                                                <Button Grid.Column="1"
+                                                        Content="❌"
                                                         Command="{Binding DataContext.RemoveCertificateCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
                                                         CommandParameter="{Binding}"
                                                         Background="Transparent"
                                                         BorderThickness="0"
-                                                        Width="20" Height="20"/>
-                                            </StackPanel>
+                                                        Width="24" Height="24"
+                                                        VerticalAlignment="Center"
+                                                        HorizontalAlignment="Right"
+                                                        FontSize="17"/>
+                                            </Grid>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
@@ -95,23 +136,28 @@
                         </StackPanel>
                     </Border>
 
-                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="0,10,0,10">
+                    <!-- 특이사항 -->
+                    <Border BorderBrush="#999" BorderThickness="1" CornerRadius="10" Margin="20,10,20,10" MinHeight="150">
                         <StackPanel Margin="10">
-                            <TextBlock Text="특이사항" FontWeight="Bold" HorizontalAlignment="Center"/>
-                            <TextBox Text="{Binding Notes}" AcceptsReturn="True" Height="80"/>
+                            <TextBlock Text="특이사항" FontWeight="Bold" HorizontalAlignment="Center" FontSize="17"/>
+                            <TextBox Text="{Binding Notes}" AcceptsReturn="True" Height="80" FontSize="17"/>
                         </StackPanel>
                     </Border>
 
+                    <!-- 저장 버튼 -->
                     <Button Content="이력서 저장"
                             Background="#00478F"
                             Foreground="White"
                             FontWeight="Bold"
                             Height="40"
-                            Margin="0,10,0,20"
-                            Command="{Binding SendToServerCommand}"/>
+                            Margin="20,10,20,20"
+                            Command="{Binding SendToServerCommand}"
+                            FontSize="17"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>
+
+        <!-- 하단 네비 -->
         <local:BottomNav Grid.Row="2"/>
     </Grid>
 </UserControl>
