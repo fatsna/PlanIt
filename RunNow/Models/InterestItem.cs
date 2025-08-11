@@ -1,4 +1,3 @@
-//<<<<<<< HEAD
 //﻿using System;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -28,6 +27,5 @@ namespace RunNow.Models
         // 체크 상태 (양방향 바인딩용)
         [ObservableProperty]
         private bool isSelected;
-//>>>>>>> HJY
     }
 }

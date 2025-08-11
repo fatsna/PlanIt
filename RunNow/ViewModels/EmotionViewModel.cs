@@ -76,9 +76,6 @@ namespace RunNow.ViewModels
                 q.Answered += OnQuestionAnswered;
                 selectedQuestions.Add(q);
             }
-
-
-//<<<<<<< HEAD
             // 최종 결과를 AllQuestions에 세팅
             this.AllQuestions.Clear();
             foreach (var q in selectedQuestions)
@@ -132,7 +129,6 @@ namespace RunNow.ViewModels
         }
 
         [RelayCommand]
-//<<<<<<< HEAD
         private void ShowResults()
         {
             JObject result = CalculateCategoryAverages();
@@ -157,7 +153,6 @@ namespace RunNow.ViewModels
                     if (!q.IsPositive) score = 6 - score;
                     return score;
                 });
-//<<<<<<< HEAD
                 result[group.Key] = adjusted.Average();
             }
             double step = 100.0 / 7.0;  // 7구간 점수 폭 (14.2857)
@@ -213,7 +208,6 @@ namespace RunNow.ViewModels
  
             // 선택된 답변의 인덱스를 저장
             question.SelectedAnswerIndex = answers.IndexOf(answerText);
-//=======
 
 //                var categoryObj = new JObject
 //                {
@@ -239,7 +233,6 @@ namespace RunNow.ViewModels
 
 //            // 선택된 답변의 인덱스를 저장
 //            question.SelectedAnswerIndex = answers.IndexOf(answer);
-//>>>>>>> HJY
 
 
             // 이벤트 발생 → 다음 페이지 넘어가기 로직 체크

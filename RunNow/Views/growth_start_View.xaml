@@ -23,7 +23,7 @@
                      Margin="10,10,0,0"
                      VerticalAlignment="Top"
                      Width="80"
-                     Height="80"
+                     Height="80"       
                      Grid.Row="0"
                      Grid.Column="0">
             <i:Interaction.Triggers>
