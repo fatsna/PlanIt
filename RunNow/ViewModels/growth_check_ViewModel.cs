@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -47,16 +48,13 @@ namespace RunNow.ViewModels
             [ObservableProperty] private string? dayText; // s날짜
             [ObservableProperty] private DateTime? date;
             [ObservableProperty] private string? tmp;
+            private Visibility DayVisibility => string.IsNullOrWhiteSpace(Tmp) ? Visibility.Collapsed : Visibility.Visible;
         }
         // 팝업 관련 프로퍼티 추가
         //[ObservableProperty] private WorkRequestManager? selectedDayData;
         [ObservableProperty] private bool isDetailVisible;
-        [ObservableProperty] private int workDay = 10;
-        [ObservableProperty] private int nightCnt = 8;
-        [ObservableProperty] private int offCnt = 6;
         [ObservableProperty] private string scheduleSummaryText;
         [ObservableProperty] private bool popup = false; // 날짜눌렀을때 팝업
-
         public ICommand RectangleMouseDownCommand { get; }
 
         private void GenerateCalendar(DateTime targetDate)
@@ -139,18 +137,17 @@ namespace RunNow.ViewModels
         }
         private void UpdateSummary()
         {
-            this.ScheduleSummaryText = $"     근무일 {this.WorkDay}일 / 야간 {this.NightCnt}일 / 휴무 {this.OffCnt}일";
+            this.ScheduleSummaryText = $"    내 미래를 그리는 '{this.shareDataService.Wantjob}' 향한 도전 캘린더";
         }
-        [RelayCommand] private void Calendar()
+        [RelayCommand] private void Calendar() // 달려보여주기;
         {
-            this.shareDataService.IsDetailVisible = true;
+            this.IsDetailVisible = true;
             //this.IsDetailVisible = true;
-            
         }
 
-        [RelayCommand] private void RectangleClick()
+        [RelayCommand] private void RectangleClick() // 달력 사라져
         {
-            this.shareDataService.IsDetailVisible = false;
+            IsDetailVisible = false;
             Console.WriteLine("사각형 클릭됨!");
         }
 
@@ -169,18 +166,31 @@ namespace RunNow.ViewModels
             this._navigationStore.CurrentViewModel =
                 this._serviceProvider.GetRequiredService<Growth_My_ViewModel>();
         }
-        [RelayCommand] private void RectanglePupup() // 달력팝업 숨기기
+        [RelayCommand] private void RectanglePupup() // 날짜누른팝업 숨기기
         {
             this.Popup = false;
         }
 
-        [RelayCommand] private void goal_finish()
+        [RelayCommand] private void Goal_finish()
         {
             string id = this.shareDataService.User_id;
-            int Growth_id = this.shareDataService.Growth_ID;
-            string goal = "";
+            int Growth_id = int.Parse(this.shareDataService.Growth_ID);
+            List<string> goal = new List<string>();
             // 서버에게 11_0 목표달성 요청하기!
             this._authService.PlanIT_goal(id, Growth_id, goal);
+            this.Popup = false; // 팝업숨기고 sharedata 값변경
+        }
+        [RelayCommand] private void Show_qualifications()
+        {
+            // 자격증으로 변경!
+        }
+        [RelayCommand] private void Show_technology()
+        {
+            // 기술로 변경!
+        }
+        [RelayCommand] private void Show_qualificationexperience()
+        {
+            // 경험으로 변경!
         }
     }
 }

@@ -9,6 +9,7 @@
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
             <converters:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter"/>
             <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+            <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Converters/styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>        

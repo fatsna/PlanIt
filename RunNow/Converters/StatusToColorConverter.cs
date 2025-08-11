@@ -13,7 +13,8 @@ namespace RunNow.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value?.ToString() == "완료" ? Brushes.Green : Brushes.Orange;
+            // 완료 날짜가 있으면 초록 없으면 주황~
+            return value?.ToString() == "" ? Brushes.Orange : Brushes.Green;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

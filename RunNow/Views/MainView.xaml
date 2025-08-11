@@ -100,5 +100,6 @@
 
         <!-- ✅ 하단 네비게이션 -->
         <local:BottomNav Grid.Row="1" Loaded="BottomNav_Loaded"/>
+
     </Grid>
 </UserControl>

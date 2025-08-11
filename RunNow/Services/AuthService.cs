@@ -81,16 +81,16 @@ namespace RunNow.Services
             JObject response = await this._tcpClientService.SendJsonToServer(json);
             return response;
         }
-        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, string GOAL) 
+        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL) 
         {
             JObject json = new JObject()
             {
                 ["protocol"] = "10_0",
                 ["u_id"] = id,
                 ["GROWN_ID"] = GROWN_ID,
-                ["GOAL"] = GOAL,
                 ["GOAL_DATE"] = DateTime.Now.ToString("yyyy-MM-dd") // 날짜만 전송
             };
+            json["GOAL"] = new JArray(GOAL);
             JObject response = await this._tcpClientService.SendJsonToServer(json);
             return response;
         }

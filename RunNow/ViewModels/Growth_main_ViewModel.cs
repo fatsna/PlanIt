@@ -33,6 +33,8 @@ namespace RunNow.ViewModels
             tcpClientService.ConnectAsync();
             this.shareDataService.User_id = "admin";
             //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            Console.WriteLine($"{this.shareDataService.IsDetailVisible}");
+
         }
 
         [RelayCommand] private async Task Planit_start()
@@ -66,6 +68,7 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 종합결과 만드실래요?~!
                 this.check = true;
+                this.shareDataService.IsDetailVisible = true;
             }
         }
 
@@ -90,6 +93,7 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 플래닛만들기나 종합결과를 유도
                 this.check = true;
+                this.shareDataService.IsDetailVisible = true;
             }
         }
 
@@ -111,11 +115,18 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 플래닛만들기나 종합결과를 유도
                 this.check = true;
+                this.shareDataService.IsDetailVisible = true;
             }
         }
         [RelayCommand] private void Back()
         {
             this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<MainViewModel>();
         }
+        [RelayCommand] private void RectangleClick()
+        {
+            this.shareDataService.IsDetailVisible = false;
+            Console.WriteLine($"{this.shareDataService.IsDetailVisible}");
+        }
+
     }
 }

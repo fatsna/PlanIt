@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Services;
+using static RunNow.Core.ShareDataService;
 
 namespace RunNow.ViewModels
 {
@@ -103,16 +104,20 @@ namespace RunNow.ViewModels
                     foreach (var job in result["jobs"])
                     {
                         // 이유의 값이 널이아니면 저장
-                        if (job["reason"].ToString() != null)
+                        if (job["reason"].ToString() != "null")
                         {
                             int lastIndex = jobs.Last().Index;
-                            this.shareDataService.Jobs_REASON.Add(job["reason"].ToString());
-                            this.Job_explains.Add(job["description"].ToString());
+                            Console.WriteLine($"{this.shareDataService.Jobs_REASON[lastIndex]}쉐어데이터의 값?");
+                            //this.shareDataService.Jobs_REASON.Add(job["reason"].ToString()); // 이거 왜 안돼
+                            this.shareDataService.Jobs_REASON[lastIndex] = job["reason"].ToString();
+                            Console.WriteLine($"{this.shareDataService.Jobs_REASON[lastIndex]}바꾼이후쉐어데이터의 값?");
+                            this.Job_explains[lastIndex] = (job["description"].ToString());
                             JobItem item = new JobItem()
                             {
                                 Name = job["job"].ToString(),
                                 Index = lastIndex
                             };
+                            Console.WriteLine($"아이템 : {item}, 이유 : {this.shareDataService.Jobs_REASON[lastIndex]} 추천 : {this.Job_explains[lastIndex]}");
                             this.jobs.Add(item);
                         }
                     }
@@ -144,8 +149,29 @@ namespace RunNow.ViewModels
                     Console.WriteLine("만들기 성공!");
                     // 성공! 
                     // 쉐어 데이터 서비스에 서버에게 받은 데이터 저장후 화면전환
-                    //this._shareDataService
+                    this.shareDataService.wantjob = result["job"].ToString(); // 직업저장
+                    this.shareDataService.Growth_ID = result["result"]["grown_id"].ToString(); // 성장플래닛 번호저장
+                    List<GoalDisplay> tmp = new List<GoalDisplay>(); // 저장할 변수
+                    JObject json = JObject.Parse(result["planner"].ToString());
+                    foreach (var item in json["result"]["GROWN_PLANNER_GOAL"])
+                    {
+                        Console.WriteLine($"{item}");
+                        GoalDisplay goal = new GoalDisplay
+                        {
+                            Goal = item["GOAL"].ToString(),
+                            Date = (item["GOAL_DATE"]?.ToString()?? ""),
+                            Category = item["CATEGORY"].ToString(),
+                            Goal_Progress = int.Parse(item["GOAL_PROGRESS"].ToString()),
+                            Importance = int.Parse(item["IMPORTANCE"].ToString())
+                        };
+                       tmp.Add(goal);
+                    }
+                    Console.WriteLine($"희망직업 : {this.shareDataService.wantjob}"); // 직업저장
+                    this.shareDataService.Goals = new ObservableCollection<GoalDisplay>(tmp);
+                    Console.WriteLine($"성장플래닛 아이디 : {this.shareDataService.Growth_ID}");
+                    Console.WriteLine($"저장판 목표들 : {tmp}");
                     this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_check_ViewModel>();
+
                 }
                 // 검색했으면 초기화
                 this.SerchJob = "";
