@@ -87,7 +87,6 @@ namespace RunNow.ViewModels
         {
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
-                await ShowPopup("아이디/비번 입력 필요", "warning.png");
                 return;
             }
 
@@ -186,7 +185,15 @@ namespace RunNow.ViewModels
             // 예시용 메시지 출력
             MessageBox.Show($"입력한 아이디: {inputId}\n등록된 휴대폰 번호로 비밀번호 재설정 안내 문자를 보냈습니다.", "알림");
         }
-
+        [RelayCommand]
+        private async Task ResumeManage()
+        {
+            MessageBox.Show("ResumeManage clicked"); // ✅ 눌렀는지 확인용
+            var vm = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
+            _navigationStore.CurrentViewModel = vm;
+            await Task.Yield();
+            await vm.LoadResumeFromServerAsync();
+        }
 
         private async Task ShowPopup(string text, string imagePath)
         {
@@ -203,7 +210,6 @@ namespace RunNow.ViewModels
             {
                 string pythonPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\.venv\Scripts\python.exe";
                 string scriptPath = @"C:\Users\YESOM\PycharmProjects\PythonProject1\real_check_Face.py";
-
 
 
                 if (!File.Exists(pythonPath) || !File.Exists(scriptPath))

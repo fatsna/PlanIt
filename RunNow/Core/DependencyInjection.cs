@@ -48,6 +48,7 @@ namespace RunNow.Core
 
             services.AddTransient<Growth_My_ViewModel>();
             // ✅ MainWindow
+
             services.AddSingleton<MainWindow>(sp =>
             {
                 var vm = sp.GetRequiredService<MainWindowViewModel>();

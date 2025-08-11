@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using RunNow.ViewModels;
+using System.Windows;
 
 
 namespace RunNow.Views

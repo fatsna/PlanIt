@@ -5,20 +5,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              d:DesignHeight="120"
-             d:DesignWidth="400">
+             d:DesignWidth="400"
+             Background="Transparent">
 
-    <Grid>
-        <!-- 배경 -->
+    <Grid Background="Transparent" SnapsToDevicePixels="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- 위쪽 흰 배경 -->
-        <Rectangle Fill="White" Height="40" VerticalAlignment="Top"/>
+        <!-- 위쪽 흰 배경(장식) -->
+        <Rectangle Grid.Row="0"
+                   Fill="White"
+                   Height="40"
+                   VerticalAlignment="Top"
+                   Panel.ZIndex="0"
+                   IsHitTestVisible="False"/>
 
-        <!-- 하단 네비게이션 -->
-        <Border Grid.Row="1" Background="#F5F5F5" Padding="0,30,0,10">
+        <!-- 하단 네비게이션 바 -->
+        <Border Grid.Row="1"
+                Background="#F5F5F5"
+                Padding="0,30,0,10"
+                Panel.ZIndex="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -27,60 +35,49 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- 메뉴 1 -->
-
+                <!-- 메뉴 1: 성장플래닛 -->
                 <Button Grid.Column="0"
+                        Panel.ZIndex="1"
                         Background="Transparent"
-                        Command="{Binding DataContext.PlanitCommand , RelativeSource={RelativeSource AncestorType=Window}}"
                         BorderThickness="0"
-                        Margin="0,0,0,0">
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        Cursor="Hand"
+                        Command="{Binding DataContext.PlanitCommand,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <StackPanel HorizontalAlignment="Center">
                         <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE80F;" FontSize="16" HorizontalAlignment="Center"/>
                         <TextBlock Text="성장플래닛" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
 
 
-                <!-- 메뉴 2 -->
                 <Button Grid.Column="1"
-                        Command="{Binding DataContext.ChatBotCommand , RelativeSource={RelativeSource AncestorType=Window}}"
+                        Panel.ZIndex="1"
                         Background="Transparent"
                         BorderThickness="0"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Command="{Binding DataContext.ChatBotCommand,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <StackPanel HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Segoe MDL2 Assets"
-                             Text="&#xE720;"
-                             FontSize="16"
-                             HorizontalAlignment="Center"/>
-                        <TextBlock Text="챗봇상담"
-                             FontSize="12"
-                             Foreground="#444"
-                             HorizontalAlignment="Center"
-                             Margin="0,5,0,0"/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE720;" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="챗봇상담" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
 
-                <!-- 메뉴 3 -->
+                <!-- 메뉴 3: 이력서관리 -->
                 <Button Grid.Column="2"
-                        Command="{Binding DataContext.ResumeManageCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                        Panel.ZIndex="1"
                         Background="Transparent"
                         BorderThickness="0"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Command="{Binding DataContext.ResumeManageCommand,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <StackPanel HorizontalAlignment="Center">
-                        <TextBlock FontFamily="Segoe MDL2 Assets"
-                           Text="&#xE8A5;"
-                           FontSize="16"
-                           HorizontalAlignment="Center"/>
-                        <TextBlock Text="이력서관리"
-                           FontSize="12"
-                           Foreground="#444"
-                           HorizontalAlignment="Center"
-                           Margin="0,5,0,0"/>
+                        <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE8A5;" FontSize="16" HorizontalAlignment="Center"/>
+                        <TextBlock Text="이력서관리" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Button>
 
-
-                <!-- 메뉴 4 -->
+                <!-- 메뉴 4: 마이페이지(예비) -->
                 <StackPanel Grid.Column="3" HorizontalAlignment="Center">
                     <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE77B;" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="마이페이지" FontSize="12" Foreground="#444" HorizontalAlignment="Center" Margin="0,5,0,0"/>
@@ -88,34 +85,37 @@
             </Grid>
         </Border>
 
-        <!-- 홈 버튼 (중앙 원형, 클릭 시 MainView로 이동) -->
+        <!-- 홈 버튼(가운데) -->
         <Button Width="70" Height="70"
-        Command="{Binding DataContext.GoHomeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
-        Grid.RowSpan="2"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        Background="#00478F"
-        BorderThickness="2"
-        BorderBrush="White" Click="Button_Click">
+                Grid.RowSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Background="#00478F"
+                BorderThickness="2"
+                BorderBrush="White"
+                Cursor="Hand"
+                Panel.ZIndex="2"
+                Command="{Binding DataContext.GoHomeCommand,
+                                  RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="35"
-                    Width="{TemplateBinding Width}"
-                    Height="{TemplateBinding Height}">
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="35"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Button.Template>
 
             <TextBlock FontFamily="Segoe MDL2 Assets"
-               Text="&#xE80F;"
-               Foreground="White"
-               FontSize="28"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+                       Text="&#xE80F;"
+                       Foreground="White"
+                       FontSize="28"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
         </Button>
 
     </Grid>
