@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
+ï»¿using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.ViewModels;
 using System;
@@ -23,18 +23,18 @@ namespace RunNow.Views
             vm = App.Services.GetRequiredService<LoginViewModel>();
             DataContext = vm;
 
-            // PasswordBox °ª ¹ÙÀÎµù ¼öµ¿ Ã³¸®
+            // PasswordBox ê°’ ViewModel.Passwordì— ë°˜ì˜
             PasswordBox.PasswordChanged += (s, e) =>
             {
-                vm.Password = PasswordBox.Password;
+                vm.Password = PasswordBox.Password; // ViewModelì˜ OnPasswordChangedì—ì„œ CanExecute ê°±ì‹ ë¨
             };
 
-            // ¾ó±¼ ÀÎ½Ä ¿Ï·á ÀÌº¥Æ®
+            // ì–¼êµ´ ì¸ì‹ ì™„ë£Œ ì´ë²¤íŠ¸
             vm.FaceDetected += async () =>
             {
                 Dispatcher.Invoke(() =>
                 {
-                    ShowFacePopup("check.png", "ÀÎ½Ä ¿Ï·á!");
+                    ShowFacePopup("check.png", "ì¸ì‹ ì™„ë£Œ!");
                 });
 
                 await Task.Delay(2000);
@@ -42,7 +42,7 @@ namespace RunNow.Views
             };
         }
 
-        // È¸¿ø°¡ÀÔ Å¬¸¯
+        // íšŒì›ê°€ì… í´ë¦­
         private void Register_Click(object sender, MouseButtonEventArgs e)
         {
             vm.NavigateRegisterCommand.Execute(null);
@@ -55,29 +55,29 @@ namespace RunNow.Views
 
         private async void FaceRecognition_Click(object sender, RoutedEventArgs e)
         {
-            ShowFacePopup("face_id.png", "¾ó±¼ ÀÎ½Ä Áß...");
+            ShowFacePopup("face_id.png", "ì–¼êµ´ ì¸ì‹ ì¤‘...");
 
             string result = await RunFaceRecognitionAsync();
 
             switch (result)
             {
                 case "SUCCESS":
-                    ShowFacePopup("check.png", "È¯¿µÇÕ´Ï´Ù");
+                    ShowFacePopup("check.png", "í™˜ì˜í•©ë‹ˆë‹¤");
                     break;
                 case "FAIL":
-                    ShowFacePopup("fail.png", "·Î±×ÀÎ ½ÇÆĞ");
+                    ShowFacePopup("fail.png", "ë¡œê·¸ì¸ ì‹¤íŒ¨");
                     break;
                 case "NO_FACE":
-                    ShowFacePopup("error.png", "µî·ÏµÈ ¾ó±¼ ¾øÀ½");
+                    ShowFacePopup("error.png", "ë“±ë¡ëœ ì–¼êµ´ ì—†ìŒ");
                     break;
                 case "CAMERA_ERROR":
-                    ShowFacePopup("error.png", "Ä«¸Ş¶ó ¿À·ù");
+                    ShowFacePopup("error.png", "ì¹´ë©”ë¼ ì˜¤ë¥˜");
                     break;
                 case "NO_NAME":
-                    ShowFacePopup("error.png", "¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+                    ShowFacePopup("error.png", "ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
                     break;
                 default:
-                    ShowFacePopup("error.png", "¾Ë ¼ö ¾ø´Â ¿À·ù");
+                    ShowFacePopup("error.png", "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜");
                     break;
             }
 
@@ -94,13 +94,13 @@ namespace RunNow.Views
 
                 if (!File.Exists(pythonPath))
                 {
-                    MessageBox.Show("Python ½ÇÇà ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                    MessageBox.Show("Python ì‹¤í–‰ íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return "PYTHON_NOT_FOUND";
                 }
 
                 if (!File.Exists(scriptPath))
                 {
-                    MessageBox.Show("real_check_Face.py ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+                    MessageBox.Show("real_check_Face.py íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
                     return "SCRIPT_NOT_FOUND";
                 }
 
@@ -119,10 +119,10 @@ namespace RunNow.Views
                 string error = await process.StandardError.ReadToEndAsync();
                 process.WaitForExit();
 
-                Debug.WriteLine("?? Python Output:\n" + output);
-                Debug.WriteLine("?? Python Error:\n" + error);
+                Debug.WriteLine("ğŸ Python Output:\n" + output);
+                Debug.WriteLine("ğŸ Python Error:\n" + error);
 
-                // JSON ÆÄ½Ì
+                // JSON íŒŒì‹± (ì²« ë²ˆì§¸ JSON ë¼ì¸ ì°¾ê¸°)
                 string jsonLine = null;
                 foreach (var line in output.Split('\n'))
                 {
@@ -135,7 +135,7 @@ namespace RunNow.Views
 
                 if (string.IsNullOrWhiteSpace(jsonLine))
                 {
-                    MessageBox.Show("JSON Çü½ÄÀÇ Ãâ·ÂÀÌ ¾ø½À´Ï´Ù.");
+                    MessageBox.Show("JSON í˜•ì‹ì˜ ì¶œë ¥ì´ ì—†ìŠµë‹ˆë‹¤.");
                     return "INVALID_JSON";
                 }
 
@@ -148,7 +148,7 @@ namespace RunNow.Views
                     float[] embedding = embeddingArray.ToObject<float[]>();
 
                     vm.FaceEmbedding = embedding;
-                    Debug.WriteLine("? ÀÓº£µù ±æÀÌ: " + embedding.Length);
+                    Debug.WriteLine("âœ… ì„ë² ë”© ê¸¸ì´: " + embedding.Length);
 
                     if (vm.FaceDetected != null)
                         await vm.FaceDetected.Invoke();
@@ -160,26 +160,26 @@ namespace RunNow.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Python ½ÇÇà ¿À·ù: " + ex.Message);
-                Debug.WriteLine("? ¿¹¿Ü ¹ß»ı: " + ex);
+                MessageBox.Show("Python ì‹¤í–‰ ì˜¤ë¥˜: " + ex.Message);
+                Debug.WriteLine("â— ì˜ˆì™¸ ë°œìƒ: " + ex);
                 return "ERROR";
             }
         }
 
-        private void ShowFacePopup(string imagePath, string text)
+        private void ShowFacePopup(string imageFileName, string text)
         {
             try
             {
-                PopupImage.Source = new BitmapImage(new Uri("/" + imagePath, UriKind.Relative));
+                // Assets í´ë” ê¸°ì¤€ìœ¼ë¡œ ë¡œë“œ
+                PopupImage.Source = new BitmapImage(new Uri("/Assets/" + imageFileName, UriKind.Relative));
                 PopupText.Text = text;
                 FacePopup.Visibility = Visibility.Visible;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ÆË¾÷ Ç¥½Ã ¿À·ù: " + ex.Message);
-                Debug.WriteLine("ShowFacePopup ¿À·ù: " + ex);
+                MessageBox.Show("íŒì—… í‘œì‹œ ì˜¤ë¥˜: " + ex.Message);
+                Debug.WriteLine("ShowFacePopup ì˜¤ë¥˜: " + ex);
             }
-
         }
     }
 }

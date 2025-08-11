@@ -8,6 +8,62 @@
              d:DesignHeight="800" d:DesignWidth="500">
 
     <Grid Background="White">
+        <!-- ✅ 로그인 버튼 커스텀 스타일
+             - 초기/비활성화: Aqua Blue (#00BCD4)
+             - 활성화(CanLogin=True): 남색(#004A91)
+             - 하얀 빈칸 방지용 ControlTemplate 포함 -->
+        <Grid.Resources>
+            <Style x:Key="LoginButtonStyle" TargetType="Button">
+                <!-- 기본(초기) 색은 Aqua. 활성화 되면 DataTrigger로 바뀜 -->
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="#00BCD4"/>
+                <!-- Aqua Blue -->
+                <Setter Property="BorderBrush" Value="#00BCD4"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border"
+                                    CornerRadius="8"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <!-- 비활성화(클릭 불가): Aqua 유지 -->
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="border" Property="Background" Value="#00BCD4"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#00BCD4"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Cursor" Value="Arrow"/>
+                                </Trigger>
+                                <!-- 호버/클릭 (활성화 시에만 체감) -->
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#0A5FBF"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#0A5FBF"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="#084C96"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#084C96"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+
+                <!-- ✅ 로그인 가능 상태(CanLogin=True)면 즉시 남색으로 -->
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding CanLogin}" Value="True">
+                        <Setter Property="Background" Value="#004A91"/>
+                        <Setter Property="BorderBrush" Value="#004A91"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+
         <!-- 배경 영역 -->
         <Canvas VerticalAlignment="Top" Height="530" Panel.ZIndex="0">
             <Path Fill="#004A91" Stretch="Fill"
@@ -68,14 +124,18 @@
                             Height="50"
                             Background="#007ACC"
                             Foreground="White"
+
                             Click="FaceRecognition_Click" FontSize="18"/>
 
+
+                    <!-- 로그인: 스타일만 적용 -->
                     <Button Content="로그인"
                             Height="50"
                             Margin="0,10,0,0"
                             Background="#004A91"
                             Foreground="White"
                             Command="{Binding LoginCommand}" FontSize="18"/>
+
                 </StackPanel>
 
                 <!-- 회원가입 / 비밀번호찾기 -->

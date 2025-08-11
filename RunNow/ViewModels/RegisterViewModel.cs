@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
-using RunNow.Services;
 using RunNow.Core;
+using RunNow.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,9 +11,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-
-
 
 namespace RunNow.ViewModels
 {
@@ -21,15 +19,21 @@ namespace RunNow.ViewModels
         private readonly NavigationStore _navigationStore;
         private readonly IAuthService _authService;
         private readonly TcpClientService _tcpClientService;
-        private readonly IServiceProvider _serviceProvider; // ✅ 추가됨
+        private readonly IServiceProvider _serviceProvider;
 
-        // ✅ 생성자 수정됨
-        public RegisterViewModel(NavigationStore navigationStore, IAuthService authService, TcpClientService tcpClientService, IServiceProvider serviceProvider)
+        // ==============================
+        // 📌 생성자
+        // ==============================
+        public RegisterViewModel(
+            NavigationStore navigationStore,
+            IAuthService authService,
+            TcpClientService tcpClientService,
+            IServiceProvider serviceProvider)
         {
             _tcpClientService = tcpClientService;
             _navigationStore = navigationStore;
             _authService = authService;
-            _serviceProvider = serviceProvider; // ✅ 추가됨
+            _serviceProvider = serviceProvider;
 
             Years = Enumerable.Range(1950, DateTime.Now.Year - 1949).Reverse().ToList();
             Months = Enumerable.Range(1, 12).ToList();
@@ -37,66 +41,100 @@ namespace RunNow.ViewModels
         }
 
         // ==============================
-        // 📌 사용자 정보
+        // 📌 내부 상태 / 유틸
         // ==============================
+        private enum DupIdStatus { Available, Taken, Unknown }
 
-        [ObservableProperty] private string name;
-        [ObservableProperty] private string userId;
-        [ObservableProperty] private string address;
+        private static DupIdStatus ParseDupStatus(JObject resp)
+        {
+            var code = resp?["protocol"]?.ToString();
+            return code switch
+            {
+                "3_1" => DupIdStatus.Available, // 사용 가능
+                "3_2" => DupIdStatus.Taken,     // 이미 사용 중
+                _ => DupIdStatus.Unknown
+            };
+        }
 
-        [ObservableProperty] private string phonePart1;
-        [ObservableProperty] private string phonePart2;
-        [ObservableProperty] private string phonePart3;
+        // 비밀번호는 PasswordBox 연동을 위해 필드로만 관리
+        private string password;
+        private string confirmPassword;
+
+        // ==============================
+        // 📌 사용자 기본 정보
+        // ==============================
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string name;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string userId;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string address;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string phonePart1;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string phonePart2;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private string phonePart3;
 
         public string PhoneNumber => $"{PhonePart1}{PhonePart2}{PhonePart3}";
+
+        // 아이디가 바뀌면 기존 중복확인 결과는 무효
+        partial void OnUserIdChanged(string value)
+        {
+            IsUserIdChecked = false;
+            SubmitCommand?.NotifyCanExecuteChanged();
+        }
 
         // ==============================
         // 📌 성별
         // ==============================
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private bool isMale;
 
-        [ObservableProperty] private bool isMale;
-        [ObservableProperty] private bool isFemale;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private bool isFemale;
 
         // ==============================
         // 📌 생년월일
         // ==============================
-
         public List<int> Years { get; }
         public List<int> Months { get; }
         public List<int> Days { get; }
 
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private int selectedYear;
 
-        [ObservableProperty] private int selectedYear;
-        [ObservableProperty] private int selectedMonth;
-        [ObservableProperty] private int selectedDay;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private int selectedMonth;
+
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private int selectedDay;
 
         public DateTime BirthDate => new DateTime(SelectedYear, SelectedMonth, SelectedDay);
 
         // ==============================
         // 📌 비밀번호 관련
         // ==============================
-
-
-        private string password;
-        private string confirmPassword;
-
-
-        [ObservableProperty] private bool isPasswordMismatch;
-
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private bool isPasswordMismatch;
 
         public void SetPassword(string pwd)
         {
             password = pwd;
             ValidatePasswordMatch();
-            ValidateForm();
-
+            SubmitCommand?.NotifyCanExecuteChanged();
         }
 
         public void SetConfirmPassword(string pwd)
         {
             confirmPassword = pwd;
             ValidatePasswordMatch();
-            ValidateForm();
+            SubmitCommand?.NotifyCanExecuteChanged();
         }
 
         private void ValidatePasswordMatch()
@@ -107,15 +145,14 @@ namespace RunNow.ViewModels
         // ==============================
         // 📌 얼굴 임베딩
         // ==============================
-
-        [ObservableProperty] private float[] faceEmbedding;
+        [ObservableProperty]
+        private float[] faceEmbedding;
 
         // ==============================
         // 📌 중복 체크 및 유효성
         // ==============================
-
-        [ObservableProperty] private bool isUserIdChecked;
-        [ObservableProperty] private bool canSubmit;
+        [ObservableProperty, NotifyCanExecuteChangedFor(nameof(SubmitCommand))]
+        private bool isUserIdChecked;
 
         [RelayCommand]
         private async Task CheckDuplicateAsync()
@@ -125,59 +162,42 @@ namespace RunNow.ViewModels
                 MessageBox.Show("아이디를 입력하세요.");
                 return;
             }
+
             try
             {
                 var response = await _authService.CheckDuplicateIdAsync(UserId);
-                string status = response["protocol"]?.ToString();
+                switch (ParseDupStatus(response))
+                {
+                    case DupIdStatus.Available:
+                        IsUserIdChecked = true;
+                        MessageBox.Show("✅ 사용 가능한 아이디입니다.");
+                        break;
 
-                if (status == "3_1")
-                {
-                    MessageBox.Show("✅ 사용 가능한 아이디입니다.");
-                    IsUserIdChecked = true;
-                }
-                else if (status == "3_2")
-                {
-                    MessageBox.Show("❌ 이미 사용 중인 아이디입니다.");
-                    IsUserIdChecked = false;
-                }
-                else
-                {
-                    MessageBox.Show($"⚠️ 알 수 없는 응답: {status}");
-                    IsUserIdChecked = false;
-                }
+                    case DupIdStatus.Taken:
+                        IsUserIdChecked = false;
+                        MessageBox.Show("❌ 이미 사용 중인 아이디입니다.");
+                        break;
 
-                ValidateForm();  // 버튼 활성화 여부 갱신
+                    default:
+                        IsUserIdChecked = false;
+                        MessageBox.Show($"⚠️ 알 수 없는 응답: {response?["protocol"]?.ToString() ?? "null"}");
+                        break;
+                }
             }
             catch (Exception ex)
             {
+                IsUserIdChecked = false;
                 MessageBox.Show("❌ 중복 검사 중 오류 발생: " + ex.Message);
             }
+            finally
+            {
+                SubmitCommand?.NotifyCanExecuteChanged();
+            }
         }
-
-        private void ValidateForm()
-        {
-            CanSubmit = true;
-            //CanSubmit =
-            //    !string.IsNullOrWhiteSpace(Name) &&
-            //    !string.IsNullOrWhiteSpace(UserId) &&
-            //    !string.IsNullOrWhiteSpace(password) &&
-            //    password == confirmPassword &&
-            //    !string.IsNullOrWhiteSpace(Address) &&
-            //    !string.IsNullOrWhiteSpace(PhonePart1) &&
-            //    !string.IsNullOrWhiteSpace(PhonePart2) &&
-            //    !string.IsNullOrWhiteSpace(PhonePart3) &&
-            //    (IsMale || IsFemale) &&
-            //    SelectedYear > 0 &&
-            //    SelectedMonth > 0 &&
-            //    SelectedDay > 0 &&
-            //    IsUserIdChecked;
-        }
-
 
         // ==============================
         // 📌 얼굴 등록
         // ==============================
-
         [RelayCommand]
         private async Task FaceRegisterAsync()
         {
@@ -223,7 +243,6 @@ namespace RunNow.ViewModels
                 Debug.WriteLine("Python STDERR: " + error);
 
                 var jsonLine = output.Split('\n').LastOrDefault(l => l.Trim().StartsWith("{"));
-
                 if (string.IsNullOrWhiteSpace(jsonLine))
                 {
                     MessageBox.Show("❌ 얼굴 인식 결과가 비어 있거나 JSON 형식이 아닙니다.");
@@ -231,13 +250,12 @@ namespace RunNow.ViewModels
                 }
 
                 var result = JObject.Parse(jsonLine);
-
                 string status = result["status"]?.ToString();
 
                 switch (status)
                 {
                     case "SUCCESS":
-                        faceEmbedding = result["embedding"].ToObject<float[]>();
+                        FaceEmbedding = result["embedding"].ToObject<float[]>();
                         MessageBox.Show("😀 얼굴 등록이 완료되었습니다!");
                         break;
                     case "NO_FACE":
@@ -260,13 +278,11 @@ namespace RunNow.ViewModels
         // ==============================
         // 📌 가입 완료
         // ==============================
-
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanSubmit))]
         private async Task Submit()
         {
             MessageBox.Show("✅ SubmitCommand 눌림");
 
-            // 프로토콜 고정: 4_0
             var cppPayload = new JObject
             {
                 ["protocol"] = "4_0",
@@ -279,13 +295,13 @@ namespace RunNow.ViewModels
                 ["phone"] = PhoneNumber,
                 ["faceembedding"] = FaceEmbedding != null ? new JArray(FaceEmbedding) : null
             };
+
             try
             {
                 MessageBox.Show("📡 메인 서버에 회원가입 정보 전송 중...");
-                var response = await _authService.RegisterAsync(cppPayload);  // 동일한 payload 사용
+                var response = await _authService.RegisterAsync(cppPayload);
 
                 string status = response["protocol"]?.ToString();
-
                 if (status == "4_1")
                 {
                     MessageBox.Show("🎉 회원가입이 완료되었습니다!");
@@ -304,11 +320,30 @@ namespace RunNow.ViewModels
             }
         }
 
+        private bool CanSubmit()
+        {
+            return
+                !string.IsNullOrWhiteSpace(Name) &&
+                !string.IsNullOrWhiteSpace(UserId) &&
+                !string.IsNullOrWhiteSpace(password) &&
+                password == confirmPassword &&
+                !string.IsNullOrWhiteSpace(Address) &&
+                !string.IsNullOrWhiteSpace(PhonePart1) &&
+                !string.IsNullOrWhiteSpace(PhonePart2) &&
+                !string.IsNullOrWhiteSpace(PhonePart3) &&
+                (IsMale || IsFemale) &&
+                SelectedYear > 0 &&
+                SelectedMonth > 0 &&
+                SelectedDay > 0 &&
+                IsUserIdChecked;
+        }
 
+        // ==============================
+        // 📌 뒤로가기
+        // ==============================
         [RelayCommand]
         private void Back()
         {
-            //  수정됨: LoginViewModel을 new로 생성하지 말고, 서비스에서 가져오기
             _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<LoginViewModel>();
         }
     }

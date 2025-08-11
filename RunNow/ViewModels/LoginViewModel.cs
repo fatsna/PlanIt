@@ -14,7 +14,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-
 namespace RunNow.ViewModels
 {
     public partial class LoginViewModel : ObservableObject
@@ -22,14 +21,13 @@ namespace RunNow.ViewModels
         private readonly IAuthService _authService;
         private readonly NavigationStore _navigationStore;
         private readonly IServiceProvider _serviceProvider;
-        private readonly ShareDataService _shareDataService; // ✅ 추가
+        private readonly ShareDataService _shareDataService;
 
         private TcpListener _listener;
         private static bool serverStarted = false;
 
         public Func<Task> FaceDetected;
 
-        // ✅ 생성자 수정
         public LoginViewModel(
             IAuthService authService,
             NavigationStore navigationStore,
@@ -39,7 +37,7 @@ namespace RunNow.ViewModels
             _authService = authService;
             _navigationStore = navigationStore;
             _serviceProvider = serviceProvider;
-            _shareDataService = shareDataService; // ✅ 주입된 공유 데이터 저장
+            _shareDataService = shareDataService;
 
             if (!serverStarted)
             {
@@ -50,13 +48,43 @@ namespace RunNow.ViewModels
             FacePopupVisibility = "Collapsed";
         }
 
-
+        // -------------------------
+        // 입력값 + 상태
+        // -------------------------
         [ObservableProperty]
         private string username;
+
+        partial void OnUsernameChanged(string value)
+        {
+            // CanLogin 즉시 반영 (XAML DataTrigger) + 버튼 활성/비활성 갱신
+            OnPropertyChanged(nameof(CanLogin));
+            LoginCommand?.NotifyCanExecuteChanged();
+        }
 
         [ObservableProperty]
         private string password;
 
+        partial void OnPasswordChanged(string value)
+        {
+            OnPropertyChanged(nameof(CanLogin));
+            LoginCommand?.NotifyCanExecuteChanged();
+        }
+
+        /// <summary>
+        /// XAML 바인딩용 - 아이디/비번 모두 입력 시 true
+        /// </summary>
+        public bool CanLogin =>
+            !string.IsNullOrWhiteSpace(Username) &&
+            !string.IsNullOrWhiteSpace(Password);
+
+        /// <summary>
+        /// 커맨드 CanExecute용 메서드 (속성과 이름 충돌 피하기)
+        /// </summary>
+        private bool CanExecuteLogin() => CanLogin;
+
+        // -------------------------
+        // 얼굴 임베딩
+        // -------------------------
         private float[] faceEmbedding;
         public float[] FaceEmbedding
         {
@@ -65,40 +93,32 @@ namespace RunNow.ViewModels
             {
                 SetProperty(ref faceEmbedding, value);
                 _ = FaceDetected?.Invoke();
-                _ = HandleFaceLoginAsync(); // ✅ AuthService 통해 로그인 시도
+                _ = HandleFaceLoginAsync();
             }
         }
 
+        // -------------------------
+        // 팝업 바인딩
+        // -------------------------
+        [ObservableProperty] private string facePopupText;
+        [ObservableProperty] private string facePopupImagePath;
+        [ObservableProperty] private string facePopupVisibility;
 
-
-        [ObservableProperty]
-        private string facePopupText;
-
-        [ObservableProperty]
-        private string facePopupImagePath;
-
-
-        [ObservableProperty]
-        private string facePopupVisibility;
-
-
-        [RelayCommand]
+        // -------------------------
+        // 로그인 커맨드
+        // -------------------------
+        [RelayCommand(CanExecute = nameof(CanExecuteLogin))]
         private async Task LoginAsync()
         {
-            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
-            {
 
-                await ShowPopup("아이디/비번 입력 필요", "warning.png");
-                return;
-            }
+            if (!CanLogin) return;
+
 
             JObject response = await _authService.LoginAsync(Username, Password);
             var protocol = response["protocol"]?.ToString();
 
             if (protocol == "1_1") // 로그인 성공
             {
-
-                // ✅ 공유 데이터에 저장
 
                 _shareDataService.User_id = Username;
                 _shareDataService.Password = Password;
@@ -109,10 +129,14 @@ namespace RunNow.ViewModels
             }
             else
             {
+                MessageBox.Show("아이디 또는 비밀번호를 잘못입력하셨습니다.");
                 await ShowPopup("로그인 실패", "error.png");
-
             }
         }
+
+        // -------------------------
+        // 얼굴 로그인 처리
+        // -------------------------
         private async Task HandleFaceLoginAsync()
         {
             Console.WriteLine("📡 HandleFaceLoginAsync 호출됨");
@@ -136,7 +160,9 @@ namespace RunNow.ViewModels
             }
         }
 
-
+        // -------------------------
+        // 기타 명령
+        // -------------------------
         [RelayCommand]
         private async Task FaceRecognitionAsync()
         {
@@ -169,13 +195,11 @@ namespace RunNow.ViewModels
         private void NavigateRegister()
         {
             _navigationStore.CurrentViewModel = App.Services.GetRequiredService<RegisterViewModel>();
-
         }
 
         [RelayCommand]
         private void FindPassword()
         {
-            // 아이디 입력 받기
             string inputId = Microsoft.VisualBasic.Interaction.InputBox(
                 "비밀번호를 찾을 아이디를 입력하세요.",
                 "비밀번호 찾기");
@@ -186,19 +210,22 @@ namespace RunNow.ViewModels
                 return;
             }
 
-            // 예시용 메시지 출력
             MessageBox.Show($"입력한 아이디: {inputId}\n등록된 휴대폰 번호로 비밀번호 재설정 안내 문자를 보냈습니다.", "알림");
         }
+
         [RelayCommand]
         private async Task ResumeManage()
         {
-            MessageBox.Show("ResumeManage clicked"); // ✅ 눌렀는지 확인용
+            MessageBox.Show("ResumeManage clicked");
             var vm = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
             _navigationStore.CurrentViewModel = vm;
             await Task.Yield();
             await vm.LoadResumeFromServerAsync();
         }
 
+        // -------------------------
+        // 공용 팝업
+        // -------------------------
         private async Task ShowPopup(string text, string imagePath)
         {
             FacePopupText = text;
@@ -208,6 +235,9 @@ namespace RunNow.ViewModels
             FacePopupVisibility = "Collapsed";
         }
 
+        // -------------------------
+        // 파이썬 호출 (필요 시)
+        // -------------------------
         private async Task<string> RunFaceRecognitionAsync()
         {
             try
@@ -246,7 +276,7 @@ namespace RunNow.ViewModels
                     return "INVALID_JSON";
 
                 JObject result = JObject.Parse(jsonLine);
-                string status = result["protocol"]?.ToString();
+                string status = result["status"]?.ToString();
 
                 if (status == "101_1")
                 {
@@ -263,6 +293,9 @@ namespace RunNow.ViewModels
             }
         }
 
+        // -------------------------
+        // TCP 수신 (파이썬 → C#)
+        // -------------------------
         private void StartSocketServer()
         {
             try
@@ -287,7 +320,6 @@ namespace RunNow.ViewModels
                             {
                                 var result = JObject.Parse(message);
 
-                                // ✅ 수신 구조: { "status": "SUCCESS", "embedding": [...] }
                                 var status = result["status"]?.ToString();
                                 if (status == "SUCCESS")
                                 {
@@ -319,10 +351,5 @@ namespace RunNow.ViewModels
                 Debug.WriteLine("소켓 오류: " + ex.Message);
             }
         }
-
-
-
-
-
     }
 }

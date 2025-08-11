@@ -34,6 +34,7 @@ namespace RunNow.ViewModels
             };
 
             // 초기 화면: Login
+
             _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<LoginViewModel>();
             //_navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
 
@@ -92,8 +93,10 @@ namespace RunNow.ViewModels
         [RelayCommand]
         private async Task ResumeManage()
         {
-
-            _navigationStore.CurrentViewModel = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
+            var vm = _serviceProvider.GetRequiredService<ResumeManageViewModel>();
+            _navigationStore.CurrentViewModel = vm;
+            await Task.Yield();
+            await vm.LoadResumeFromServerAsync();   // 이제 정상 컴파일
         }
 
 
