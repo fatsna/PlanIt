@@ -42,9 +42,33 @@
             <views:ResumeManageView/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:growth_check_ViewModel}">
+            <views:growth_check_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:Growth_main_ViewModel}">
+            <views:growth_main_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:growth_start_ViewModel}">
+            <views:growth_start_View/>
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:DeepResultViewModel}">
             <views:DeepResultView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:Growth_My_ViewModel}">
+            <views:Growth_My_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:MyPageViewModel}">
+            <views:MyPageView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:EmotionResultViewModel}">
+            <views:EmotionResultView/>
+        </DataTemplate>
+
 
     </Window.Resources>
     <Grid>

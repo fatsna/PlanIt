@@ -13,12 +13,20 @@ namespace RunNow.Converters
             if (values.Length < 2 || values[0] == null || values[1] == null)
                 return Brushes.Transparent;
 
+            Console.WriteLine($"[DEBUG] values[0] type = {values[0].GetType()}");
+
+
             if (values[0] == System.Windows.DependencyProperty.UnsetValue)
                 return Brushes.Transparent;
 
             // values[0] = SelectedAnswerIndex, values[1] = answerText
             if (values[0] is int selectedIndex && values[1] is string answerText)
             {
+
+
+                Console.WriteLine($"[컨버터] selected={selectedIndex}, answer={answerText}");
+
+
                 var allAnswers = new List<string>
                 {
                     "매우그렇다", "그렇다", "보통이다", "아니다", "매우아니다"

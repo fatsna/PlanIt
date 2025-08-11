@@ -58,6 +58,7 @@ namespace RunNow.Services
                 await stream.WriteAsync(lengthPrefix, 0, lengthPrefix.Length);
                 await stream.FlushAsync();
                 Console.WriteLine($"서버에게 보내는 크기 : {lengthPrefix.Length}");
+
                 Console.WriteLine($"\n[서버 전송] Length: {jsonBytes.Length}, JSON: {jsonBytes}");
 
                 //  서버로 전송

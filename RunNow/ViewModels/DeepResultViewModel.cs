@@ -1,58 +1,66 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using LiveChartsCore;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
-using SkiaSharp;
-using RunNow.Models;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using Newtonsoft.Json.Linq;
+using RunNow.Models;
+using SkiaSharp;
+using System.Collections.ObjectModel;
+
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RunNow.ViewModels
 {
     public partial class DeepResultViewModel : ObservableObject
     {
         [ObservableProperty] private string resultText = "분석 결과가 여기에 표시됩니다.";
-
         [ObservableProperty] private ISeries[] series;
         [ObservableProperty] private Axis[] xAxes;
         [ObservableProperty] private Axis[] yAxes;
-
         [ObservableProperty] private ObservableCollection<RecommendedJobItem> recommendedJobs = new();
 
-        // ✅ 결과 화면에 보여줄 현실적 조언
+        // 현실적 조언
         public ObservableCollection<string> RealisticAdvice { get; } = new();
 
-        // ✅ (제너레이터 대신) 일반 프로퍼티로 명시
-        public SolidColorPaint? LegendTextPaint { get; set; }
-        public SolidColorPaint? TooltipTextPaint { get; set; }
-        public SolidColorPaint? TitlePaint { get; set; }
-        public string Title { get; set; } = "감정 진단 결과";
-        public double TitleTextSize { get; set; } = 18;
+        // 그래프 폰트 바인딩용
+        public SolidColorPaint LegendTextPaint { get; }
+        public SolidColorPaint TitlePaint { get; }          // 그대로 두되 크기 지정 제거
+        public SolidColorPaint AxisNamePaint { get; }       // (필요 시 사용)
+        public SolidColorPaint AxisLabelsPaint { get; }     // (필요 시 사용)
+        public SolidColorPaint TooltipTextPaint { get; }    // 툴팁 글꼴
+
+        public string Title { get; private set; } = "감정 진단 결과";
 
         public DeepResultViewModel()
         {
-            Series = new ISeries[] { };
-            XAxes = new Axis[] { };
-            YAxes = new Axis[] { };
+            Series = [];
+            XAxes = [];
+            YAxes = [];
 
             var typeface = SKTypeface.FromFamilyName("Malgun Gothic");
 
+            // Paint들 초기화 (크기는 해당 객체 쪽 Size 속성 사용)
             LegendTextPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
             TooltipTextPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
             TitlePaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
-        }
+            AxisNamePaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
+            AxisLabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
 
-        public void SetResultText(string summary) => ResultText = summary;
+            // 샘플 데이터
+            var emotionResults = new List<EmotionResult>
+            {
+                new EmotionResult { Category = "동기부여", Average = 78 },
+                new EmotionResult { Category = "스트레스", Average = 62 },
+                new EmotionResult { Category = "가치충돌", Average = 55 },
+                new EmotionResult { Category = "자기정체감", Average = 81 },
+            };
 
-        public void SetResults(IEnumerable<EmotionResultItem> emotionResults)
-        {
-            var values = emotionResults.Select(e => (double)e.Score).ToArray();
+            var values = emotionResults.Select(e => (double)e.Average).ToArray();
             var labels = emotionResults.Select(e => e.Category).ToArray();
 
-            var typeface = SKTypeface.FromFamilyName("Malgun Gothic");
+            var tf2 = SKTypeface.FromFamilyName("Malgun Gothic");
 
             Series = new ISeries[]
             {
@@ -60,63 +68,44 @@ namespace RunNow.ViewModels
                 {
                     Name = "카테고리별 평균 점수",
                     Values = values,
-                    DataLabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface },
-                    DataLabelsSize = 14,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf2 },
+                    DataLabelsSize = 14, // 크기 지정은 여기서
                     DataLabelsPosition = DataLabelsPosition.Top
                 }
             };
 
-            XAxes = new Axis[]
+            XAxes = new[]
             {
                 new Axis
                 {
-                    Labels = labels,
-                    LabelsRotation = 15,
-                    TextSize = 14,
-                    LabelsPaint = new SolidColorPaint
-                    {
-                        SKTypeface = typeface,
-                        Color = SKColors.Black
-                    }
+                    Name = "카테고리",
+                    NamePaint   = new SolidColorPaint(SKColors.Black) { SKTypeface = tf2 },
+                    LabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf2 },
+                    Labels = labels
                 }
             };
 
-            YAxes = new Axis[]
+            YAxes = new[]
             {
                 new Axis
                 {
-                    MinLimit = 1,
-                    MaxLimit = 5,
-                    TextSize = 14,
-                    LabelsPaint = new SolidColorPaint
-                    {
-                        SKTypeface = typeface,
-                        Color = SKColors.Black
-                    }
+                    Name = "점수",
+                    NamePaint   = new SolidColorPaint(SKColors.Black) { SKTypeface = tf2 },
+                    LabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf2 }
                 }
             };
 
-            // 제목도 같은 폰트 적용
             Title = "감정 진단 결과 (평균 점수)";
-            TitleTextSize = 18;
-            TitlePaint = new SolidColorPaint(SKColors.Black) { SKTypeface = typeface };
+            OnPropertyChanged(nameof(Title));
         }
 
-        public void SetRealisticAdvice(JArray arr)
-        {
-            RealisticAdvice.Clear();
-            foreach (var a in arr)
-            {
-                if (a.Type == JTokenType.String)
-                    RealisticAdvice.Add(a.ToString());
-                else
-                    RealisticAdvice.Add(a["text"]?.ToString() ?? a.ToString());
-            }
-        }
+        public void ApplyResultText(string summary) => ResultText = summary;
 
         public void SetRecommendedJobs(JArray jobArray)
         {
             RecommendedJobs.Clear();
+            if (jobArray == null) return;
+
             foreach (var job in jobArray)
             {
                 RecommendedJobs.Add(new RecommendedJobItem
@@ -125,6 +114,84 @@ namespace RunNow.ViewModels
                     Description = job["description"]?.ToString() ?? "",
                     Reason = job["reason"]?.ToString() ?? ""
                 });
+            }
+        }
+
+        // DeepTestViewModel에서 호출하는 메서드 3개 추가
+
+        //  결과 아이템을 받아 차트/축/제목 세팅
+        public void SetResults(IList<EmotionResultItem> items)
+        {
+            if (items == null || items.Count == 0)
+            {
+                Series = [];
+                XAxes = [];
+                YAxes = [];
+                return;
+            }
+
+            var values = items.Select(i => (double)i.Score).ToArray();
+            var labels = items.Select(i => i.Category ?? string.Empty).ToArray();
+            var tf = SKTypeface.FromFamilyName("Malgun Gothic");
+
+            Series = new ISeries[]
+            {
+                new ColumnSeries<double>
+                {
+                    Name = "카테고리별 평균 점수",
+                    Values = values,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf },
+                    DataLabelsSize = 14,
+                    DataLabelsPosition = DataLabelsPosition.Top
+                }
+            };
+
+            XAxes = new[]
+            {
+                new Axis
+                {
+                    Name = "카테고리",
+                    Labels = labels,
+                    NamePaint   = new SolidColorPaint(SKColors.Black) { SKTypeface = tf },
+                    LabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf }
+                }
+            };
+
+            YAxes = new[]
+            {
+                new Axis
+                {
+                    Name = "점수",
+                    MinLimit = 0,           // 0에서 시작
+                    MaxLimit = 5,           // 5에서 고정
+                    MinStep  = 1,           // 눈금 간격 1점
+                    TextSize = 14,
+                    NamePaint   = new SolidColorPaint(SKColors.Black) { SKTypeface = tf },
+                    LabelsPaint = new SolidColorPaint(SKColors.Black) { SKTypeface = tf }
+                }
+            };
+
+            Title = "감정 진단 결과 (평균 점수)";
+            OnPropertyChanged(nameof(Title));
+        }
+
+        // 2결과 요약 텍스트 갱신 (DeepTestViewModel에서 호출)
+        public void SetResultText(string summary)
+        {
+            ResultText = summary ?? string.Empty;
+        }
+
+        //  현실적인 조언 리스트 반영 (DeepTestViewModel에서 호출)
+        public void SetRealisticAdvice(JArray adviceArray)
+        {
+            RealisticAdvice.Clear();
+            if (adviceArray == null) return;
+
+            foreach (var t in adviceArray)
+            {
+                var s = t?.ToString();
+                if (!string.IsNullOrWhiteSpace(s))
+                    RealisticAdvice.Add(s);
             }
         }
     }

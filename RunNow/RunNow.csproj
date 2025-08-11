@@ -8,6 +8,29 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
+
+
+  <ItemGroup>
+    <None Remove="Assets\Bot.png" />
+    <None Remove="Assets\check.png" />
+    <None Remove="Assets\face_id.png" />
+    <None Remove="Assets\logo.png" />
+    <None Remove="Assets\LOGO2.png" />
+    <None Remove="Assets\sendb.png" />
+    <None Remove="Assets\sendblue.png" />
+    <None Remove="Assets\user.png" />
+    <None Remove="Assets\돋보기.drawio.png" />
+    <None Remove="Assets\뒤로가기파랑.drawio.png" />
+    <None Remove="Assets\뒤로가기하양.png" />
+    <None Remove="Assets\엑스버튼.drawio.png" />
+    <None Remove="Assets\체크버튼.drawio.png" />
+    <None Remove="Assets\하얀종이비행기.png" />
+    <None Remove="Data\certificates.json" />
+    <None Remove="Data\scenario.json" />
+    <None Remove="Views\뒤로가기파랑.drawio.png" />
+  </ItemGroup>
+
+
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc5.4" />
@@ -16,17 +39,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<Resource Include="Assets\Bot.png" />
-		<Resource Include="Assets\check.png" />
-		<Resource Include="Assets\face_id.png" />
-		<Resource Include="Assets\logo.png" />
-		<Resource Include="Assets\LOGO2.png" />
-		<Resource Include="Assets\sendb.png" />
-		<Resource Include="Assets\user.png" />
-	</ItemGroup>
-
 	<!-- 실행 폴더로 복사되어야 하는 데이터/정적 파일들 -->
 	<ItemGroup>
 		<Content Include="Data\certificates.json">
@@ -39,5 +51,58 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Bot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\face_id.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\LOGO2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\sendb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\sendblue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\돋보기.drawio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\뒤로가기파랑.drawio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\뒤로가기하양.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\엑스버튼.drawio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\체크버튼.drawio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\하얀종이비행기.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Compile Update="Converters\StatusToColorConverter.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
 
 </Project>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\c샵\PlanIt\RunNow\App.xaml
-151331880952
+22-442136039
 6-57194889
-68725656294
+81297981782
 21681509320
-Views\BottomNav.xaml;Views\CareerAnalysisView.xaml;Views\CertificatePopup.xaml;Views\ChatBotView.xaml;Views\DeepResultView.xaml;Views\DeepTestView.xaml;Views\EmotionResultView.xaml;Views\EmotionView.xaml;Views\FinanceAnalysisView.xaml;Views\LoginView.xaml;Views\MainView.xaml;Views\MainWindow.xaml;Views\MapView.xaml;Views\RegisterView.xaml;Views\ResumeManageView.xaml;
+Converters\styles.xaml;Views\BottomNav.xaml;Views\CareerAnalysisView.xaml;Views\CertificatePopup.xaml;Views\ChatBotView.xaml;Views\DeepResultView.xaml;Views\DeepTestView.xaml;Views\EmotionResultView.xaml;Views\EmotionView.xaml;Views\FinanceAnalysisView.xaml;Views\growth_check_View.xaml;Views\growth_main_View.xaml;Views\Growth_My_View.xaml;Views\growth_start_View.xaml;Views\LoginView.xaml;Views\MainView.xaml;Views\MainWindow.xaml;Views\MapView.xaml;Views\messageback.xaml;Views\MyPageView.xaml;Views\RegisterView.xaml;Views\ResumeManageView.xaml;
 
 True
 

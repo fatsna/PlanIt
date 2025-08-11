@@ -1,11 +1,18 @@
 ﻿<Application x:Class="RunNow.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RunNow"
+             xmlns:behaviors="clr-namespace:RunNow.Behaviors"
              xmlns:converters="clr-namespace:RunNow.Converters"
              xmlns:vm="clr-namespace:RunNow.ViewModels"
              xmlns:views="clr-namespace:RunNow.Views">
+
     <Application.Resources>
         <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Converters/styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <converters:NumberFormatConverter x:Key="NumberFormatConverter"/>
             <converters:BoolToAlignmentConverter x:Key="BoolToAlignmentConverter"/>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -16,6 +23,7 @@
             <DataTemplate DataType="{x:Type vm:MapViewModel}">
                 <views:MapView/>
             </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

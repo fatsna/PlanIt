@@ -1,3 +1,4 @@
+
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
@@ -16,4 +17,6 @@ namespace RunNow.Models
         [ObservableProperty]
         private int? selectedValue;
     }
+
 }
+

@@ -32,16 +32,37 @@
             <!-- 하단 네비 -->
         </Grid.RowDefinitions>
 
+        <!-- ✅ 파도 배경 (LoginView와 동일) -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                Height="530"
+                IsHitTestVisible="False"
+                Panel.ZIndex="0">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,530" />
+                            <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                            <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                            <LineSegment Point="1000,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
         <!-- 상단 파란 배경 -->
-        <Border Grid.Row="0" Background="#00478F" Padding="0,20">
+        <!-- ⬇️ 배경을 투명 처리해 아래 파도가 보이게 함 -->
+        <Border Grid.Row="0" Background="Transparent" Padding="0,20" Panel.ZIndex="1">
             <StackPanel HorizontalAlignment="Center">
                 <Image Source="pack://application:,,,/Assets/LOGO2.png"
                        Width="150" Height="50" Margin="0,0,0,40"/>
             </StackPanel>
         </Border>
 
-        <!-- 본문 카드 -->
-        <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20">
+        <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20" Panel.ZIndex="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
             </Border.Effect>
@@ -188,13 +209,12 @@
                                 Background="#00478F" Foreground="White" FontWeight="Bold"
                                 Margin="0,20,0,0" Width="400" FontSize="20"/>
                     </StackPanel>
-
                 </StackPanel>
             </ScrollViewer>
         </Border>
 
         <!-- 하단 고정 네비게이션 -->
-        <local1:BottomNav Grid.Row="2"/>
+        <local1:BottomNav Grid.Row="2" Panel.ZIndex="1"/>
 
         <!-- ✅ 로딩 오버레이: 항상 화면 정중앙 -->
         <Grid Grid.RowSpan="3"
@@ -217,15 +237,15 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Row="1" Grid.Column="1"
-                Background="White" CornerRadius="12" Padding="24"
-                HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Background="White" CornerRadius="12" Padding="24"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel HorizontalAlignment="Center" Width="260">
                         <ProgressBar IsIndeterminate="True" Height="8" Margin="0,0,0,12"/>
 
-                        <TextBlock Text="분석 중입니다..." 
-                           HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="0,4,0,5"/>
-                        <TextBlock Text="잠시만 기다려주세요" 
-                           HorizontalAlignment="Center" Opacity="0.8"/>
+                        <TextBlock Text="분석 중입니다..."
+                                   HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="0,4,0,5"/>
+                        <TextBlock Text="잠시만 기다려주세요"
+                                   HorizontalAlignment="Center" Opacity="0.8"/>
                     </StackPanel>
                 </Border>
             </Grid>

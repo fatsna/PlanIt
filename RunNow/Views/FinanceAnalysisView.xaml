@@ -5,8 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:RunNow.Converters"
              xmlns:local1="clr-namespace:RunNow.Views"
-             
-             
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="500">
 
@@ -21,15 +19,36 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- ✅ 상단 파란 배경 -->
-        <Border Grid.Row="0" Background="#00478F" Padding="0,20">
+        <!-- ✅ 파도 배경 (LoginView와 동일) -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                Height="530"
+                IsHitTestVisible="False"
+                Panel.ZIndex="0">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,530" />
+                            <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                            <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                            <LineSegment Point="1000,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- ✅ 상단 헤더 (배경은 투명: 아래 파도가 보이게) -->
+        <Border Grid.Row="0" Background="Transparent" Padding="0,20" Panel.ZIndex="1">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Source="/Assets/LOGO2.png" Width="150" Height="50" Stretch="Uniform" Margin="0,0,0,40"/>
             </StackPanel>
         </Border>
 
         <!-- ✅ 카드 박스 -->
-        <Border Grid.Row="1" Margin="30,-40,30,10" Padding="20" Background="White" CornerRadius="20">
+        <Border Grid.Row="1" Margin="30,-30,30,30" Padding="20" Background="White" CornerRadius="20" Panel.ZIndex="1">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
             </Border.Effect>
@@ -38,19 +57,19 @@
                 <StackPanel Width="500" HorizontalAlignment="Center">
 
                     <!-- 입력 항목 -->
-                    <TextBlock Text="총 자산 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="총 자산 (만원)" Margin="0,65,0,5" FontWeight="Bold" FontSize="20"/>
                     <TextBox Text="{Binding TotalAssets, Converter={StaticResource NumberFormatConverter}, UpdateSourceTrigger=PropertyChanged}" 
                              Height="30" FontSize="16"/>
 
-                    <TextBlock Text="월 수입 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="월 수입 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="20"/>
                     <TextBox Text="{Binding MonthlyIncome, Converter={StaticResource NumberFormatConverter}, UpdateSourceTrigger=PropertyChanged}" 
                              Height="30" FontSize="16"/>
 
-                    <TextBlock Text="고정 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="고정 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="20"/>
                     <TextBox Text="{Binding FixedExpense, Converter={StaticResource NumberFormatConverter}, UpdateSourceTrigger=PropertyChanged}" 
                              Height="30" FontSize="16"/>
 
-                    <TextBlock Text="변동 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="18"/>
+                    <TextBlock Text="변동 지출 (만원)" Margin="0,18,0,5" FontWeight="Bold" FontSize="20"/>
                     <TextBox Text="{Binding VariableExpense, Converter={StaticResource NumberFormatConverter}, UpdateSourceTrigger=PropertyChanged}" 
                              Height="30" FontSize="16"/>
 
@@ -73,6 +92,6 @@
         </Border>
 
         <!-- ✅ 하단 고정 네비게이션 -->
-        <local1:BottomNav Grid.Row="2"/>
+        <local1:BottomNav Grid.Row="2" Panel.ZIndex="1"/>
     </Grid>
 </UserControl>

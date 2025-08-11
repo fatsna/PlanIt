@@ -26,6 +26,5 @@ namespace RunNow.Views
                 vm.SetConfirmPassword(((PasswordBox)sender).Password);
             }
         }
-
     }
 }

@@ -17,6 +17,8 @@
             <StackPanel HorizontalAlignment="Center">
                 <Image Source="pack://application:,,,/Assets/LOGO2.png"
                        Width="120" Height="40" Stretch="Uniform" Margin="0,0,0,10"/>
+                <TextBlock Text="정밀테스트 결과" Foreground="White"
+                           FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             </StackPanel>
         </Border>
 
@@ -26,6 +28,7 @@
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch">
 
                     <TextBlock Text="정밀테스트 결과" FontSize="28" FontWeight="Bold" Margin="0,10,0,20"/>
+
                     <!-- 결과 요약 -->
                     <TextBlock Text="{Binding ResultText}" FontSize="16" TextWrapping="Wrap" Margin="0,0,0,20" />
 
@@ -42,30 +45,29 @@
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock Grid.Column="0" Text="•" Margin="0,0,6,0" VerticalAlignment="Top"/>
-                                    <TextBlock Grid.Column="1"
-                           Text="{Binding}"
-                           TextWrapping="Wrap"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding}" TextWrapping="Wrap"/>
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-
                     <!-- 그래프 제목 -->
                     <TextBlock Text="감정 진단 결과"
-                           FontSize="18" FontWeight="Bold" Margin="0,20,0,8"
-                           FontFamily="Malgun Gothic"/>
+                               FontSize="18" FontWeight="Bold" Margin="0,20,0,8"
+                               FontFamily="Malgun Gothic"/>
 
-                    <!-- 그래프 -->
+                    <!-- 차트: 범례/툴팁 한글 폰트만 바인딩 -->
                     <lvc:CartesianChart
-                    Series="{Binding Series}"
-                    XAxes="{Binding XAxes}"
-                    YAxes="{Binding YAxes}"
-                    LegendPosition="Top"
-                    Width="Auto"
-                    Height="300"
-                    Margin="0,0,0,0" />
-
+                        Series="{Binding Series}"
+                        XAxes="{Binding XAxes}"
+                        YAxes="{Binding YAxes}"
+                        LegendPosition="Top"
+                        LegendTextPaint="{Binding LegendTextPaint}"
+                        Title="{Binding Title}"
+                        TooltipTextPaint="{Binding TooltipTextPaint}"
+                        Width="Auto"
+                        Height="300"
+                        Margin="0,0,0,0"/>
 
                     <!-- 추천 직무 리스트 -->
                     <TextBlock Text="추천 직무 리스트" FontSize="20" FontWeight="Bold" Margin="0,20,0,8"/>
