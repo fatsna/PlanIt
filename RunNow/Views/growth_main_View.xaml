@@ -116,6 +116,28 @@
         <!-- 하단 네비게이션 -->
         <lowbar:BottomNav Grid.Row="2"/>
         <!--두번째 레이아웃-->
+        <Grid   x:Name="Grid_message_Deep"
+            Visibility="{Binding shareDataService.IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}">
+            <!-- 어두운 배경 -->
+            <Rectangle Fill="#80000000">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding RectangleClickCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Rectangle>
 
+            <local:messageDeep x:Name="messagedeep"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 0, 0"
+                                Background="Transparent"
+                                Padding="20">
+
+                <local:messageDeep.LayoutTransform>
+                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                </local:messageDeep.LayoutTransform>
+            </local:messageDeep>
+        </Grid>
     </Grid>
 </UserControl>

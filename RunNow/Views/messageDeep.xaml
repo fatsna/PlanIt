@@ -110,7 +110,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="테스트는 다음에~"
+                    <TextBlock Text="테스트는 다음에"
                                TextAlignment="Center"
                                Grid.Column="0"
                                FontSize="17"

@@ -152,7 +152,26 @@ namespace RunNow.ViewModels
                     this.shareDataService.wantjob = result["job"].ToString(); // 직업저장
                     this.shareDataService.Growth_ID = result["result"]["grown_id"].ToString(); // 성장플래닛 번호저장
                     List<GoalDisplay> tmp = new List<GoalDisplay>(); // 저장할 변수
-                    JObject json = JObject.Parse(result["planner"].ToString());
+                    Console.WriteLine("이거왜 파싱안돼");
+                    string planner = result["planner"]?.ToString() ?? "";
+                    Console.WriteLine("이거왜 파싱안돼12345");
+                    JObject json = JObject.Parse(planner);
+                    Console.WriteLine("이거왜 파싱안121212돼");
+                    //json["result"]["start_day"].ToString(); // 시작날짜 받음 현재날짜에서 뺴구 peried 에서 뺴서 남은날짜 빼기
+
+                    DateTime now = DateTime.Now;
+                    // 날짜 → 숫자
+                    int NowDate = int.Parse(now.ToString("yyyyMMdd"));
+                    DateTime startDateTime = DateTime.Parse(result["result"]["start_day"].ToString());
+                    int startDate = int.Parse(startDateTime.ToString("yyyyMMdd"));
+                    Console.WriteLine($"지금날짜 : {NowDate} 시작날짜 : {startDate} 둘이뺸거 : {NowDate - startDate}");
+                    int PERIOD = (int)json["result"]["GROWN_PLANNER"]["PERIOD"];
+
+                    this.shareDataService.period = PERIOD - (NowDate - startDate); // 남은기간 저장
+                    Console.WriteLine(this.shareDataService.period);
+                    //DateTime NoewDate = new DateTime("");
+
+                    //this.shareDataService
                     foreach (var item in json["result"]["GROWN_PLANNER_GOAL"])
                     {
                         Console.WriteLine($"{item}");

@@ -116,9 +116,9 @@
 
                                 <!-- 얇은 진행 라인 -->
                                 <ProgressBar Style="{StaticResource ThinBar}" Grid.Row="2" Margin="0,34,0,0"
-                    Value="{Binding Progress}"
-                    c:AnimatedProgressBarBehavior.EnableAnimation="True"
-                    VerticalAlignment="Bottom"/>
+                                            Value="{Binding Progress}"
+                                            c:AnimatedProgressBarBehavior.EnableAnimation="True"
+                                            VerticalAlignment="Bottom"/>
                             </Grid>
                         </Border>
 
@@ -136,8 +136,8 @@
                                        TextAlignment="Center"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
-                                       FontSize="20"> 
-                                
+                                       FontSize="20">
+
                             </TextBlock>
                         </Border>
                         <Button x:Name="Button_third"
@@ -175,7 +175,6 @@
                     </Border>
                 </Grid>
             </Grid>
-
             <!-- 하단 네비게이션 -->
             <lowbar:BottomNav Grid.Row="2"/>
         </Grid>

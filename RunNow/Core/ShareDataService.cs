@@ -32,7 +32,8 @@ namespace RunNow.Core
             public string Date { get; set; } // 완료 날짜 / 없으면 ""
             public int Importance { get; set; } // 중요도 1 ~ 9
             public int Goal_Progress { get; set; } // 달성도 비중 %
-            
+
+            public bool IsSelected = false;  // ← 선택 상태
         };
         public string RES_ID { get; set; } // 종합테스트 번호 저장하기
         public string Growth_ID { get; set; } // 성장플래닛 번호 저장하기

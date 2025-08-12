@@ -12,13 +12,13 @@
       xmlns:lowbar="clr-namespace:RunNow.Views"
       xmlns:loccal ="clr-namespcce:RunNow.Converters"
       >
-<UserControl.Resources>
+    <UserControl.Resources>
         <CollectionViewSource x:Key="GoalsView" Source="{Binding shareDataService.Goals}">
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="Category"/>
             </CollectionViewSource.GroupDescriptions>
         </CollectionViewSource>
-    </UserControl.Resources> 
+    </UserControl.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -108,7 +108,8 @@
                             BorderThickness="5"
                             CornerRadius="10">
                             <!--목표들 표시하기-->
-                            <ItemsControl ItemsSource="{Binding Source={StaticResource GoalsView}}">
+                            <ItemsControl ItemsSource="{Binding Source={StaticResource GoalsView}}"
+                                          Margin="10, 5, 10, 10">
                                 <ItemsControl.GroupStyle>
                                     <GroupStyle>
                                         <GroupStyle.HeaderTemplate>
@@ -128,7 +129,7 @@
                                         <DockPanel Margin="0,2">
                                             <TextBlock Text="{Binding Goal}" DockPanel.Dock="Left" Width="300"/>
                                             <TextBlock Text="{Binding Date}" 
-                                                       Foreground="{Binding Status, Converter={StaticResource StatusToColorConverter}}" 
+                                                       Foreground="{Binding Date, Converter={StaticResource StatusToColorConverter}}" 
                                                        FontWeight="Bold"
                                                        HorizontalAlignment="Right"/>
                                         </DockPanel>
@@ -136,7 +137,7 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
                         </Border>
-                            <Button x:Name="Button_third"
+                        <Button x:Name="Button_third"
                             Grid.Row="2"
                             Margin="0, 10, 10, 0"
                             Width="550"
@@ -194,7 +195,7 @@
                                 FontSize="15"
                                 FontWeight="Bold"
                                 FontFamily="Noto Sans KR"
-                                Foreground="Black"/>  
+                                Foreground="Black"/>
                     <!-- 월 표시 -->
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
@@ -223,7 +224,7 @@
                                   HorizontalAlignment="Center" VerticalAlignment="Center"
                                   FontWeight="Bold"
                                   FontSize="24"
-                                  FontFamily="Noto Sans KR"/>   
+                                  FontFamily="Noto Sans KR"/>
                         <!--다음달-->
                         <Image Source="/Assets/뒤로가기파랑.drawio.png"
                        
@@ -242,7 +243,7 @@
                             <Image.LayoutTransform>
                                 <ScaleTransform ScaleX="-1" ScaleY="1"/>
                             </Image.LayoutTransform>
-                        </Image>    
+                        </Image>
 
                     </Grid>
 
@@ -254,7 +255,7 @@
                         <TextBlock Text="수" HorizontalAlignment="Center" FontFamily="Noto Sans KR"/>
                         <TextBlock Text="목" HorizontalAlignment="Center" FontFamily="Noto Sans KR"/>
                         <TextBlock Text="금" HorizontalAlignment="Center" FontFamily="Noto Sans KR"/>
-                        <TextBlock Text="토" HorizontalAlignment="Center" Foreground="Blue" FontFamily="Noto Sans KR"/>
+                        <TextBlock Text="토" HorizontalAlignment="Center" Foreground="   Blue" FontFamily="Noto Sans KR"/>
                     </UniformGrid>
 
                     <!-- 달력 날짜 -->
@@ -384,18 +385,20 @@
                         <!--카테고립 버튼들-->
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="17*"/>
+                                <ColumnDefinition Width="100*"/>
+                                <ColumnDefinition Width="117*"/>
+                                <ColumnDefinition Width="117*"/>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0"
                                     CornerRadius="10"
                                     BorderBrush="Aqua"
                                     BorderThickness="3"
-                                    Margin="5, 5, 5, 5">
+                                    Margin="5,5,5,5" Grid.ColumnSpan="2">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">
-                                        <i:InvokeCommandAction Command="{Binding Show_qualificationsCommand}" />
+                                        <i:InvokeCommandAction Command="{Binding Show_GoalsCommand}"
+                                                                CommandParameter="자격증" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <Grid>
@@ -414,19 +417,20 @@
                                                Margin="0, 0, 0, 5"
                                                TextAlignment="Center"
                                                VerticalAlignment="Center">
-                                        
+
                                     </TextBlock>
                                 </Grid>
                             </Border>
-                            <Border Grid.Column="1"
+                            <Border Grid.Column="2"
                                     CornerRadius="10"
                                     BorderBrush="Aqua"
                                     BorderThickness="3"
-                                    Margin="5, 5, 5, 5" 
+                                    Margin="5,5,5,5" 
                                     >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">
-                                        <i:InvokeCommandAction Command="{Binding Show_technologyCommand}" />
+                                        <i:InvokeCommandAction Command="{Binding Show_GoalsCommand}"
+                                                                CommandParameter="기술" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <Grid>
@@ -438,7 +442,7 @@
                                            Width="50"
                                            Height="50"                                           
                                            Margin="0, 5, 0, 0">
-                                        
+
                                     </Image>
                                     <TextBlock Text="기술"
                                                Grid.Row="1"
@@ -449,15 +453,16 @@
                                     </TextBlock>
                                 </Grid>
                             </Border>
-                            <Border Grid.Column="2"
+                            <Border Grid.Column="3"
                                     CornerRadius="10"
                                     BorderBrush="Aqua"
                                     BorderThickness="3"
-                                    Margin="5, 5, 5, 5"
+                                    Margin="5,5,5,5"
                                     >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">
-                                        <i:InvokeCommandAction Command="{Binding Show_qualificationexperienceCommand}" />
+                                        <i:InvokeCommandAction Command="{Binding Show_GoalsCommand}"
+                                                                CommandParameter="경험" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                                 <Grid>
@@ -489,43 +494,74 @@
                                 BorderThickness="5"
                                 Background="LightPink">
                             <!--수동생성-->
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Border Grid.Row="0"
-                                        CornerRadius="20"
-                                        Margin="5, 0, 5, 5"
-                                        BorderBrush="Orange"
-                                        BorderThickness="5"
-                                        Height="30"
-                                        Background="Orange">
-                                </Border>
-                                <Border Grid.Row="1"
-                                        CornerRadius="20"
-                                        Margin="5, 0, 5, 5"
-                                        BorderBrush="Orange"
-                                        BorderThickness="5"
-                                        Height="30"
-                                        Background="Orange">
-                                </Border>
-                                <Border Grid.Row="2"
-                                    CornerRadius="20"
-                                    Margin="5, 0, 5, 5"
-                                    BorderBrush="Orange"
-                                    BorderThickness="5"
-                                    Height="30"
-                                    Background="Orange">
-                                </Border>
-                            </Grid>
-                            <!--동적생성 
-                            
-                            <ItemsControl>
-                            </ItemsControl>
-                            -->
+                            <ScrollViewer VerticalScrollBarVisibility ="Hidden">
+                                <StackPanel>
 
+                                    <!-- 진행 중 섹션 -->
+                                    <ItemsControl ItemsSource="{Binding GoalsView}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <ToggleButton
+                                                                IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                                Command="{Binding DataContext.ToggleSelectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                                CommandParameter="{Binding}"
+                                                                Cursor="Hand"
+                                                                Background="Transparent"
+                                                                BorderThickness="0"
+                                                                Padding="0">
+
+                                                    <ToggleButton.Template>
+                                                        <ControlTemplate TargetType="ToggleButton">
+                                                            <Border x:Name="Card"
+                                                                    CornerRadius="12"
+                                                                    Margin="5,0,5,8"
+                                                                    BorderBrush="Orange"
+                                                                    BorderThickness="2"
+                                                                    Padding="10"
+                                                                    Background="Transparent">
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <StackPanel>
+                                                                        <TextBlock Text="{Binding Goal}" FontWeight="Bold" FontSize="12"/>
+                                                                    </StackPanel>
+
+                                                                    <!-- 중요도 뱃지 -->
+                                                                    <Border Grid.Column="1"
+                                                                            Background="#33FFA500"
+                                                                            CornerRadius="10"
+                                                                            Padding="8,2"
+                                                                            Margin="10,0,0,0"
+                                                                            VerticalAlignment="Top">
+                                                                        <TextBlock Text="{Binding Importance}" FontWeight="Bold"/>
+                                                                    </Border>
+                                                                </Grid>
+                                                            </Border>
+
+                                                            <ControlTemplate.Triggers>
+                                                                <!-- Hover 효과(선택 전) -->
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="Card" Property="BorderBrush" Value="#FFA500"/>
+                                                                    <Setter TargetName="Card" Property="Background" Value="#10FFA500"/>
+                                                                </Trigger>
+
+                                                                <!-- 선택됨 -->
+                                                                <Trigger Property="IsChecked" Value="True">
+                                                                    <Setter TargetName="Card" Property="BorderBrush" Value="#2E86FF"/>
+                                                                    <Setter TargetName="Card" Property="Background" Value="#102E86FF"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </ToggleButton.Template>
+                                                </ToggleButton>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
                         </Border>
                         <Image Source="/Assets/트로피.png"
                                Grid.Row ="3"
@@ -555,7 +591,40 @@
                                 Background="Crimson">
                             <!--달성한 목표들 동적생성 스크롤바?-->
                             <ScrollViewer VerticalScrollBarVisibility ="Hidden">
+                                <ItemsControl ItemsSource="{Binding CompleteGoals}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border x:Name="Card"
+                                                     CornerRadius="12"
+                                                     Margin="5,0,5,8"
+                                                     BorderBrush="Orange"
+                                                     BorderThickness="2"
+                                                     Padding="10"
+                                                     Background="Transparent">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
 
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Goal}" FontWeight="Bold" FontSize="12"/>
+                                                    </StackPanel>
+
+                                                    <!-- 중요도 뱃지 -->
+                                                    <Border Grid.Column="1"
+                                                             Background="#33FFA500"
+                                                             CornerRadius="10"
+                                                             Padding="8,2"
+                                                             Margin="10,0,0,0"
+                                                             VerticalAlignment="Top">
+                                                        <TextBlock Text="{Binding Importance}" FontWeight="Bold"/>
+                                                    </Border>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </ScrollViewer>
                         </Border>
                         <Border Grid.Row="5" 
