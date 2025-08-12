@@ -179,7 +179,7 @@ namespace RunNow.ViewModels
             //_navigationStore.CurrentViewModel = App.Services.GetRequiredService<MainViewModel>();
 
             // 이게 MVVM 패턴에 올바르다!
-            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
+            this.shareDataService.IsDetailVisible = true; // 뒤로가기 메시지 보이기
         }
 
         [RelayCommand] private void Make_PlanIT() // 마이플래너로

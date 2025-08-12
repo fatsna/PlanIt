@@ -524,9 +524,9 @@
                         <Border Grid.Row="2"
                                 CornerRadius="20"
                                 Margin="5, 0, 5, 5"
-                                BorderBrush="LightPink"
+                                BorderBrush="SkyBlue"
                                 BorderThickness="5"
-                                Background="LightPink">
+                                Background="SkyBlue">
                             <!--수동생성-->
                             <ScrollViewer VerticalScrollBarVisibility ="Hidden">
                                 <StackPanel>
@@ -549,7 +549,7 @@
                                                             <Border x:Name="Card"
                                                                     CornerRadius="12"
                                                                     Margin="5,0,5,8"
-                                                                    BorderBrush="Orange"
+                                                                    BorderBrush="AliceBlue"
                                                                     BorderThickness="2"
                                                                     Padding="10"
                                                                     Background="Transparent">
@@ -620,9 +620,9 @@
                         <Border Grid.Row="4" 
                                 CornerRadius="20"
                                 Margin="5, 5, 5, 5"
-                                BorderBrush="Crimson"
+                                BorderBrush="Bisque"
                                 BorderThickness="5"
-                                Background="Crimson">
+                                Background="Bisque">
                             <!--달성한 목표들 동적생성 스크롤바?-->
                             <ScrollViewer VerticalScrollBarVisibility ="Hidden">
                                 <ItemsControl ItemsSource="{Binding CompleteGoals}">
@@ -687,11 +687,7 @@
             </Grid>
         </Grid>
         <!--백프로!!-->
-        <Grid Visibility="{Binding GOAL, Converter={StaticResource BoolToVisibilityConverter}}">
-            <lowbar:Goal>
-                
-            </lowbar:Goal>
-        </Grid>
+
         
     </Grid>
 </UserControl>

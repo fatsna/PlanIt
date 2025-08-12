@@ -125,7 +125,7 @@ namespace RunNow.ViewModels
         }
         [RelayCommand] private void Back()
         {
-            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<MainViewModel>();
+            this.shareDataService.IsDetailVisible = true; // 뒤로가기 메시지 보이기
         }
         [RelayCommand] private void RectangleClick()
         {
