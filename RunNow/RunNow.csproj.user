@@ -25,10 +25,17 @@
       <SubType>Code</SubType>
     </Compile>
 
+    <Compile Update="Views\Goal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+
     <Compile Update="Views\Growth_My_View.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MyPageView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\messageDeep.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

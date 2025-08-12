@@ -18,12 +18,14 @@
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
             <converters:BoolToVisibilityInverseConverter x:Key="BoolToVisibilityInverseConverter"/>
             <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
-
+            <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
+            
             <!-- ✅ Map 템플릿 매핑 -->
             <DataTemplate DataType="{x:Type vm:MapViewModel}">
                 <views:MapView/>
             </DataTemplate>
-
+    
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>

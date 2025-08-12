@@ -13,5 +13,9 @@ namespace RunNow.Views
         {
 
         }
+        private void gg(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
     }
 }

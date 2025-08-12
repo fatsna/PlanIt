@@ -52,11 +52,11 @@
         <!-- ✅ 카드 박스 -->
         <Border Grid.Row="1" Margin="40,-40,40,20" Padding="20"
                 Background="White" CornerRadius="20" Panel.ZIndex="1">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
-            </Border.Effect>
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
+                </Border.Effect>
 
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Width="500" HorizontalAlignment="Center">
 
                     <!-- 제목 -->

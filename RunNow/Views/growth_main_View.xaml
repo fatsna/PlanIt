@@ -19,7 +19,6 @@
         </Grid.RowDefinitions>
         <!-- 상단 타이틀 -->
         <Image Source="/Assets/뒤로가기파랑.drawio.png"
-
                      HorizontalAlignment="Left"
                      Margin="10,10,0,0"
                      VerticalAlignment="Top"
@@ -77,21 +76,19 @@
                     Height="80"
                     Content="플래닛 시작하기"
                     FontSize="30"
-                    Foreground="SlateGray"                    
-                    FontWeight="Bold"
+                    Foreground="Black"                    
                     Style="{StaticResource FlatButtonStyle}"
                     Background="White"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Center" Cursor="Hand"
                         />
             <Button x:Name="Button_second"
                     Command="{Binding Planit_checkCommand}"
                     Grid.Row="1"
                     Margin="0, 10, 10, 10"
                     Width="500"
-                    FontWeight="Bold"                    
                     Height="80"
-                    Foreground="SlateGray"                   
+                    Foreground="Black"                   
                     Content="플래닛 채우기"
                     FontSize="30"
                     Style="{StaticResource FlatButtonStyle}"
@@ -103,8 +100,7 @@
                     Command="{Binding Planit_MyCommand}"                    
                     Width="500"
                     Height="80"
-                    FontWeight="Bold"        
-                    Foreground="SlateGray"                    
+                    Foreground="Black"                    
                     Content="마이 플래닛"
                     FontSize="30"
                     HorizontalAlignment="Center"
@@ -120,5 +116,29 @@
         </Grid>
         <!-- 하단 네비게이션 -->
         <lowbar:BottomNav Grid.Row="2"/>
+        <!--두번째 레이아웃-->
+        <Grid   x:Name="Grid_message_Deep"
+            Visibility="{Binding shareDataService.IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}">
+            <!-- 어두운 배경 -->
+            <Rectangle Fill="#80000000">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding RectangleClickCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Rectangle>
+
+            <local:messageDeep x:Name="messagedeep"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="0, 0, 0, 0"
+                                Background="Transparent"
+                                Padding="20">
+
+                <local:messageDeep.LayoutTransform>
+                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                </local:messageDeep.LayoutTransform>
+            </local:messageDeep>
+        </Grid>
     </Grid>
 </UserControl>

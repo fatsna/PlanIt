@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Services;
+using static RunNow.Core.ShareDataService;
 
 namespace RunNow.ViewModels
 {
@@ -23,7 +24,8 @@ namespace RunNow.ViewModels
             this._navigationStore = navigationStore;
             this.shareDataService = shareDataService;
             Console.WriteLine($"생성자에서의 값 : {this.shareDataService.IsDetailVisible}");
-
+            this.SerchJob = "검색은 여기에서 해주세요!";
+            this.Wantjobtext = "플래닛 만들기"; // 처음에 써질값.
             // 복사~
             // 기존 string 리스트 → JobItem으로 변환
             this.jobs = new ObservableCollection<JobItem>(
@@ -44,6 +46,8 @@ namespace RunNow.ViewModels
         [ObservableProperty] private string selectedJobExplain; // ui와 바인딩될 직업설명 변수
         [ObservableProperty] private string selectedJobReson; // ui와 바인딩될 직업설명 변수
         [ObservableProperty] private string serchJob; // 유저가 검색한 직업
+        [ObservableProperty] private string wantjob; // 유저가 고른 직업
+        [ObservableProperty] private string wantjobtext; // 
         public class JobItem
         {
             public string Name { get; set; }
@@ -69,10 +73,14 @@ namespace RunNow.ViewModels
             Console.WriteLine($"직업 누름!!! 누른인덱스 : {index}");
             if (index >= 0 && index < this.job_explains.Count)
             {
-                Console.WriteLine("왜안드렁요져ㅛ"); 
                 Console.WriteLine($"{this.job_explains[index]}");
+                Console.WriteLine($"{this.SelectedJobReson} 바꾸기전 추천이유");
                 this.SelectedJobExplain = this.job_explains[index];
-                this.SelectedJobReson = this.shareDataService.jobs_REASONS[index];
+                this.SelectedJobReson = this.shareDataService.Jobs_REASON[index];
+                Console.WriteLine($"{this.shareDataService.Jobs_REASON[index]}쉐어데이터의 값?");
+                Console.WriteLine($"{this.SelectedJobReson} 바꾼후 추천이유");
+                this.Wantjob = this.jobs[index].Name;
+                this.Wantjobtext = this.wantjob + "<< 플랜잇 만들기 !!";
             }
         }
 
@@ -83,6 +91,7 @@ namespace RunNow.ViewModels
             if (!(this.SerchJob == ""))
             {
                 JObject result = await this._authService.PlanIT_serch(this.SerchJob);
+                Console.WriteLine($"서버가 준값 : {result.ToString()}");
                 if (!(result["protocol"]?.ToString() == "100_5_1"))
                 {
                     //실패!
@@ -92,16 +101,29 @@ namespace RunNow.ViewModels
                 {
                     // 성공하면 직업, 직업설명 추가로 저장
                     Console.WriteLine("직업 검색 성공!");
-                    int lastIndex = jobs.Last().Index;
-                    JobItem item = new JobItem()
+                    foreach (var job in result["jobs"])
                     {
-                        Name = result["??"].ToString(),
-                        Index = lastIndex
-                    };
-                    this.jobs.Add(item);
+                        // 이유의 값이 널이아니면 저장
+                        if (job["reason"].ToString() != "null")
+                        {
+                            int lastIndex = jobs.Last().Index;
+                            Console.WriteLine($"{this.shareDataService.Jobs_REASON[lastIndex]}쉐어데이터의 값?");
+                            //this.shareDataService.Jobs_REASON.Add(job["reason"].ToString()); // 이거 왜 안돼
+                            this.shareDataService.Jobs_REASON[lastIndex] = job["reason"].ToString();
+                            Console.WriteLine($"{this.shareDataService.Jobs_REASON[lastIndex]}바꾼이후쉐어데이터의 값?");
+                            this.Job_explains[lastIndex] = (job["description"].ToString());
+                            JobItem item = new JobItem()
+                            {
+                                Name = job["job"].ToString(),
+                                Index = lastIndex
+                            };
+                            Console.WriteLine($"아이템 : {item}, 이유 : {this.shareDataService.Jobs_REASON[lastIndex]} 추천 : {this.Job_explains[lastIndex]}");
+                            this.jobs.Add(item);
+                        }
+                    }
                 }
                 // 검색했으면 초기화
-                this.SerchJob = "";
+                this.SerchJob = "검색은 여기에서 해주세요!";
             }
             else
             {
@@ -111,11 +133,12 @@ namespace RunNow.ViewModels
         [RelayCommand] private async Task Make_PlanIT()
         {
             Console.WriteLine("플랜잇 생성!!");
-            Console.WriteLine($"생성할 직업! : {this.SerchJob}");
+            Console.WriteLine($"생성할 직업! : {this.Wantjob}");
             // 서버에게 요청
-            if (!(this.SerchJob == ""))
+            if (!(this.Wantjob == ""))
             {
-                JObject result = await this._authService.PlanIT_make(this.SerchJob);
+                JObject result = await this._authService.PlanIT_make(this.Wantjob, this.shareDataService.User_id);
+                Console.WriteLine($"서버가 준값 : {result.ToString()}");
                 if (!(result["protocol"]?.ToString() == "100_6_1"))
                 {
                     Console.WriteLine("요청 실패!");
@@ -126,8 +149,48 @@ namespace RunNow.ViewModels
                     Console.WriteLine("만들기 성공!");
                     // 성공! 
                     // 쉐어 데이터 서비스에 서버에게 받은 데이터 저장후 화면전환
-                    //this._shareDataService.
+                    this.shareDataService.wantjob = result["job"].ToString(); // 직업저장
+                    this.shareDataService.Growth_ID = result["result"]["grown_id"].ToString(); // 성장플래닛 번호저장
+                    List<GoalDisplay> tmp = new List<GoalDisplay>(); // 저장할 변수
+                    Console.WriteLine("이거왜 파싱안돼");
+                    string planner = result["planner"]?.ToString() ?? "";
+                    Console.WriteLine("이거왜 파싱안돼12345");
+                    JObject json = JObject.Parse(planner);
+                    Console.WriteLine("이거왜 파싱안121212돼");
+                    //json["result"]["start_day"].ToString(); // 시작날짜 받음 현재날짜에서 뺴구 peried 에서 뺴서 남은날짜 빼기
+
+                    DateTime now = DateTime.Now;
+                    // 날짜 → 숫자
+                    int NowDate = int.Parse(now.ToString("yyyyMMdd"));
+                    DateTime startDateTime = DateTime.Parse(result["result"]["start_day"].ToString());
+                    int startDate = int.Parse(startDateTime.ToString("yyyyMMdd"));
+                    Console.WriteLine($"지금날짜 : {NowDate} 시작날짜 : {startDate} 둘이뺸거 : {NowDate - startDate}");
+                    int PERIOD = (int)json["result"]["GROWN_PLANNER"]["PERIOD"];
+
+                    this.shareDataService.period = PERIOD - (NowDate - startDate); // 남은기간 저장
+                    Console.WriteLine(this.shareDataService.period);
+                    //DateTime NoewDate = new DateTime("");
+
+                    //this.shareDataService
+                    foreach (var item in json["result"]["GROWN_PLANNER_GOAL"])
+                    {
+                        Console.WriteLine($"{item}");
+                        GoalDisplay goal = new GoalDisplay
+                        {
+                            Goal = item["GOAL"].ToString(),
+                            Date = (item["GOAL_DATE"]?.ToString()?? ""),
+                            Category = item["CATEGORY"].ToString(),
+                            Goal_Progress = int.Parse(item["GOAL_PROGRESS"].ToString()),
+                            Importance = int.Parse(item["IMPORTANCE"].ToString())
+                        };
+                       tmp.Add(goal);
+                    }
+                    Console.WriteLine($"희망직업 : {this.shareDataService.wantjob}"); // 직업저장
+                    this.shareDataService.Goals = new ObservableCollection<GoalDisplay>(tmp);
+                    Console.WriteLine($"성장플래닛 아이디 : {this.shareDataService.Growth_ID}");
+                    Console.WriteLine($"저장판 목표들 : {tmp}");
                     this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<growth_check_ViewModel>();
+
                 }
                 // 검색했으면 초기화
                 this.SerchJob = "";
@@ -141,6 +204,11 @@ namespace RunNow.ViewModels
         {
             this.shareDataService.IsDetailVisible = false;
             Console.WriteLine("사각형 클릭됨!");
+        }
+        [RelayCommand] private void ClearText()
+        {
+            this.SerchJob = "";
+            Console.WriteLine("검색창 클릭됨!");
         }
     }
 }

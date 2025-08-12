@@ -164,5 +164,12 @@ namespace RunNow.ViewModels
             Debug.WriteLine("EmotionResultCommand called without JObject parameter. Ignored.");
         }
 
+        [RelayCommand]
+        private void GoDeep()
+        {
+            this._shareDataService.IsDetailVisible = false; // 뒤로가기 메시지 닫기
+            this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<DeepTestViewModel>();
+        }
+
     }
 }

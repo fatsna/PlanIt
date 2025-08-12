@@ -60,6 +60,7 @@ namespace RunNow.Services
             {
                 ["protocol"] = "5_0",
                 ["user_id"] = userId
+
             };
 
             return await _tcpClientService.SendJsonToServer(json);
@@ -91,14 +92,14 @@ namespace RunNow.Services
 
             return await _tcpClientService.SendJsonToServer(json);
         }
-
-        public async Task<JObject> PlanIT_make(string job)
+        public async Task<JObject> PlanIT_make(string job, string id)
         {
             await _tcpClientService.ConnectAsync();
 
             var json = new JObject
             {
                 ["protocol"] = "100_6_0",
+                ["u_id"] = id,
                 ["job"] = job
             };
 
@@ -161,74 +162,7 @@ namespace RunNow.Services
             return await _tcpClientService.SendJsonToServer(req);
         }
 
-        //public async Task<JObject> PlanIT_start(string User_id) // 플래닛 시작하기 눌렀을때 종합테스트 유무 확인
-        //{
-        //    JObject json = new JObject()
-        //    {
-        //        ["protocol"] = "5_0",
-        //        ["user_id"] = User_id
-        //    };
 
-        //    var response = await this._tcpClientService.SendJsonToServer(json);
-        //    return response;
-        //}
-        //public async Task<JObject> PlanIT_check(string User_id) // 플래닛 채우기, 마이플래닛 눌렀을때 성장플래닛 유무 확인
-        //{
-        //    JObject json = new JObject()
-        //    {
-        //        ["protocol"] = "5_0",
-        //        ["user_id"] = User_id
-        //    };
-
-        //    var response = await this._tcpClientService.SendJsonToServer(json);
-        //    return response;
-        //}
-        //public async Task<JObject> PlanIT_serch(string job)
-        //{
-        //    JObject json = new JObject()
-        //    {
-        //        ["protocol"] = "100_5_0",
-        //        ["job"] = job
-        //    };
-        //    JObject response = await this._tcpClientService.SendJsonToServer(json);
-        //    return response;
-        //}
-        //public async Task<JObject> PlanIT_make(string job)
-        //{
-        //    JObject json = new JObject()
-        //    {
-        //        ["protocol"] = "100_6_0",
-        //        ["job"] = job
-        //    };
-        //    JObject response = await this._tcpClientService.SendJsonToServer(json);
-        //    return response;
-        //}
-
-        ////아이디 중복검사
-        //public async Task<JObject> CheckDuplicateIdAsync(string userid)
-        //{
-        //    await _tcpClientService.ConnectAsync();
-
-        //    JObject payload = new JObject
-        //    {
-        //        ["protocol"] = "3_0",
-        //        ["id"] = userid
-        //    };
-
-        //    var response = await _tcpClientService.SendJsonToServer(payload);
-        //    return response;
-        //}
-
-
-        ////회원가입 
-        //public async Task<JObject> RegisterAsync(JObject registerPayload)
-        //{
-        //    await _tcpClientService.ConnectAsync();  // 서버 연결
-
-        //    var response = await _tcpClientService.SendJsonToServer(registerPayload);
-
-        //    return response;
-        //}
         public async Task<JObject> SaveResumeAsync(JObject payload)
         {
             if (!_tcpClientService.IsConnected)
@@ -244,6 +178,20 @@ namespace RunNow.Services
                 await _tcpClientService.ConnectAsync();          // ✅ 연결 보장
 
             return await _tcpClientService.SendJsonToServer(payload);  // ✅ 6_0 전송
+        }
+
+        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL) 
+        {
+            JObject json = new JObject()
+            {
+                ["protocol"] = "10_0",
+                ["u_id"] = id,
+                ["GROWN_ID"] = GROWN_ID,
+                ["GOAL_DATE"] = DateTime.Now.ToString("yyyy-MM-dd") // 날짜만 전송
+            };
+            json["GOAL"] = new JArray(GOAL);
+            JObject response = await this._tcpClientService.SendJsonToServer(json);
+            return response;
         }
 
     }
