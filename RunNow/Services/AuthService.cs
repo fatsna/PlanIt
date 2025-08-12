@@ -59,7 +59,7 @@ namespace RunNow.Services
             var json = new JObject
             {
                 ["protocol"] = "5_0",
-                ["user_id"] = userId
+                ["u_id"] = userId
 
             };
 
@@ -73,8 +73,8 @@ namespace RunNow.Services
 
             var json = new JObject
             {
-                ["protocol"] = "5_0",
-                ["user_id"] = userId
+                ["protocol"] = "9_0",
+                ["u_id"] = userId
             };
 
             return await _tcpClientService.SendJsonToServer(json);
