@@ -113,7 +113,7 @@ namespace RunNow.Services
             var payload = new JObject
             {
                 ["protocol"] = "3_0",
-                ["id"] = userid
+                ["u_id"] = userid
             };
 
             return await _tcpClientService.SendJsonToServer(payload);

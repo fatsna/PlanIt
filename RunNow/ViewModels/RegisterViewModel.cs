@@ -60,6 +60,12 @@ namespace RunNow.ViewModels
         private string password;
         private string confirmPassword;
 
+        // 전화번호 정규화 재진입 방지 플래그
+        private bool _suppressPhoneSanitize;
+
+        private static string DigitsOnly(string s, int maxLen) =>
+            string.IsNullOrEmpty(s) ? string.Empty : new string(s.Where(char.IsDigit).Take(maxLen).ToArray());
+
         // ==============================
         // 📌 사용자 기본 정보
         // ==============================
@@ -87,6 +93,46 @@ namespace RunNow.ViewModels
         partial void OnUserIdChanged(string value)
         {
             IsUserIdChecked = false;
+            SubmitCommand?.NotifyCanExecuteChanged();
+        }
+
+        // 전화번호: 숫자만 유지 + 길이 강제 (3/4/4)
+        partial void OnPhonePart1Changed(string value)
+        {
+            if (_suppressPhoneSanitize) return;
+            var sanitized = DigitsOnly(value, 3);
+            if (sanitized != value)
+            {
+                _suppressPhoneSanitize = true;
+                PhonePart1 = sanitized;
+                _suppressPhoneSanitize = false;
+            }
+            SubmitCommand?.NotifyCanExecuteChanged();
+        }
+
+        partial void OnPhonePart2Changed(string value)
+        {
+            if (_suppressPhoneSanitize) return;
+            var sanitized = DigitsOnly(value, 4);
+            if (sanitized != value)
+            {
+                _suppressPhoneSanitize = true;
+                PhonePart2 = sanitized;
+                _suppressPhoneSanitize = false;
+            }
+            SubmitCommand?.NotifyCanExecuteChanged();
+        }
+
+        partial void OnPhonePart3Changed(string value)
+        {
+            if (_suppressPhoneSanitize) return;
+            var sanitized = DigitsOnly(value, 4);
+            if (sanitized != value)
+            {
+                _suppressPhoneSanitize = true;
+                PhonePart3 = sanitized;
+                _suppressPhoneSanitize = false;
+            }
             SubmitCommand?.NotifyCanExecuteChanged();
         }
 
@@ -328,9 +374,10 @@ namespace RunNow.ViewModels
                 !string.IsNullOrWhiteSpace(password) &&
                 password == confirmPassword &&
                 !string.IsNullOrWhiteSpace(Address) &&
-                !string.IsNullOrWhiteSpace(PhonePart1) &&
-                !string.IsNullOrWhiteSpace(PhonePart2) &&
-                !string.IsNullOrWhiteSpace(PhonePart3) &&
+                // 전화번호: 반드시 3-4-4가 꽉 차야 함
+                PhonePart1?.Length == 3 &&
+                PhonePart2?.Length == 4 &&
+                PhonePart3?.Length == 4 &&
                 (IsMale || IsFemale) &&
                 SelectedYear > 0 &&
                 SelectedMonth > 0 &&
