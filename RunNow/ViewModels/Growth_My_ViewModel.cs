@@ -26,6 +26,10 @@ namespace RunNow.ViewModels
             this._serviceProvider = serviceProvider;
             this.TargetJob = this.shareDataService.wantjob;
             this.DaysLeft = this.shareDataService.period;
+            this.setting_ui();
+
+            Console.WriteLine($"dddddddd{this.Progress} {this.NextGoal}");
+
         }
 
         private readonly NavigationStore _navigationStore; // 메인에게 화면넘겨! 객체
@@ -40,16 +44,17 @@ namespace RunNow.ViewModels
                 if(Goal.Date != "")
                 {
                     this.Progress += Goal.Goal_Progress;
+                    Console.WriteLine($"ddddddddddddddddddddd{this.Progress} {Goal.Goal_Progress}ddddddddddddddddddddddd");
                 }
             }
             foreach (var Goal in this.shareDataService.Goals)
             {
-                if(Goal.Date != "")
+                if(Goal.Date == "")
                 {
                     this.NextGoal = Goal.Goal;
                 }
             }
-            this.Progress *= 0.01; // 백으로 나누기!
+
         }
         [RelayCommand] private void GoTocheck() // 플래너 채우기로
         {
@@ -82,7 +87,8 @@ namespace RunNow.ViewModels
         [RelayCommand] private void CircularProgressLoaded()
         {
             // 예: Progress 초기값/애니메이션 트리거
-            this.setting_ui();
+            this.Progress *= 0.01; // 백으로 나누기!
+            Console.WriteLine($"dddddddd{this.Progress} {this.NextGoal}");
         }
     }
 }

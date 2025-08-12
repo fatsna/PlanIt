@@ -26,7 +26,7 @@ namespace RunNow.Services
         Task<JObject> DeepTestAsync(JObject payload);        //정밀테스트 
 
         Task<JObject> PlanIT_make(string job, string id); // 성장 플래닛 만들기
-        Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL); // 목표달성! 
+        Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL, string date); // 목표달성! 
 
     }
 }

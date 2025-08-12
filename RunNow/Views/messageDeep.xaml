@@ -18,7 +18,7 @@
                     Background="White"
                     CornerRadius="30"
                     Padding="20">
-            <TextBlock Text="종합테스트 결과가 없습니다!!&#x0a;종합테스트를 먼저 진행해주세요!"
+            <TextBlock Text="{Binding shareDataService.Msg}"
                        Margin="40"
                        FontSize="40"
                        TextAlignment="Center"

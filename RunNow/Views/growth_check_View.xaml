@@ -686,5 +686,12 @@
                 </Border>
             </Grid>
         </Grid>
+        <!--백프로!!-->
+        <Grid Visibility="{Binding GOAL, Converter={StaticResource BoolToVisibilityConverter}}">
+            <lowbar:Goal>
+                
+            </lowbar:Goal>
+        </Grid>
+        
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
@@ -180,14 +181,17 @@ namespace RunNow.Services
             return await _tcpClientService.SendJsonToServer(payload);  // ✅ 6_0 전송
         }
 
-        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL) 
+        public async Task<JObject> PlanIT_goal(string id, int GROWN_ID, List<string> GOAL, string date) 
         {
+            DateTime tmp = DateTime.ParseExact(date, "yyyyMMdd", CultureInfo.InvariantCulture);
+            string DATE = tmp.ToString("yyyy-MM-dd");
+            Console.WriteLine($"날짜날짜날짜  {DATE}");
             JObject json = new JObject()
             {
                 ["protocol"] = "10_0",
                 ["u_id"] = id,
                 ["GROWN_ID"] = GROWN_ID,
-                ["GOAL_DATE"] = DateTime.Now.ToString("yyyy-MM-dd") // 날짜만 전송
+                ["GOAL_DATE"] = DATE // 날짜만 전송
             };
             json["GOAL"] = new JArray(GOAL);
             JObject response = await this._tcpClientService.SendJsonToServer(json);

@@ -68,6 +68,7 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 종합결과 만드실래요?~!
                 this.check = true;
+                this.shareDataService.Msg = "종합테스트 결과가 없습니다!!\n종합테스트를 먼저 진행해주세요!";
                 this.shareDataService.IsDetailVisible = true;
             }
         }
@@ -94,6 +95,7 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 플래닛만들기나 종합결과를 유도
                 this.check = true;
+                this.shareDataService.Msg = "성장플래닛 결과가 없습니다!!\n테스트를 먼저 진행해주세요!";
                 this.shareDataService.IsDetailVisible = true;
             }
         }
@@ -117,6 +119,7 @@ namespace RunNow.ViewModels
             {
                 // 테스트결과가 없음 플래닛만들기나 종합결과를 유도
                 this.check = true;
+                this.shareDataService.Msg = "성장플래닛 결과가 없습니다!!\n테스트를 먼저 진행해주세요!";
                 this.shareDataService.IsDetailVisible = true;
             }
         }

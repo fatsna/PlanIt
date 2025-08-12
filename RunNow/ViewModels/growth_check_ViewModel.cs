@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using RunNow.Core;
 using RunNow.Services;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static RunNow.Core.ShareDataService;
 
 namespace RunNow.ViewModels
@@ -37,13 +39,7 @@ namespace RunNow.ViewModels
             this._currentDate = DateTime.Now;
             this.GenerateCalendar(_currentDate);
             this.UpdateSummary();
-            foreach (var goal in this.shareDataService.Goals)
-            {
-                if(goal.Date != "")
-                {
-                    this.CompleteGoals.Add(goal);
-                }
-            }
+
         }
         public ObservableCollection<DayModel> Days { get; set; } = new ObservableCollection<DayModel>();
 
@@ -150,34 +146,19 @@ namespace RunNow.ViewModels
             Console.WriteLine($"[Model] {day.Date.Value:yyyy-MM-dd} 클릭됨");
             this.Show_Goals("기술");
             this.Popup = true; // 팝업 보이게!
-            //// 테스트 데이터 생성
-            //var testModel = new WorkRequestManager(_socket, _session)
-            //{
-
-
-
-            //    Date = day.Date.Value,
-            //    Schedule = new ConfirmedWorkScheModel
-            //    {
-            //        ShiftType = ShiftType.Day,
-            //        StartTime = TimeSpan.Parse("09:00"),
-            //        EndTime = TimeSpan.Parse("18:00"),
-            //        GroupName = "테스트 근무조"
-            //    },
-            //    Attendance = new AttendanceModel
-            //    {
-            //        ClockInTime = DateTime.Parse("2025-08-06 09:03"),
-            //        ClockOutTime = DateTime.Parse("2025-08-06 18:01")
-            //    },
-            //    IsRequested = true,
-            //    RequestReason = "개인 사유"
-            //};
-
-            //SelectedDayData = testModel;
+            this.SelectedDate = day.Date.Value.ToString("yyyyMMdd");
         }
         private void UpdateSummary()
         {
             this.ScheduleSummaryText = $"    내 미래를 그리는 '{this.shareDataService.Wantjob}'를 향한 도전 캘린더";
+            this.CompleteGoals.Clear();
+            foreach (var goal in this.shareDataService.Goals)
+            {
+                if (goal.Date != "")
+                {
+                    this.CompleteGoals.Add(goal);
+                }
+            }
         }
         [RelayCommand] private void Calendar() // 달려보여주기;
         {
@@ -217,8 +198,34 @@ namespace RunNow.ViewModels
             int Growth_id = int.Parse(this.shareDataService.Growth_ID);
             // 서버에게 10_0 목표달성 요청하기!
             Console.WriteLine("목표달서엉!");
-            this._authService.PlanIT_goal(id, Growth_id, this.SelectedGoals);
+            DateTime tmp = DateTime.ParseExact(this.SelectedDate, "yyyyMMdd", CultureInfo.InvariantCulture);
+
+            string DATE = tmp.ToString("yyyy-MM-dd");
+            Console.WriteLine($"날짜날짜날짜  {DATE}");
+            this._authService.PlanIT_goal(id, Growth_id, this.SelectedGoals, this.SelectedDate);
             this.Popup = false; // 팝업숨기고 sharedata 값변경
+            foreach (var Goal in this.shareDataService.Goals)
+            {
+                foreach (var item in this.SelectedGoals)
+                {                    
+                    if(Goal.Goal == item)
+                    {
+                        Goal.Date = this.SelectedDate;
+                    }
+                }
+            }
+            if (this.shareDataService.Goals.All(g => !string.IsNullOrWhiteSpace(g.Date)))
+            {
+                Console.WriteLine("남은 목표가있어요!!");
+            }
+            else
+            {
+                // 모든 Date가 빈 문자열 또는 null일 때 실행
+                Console.WriteLine("모든 Date 값이 없음!");
+                this.GOAL = true;
+            }
+            this.UpdateSummary();
+            
         }
         [RelayCommand] private void Show_Goals(string category)
         {
@@ -263,5 +270,8 @@ namespace RunNow.ViewModels
                 Console.WriteLine($"고른 목표!{item.Goal}");
             }
         }
+
+        private string SelectedDate = "";
+        [ObservableProperty] private bool gOAL = false;
     }
 }

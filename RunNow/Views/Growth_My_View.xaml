@@ -111,7 +111,7 @@
                                 <lowbar:CircularProgress Grid.Row="1" 
                                                          VerticalAlignment="Top"
                                                          HorizontalAlignment="Center" Margin="0,0,0,8"
-                           Value="{Binding Progress}">
+                                                    Value="{Binding Progress}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
                                             <i:InvokeCommandAction Command="{Binding CircularProgressLoadedCommand}" />

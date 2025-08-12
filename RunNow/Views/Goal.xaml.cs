@@ -13,6 +13,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.DependencyInjection;
+using RunNow.ViewModels;
 
 namespace RunNow.Views
 {
@@ -23,10 +25,14 @@ namespace RunNow.Views
     {
         public event EventHandler Closed;
         private int clickCount = 0;
+        private NavigationStore navigationService;
+        private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
 
         public Goal()
         {
             InitializeComponent();
+            this._serviceProvider = App.Services; // 'App.Services' is a static property, so no need for an instance reference.
+            this.navigationService = _serviceProvider.GetRequiredService<NavigationStore>();
         }
 
         private void ConfettiCanvas_MouseDown(object sender, MouseButtonEventArgs e)
@@ -34,11 +40,15 @@ namespace RunNow.Views
             Point clickPosition = e.GetPosition(ConfettiCanvas);
             GenerateConfetti(clickPosition);
             clickCount++;
-
-            if (clickCount >= 5) // 3번 클릭 후 최종 메시지 및 버튼 표시
+            if (clickCount >= 10) // 3번 클릭 후 최종 메시지 및 버튼 표시
+            {
+                CloseButton.Visibility = Visibility.Visible;
+                Task.Delay(3000);
+                this.navigationService.CurrentViewModel = this._serviceProvider.GetRequiredService<MainViewModel>();
+            }
+            else if(clickCount >= 5)
             {
                 MessageBlock.Text = "정말 대단해요! 다음 도전을 시작해볼까요?";
-                CloseButton.Visibility = Visibility.Visible;
             }
         }
 

@@ -46,6 +46,6 @@ namespace RunNow.Core
             set => User_id = value;
         }
 
-
+        [ObservableProperty] public string msg;
     }
 }
