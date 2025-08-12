@@ -95,14 +95,17 @@ namespace RunNow.ViewModels
                     {
                         GoalDate = int.Parse(DateTime.Parse(Goal.Date).ToString("yyyyMMdd"));
                     }
-                    Console.WriteLine($"목표달성 날짜!{GoalDate}");
-                    if (day == GoalDate)
+       
+                    int NowDate = int.Parse(targetDate.ToString("yyyyMM"));
+                    string Date = NowDate.ToString() + day.ToString();
+
+                    if (int.Parse(Date) == GoalDate)
                     {
                         this.Days.Add(new DayModel
                         {
                             DayText = day.ToString(),
                             Date = new DateTime(targetDate.Year, targetDate.Month, day),
-                            Tmp = Goal.Goal
+                            Tmp = "!!목표달성!!"
                         });
                         break;
                     }

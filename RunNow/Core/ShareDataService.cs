@@ -27,7 +27,6 @@ namespace RunNow.Core
         public ObservableCollection<GoalDisplay> Goals { get; set; } // 목표들!
         public class GoalDisplay
         {
-
             public string Category { get; set; } // 카테고리
             public string Goal { get; set; } // 목표이름
             public string Date { get; set; } // 완료 날짜 / 없으면 ""

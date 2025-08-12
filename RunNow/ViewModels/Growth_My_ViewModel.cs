@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace RunNow.ViewModels
             this._authService = authService;
             this.shareDataService = shareDataService;
             this._serviceProvider = serviceProvider;
+            this.TargetJob = this.shareDataService.wantjob;
+            this.DaysLeft = this.shareDataService.period;
         }
 
         private readonly NavigationStore _navigationStore; // 메인에게 화면넘겨! 객체
@@ -30,6 +33,24 @@ namespace RunNow.ViewModels
         public ShareDataService shareDataService { get; set; }    // 유저 데이터 객체
         private readonly IServiceProvider _serviceProvider;   // 서비스 프로바이더 객체
 
+        private void setting_ui()
+        {
+            foreach (var Goal in this.shareDataService.Goals)
+            {
+                if(Goal.Date != "")
+                {
+                    this.Progress += Goal.Goal_Progress;
+                }
+            }
+            foreach (var Goal in this.shareDataService.Goals)
+            {
+                if(Goal.Date != "")
+                {
+                    this.NextGoal = Goal.Goal;
+                }
+            }
+            this.Progress *= 0.01; // 백으로 나누기!
+        }
         [RelayCommand] private void GoTocheck() // 플래너 채우기로
         {
             this._navigationStore.CurrentViewModel = 
@@ -43,6 +64,25 @@ namespace RunNow.ViewModels
 
             // 이게 MVVM 패턴에 올바르다!
             this._navigationStore.CurrentViewModel = this._serviceProvider.GetRequiredService<Growth_main_ViewModel>();
+        }
+
+            // 바인딩 대상 속성들
+        [ObservableProperty] private string targetJob = "";
+        [ObservableProperty] private int daysLeft = 0;
+        [ObservableProperty] private double progress = 0; // 0~100 혹은 0~1, 컨트롤 스펙에 맞춰서
+        [ObservableProperty] private string nextGoal = ""; // 다음목표
+
+             // 예: 보조 메트릭 (문자열 배열/리스트)
+        [ObservableProperty]
+        private string[] subMetrics = new[] {
+            "기술 30%", "자격증 10%", "경험 5%"
+        };
+
+            // Loaded 시 해야 할 초기화/애니메이션 시작 등
+        [RelayCommand] private void CircularProgressLoaded()
+        {
+            // 예: Progress 초기값/애니메이션 트리거
+            this.setting_ui();
         }
     }
 }

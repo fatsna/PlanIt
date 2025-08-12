@@ -73,7 +73,7 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="200"/>
+                            <RowDefinition Height="190"/>
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
                         <!-- 상단 카드 -->
@@ -94,31 +94,39 @@
                                 <!-- 칩: 직업 / D-day -->
                                 <DockPanel Grid.Row="0" LastChildFill="False">
                                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                                        <Border Padding="12,6" CornerRadius="16" Background="{StaticResource ChipBgBlue}" Margin="0,0,8,0">
+                                        <Border Padding="12,6" 
+                                                CornerRadius="16" 
+                                                Background="{StaticResource ChipBgBlue}" 
+                                                Margin="10,0, 0,0"                                                
+                                                >
                                             <TextBlock Text="{Binding TargetJob}" FontWeight="SemiBold" Foreground="{StaticResource BrandBlue}"/>
                                         </Border>
                                     </StackPanel>
                                     <Border Padding="12,6" CornerRadius="16" Background="{StaticResource ChipBgBeige}" DockPanel.Dock="Right">
-                                        <TextBlock Text="{Binding DaysLeft, StringFormat=D-{0}}" FontWeight="SemiBold" />
+                                        <TextBlock Text="{Binding DaysLeft, StringFormat=남은기간 : D-{0}}" FontWeight="SemiBold" />
                                     </Border>
                                 </DockPanel>
 
                                 <!-- 원형 게이지 -->
-                                <lowbar:CircularProgress Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,8"
-                           Value="{Binding Progress}" Loaded="CircularProgress_Loaded"/>
-
+                                <lowbar:CircularProgress Grid.Row="1" 
+                                                         VerticalAlignment="Top"
+                                                         HorizontalAlignment="Center" Margin="0,0,0,8"
+                           Value="{Binding Progress}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding CircularProgressLoadedCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </lowbar:CircularProgress>
                                 <!-- 서브 메트릭 -->
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,6,0,6">
-                                    <TextBlock Text="{Binding SubMetrics[0]}" Margin="0,0,18,0"/>
-                                    <TextBlock Text="{Binding SubMetrics[1]}" Margin="0,0,18,0"/>
-                                    <TextBlock Text="{Binding SubMetrics[2]}"/>
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                    <TextBlock Text="{Binding SubMetrics[0]}" Margin="0,0,18,0"
+                                               FontSize="20"/>
+                                    <TextBlock Text="{Binding SubMetrics[1]}" Margin="0,0,18,0"
+                                               FontSize="20"/>
+                                    <TextBlock Text="{Binding SubMetrics[2]}"
+                                               FontSize="20"/>
                                 </StackPanel>
-
-                                <!-- 얇은 진행 라인 -->
-                                <ProgressBar Style="{StaticResource ThinBar}" Grid.Row="2" Margin="0,34,0,0"
-                                            Value="{Binding Progress}"
-                                            c:AnimatedProgressBarBehavior.EnableAnimation="True"
-                                            VerticalAlignment="Bottom"/>
                             </Grid>
                         </Border>
 
@@ -132,7 +140,7 @@
                             BorderBrush="#FE885C"
                             BorderThickness="5"
                             CornerRadius="10">
-                            <TextBlock Text="팁에들어갈 메시지 테스트 나중에 바인딩해줄 값으로 변경"
+                            <TextBlock Text="{Binding NextGoal, StringFormat=다음목표는 {0} 어떠신가요?!}"
                                        TextAlignment="Center"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
@@ -159,7 +167,7 @@
                 </Border>
                 <Grid>
                     <Border
-                         Margin="120, 100, 0, 0"
+                         Margin="120, 40, 0, 0"
                          Width="140"
                          Height="70"
                          HorizontalAlignment="Left"
@@ -177,6 +185,29 @@
             </Grid>
             <!-- 하단 네비게이션 -->
             <lowbar:BottomNav Grid.Row="2"/>
+        </Grid>
+        <!--두번쨰 레이아웃-->
+        <Grid   x:Name="Grid_calendar"
+            Visibility="{Binding shareDataService.IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}">
+            <!-- 어두운 배경 -->
+            <Rectangle Fill="#80000000">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding RectangleClickCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Rectangle>
+            <local:messageback x:Name="messageback"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0, 0, 0, 0"
+                Background="Transparent"
+                Padding="20">
+
+                <local:messageback.LayoutTransform>
+                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                </local:messageback.LayoutTransform>
+            </local:messageback>
         </Grid>
     </Grid>
 </UserControl>

@@ -23,7 +23,6 @@ namespace RunNow.Views
         public Growth_My_View()
         {
             InitializeComponent();
-            test
         }
     }
 }
