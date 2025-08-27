@@ -1,18 +1,28 @@
 # Visual Studio
 .vs/
-*.suo
 *.user
-*.userosscache
-*.sln.docstates
+*.suo
+*.vcxproj.user
 
-# 빌드 결과물
-bin/
-obj/
+# Build outputs (Execution 폴더 통째로 무시)
+Execution/
+x64/
 Debug/
 Release/
-x64/
-x86/
 
-# 로그, 임시 파일
+# Compiler intermediates
+*.obj
+*.pdb
+*.idb
+*.ilk
 *.log
-*.tmp
+*.tlog
+*.ipch
+*.exp
+*.lib
+*.exe
+*.dll
+
+# OS
+.DS_Store
+Thumbs.db

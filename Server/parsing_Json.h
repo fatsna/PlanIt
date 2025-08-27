@@ -22,7 +22,22 @@ using namespace std;
 class DBClass;
 class TcpServer; // TcpServer 클래스 전방 선언 (헤더 간 순환 참조 방지)
 
+// ===== [신규] 성장플래닛 응답용 구조체 ======================
+struct GrowPlannerHeader {
+    int grown_id = 0;         // 최근 플래너 ID
+    std::string want_job;     // 목표직업
+    int period = 0;           // 기간(일수)
+};
 
+struct GrowPlannerGoal {
+    std::string goal;         // 목표 내용
+    std::string goal_date;    // 목표일(YYYY-MM-DD) - NULL이면 ""
+    std::string category;     // 카테고리(기술/자격증/경험 등)
+    std::string start_date;
+    int goal_progress = 0;    // 진행률(%)
+    int importance = 0;       // 우선순위(작을수록 우선)
+};
+// ==============================================================
 
 struct ResumeRow {
     uint64_t cv_id{};
@@ -96,8 +111,11 @@ public:
     // 100_6_0 / 100_6_1 / 100_6_2 : (Python → DB) 선택한 직업으로 플래닛/목표 생성
     std::string handleProtocol100_6(int python_fd, const nlohmann::json& j);
 
-    // 9_0 / 9_1 / 9_2 : (DB) 최신 플래닛 정보 받기
-    std::string handleProtocol9(const nlohmann::json& j);
+    // [신규] Protocol 9_0 처리 함수
+    std::string Protocol9_0(int client_fd, int python_fd, const nlohmann::json& j);
+
+    //// 9_0 / 9_1 / 9_2 : (DB) 최신 플래닛 정보 받기
+    //std::string handleProtocol9(const nlohmann::json& j);
 
     // 10_0 / 10_1 / 10_2 : (DB) 목표 달성 처리
     std::string handleProtocol10(const nlohmann::json& j);
@@ -154,8 +172,10 @@ private:
     std::string handleProtocol100_5(int client_fd, int python_fd, const nlohmann::json& j);
     // (100_6_0/100_6_1/100_6_2) 선택 직업으로 플래닛 만들기 (Python → DB)
     std::string handleProtocol100_6(int client_fd, int python_fd, const nlohmann::json& j);
-    // (9_0/9_1/9_2) 최신 플래닛 정보 받기
-    std::string handleProtocol9(int client_fd, int python_fd, const nlohmann::json& j);
+
+    //// (9_0/9_1/9_2) 최신 플래닛 정보 받기
+    //std::string handleProtocol9(int client_fd, int python_fd, const nlohmann::json& j);
+
     // (10_0/10_1/10_2) 목표 달성 처리
     std::string handleProtocol10(int client_fd, int python_fd, const nlohmann::json& j);
 

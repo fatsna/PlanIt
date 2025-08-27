@@ -1,4 +1,7 @@
 ﻿#include "db_class.h"
+#include "parsing_Json.h"
+#include <sstream>
+#include <iostream>
 #include <cstring> // std::strlen
 using json = nlohmann::json;
 
@@ -38,6 +41,11 @@ void DBClass::closeDB() {
         conn_ = nullptr;
     }
 }
+
+// 10_0 목표달성 테이블명만 여기서 관리(실제 스키마에 맞게 바꾸기)
+static constexpr const char* TBL_PLANNER = "grown_planner";
+static constexpr const char* TBL_GOAL = "grown_planner_goal";
+
 
 // --- 안전 이스케이프 헬퍼 ---
 std::string DBClass::escape(MYSQL* conn, const std::string& s) {
@@ -155,32 +163,130 @@ bool DBClass::insertUserToDB(const RequestHandler::Signup& u) {
         return false;
     }
 
-    // 얼굴 벡터를 JSON 문자열로 직렬
-    // 예: [0.12, -0.45, ...]
-    nlohmann::json jFace = u.face;         // vector<float> -> json array
-    const std::string faceJson = jFace.dump(); // compact string
+    // ---------- 문자열 길이 변수(포인터로 넘길 것들) ----------
+    unsigned long len_id = (unsigned long)u.id.size();
+    unsigned long len_pw = (unsigned long)u.pw.size();     // ⚠️ 실서비스: 평문 금지(반드시 해시)
+    unsigned long len_name = (unsigned long)u.name.size();
+    unsigned long len_birth = (unsigned long)u.birth.size();
+    unsigned long len_addr = (unsigned long)u.address.size();
+    unsigned long len_phone = (unsigned long)u.phone.size();
+
+    // ---------- GENDER: TINYINT로 바인딩 (문자열 → 정수 변환) ----------
+    // u.gender 가 "0"/"1" 같은 문자열이라고 가정. 숫자 아니면 0으로.
+    unsigned char gender_u8 = 0;
+    try {
+        int gi = std::stoi(u.gender);         // "0"/"1" → 0/1
+        if (gi < 0) gi = 0;
+        if (gi > 255) gi = 255;
+        gender_u8 = static_cast<unsigned char>(gi);
+    }
+    catch (...) {
+        gender_u8 = 0;
+    }
+    // ---------- FACE: 선택값. 없으면 NULL, 있으면 JSON 문자열 ----------
+    std::string faceJson;
+    my_bool is_null_face = 0; // MariaDB/MySQL C API에서 사용되는 불리언 타입
+    unsigned long len_face = 0;
+
+    if (!u.face.empty()) {
+        // vector<float> -> JSON array (예: [0.12, -0.45, ...])
+        nlohmann::json jFace = u.face;
+        faceJson = jFace.dump();                 // compact JSON
+        len_face = (unsigned long)faceJson.size();
+        is_null_face = 0;
+    }
+    else {
+        // 얼굴인식 미사용 → NULL 저장
+        is_null_face = 1;
+        len_face = 0;
+    }
 
     MYSQL_BIND bind[8];
     std::memset(bind, 0, sizeof(bind));
 
-    auto bind_str = [](MYSQL_BIND& b, const std::string& s) {
+    // 문자열 필드 바인딩 람다 (length 포인터까지 설정)
+    auto bind_str = [](MYSQL_BIND& b, const std::string& s, unsigned long* plen) {
         b.buffer_type = MYSQL_TYPE_STRING;
         b.buffer = (void*)s.c_str();
         b.buffer_length = (unsigned long)s.size();
+        b.length = plen;                 // 실제 길이 포인터
         };
 
-    // 문자열 필드 바인딩
-    bind_str(bind[0], u.id);
-    bind_str(bind[1], u.pw);      // ⚠️ 실서비스: 평문 금지(반드시 해시)
-    bind_str(bind[2], u.name);
-    bind_str(bind[3], u.birth);
-    bind_str(bind[4], u.gender);
-    bind_str(bind[5], u.address);
-    bind_str(bind[6], u.phone);
+    // 0 U_ID
+    bind_str(bind[0], u.id, &len_id);
 
-    // 얼굴 임베딩(JSON 문자열로 저장) — 컬럼 타입이 JSON이면 VALID JSON이어야 함
-    bind_str(bind[7], faceJson);
+    // 1 U_PW  ⚠️ 운영에선 반드시 해시된 값(예: bcrypt 60자)으로 저장
+    //    길이 60 초과 시 STRICT 모드에서 "Data too long" 오류 납니다.
+    bind_str(bind[1], u.pw, &len_pw);
 
+    // 2 U_NAME
+    bind_str(bind[2], u.name, &len_name);
+
+    // 3 U_BIRTH (문자열로 받는 구조)
+    bind_str(bind[3], u.birth, &len_birth);
+
+    // 4 U_GENDER (TINYINT로 바인딩)
+    bind[4].buffer_type = MYSQL_TYPE_TINY;
+    bind[4].is_unsigned = 1;
+    bind[4].buffer = &gender_u8;
+    bind[4].buffer_length = sizeof(gender_u8);
+
+    // 5 U_ADDRESS
+    bind_str(bind[5], u.address, &len_addr);
+
+    // 6 U_PHONE
+    bind_str(bind[6], u.phone, &len_phone);
+
+    // 7 U_FACE (선택)
+    if (is_null_face) {
+        bind[7].buffer_type = MYSQL_TYPE_NULL; // 실제 DB에 NULL로 저장
+        bind[7].is_null = &is_null_face;
+    }
+    else {
+        bind[7].buffer_type = MYSQL_TYPE_STRING; // MariaDB JSON은 내부적으로 text 계열
+        bind[7].buffer = (void*)faceJson.c_str();
+        bind[7].buffer_length = len_face;
+        bind[7].length = &len_face;         // 길이 포인터 지정
+        bind[7].is_null = &is_null_face;     // false
+    }
+
+    //// 얼굴 벡터를 JSON 문자열로 직렬
+    //// 예: [0.12, -0.45, ...]
+    //nlohmann::json jFace = u.face;         // vector<float> -> json array
+    //const std::string faceJson = jFace.dump(); // compact string
+
+    //MYSQL_BIND bind[8];
+    //std::memset(bind, 0, sizeof(bind));
+
+    //auto bind_str = [](MYSQL_BIND& b, const std::string& s) {
+    //    b.buffer_type = MYSQL_TYPE_STRING;
+    //    b.buffer = (void*)s.c_str();
+    //    b.buffer_length = (unsigned long)s.size();
+    //    };
+
+    //// 문자열 필드 바인딩
+    //bind_str(bind[0], u.id);
+    //bind_str(bind[1], u.pw);      // ⚠️ 실서비스: 평문 금지(반드시 해시)
+    //bind_str(bind[2], u.name);
+    //bind_str(bind[3], u.birth);
+    //bind_str(bind[4], u.gender);
+    //bind_str(bind[5], u.address);
+    //bind_str(bind[6], u.phone);
+
+    //// 얼굴 임베딩(JSON 문자열로 저장) — 컬럼 타입이 JSON이면 VALID JSON이어야 함
+    //bind_str(bind[7], faceJson);
+
+    //if (mysql_stmt_bind_param(stmt, bind) != 0) {
+    //    std::cerr << "[DB] bind 실패: " << mysql_stmt_error(stmt) << "\n";
+    //    mysql_stmt_close(stmt);
+    //    return false;
+    //}
+
+    //if (mysql_stmt_execute(stmt) != 0) {
+    //    std::cerr << "[DB] INSERT 실패: " << mysql_stmt_error(stmt) << "\n";
+    //    mysql_stmt_close(stmt);
+    //    return false;
+    //}
     if (mysql_stmt_bind_param(stmt, bind) != 0) {
         std::cerr << "[DB] bind 실패: " << mysql_stmt_error(stmt) << "\n";
         mysql_stmt_close(stmt);
@@ -192,40 +298,88 @@ bool DBClass::insertUserToDB(const RequestHandler::Signup& u) {
         mysql_stmt_close(stmt);
         return false;
     }
-
     mysql_stmt_close(stmt);
     return true;
 }
 
 // 아이디 중복확인
 bool DBClass::isUserIdExists(const std::string& id) {
-    if (!conn_) return false;
+    if (!conn_) {
+        std::cerr << "[DB] isUserExists 연결 안됨\n";
+		return false;
+    }
 
-    std::string query = "SELECT COUNT(*) FROM USER_INFO WHERE U_ID = ?";
+    std::string query = "SELECT COUNT(*) FROM user_info WHERE U_ID = ?";
+    
+    // 준비된 문장 핸들 생성
     MYSQL_STMT* stmt = mysql_stmt_init(conn_);
-    if (!stmt) return false;
+    if (!stmt) {
+        std::cerr << "[DB] stmt_init 실패\n";
+		return false;
+    }
 
-    if (mysql_stmt_prepare(stmt, query.c_str(), query.length()) != 0) {
+    if (mysql_stmt_prepare(stmt, query.c_str(), (unsigned long)query.length()) != 0) {
+        std::cerr << "[DB] prepare 실패: " << mysql_stmt_error(stmt) << "\n";
         mysql_stmt_close(stmt);
         return false;
     }
 
     MYSQL_BIND bind[1] = {};
     memset(bind, 0, sizeof(bind));
+    unsigned long id_len = (unsigned long)id.size(); // 실제 길이
     bind[0].buffer_type = MYSQL_TYPE_STRING;
     bind[0].buffer = (void*)id.c_str();
-    bind[0].buffer_length = id.length();
-    mysql_stmt_bind_param(stmt, bind);
+    bind[0].buffer_length = id_len;
+    bind[0].length = &id_len;      // 값의 실제 길이
 
-    mysql_stmt_execute(stmt);
+    //mysql_stmt_bind_param(stmt, bind);
+    //mysql_stmt_execute(stmt
 
-    int count = 0;
+    if (mysql_stmt_bind_param(stmt, bind) != 0) {
+        std::cerr << "[DB] bind_param 실패: " << mysql_stmt_error(stmt) << "\n";
+        mysql_stmt_close(stmt);
+        return false;
+    }
+
+    // 5) 실행
+    if (mysql_stmt_execute(stmt) != 0) {
+        std::cerr << "[DB] execute 실패: " << mysql_stmt_error(stmt) << "\n";
+        mysql_stmt_close(stmt);
+        return false;
+    }
+    if (mysql_stmt_store_result(stmt) != 0) {
+        std::cerr << "[DB] store_result 실패: " << mysql_stmt_error(stmt) << "\n";
+        mysql_stmt_close(stmt);
+        return false;
+    }
+
+    unsigned long long count = 0;
     MYSQL_BIND resultBind[1] = {};
     memset(resultBind, 0, sizeof(resultBind));
-    resultBind[0].buffer_type = MYSQL_TYPE_LONG;
+
+    resultBind[0].buffer_type = MYSQL_TYPE_LONGLONG;
     resultBind[0].buffer = (char*)&count;
-    mysql_stmt_bind_result(stmt, resultBind);
-    mysql_stmt_fetch(stmt);
+    resultBind[0].is_unsigned = 1;
+
+    //mysql_stmt_bind_result(stmt, resultBind);
+    //mysql_stmt_fetch(stmt);
+    //mysql_stmt_close(stmt);
+
+    if (mysql_stmt_bind_result(stmt, resultBind) != 0) {
+        std::cerr << "[DB] bind_result 실패: " << mysql_stmt_error(stmt) << "\n";
+        mysql_stmt_free_result(stmt);
+        mysql_stmt_close(stmt);
+        return false;
+    }
+
+    int f = mysql_stmt_fetch(stmt);
+    if (f != 0 && f != MYSQL_DATA_TRUNCATED) { // 0=정상
+        std::cerr << "[DB] fetch 실패: " << mysql_stmt_error(stmt) << "\n";
+        mysql_stmt_free_result(stmt);
+        mysql_stmt_close(stmt);
+        return false;
+    }
+    mysql_stmt_free_result(stmt);  // ★ 버퍼 정리
     mysql_stmt_close(stmt);
 
     return count > 0;
@@ -656,7 +810,7 @@ bool DBClass::getUserJobsLatestRes(const std::string& u_id, std::string& out_jso
 bool DBClass::insertGrownPlannerWithGoals(const std::string& u_id, int period,
     const std::string& job,
     std::string& out_json, std::string& out_err) {
-    if (!conn_) return false;
+    if (!conn_) { out_err = "no db connection"; return false; }
 
     // ★ 추가: 신(4파라미터) 프로시저 경로
     // - out_json 이 비어있지 않다면, 호출자가 goal_json 을 담아 넘긴 것으로 간주
@@ -670,104 +824,301 @@ bool DBClass::insertGrownPlannerWithGoals(const std::string& u_id, int period,
         std::string callNew =
             "CALL InsertGrownPlannerWithGoals('"
             + eu + "', " + std::to_string(period) + ", '"
-            + ejob + "', CAST('" + egoals + "' AS JSON));";
+            + ejob + "', '" + egoals + "');";
 
         if (mysql_query(conn_, callNew.c_str())) {
             out_err = mysql_error(conn_);
             std::cerr << "[DB] CALL(InsertGrownPlannerWithGoals) 실패: " << out_err << std::endl;
             return false;
         }
-
+        // [ADDED] SELECT out_json 결과 한 컬럼 읽어서 out_json에 덮어쓰기
+        MYSQL_RES* res = mysql_store_result(conn_);
+        if (res) {
+            MYSQL_ROW row = mysql_fetch_row(res);
+            if (row && row[0]) out_json = row[0];
+            else               out_json = R"({"status":"ok_no_select"})";
+            mysql_free_result(res);
+        }
+        else {
+            // 결과셋이 없을 수도 있으니 기본 마커
+            out_json = R"({"status":"ok_no_result"})";
+        }
         // 프로시저 잔여 결과 정리
         drainResults();
 
         // 신규 SP는 @p_result 를 반환하지 않으므로, 최소한 OK 마커를 out_json에 남김
         // (호출부가 out_json을 응답 본문으로 쓰지 않는다면 이 값은 무시해도 됨)
-        out_json = R"({"result":"ok"})";
+        //out_json = R"({"result":"ok"})";
         return true;
     }
 
+    // ===== [FIX] 레거시(@p_result) 분기 제거 → 4-인자 SP로 우회 호출 =====
+    // [REMOVED] SET @p_result / 3-인자 CALL / SELECT @p_result 패턴
+    // [ADDED] 최소 입력 JSON 구성 (period, want_job, 빈 goal_json)
+    std::string min_json =
+        std::string("{\"period\":") + std::to_string(period) +
+        ",\"want_job\":\"" + job + "\",\"goal_json\":[]}";
+    const std::string ejson = escape(conn_, min_json);  // [ADDED] SQL 문자열 이스케이프
 
-
-    if (mysql_query(conn_, "SET @p_result = NULL;")) {
-        std::cerr << "[DB] SET @p_result 실패: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
-
-    std::string call = "CALL insertGrownPlannerWithGoals('"
-        + escape(conn_, u_id) + "','" + escape(conn_, job) + "', @p_result);";
+    // [FIX] 4-인자 SP로 호출 (대소문자 포함 정확한 SP명 사용)
+    std::string call =
+        "CALL InsertGrownPlannerWithGoals('"
+        + escape(conn_, u_id) + "', "
+        + std::to_string(period) + ", '"
+        + escape(conn_, job) + "', '"
+        + ejson + "');";
     if (mysql_query(conn_, call.c_str())) {
-        std::cerr << "[DB] CALL 실패: " << mysql_error(conn_) << std::endl;
+        out_err = mysql_error(conn_);
+        std::cerr << "[DB] CALL(InsertGrownPlannerWithGoals) 실패: " << out_err << std::endl;
         return false;
     }
-    drainResults();
 
-    if (mysql_query(conn_, "SELECT @p_result;")) {
-        std::cerr << "[DB] SELECT @p_result 실패: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
+    // [ADDED] SELECT out_json 한 컬럼 수신 → out_json 덮어쓰기
     MYSQL_RES* res = mysql_store_result(conn_);
     if (!res) {
-        std::cerr << "[DB] 결과 없음: " << mysql_error(conn_) << std::endl;
+        out_err = mysql_error(conn_);
+        std::cerr << "[DB] 결과 없음: " << out_err << std::endl;
         return false;
     }
     MYSQL_ROW row = mysql_fetch_row(res);
-    out_json = (row && row[0]) ? row[0] : "{}";
+    out_json = (row && row[0]) ? row[0] : R"({"status":"empty_result"})";
     mysql_free_result(res);
-    return true;
-}
 
-// ------------- SP: GetGrownPlannerWithGoalslatest -------------
-bool DBClass::getGrownPlannerWithGoalsLatest(const std::string& u_id,
-    std::string& out_json) {
-    if (!conn_) return false;
-
-    if (mysql_query(conn_, "SET @p_result = NULL;")) {
-        std::cerr << "[DB] SET @p_result 실패: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
-
-    std::string call = "CALL GetGrownPlannerWithGoalslatest('" + escape(conn_, u_id) + "', @p_result);";
-    if (mysql_query(conn_, call.c_str())) {
-        std::cerr << "[DB] CALL 실패: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
+    // [KEEP] 잔여 결과 정리
     drainResults();
 
-    if (mysql_query(conn_, "SELECT @p_result;")) {
-        std::cerr << "[DB] SELECT @p_result 실패: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
-    MYSQL_RES* res = mysql_store_result(conn_);
-    if (!res) {
-        std::cerr << "[DB] 결과 없음: " << mysql_error(conn_) << std::endl;
-        return false;
-    }
-    MYSQL_ROW row = mysql_fetch_row(res);
-    out_json = (row && row[0]) ? row[0] : "{}";
-    mysql_free_result(res);
     return true;
+
+    //const std::string& job,
+    //std::string& out_json, std::string& out_err) {
+    //if (!conn_) { out_err = "no db connection"; return false; }
+
+    //// ★ 추가: 신(4파라미터) 프로시저 경로
+    //// - out_json 이 비어있지 않다면, 호출자가 goal_json 을 담아 넘긴 것으로 간주
+    //// - InsertGrownPlannerWithGoals(p_u_id, p_period, p_want_job, p_goal_json) 호출
+    //if (!out_json.empty()) {
+    //    // goal_json 포함 신규 경로
+    //    const std::string eu = escape(conn_, u_id);
+    //    const std::string ejob = escape(conn_, job);
+    //    const std::string egoals = escape(conn_, out_json);  // JSON도 문자열 이스케이프
+
+    //    std::string callNew =
+    //        "CALL InsertGrownPlannerWithGoals('"
+    //        + eu + "', " + std::to_string(period) + ", '"
+    //        + ejob + "', '" + egoals + "');";
+
+    //    if (mysql_query(conn_, callNew.c_str())) {
+    //        out_err = mysql_error(conn_);
+    //        std::cerr << "[DB] CALL(InsertGrownPlannerWithGoals) 실패: " << out_err << std::endl;
+    //        return false;
+    //    }
+    //    // [ADDED] SELECT out_json 결과 한 컬럼 읽어서 out_json에 덮어쓰기
+    //    MYSQL_RES* res = mysql_store_result(conn_);                 
+    //    if (res) {                                                   
+    //        MYSQL_ROW row = mysql_fetch_row(res);                   
+    //        if (row && row[0]) out_json = row[0];                    
+    //        else               out_json = R"({"status":"ok_no_select"})"; 
+    //        mysql_free_result(res);                                   
+    //    }
+    //    else {
+    //        // 결과셋이 없을 수도 있으니 기본 마커
+    //        out_json = R"({"status":"ok_no_result"})";            
+    //    }
+    //    // 프로시저 잔여 결과 정리
+    //    drainResults();
+
+    //    // 신규 SP는 @p_result 를 반환하지 않으므로, 최소한 OK 마커를 out_json에 남김
+    //    // (호출부가 out_json을 응답 본문으로 쓰지 않는다면 이 값은 무시해도 됨)
+    //    //out_json = R"({"result":"ok"})";
+    //    return true;
+    //}
+
+    //if (mysql_query(conn_, "SET @p_result = NULL;")) {
+    //    std::cerr << "[DB] SET @p_result 실패: " << mysql_error(conn_) << std::endl;
+    //    return false;
+    //}
+
+    //std::string call = "CALL insertGrownPlannerWithGoals('"
+    //    + escape(conn_, u_id) + "','" + escape(conn_, job) + "', @p_result);";
+    //if (mysql_query(conn_, call.c_str())) {
+    //    std::cerr << "[DB] CALL 실패: " << mysql_error(conn_) << std::endl;
+    //    return false;
+    //}
+    //drainResults();
+
+    //if (mysql_query(conn_, "SELECT @p_result;")) {
+    //    std::cerr << "[DB] SELECT @p_result 실패: " << mysql_error(conn_) << std::endl;
+    //    return false;
+    //}
+    //MYSQL_RES* res = mysql_store_result(conn_);
+    //if (!res) {
+    //    std::cerr << "[DB] 결과 없음: " << mysql_error(conn_) << std::endl;
+    //    return false;
+    //}
+    //MYSQL_ROW row = mysql_fetch_row(res);
+    //out_json = (row && row[0]) ? row[0] : "{}";
+    //mysql_free_result(res);
+    //return true;
 }
 
-// ------------- UPDATE: 목표 달성 처리 -------------
-bool DBClass::updateGrownGoalAchieved(unsigned long long id,
+//// ------------- SP: GetGrownPlannerWithGoalslatest -------------
+//bool DBClass::getGrownPlannerWithGoalsLatest(const std::string& u_id,
+//    std::string& out_json) {
+//    if (!conn_) return false;
+//
+//    if (mysql_query(conn_, "SET @p_result = NULL;")) {
+//        std::cerr << "[DB] SET @p_result 실패: " << mysql_error(conn_) << std::endl;
+//        return false;
+//    }
+//
+//    std::string call = "CALL GetGrownPlannerWithGoalslatest('" + escape(conn_, u_id) + "', @p_result);";
+//    if (mysql_query(conn_, call.c_str())) {
+//        std::cerr << "[DB] CALL 실패: " << mysql_error(conn_) << std::endl;
+//        return false;
+//    }
+//    drainResults();
+//
+//    if (mysql_query(conn_, "SELECT @p_result;")) {
+//        std::cerr << "[DB] SELECT @p_result 실패: " << mysql_error(conn_) << std::endl;
+//        return false;
+//    }
+//    MYSQL_RES* res = mysql_store_result(conn_);
+//    if (!res) {
+//        std::cerr << "[DB] 결과 없음: " << mysql_error(conn_) << std::endl;
+//        return false;
+//    }
+//    MYSQL_ROW row = mysql_fetch_row(res);
+//    out_json = (row && row[0]) ? row[0] : "{}";
+//    mysql_free_result(res);
+//    return true;
+//}
+
+// ===== [ADD] 최신 성장플래너 + 목표목록 조회
+bool DBClass::fetchLatestGrowPlanner(
+    const std::string& u_id,
+    GrowPlannerHeader& outHeader,
+    std::vector<GrowPlannerGoal>& outGoals
+) {
+    if (!conn_) {
+        std::cerr << "[DB] fetchLatestGrowPlanner: conn_ is null\n";
+        return false;
+    }
+
+    // U_ID 이스케이프 (전역 escape 사용)
+    const std::string uid = escape(conn_, u_id);
+
+    // 스샷과 동일한 결과: 최근 GROWN_ID 1건의 헤더 + 목표 목록
+    std::ostringstream oss;
+    oss <<
+        "SELECT gp.GROWN_ID, gp.WANT_JOB, gp.PERIOD, "
+        "       gg.GOAL, DATE_FORMAT(gg.GOAL_DATE, '%Y-%m-%d') AS GOAL_DATE, "
+        "       gg.CATEGORY, gg.GOAL_PROGRESS, gg.IMPORTANCE, gp.START_DAY "
+        "FROM grown_planner gp "
+        "JOIN grown_planner_goal gg ON gp.GROWN_ID = gg.GROWN_ID "
+        "WHERE gp.U_ID = '" << uid << "' "
+        "  AND gp.GROWN_ID = (SELECT MAX(GROWN_ID) FROM grown_planner WHERE U_ID = '" << uid << "') "
+        "ORDER BY gg.IMPORTANCE ASC";
+
+    if (mysql_query(conn_, oss.str().c_str()) != 0) {
+        std::cerr << "[DB] fetchLatestGrowPlanner query fail: "
+            << mysql_error(conn_) << std::endl;
+        return false;
+    }
+
+    MYSQL_RES* res = mysql_store_result(conn_);
+    if (!res) {
+        std::cerr << "[DB] fetchLatestGrowPlanner store_result fail: "
+            << mysql_error(conn_) << std::endl;
+        return false;
+    }
+
+    bool any = false;
+    MYSQL_ROW row;
+    // 0:GROWN_ID, 1:WANT_JOB, 2:PERIOD, 3:GOAL, 4:GOAL_DATE, 5:CATEGORY, 6:GOAL_PROGRESS, 7:IMPORTANCE
+    while ((row = mysql_fetch_row(res)) != nullptr) {
+        any = true;
+
+        // 첫 행에서 헤더 채움
+        if (outHeader.grown_id == 0) {
+            outHeader.grown_id = row[0] ? std::stoi(row[0]) : 0;
+            outHeader.want_job = row[1] ? row[1] : "";
+            outHeader.period = row[2] ? std::stoi(row[2]) : 0;
+        }
+
+        GrowPlannerGoal g;
+        g.goal = row[3] ? row[3] : "";
+        g.goal_date = row[4] ? row[4] : "";   // NULL이면 ""
+        g.category = row[5] ? row[5] : "";
+        g.goal_progress = row[6] ? std::stoi(row[6]) : 0;
+        g.importance = row[7] ? std::stoi(row[7]) : 0;
+        g.start_date = row[8] ? row[8] : "";
+        outGoals.push_back(std::move(g));
+    }
+
+    mysql_free_result(res);
+    return any; // 하나라도 있으면 true
+}
+
+
+//// ------------- UPDATE: 목표 달성 처리 -------------
+//bool DBClass::updateGrownGoalAchieved(unsigned long long id,
+//    unsigned long long grown_id,
+//    const std::string& goal,
+//    const std::string& goal_date) {
+//    // ⚠ 테이블/컬럼명은 실제 스키마로 맞춰 변경
+//    std::string q =
+//        "UPDATE GROWN_PLANNER_GOAL"
+//        "SET STATUS='DONE', GOAL_DATE='" + escape(conn_, goal_date) + "' "
+//        "WHERE ID=" + std::to_string(id) +
+//        " AND GROWN_ID=" + std::to_string(grown_id) +
+//        " AND GOAL='" + escape(conn_, goal) + "';";
+//
+//    if (mysql_query(conn_, q.c_str())) {
+//        std::cerr << "[DB] UPDATE 실패: " << mysql_error(conn_) << std::endl;
+//        return false;
+//    }
+//    return (mysql_affected_rows(conn_) > 0);
+//}
+
+// 목표달성처리
+// 목표 달성 일괄 처리
+bool DBClass::updateGoalsAchieved(
+    const std::string& u_id,
     unsigned long long grown_id,
-    const std::string& goal,
-    const std::string& goal_date) {
-    // ⚠ 테이블/컬럼명은 실제 스키마로 맞춰 변경
-    std::string q =
-        "UPDATE GROWN_PLANNER_GOAL"
-        "SET STATUS='DONE', GOAL_DATE='" + escape(conn_, goal_date) + "' "
-        "WHERE ID=" + std::to_string(id) +
-        " AND GROWN_ID=" + std::to_string(grown_id) +
-        " AND GOAL='" + escape(conn_, goal) + "';";
+    const std::vector<std::string>& goals,
+    const std::string& date,
+    unsigned long& affected
+) {
+    affected = 0;
+    if (!conn_) return false;
+    if (goals.empty()) return true; // 업데이트할 게 없으면 성공 취급(영향 0건)
 
-    if (mysql_query(conn_, q.c_str())) {
-        std::cerr << "[DB] UPDATE 실패: " << mysql_error(conn_) << std::endl;
+    // IN ('g1','g2',...) 목록 구성 (각 항목 이스케이프)
+    std::ostringstream inList;
+    inList << "(";
+    for (size_t i = 0; i < goals.size(); ++i) {
+        if (i) inList << ",";
+        inList << "'" << escape(conn_, goals[i]) << "'";
+    }
+    inList << ")";
+
+    const std::string d = escape(conn_, date);
+
+    std::ostringstream oss;
+    oss << "UPDATE " << TBL_GOAL
+        << " SET GOAL_DATE = '" << d << "'"
+        << " WHERE GROWN_ID = " << grown_id
+        << " AND GOAL IN " << inList.str();
+
+    if (mysql_query(conn_, oss.str().c_str()) != 0) {
+        std::cerr << "[DB] updateGoalsAchieved query fail: " << mysql_error(conn_) << std::endl;
         return false;
     }
-    return (mysql_affected_rows(conn_) > 0);
+
+    affected = static_cast<unsigned long>(mysql_affected_rows(conn_));
+    return true;
 }
+
 
 // ========== 마이페이지: 프로필 1건 조회 ==========
 bool DBClass::getUserInfoById(const std::string& u_id,
