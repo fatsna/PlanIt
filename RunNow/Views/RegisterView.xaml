@@ -1,0 +1,213 @@
+<UserControl x:Class="RunNow.Views.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <!-- 둥근 버튼 + 포커스 점선 제거 -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Visibility 변환기 -->
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <!-- 뒤로가기 -->
+        <Button Content="←"
+                Width="40" Height="40"
+                FontSize="20"
+                Background="White"
+                Foreground="#004A91"
+                BorderBrush="#004A91"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="20,20,0,0"
+                Command="{Binding BackCommand}"
+                Focusable="False"/>
+
+        <!-- 상단 장식용 패스 -->
+        <Canvas VerticalAlignment="Top" Height="400">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,400" />
+                            <QuadraticBezierSegment Point1="300,500" Point2="600,400" />
+                            <QuadraticBezierSegment Point1="900,300" Point2="1200,400" />
+                            <LineSegment Point="1200,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- 로고 -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0">
+            <Image Source="/Assets/LOGO2.png"
+                   Width="300"
+                   Stretch="Uniform"/>
+        </StackPanel>
+
+        <!-- 입력 폼 -->
+        <Border Background="White"
+                CornerRadius="30"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="460"
+                Padding="30"
+                Margin="0,100,0,0">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="12" ShadowDepth="5" Color="Gray" />
+            </Border.Effect>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel HorizontalAlignment="Center">
+
+                    <!-- 이름 -->
+                    <TextBlock Text="이름" FontSize="16" Margin="0,10,0,6"/>
+                    <TextBox Text="{Binding Name}" Height="35" FontSize="17"/>
+
+                    <!-- 아이디 -->
+                    <TextBlock Text="아이디" FontSize="16" Margin="0,10,0,6"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35" Width="240" FontSize="16"/>
+                        <Button Content="중복확인"
+                                Width="100"
+                                Margin="10,0,0,0"
+                                Height="35"
+                                Background="#007ACC"
+                                Foreground="White"
+                                FontSize="14"
+                                Command="{Binding CheckDuplicateCommand}"
+                                Style="{StaticResource RoundedButtonStyle}"/>
+                    </StackPanel>
+
+                    <!-- 비밀번호 -->
+                    <TextBlock Text="비밀번호" FontSize="16" Margin="0,10,0,6"/>
+                    <PasswordBox x:Name="PasswordBox"
+                                 Height="35"
+                                 FontSize="17"
+                                 PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                    <!-- 비밀번호 확인 -->
+                    <TextBlock Text="비밀번호 확인" FontSize="16" Margin="0,10,0,6"/>
+                    <PasswordBox x:Name="ConfirmPasswordBox"
+                                 Height="35"
+                                 FontSize="17"
+                                 PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
+
+                    <!-- 비밀번호 불일치 문구 -->
+                    <TextBlock Text="비밀번호가 일치하지 않습니다."
+                               Foreground="Red"
+                               FontSize="13"
+                               Margin="0,5,0,0"
+                               Visibility="{Binding IsPasswordMismatch, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+                    <!-- 생년월일 -->
+                    <TextBlock Text="생년월일" FontSize="16" Margin="0,10,0,6"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,6">
+                        <ComboBox ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Width="110" Height="35" FontSize="17" Margin="5,0"/>
+                        <ComboBox ItemsSource="{Binding Months}" SelectedItem="{Binding SelectedMonth}" Width="90" Height="35" FontSize="17" Margin="5,0"/>
+                        <ComboBox ItemsSource="{Binding Days}" SelectedItem="{Binding SelectedDay}" Width="90" Height="35" FontSize="17" Margin="5,0"/>
+                    </StackPanel>
+
+                    <!-- 성별 -->
+                    <TextBlock Text="성별" FontSize="16" Margin="0,10,0,6"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <RadioButton Content="남자" IsChecked="{Binding IsMale}" FontSize="17" Margin="20,4"/>
+                        <RadioButton Content="여자" IsChecked="{Binding IsFemale}" FontSize="17" Margin="20,4"/>
+                    </StackPanel>
+
+                    <!-- 주소 -->
+                    <TextBlock Text="주소" FontSize="16" Margin="0,10,0,6"/>
+                    <TextBox Text="{Binding Address}" Height="35" FontSize="17"/>
+
+                    <!-- 전화번호 (앞자리는 ComboBox) -->
+                    <TextBlock Text="전화번호" FontSize="16" Margin="0,10,0,6"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- 앞자리 선택 -->
+                        <ComboBox Width="90" Height="35" FontSize="17" Margin="5,0"
+                                  ItemsSource="{Binding PhonePrefixes}"
+                                  SelectedItem="{Binding SelectedPhonePrefix}"/>
+                        <TextBlock Text="-" FontSize="18" VerticalAlignment="Center" Margin="2,0"/>
+                        <!-- 가운데 -->
+                        <TextBox Width="100" Height="35" MaxLength="4" FontSize="17" Margin="5,0"
+                                 TextAlignment="Center"
+                                 Text="{Binding PhonePart2, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="-" FontSize="18" VerticalAlignment="Center" Margin="2,0"/>
+                        <!-- 끝자리 -->
+                        <TextBox Width="100" Height="35" MaxLength="4" FontSize="17" Margin="5,0"
+                                 TextAlignment="Center"
+                                 Text="{Binding PhonePart3, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <!-- 얼굴 등록 -->
+                    <Button Content="얼굴 등록"
+                            Height="45"
+                            Margin="0,20,0,0"
+                            Background="#007ACC"
+                            Foreground="White"
+                            Command="{Binding FaceRegisterCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource RoundedButtonStyle}">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFaceRegistered}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- 회원가입 -->
+                    <Button Content="회원가입"
+                            Height="50"
+                            Margin="0,10,0,0"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Background="#004A91"
+                            Foreground="White"
+                            Command="{Binding SubmitCommand}"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- 오버레이 팝업 -->
+        <Grid Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
+              Panel.ZIndex="999"
+              IsHitTestVisible="True"
+              Focusable="False">
+            <Rectangle Fill="#80000000"/>
+            <Border Width="360" Padding="20" CornerRadius="12" Background="White"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="{Binding BusyText}" Margin="0,0,0,12"
+                               TextWrapping="Wrap" FontSize="14" HorizontalAlignment="Center"/>
+                    <ProgressBar IsIndeterminate="True" Height="14"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

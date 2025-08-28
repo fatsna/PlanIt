@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="RunNow.Views.EmotionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:conv="clr-namespace:RunNow.Converters"
+             xmlns:local="clr-namespace:RunNow.Views"
+             Background="White">
+
+    <!-- 리소스 -->
+    <UserControl.Resources>
+        <conv:RadioCheckedConverter x:Key="RadioCheckedConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- 헤더 -->
+            <RowDefinition Height="*"/>
+            <!-- 본문 -->
+            <RowDefinition Height="Auto"/>
+            <!-- 하단 네비 -->
+        </Grid.RowDefinitions>
+
+        <!-- ✅ 파도 배경 -->
+        <Canvas Grid.Row="0" Grid.RowSpan="2"
+                VerticalAlignment="Top"
+                Height="530"
+                IsHitTestVisible="False"
+                Panel.ZIndex="0">
+            <Path Fill="#004A91" Stretch="Fill"
+                  Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <LineSegment Point="0,530" />
+                            <QuadraticBezierSegment Point1="300,630" Point2="500,530" />
+                            <QuadraticBezierSegment Point1="700,430" Point2="1000,530" />
+                            <LineSegment Point="1000,0" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+
+        <!-- ✅ 상단 로고 (투명 헤더) -->
+        <Border Grid.Row="0" Background="Transparent" Padding="0,20" Panel.ZIndex="1">
+            <StackPanel HorizontalAlignment="Center">
+                <Image Source="/Assets/LOGO2.png"
+                       Width="150" Height="50" Stretch="Uniform" Margin="0,0,0,40"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ✅ 카드 박스 -->
+        <Border Grid.Row="1" Margin="40,-40,40,20" Padding="20"
+                Background="White" CornerRadius="20" Panel.ZIndex="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="3" Color="Gray"/>
+                </Border.Effect>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Width="500" HorizontalAlignment="Center">
+
+                    <!-- 제목 -->
+                    <TextBlock Text="감정 상태 진단 설문"
+                               FontSize="25" FontWeight="Bold" Margin="0,0,0,12"/>
+
+                    <!-- 질문 리스트 -->
+                    <ItemsControl ItemsSource="{Binding CurrentQuestions}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <GroupBox Header="{Binding QuestionText}" Margin="0,15,0,0">
+                                    <StackPanel Orientation="Horizontal" Margin="10,5">
+                                        <RadioButton Content="전혀 그렇지않다"
+                                                     GroupName="{Binding QuestionText}"
+                                                     Margin="0,0,10,0"
+                                                     IsChecked="{Binding SelectedAnswerIndex,
+                                                                 Mode=TwoWay,
+                                                                 Converter={StaticResource RadioCheckedConverter},
+                                                                 ConverterParameter=0}"/>
+
+                                        <RadioButton Content="그렇지않다"
+                                                     GroupName="{Binding QuestionText}"
+                                                     Margin="0,0,10,0"
+                                                     IsChecked="{Binding SelectedAnswerIndex,
+                                                                 Mode=TwoWay,
+                                                                 Converter={StaticResource RadioCheckedConverter},
+                                                                 ConverterParameter=1}"/>
+
+                                        <RadioButton Content="보통이다"
+                                                     GroupName="{Binding QuestionText}"
+                                                     Margin="0,0,10,0"
+                                                     IsChecked="{Binding SelectedAnswerIndex,
+                                                                 Mode=TwoWay,
+                                                                 Converter={StaticResource RadioCheckedConverter},
+                                                                 ConverterParameter=2}"/>
+
+                                        <RadioButton Content="그렇다"
+                                                     GroupName="{Binding QuestionText}"
+                                                     Margin="0,0,10,0"
+                                                     IsChecked="{Binding SelectedAnswerIndex,
+                                                                 Mode=TwoWay,
+                                                                 Converter={StaticResource RadioCheckedConverter},
+                                                                 ConverterParameter=3}"/>
+
+                                        <RadioButton Content="매우 그렇다"
+                                                     GroupName="{Binding QuestionText}"
+                                                     IsChecked="{Binding SelectedAnswerIndex,
+                                                                 Mode=TwoWay,
+                                                                 Converter={StaticResource RadioCheckedConverter},
+                                                                 ConverterParameter=4}"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- ✅ 하단 네비게이션 -->
+        <local:BottomNav Grid.Row="2" Panel.ZIndex="1"/>
+    </Grid>
+</UserControl>

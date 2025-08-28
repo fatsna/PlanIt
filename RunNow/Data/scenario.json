@@ -1,0 +1,275 @@
+{
+  "start": {
+    "Id": "start",
+    "Question": "안녕하세요! PLANIT 챗봇입니다. 😊 저는 커리어, 감정 분석, 재정 설계, 면접 준비 등 다양한 도움을 드립니다. 아래 메뉴에서 원하시는 서비스를 선택하세요.",
+    "Options": [
+      "프로그램 소개 보기",
+      "나이별 평균 연봉 확인",
+      "감정 분석 (오늘 기분 체크)",
+      "재정 상태 분석",
+      "면접 준비 가이드",
+      "커리어 개발 팁",
+      "기타 질문 및 고객지원"
+    ],
+    "NextStep": {
+      "프로그램 소개 보기": "program_info",
+      "나이별 평균 연봉 확인": "salary_info",
+      "감정 분석 (오늘 기분 체크)": "emotion_main",
+      "재정 상태 분석": "finance_main",
+      "면접 준비 가이드": "interview_main",
+      "커리어 개발 팁": "career_tips",
+      "기타 질문 및 고객지원": "etc_main"
+    }
+  },
+
+  "program_info": {
+    "Id": "program_info",
+    "Question": "PLANIT은 개인 맞춤형 분석과 컨설팅을 제공합니다.\n• 감정 분석: 기분 체크 후 맞춤 조언\n• 재정 분석: 지출 관리 및 절약 팁\n• 면접 준비: 예상 질문 & TIP 제공\n• 커리어 분석: 연봉, 이직, 성장 계획 제안",
+    "Options": [ "기능 상세 보기", "데이터 처리 방식", "AI 사용 여부", "이용 가이드", "처음으로" ],
+    "NextStep": {
+      "기능 상세 보기": "program_features",
+      "데이터 처리 방식": "program_data",
+      "AI 사용 여부": "program_ai",
+      "이용 가이드": "program_guide",
+      "처음으로": "start"
+    }
+  },
+
+  "program_features": {
+    "Id": "program_features",
+    "Question": "주요 기능은 다음과 같습니다:\n1. 감정 분석\n2. 재정 분석\n3. 이직 컨설팅\n4. 면접 준비\n5. 연봉 통계 제공\n6. 커리어 성장 전략",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "program_data": {
+    "Id": "program_data",
+    "Question": "사용자 입력 데이터는 안전하게 로컬에서 처리되며, 분석 후 즉시 삭제됩니다. 모든 분석은 익명으로 진행됩니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "program_ai": {
+    "Id": "program_ai",
+    "Question": "AI는 감정 분석과 추천 알고리즘에 활용됩니다. 결과는 참고용이며, 최종 결정은 사용자에게 있습니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "program_guide": {
+    "Id": "program_guide",
+    "Question": "PLANIT 이용 가이드:\n• 원하는 메뉴 선택 → 분석 진행\n• 결과 확인 후 추가 선택 가능\n• 언제든 '처음으로' 돌아갈 수 있습니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "salary_info": {
+    "Id": "salary_info",
+    "Question": "확인하고 싶은 연령대를 선택해주세요.\n연봉 정보는 평균값이며, 업종·지역별 차이가 있습니다.",
+    "Options": [ "20대", "30대", "40대", "50대 이상", "직무별 차이", "뒤로 가기" ],
+    "NextStep": {
+      "20대": "salary_20s",
+      "30대": "salary_30s",
+      "40대": "salary_40s",
+      "50대 이상": "salary_50s",
+      "직무별 차이": "salary_by_job",
+      "뒤로 가기": "start"
+    }
+  },
+
+  "salary_20s": {
+    "Id": "salary_20s",
+    "Question": "20대 평균 연봉은 약 3,000~3,500만원입니다.\n• IT 직군은 3,500만원 이상 가능\n• 영업직은 성과급 포함 차이 큼",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "salary_30s": {
+    "Id": "salary_30s",
+    "Question": "30대 평균 연봉은 4,000~5,000만원입니다.\n• 대기업 평균은 6,000만원 이상\n• 스타트업은 3,500~4,500만원 수준",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "salary_40s": {
+    "Id": "salary_40s",
+    "Question": "40대 평균 연봉은 5,000~6,000만원입니다.\n• 관리자 직급은 7,000만원 이상 가능",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "salary_50s": {
+    "Id": "salary_50s",
+    "Question": "50대 이상은 평균 5,500만원 이상입니다.\n• 고위직은 억대 연봉 가능",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "salary_by_job": {
+    "Id": "salary_by_job",
+    "Question": "직무별 평균 연봉:\n• 개발자: 5,500만원\n• 디자이너: 4,000만원\n• 마케팅: 4,200만원",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "emotion_main": {
+    "Id": "emotion_main",
+    "Question": "감정 분석 메뉴입니다. 오늘 기분을 체크하고 맞춤 조언을 받아보세요.",
+    "Options": [ "오늘 기분 입력", "감정 분석 설명 보기", "AI 분석 방식", "뒤로 가기" ],
+    "NextStep": {
+      "오늘 기분 입력": "emotion_input",
+      "감정 분석 설명 보기": "emotion_info",
+      "AI 분석 방식": "emotion_ai",
+      "뒤로 가기": "start"
+    }
+  },
+  "emotion_info": {
+    "Id": "emotion_info",
+    "Question": "감정 분석은 사용자의 입력 텍스트를 기반으로 AI가 기분을 추론하고, 상황에 맞는 조언을 제공합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "emotion_ai": {
+    "Id": "emotion_ai",
+    "Question": "AI는 자연어 처리 모델을 통해 기분을 분석합니다. 입력된 데이터는 저장되지 않습니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "emotion_input": {
+    "Id": "emotion_input",
+    "Question": "오늘 기분을 간단히 입력해주세요. (예: 행복, 우울, 불안)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "emotion_result",
+      "뒤로 가기": "emotion_main"
+    }
+  },
+  "emotion_result": {
+    "Id": "emotion_result",
+    "Question": "분석 결과: 기분이 우울하면 산책, 취미 활동을 추천합니다.\n행복할 때는 그 기분을 기록하고, 불안할 때는 심호흡을 권장합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "finance_main": {
+    "Id": "finance_main",
+    "Question": "재정 분석 메뉴입니다. 소득과 지출을 분석하고 절약 가능성을 확인하세요.",
+    "Options": [ "월급 입력", "지출 현황 입력", "투자 계획 분석", "재정 상태 설명", "뒤로 가기" ],
+    "NextStep": {
+      "월급 입력": "finance_income",
+      "지출 현황 입력": "finance_expense",
+      "투자 계획 분석": "finance_invest",
+      "재정 상태 설명": "finance_info",
+      "뒤로 가기": "start"
+    }
+  },
+  "finance_info": {
+    "Id": "finance_info",
+    "Question": "재정 분석은 소득 대비 지출을 평가하고, 저축 및 투자 가능성을 제안합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "finance_income": {
+    "Id": "finance_income",
+    "Question": "월급을 입력해주세요. (예: 300만원)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "finance_result",
+      "뒤로 가기": "finance_main"
+    }
+  },
+  "finance_expense": {
+    "Id": "finance_expense",
+    "Question": "월 지출을 입력해주세요. (예: 200만원)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "finance_result",
+      "뒤로 가기": "finance_main"
+    }
+  },
+  "finance_invest": {
+    "Id": "finance_invest",
+    "Question": "투자 계획을 입력해주세요. (예: 매달 50만원 투자 예정)",
+    "Options": [ "분석 시작", "뒤로 가기" ],
+    "NextStep": {
+      "분석 시작": "finance_result",
+      "뒤로 가기": "finance_main"
+    }
+  },
+  "finance_result": {
+    "Id": "finance_result",
+    "Question": "예시 결과: 월급 300만원, 지출 200만원 → 저축 가능 금액 100만원 (양호)\n투자 계획에 따라 추가 분석 가능.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "interview_main": {
+    "Id": "interview_main",
+    "Question": "면접 준비 가이드입니다. 원하는 정보를 선택하세요.",
+    "Options": [ "면접 TIP", "예상 질문 10개", "압박 면접 대비", "뒤로 가기" ],
+    "NextStep": {
+      "면접 TIP": "interview_tip",
+      "예상 질문 10개": "interview_questions",
+      "압박 면접 대비": "interview_stress",
+      "뒤로 가기": "start"
+    }
+  },
+  "interview_tip": {
+    "Id": "interview_tip",
+    "Question": "TIP:\n• 복장은 단정하게\n• 질문엔 명확하고 간결하게\n• 눈을 보고 자신감 있게",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "interview_questions": {
+    "Id": "interview_questions",
+    "Question": "예상 질문:\n1. 자기소개\n2. 장단점\n3. 지원 동기\n4. 갈등 해결 경험\n5. 향후 목표",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "interview_stress": {
+    "Id": "interview_stress",
+    "Question": "압박 면접 팁:\n• 침착하게 반응\n• 모르는 질문은 솔직하게\n• 논리적 사고 강조",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "career_tips": {
+    "Id": "career_tips",
+    "Question": "커리어 개발 팁:\n• 네트워킹 강화\n• 꾸준한 자기계발\n• 자격증 취득 고려",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+
+  "etc_main": {
+    "Id": "etc_main",
+    "Question": "기타 도움말 메뉴입니다. 아래에서 선택하세요.",
+    "Options": [ "서비스 이용 시간", "개인정보 정책", "고객센터 안내", "자주 묻는 질문", "뒤로 가기" ],
+    "NextStep": {
+      "서비스 이용 시간": "etc_time",
+      "개인정보 정책": "etc_privacy",
+      "고객센터 안내": "etc_support",
+      "자주 묻는 질문": "etc_faq",
+      "뒤로 가기": "start"
+    }
+  },
+  "etc_time": {
+    "Id": "etc_time",
+    "Question": "서비스는 24시간 이용 가능합니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "etc_privacy": {
+    "Id": "etc_privacy",
+    "Question": "개인정보는 분석 후 즉시 삭제됩니다. 저장되지 않으니 안심하세요.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "etc_support": {
+    "Id": "etc_support",
+    "Question": "고객센터는 이메일 planit@support.com 또는 1588-1234에서 운영됩니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  },
+  "etc_faq": {
+    "Id": "etc_faq",
+    "Question": "자주 묻는 질문:\nQ: 분석 결과는 저장되나요?\nA: 아니요, 즉시 삭제됩니다.",
+    "Options": [ "처음으로" ],
+    "NextStep": { "처음으로": "start" }
+  }
+}

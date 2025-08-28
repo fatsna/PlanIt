@@ -1,0 +1,77 @@
+﻿<Window x:Class="RunNow.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:views="clr-namespace:RunNow.Views"
+        xmlns:vm="clr-namespace:RunNow.ViewModels"
+        Title="RunNow" Height="1000" Width="760">
+    <Window.Resources>
+        
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:MainViewModel}">
+            <views:MainView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:CareerAnalysisViewModel}">
+            <views:CareerAnalysisView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:FinanceAnalysisViewModel}">
+            <views:FinanceAnalysisView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:DeepTestViewModel}">
+            <views:DeepTestView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegisterViewModel}">
+            <views:RegisterView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ChatBotViewModel}">
+            <views:ChatBotView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:EmotionViewModel}">
+            <views:EmotionView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ResumeManageViewModel}">
+            <views:ResumeManageView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:growth_check_ViewModel}">
+            <views:growth_check_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:Growth_main_ViewModel}">
+            <views:growth_main_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:growth_start_ViewModel}">
+            <views:growth_start_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:DeepResultViewModel}">
+            <views:DeepResultView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:Growth_My_ViewModel}">
+            <views:Growth_My_View/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:MyPageViewModel}">
+            <views:MyPageView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:EmotionResultViewModel}">
+            <views:EmotionResultView/>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="RunNow.Views.messageback"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:RunNow.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent"
+             FontFamily="Noto Sans KR">
+
+    <UserControl.Resources>
+        <!-- 팔레트 -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#004A91"/>
+        <SolidColorBrush x:Key="SoftBlueBg" Color="#F3F8FF"/>
+        <SolidColorBrush x:Key="SoftBlueBorder" Color="#CCE0FF"/>
+        <SolidColorBrush x:Key="TextMain" Color="#1F2937"/>
+
+        <!-- 카드 그림자 -->
+        <DropShadowEffect x:Key="CardShadow" BlurRadius="15" ShadowDepth="5" Color="Gray"/>
+
+        <!-- 기본 버튼 스타일 -->
+        <Style x:Key="PrimaryRoundedButton" TargetType="Button">
+            <Setter Property="Height" Value="56"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="bg" CornerRadius="14" Background="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#0A64B3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#084E8C"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SecondaryRoundedButton" TargetType="Button">
+            <Setter Property="Height" Value="56"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="bg" CornerRadius="14"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="{StaticResource SoftBlueBg}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#E7EFFD"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bg" Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- 중앙 모달 카드 -->
+    <Grid>
+        <Border CornerRadius="24"
+                Background="White"
+                Padding="60"
+                MaxWidth="700"
+                Margin="20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Effect="{StaticResource CardShadow}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- 헤더 칩 -->
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="*"/>
+                    <!-- 본문 -->
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="Auto"/>
+                    <!-- 버튼들 -->
+                </Grid.RowDefinitions>
+
+                <!-- 본문 메시지 -->
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="8,0,8,0">
+                    <TextBlock Text="이전 화면으로 돌아갈까요?"
+                               FontSize="35"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource PrimaryBlue}"
+                               TextAlignment="Center"
+                               Margin="0,0,0,8"/>
+                    <TextBlock Text="지금까지 입력한 내용이 저장되지 않을 수 있어요."
+                               FontSize="22"
+                               Foreground="{StaticResource TextMain}"
+                               TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- 버튼 두 개 -->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 뒤로 가기(확인) -->
+                    <Button Grid.Column="0"
+                            Style="{StaticResource PrimaryRoundedButton}"
+                            Command="{Binding DataContext.GobackCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="←" FontSize="25" Margin="0,0,8,0"/>
+                            <TextBlock Text="뒤로 가기" FontSize="25"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- 취소(닫기) -->
+                    <Button Grid.Column="2"
+                            Style="{StaticResource SecondaryRoundedButton}"
+                            Command="{Binding DataContext.MsgCloseCommand, RelativeSource={RelativeSource AncestorType=Window}}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="취소" FontSize="25" Margin="0,0,8,0"/>
+                            <TextBlock Text="✖" FontSize="25"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

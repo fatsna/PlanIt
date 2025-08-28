@@ -1,0 +1,311 @@
+﻿<UserControl x:Class="RunNow.Views.Growth_My_View"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RunNow.Views"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      xmlns:lowbar="clr-namespace:RunNow.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="760"
+      Background="White"
+      FontFamily="Noto Sans KR">
+
+    <!-- ===== 리소스 ===== -->
+    <UserControl.Resources>
+        <!-- 팔레트 -->
+        <SolidColorBrush x:Key="PrimaryBlue" Color="#004A91"/>
+        <SolidColorBrush x:Key="SoftBlueBg" Color="#F3F8FF"/>
+        <SolidColorBrush x:Key="SoftBlueBorder" Color="#CCE0FF"/>
+        <SolidColorBrush x:Key="TextMain" Color="#1F2937"/>
+
+        <!-- 그림자 -->
+        <DropShadowEffect x:Key="CardShadow" BlurRadius="15" ShadowDepth="5" Color="Gray"/>
+
+        <!-- 원형 아이콘 버튼 -->
+        <Style x:Key="CircularIconButton" TargetType="Button">
+            <Setter Property="Width" Value="44"/>
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#D0D7E2"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="bg" CornerRadius="22"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#F5F8FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#E7EFFD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 프라이머리 라운드 버튼 -->
+        <Style x:Key="PrimaryRoundedButton" TargetType="Button">
+            <Setter Property="Height" Value="64"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="bg" CornerRadius="16" Background="{TemplateBinding Background}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#0A64B3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#084E8C"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 세컨더리 라운드 버튼 -->
+        <Style x:Key="SecondaryRoundedButton" TargetType="Button">
+            <Setter Property="Height" Value="56"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBlue}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border x:Name="bg" CornerRadius="14"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="{StaticResource SoftBlueBg}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bg" Property="Background" Value="#E7EFFD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 칩 -->
+        <Style x:Key="Chip" TargetType="Border">
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Background" Value="{StaticResource SoftBlueBg}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SoftBlueBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- ===== 전체 레이아웃 ===== -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 상단: 파도 배경 + 헤더 + 카드 -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- 헤더 -->
+                <RowDefinition Height="*"/>
+                <!-- 카드 영역 -->
+            </Grid.RowDefinitions>
+
+            <!-- 파도 배경 -->
+            <Canvas Grid.Row="0" Grid.RowSpan="2"
+                    VerticalAlignment="Top" Height="530"
+                    Panel.ZIndex="0" IsHitTestVisible="False">
+                <Path Fill="#004A91" Stretch="Fill"
+                      Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="0,0" IsClosed="True">
+                                <LineSegment Point="0,530"/>
+                                <QuadraticBezierSegment Point1="300,630" Point2="500,530"/>
+                                <QuadraticBezierSegment Point1="700,430" Point2="1000,530"/>
+                                <LineSegment Point="1000,0"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+
+            <!-- 헤더: 뒤로가기 + 중앙 타이틀(TextBlock_title 유지) + 우측 액션(옵션) -->
+            <Border Grid.Row="0" Background="Transparent" Padding="16,18" Panel.ZIndex="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 뒤로가기 -->
+                    <Button Style="{StaticResource CircularIconButton}"
+                            Command="{Binding BackCommand}">
+                        <TextBlock Text="←" FontSize="18"/>
+                    </Button>
+
+                    <!-- 중앙 타이틀 (이름 유지) -->
+                    <TextBlock x:Name="TextBlock_title"
+                               Grid.Column="0" Grid.ColumnSpan="3"
+                               Text="마이 플래닛"
+                               FontSize="28" FontWeight="Bold" Foreground="White"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               IsHitTestVisible="False"/>
+
+                    <!-- 우측 액션(필요시 사용) -->
+                    <Button Grid.Column="2" Style="{StaticResource CircularIconButton}">
+                        <TextBlock Text="✉" FontSize="16"/>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <!-- 메인 카드 영역 -->
+            <Grid x:Name="Grid_button" Grid.Row="1" Panel.ZIndex="1">
+                <Border Margin="20,16,20,20" Padding="24"
+                        CornerRadius="30" Background="White" Effect="{StaticResource CardShadow}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 상단 카드(개요) -->
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 다음 목표 제안 -->
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 플래닛 채우기 버튼 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 상단 카드: 직무 칩 / D-Day 칩 / 원형 게이지 / 서브메트릭 -->
+                        <Border Grid.Row="0" CornerRadius="24" BorderBrush="{StaticResource SoftBlueBorder}" BorderThickness="1" Padding="16" Background="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- 칩들 -->
+                                <DockPanel Grid.Row="0" LastChildFill="False">
+                                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                                        <Border Style="{StaticResource Chip}" Margin="0,0,8,0">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="💼" Margin="0,0,8,0"/>
+                                                <TextBlock Text="{Binding TargetJob}" FontWeight="SemiBold" Foreground="{StaticResource PrimaryBlue}"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </StackPanel>
+                                    <Border Style="{StaticResource Chip}" DockPanel.Dock="Right">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="⏳" Margin="0,0,8,0"/>
+                                            <TextBlock Text="{Binding DaysLeft, StringFormat=남은기간 : D-{0}}" FontWeight="SemiBold"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DockPanel>
+
+                                <!-- 원형 게이지 -->
+                                <lowbar:CircularProgress Grid.Row="1"
+                                                         VerticalAlignment="Top"
+                                                         HorizontalAlignment="Center"
+                                                         Margin="0,8,0,8"
+                                                         Value="{Binding Progress}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding CircularProgressLoadedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </lowbar:CircularProgress>
+
+                                <!-- 서브 메트릭 -->
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,6,0,0">
+                                    <TextBlock Text="{Binding SubMetrics[0]}" Margin="0,0,18,0" FontSize="18"/>
+                                    <TextBlock Text="{Binding SubMetrics[1]}" Margin="0,0,18,0" FontSize="18"/>
+                                    <TextBlock Text="{Binding SubMetrics[2]}" FontSize="18"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Tip 칩 -->
+                        <Border Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Background="White" CornerRadius="12"
+                                BorderBrush="{StaticResource SoftBlueBorder}" BorderThickness="1"
+                                Padding="10" Margin="8,-18,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="💡" Margin="0,0,6,0"/>
+                                <TextBlock Text="Tip" Foreground="{StaticResource PrimaryBlue}" FontWeight="Bold"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- 다음 목표 제안 -->
+                        <Border Grid.Row="2" CornerRadius="16" Background="{StaticResource SoftBlueBg}" BorderBrush="{StaticResource SoftBlueBorder}" BorderThickness="1" Padding="18">
+                            <TextBlock Text="{Binding NextGoal, StringFormat=다음 목표로 ‘{0}’ 어떠신가요?}"
+                                       TextAlignment="Center" FontSize="20" Foreground="{StaticResource TextMain}"/>
+                        </Border>
+
+                        <!-- 플래닛 채우기 버튼 (이름/커맨드 유지) -->
+                        <Button x:Name="Button_third"
+                                Grid.Row="4"
+                                Style="{StaticResource PrimaryRoundedButton}"
+                                Command="{Binding GoTocheckCommand}">
+                            <TextBlock Text="플래닛 채우기" FontSize="20"/>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- 하단 네비게이션 -->
+        <lowbar:BottomNav Grid.Row="1"/>
+
+        <!-- 오버레이(뒤로가기 확인 등) - 이름/바인딩 유지 -->
+        <Grid x:Name="Grid_calendar"
+              Visibility="{Binding shareDataService.IsDetailVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+              Panel.ZIndex="100">
+            <Rectangle Fill="#80000000">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding RectangleClickCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Rectangle>
+
+            <local:messageback x:Name="messageback"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Background="Transparent"
+                               Padding="20">
+                <local:messageback.LayoutTransform>
+                    <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                </local:messageback.LayoutTransform>
+            </local:messageback>
+        </Grid>
+    </Grid>
+</UserControl>
