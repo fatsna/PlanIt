@@ -22,7 +22,7 @@ PLANIT은 AI를 활용한 개인 맞춤형 직업 추천 및 성장 계획 수�
 
 ## MVVM 아키텍처
 
-![Logo](RunNow/Assets/MVVM_img_.png)
+![Logo](RunNow/Assets/MVVM_img.png)
 
 ### 주요 구성 요소
 
