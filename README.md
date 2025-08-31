@@ -1,6 +1,6 @@
 # PLANIT - AI 기반 직업 추천 및 성장 플래너 시스템
 
-![Logo](RunNow/Assets/Planit_logo.png)
+<img src="RunNow/Assets/Planit_logo.png" alt="Logo" width="100%"/>
 
 ## 📋 프로젝트 개요
 
@@ -205,14 +205,14 @@ planit/
     ├── db_class.h                    # 데이터베이스 클래스 인터페이스
     └── server.h                      # 서버 메인 클래스 정의
 
-***클라이언트 (WPF - C#)***
-
+**### 클라이언트 (WPF - C#)
+**
 MVVM 아키텍처: Models, Views, ViewModels로 구조화된 WPF 애플리케이션
 주요 기능: 감정 분석, 진로 분석, 챗봇, 금융 분석, 개인 성장 관리
 UI 컴포넌트: XAML 기반의 사용자 인터페이스와 데이터 바인딩
 
-***서버 (C++)***
-
+**###서버 (C++)
+**
 TCP 서버: 클라이언트 요청을 처리하는 네트워크 서버
 JSON 통신: 클라이언트와 JSON 프로토콜로 데이터 교환
 데이터베이스 연동: 사용자 데이터 및 분석 결과 저장/관리
